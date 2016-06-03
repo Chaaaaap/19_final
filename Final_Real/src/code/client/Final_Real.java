@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 import code.client.gui.Login;
 import code.client.gui.Login.LoginListener;
+import code.client.gui.MainMenu;
 import code.client.service.Client;
 import code.client.service.Client.IClientCallback;
 import code.shared.OperatoerDTO;
@@ -22,12 +23,16 @@ public class Final_Real implements EntryPoint, LoginListener {
 		@Override
 		public void onLogin(OperatoerDTO opr) {
 			oprLoggedIn = opr;
+			content.clear();
+			MainMenu menu = new MainMenu(oprLoggedIn, client);
+			content.add(menu);
 		}
 	});
 	
 
 	public void onModuleLoad() {
 		
+		onLogin();
 		content.getElement().setAttribute("align", "center");
 		
 		RootPanel.get().add(content);
