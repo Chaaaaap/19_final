@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+		<ui:style>
+		.loginLabel {
+			width:150px;		
+		}
+		
+		.loginBox {
+			width:150px;
+		}
+		
+		.submitButton {
+			width:154px;
+			display:block;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Label styleName="{style.loginLabel}" ui:field="nameLabel" text="Indtast operatør ID" />
+		<g:TextBox styleName="{style.loginBox}" ui:field="nameBox" />
+		<g:Label styleName="{style.loginLabel}" ui:field="passwordLabel" text="Indtast dit password" />
+		<g:PasswordTextBox styleName="{style.loginBox}" ui:field="passwordBox" />
+		<g:Button styleName="{style.submitButton}" ui:field="submit" text="Login" />
+	</g:HTMLPanel>
+</ui:UiBinder> 
