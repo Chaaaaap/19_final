@@ -22,9 +22,7 @@ public class Login extends Composite {
 	interface LoginUiBinder extends UiBinder<Widget, Login> {
 	}
 	
-	public interface LoginListener {
-		public OperatoerDTO onLogin();
-	}
+	interface LoginListener { public OperatoerDTO onLogin(); }
 	
 	private Client client;
 
@@ -38,14 +36,9 @@ public class Login extends Composite {
 		return null;
 	}
 	
-	@UiField
-	TextBox nameBox;
-	
-	@UiField
-	PasswordTextBox passwordBox;
-	
-	@UiField
-	Button submit;
+	@UiField TextBox nameBox;
+	@UiField PasswordTextBox passwordBox;	
+	@UiField Button submit;
 	
 	
 	
