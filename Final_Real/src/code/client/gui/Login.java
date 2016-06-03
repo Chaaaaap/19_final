@@ -22,7 +22,7 @@ public class Login extends Composite {
 	interface LoginUiBinder extends UiBinder<Widget, Login> {
 	}
 	
-	interface LoginListener { public OperatoerDTO onLogin(); }
+	 public interface LoginListener { public OperatoerDTO onLogin(); }
 	
 	private Client client;
 

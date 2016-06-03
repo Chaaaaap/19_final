@@ -12,8 +12,12 @@ public class Client {
 
 	private IServiceAsync service;
 	private OperatoerDTO opr = null;
+	private IClientCallback callback;
 	
-	public Client(String URL) {
+	public interface IClientCallback{ public void onLogin(OperatoerDTO opr); }
+	
+	public Client(String URL, IClientCallback callback) {
+		this.callback = callback;
 		service = GWT.create(IService.class);
 		ServiceDefTarget endpoint = (ServiceDefTarget) service;
 		endpoint.setServiceEntryPoint(URL);
@@ -32,6 +36,7 @@ public class Client {
 			@Override
 			public void onSuccess(OperatoerDTO result) {
 				opr = result;
+				callback.onLogin(result);
 			}
 			
 		});
