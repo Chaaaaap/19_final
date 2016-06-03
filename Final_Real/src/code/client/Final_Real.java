@@ -28,7 +28,6 @@ public class Final_Real implements EntryPoint, LoginListener {
 
 	public void onModuleLoad() {
 		
-		oprLoggedIn = onLogin();
 		content.getElement().setAttribute("align", "center");
 		
 		RootPanel.get().add(content);

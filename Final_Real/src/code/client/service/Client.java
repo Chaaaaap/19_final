@@ -24,7 +24,7 @@ public class Client {
 	}
 
 	
-	public OperatoerDTO login(int oprID, String password) {
+	public void login(int oprID, String password) {
 		service.login(oprID, password, new AsyncCallback<OperatoerDTO>() {
 
 			@Override
@@ -40,6 +40,5 @@ public class Client {
 			}
 			
 		});
-		return opr;
 	}
 }
