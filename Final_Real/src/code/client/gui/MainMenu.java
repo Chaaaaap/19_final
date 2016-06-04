@@ -5,6 +5,8 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.MenuBar;
+import com.google.gwt.user.client.ui.MenuItem;
 import com.google.gwt.user.client.ui.Widget;
 
 import code.client.service.Client;
@@ -35,6 +37,7 @@ public class MainMenu extends Composite {
 	@UiField Button afvej;
 	@UiField Button skiftPassword;
 	@UiField Button brugerRedigering;
+//	@UiField MenuItem opretBruger;
 	@UiField Button receptRedigering;
 	@UiField Button raavareRedigering;
 }
