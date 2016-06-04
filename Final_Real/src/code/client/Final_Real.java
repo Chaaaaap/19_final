@@ -2,6 +2,7 @@ package code.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -16,6 +17,7 @@ import code.shared.OperatoerDTO;
 public class Final_Real implements EntryPoint, LoginListener {
 	
 	private OperatoerDTO oprLoggedIn;
+	private VerticalPanel view = new VerticalPanel();
 	private VerticalPanel content = new VerticalPanel();
 	private Client client = new Client(GWT.getHostPageBaseURL()+"19_Final", 
 			new IClientCallback() {
@@ -31,11 +33,19 @@ public class Final_Real implements EntryPoint, LoginListener {
 	
 
 	public void onModuleLoad() {
+		Image image = new Image();
+		image.setUrl("images/piller.jpg");
+		image.setWidth("800px");
+		image.setHeight("200px");
+		view.add(image);
+		view.add(content);
 		
 		onLogin();
+		
+		view.getElement().setAttribute("align", "center");
 		content.getElement().setAttribute("align", "center");
 		
-		RootPanel.get().add(content);
+		RootPanel.get().add(view);
 	}
 
 	@Override

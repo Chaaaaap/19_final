@@ -116,6 +116,29 @@ samp {
   font-family: monospace, monospace;
   font-size: 1em;
 }
+
+.gwt-Button {
+	-webkit-appearance: button;
+ 	cursor: pointer;
+	color: inherit;
+  	font: inherit;
+ 	margin: 0;
+ 	overflow: visible;
+ 	text-transform: none;
+ 	display: inline-block;
+  	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	width:100%;
+}
+
+.gwt-TextBox {
+	
+}
+
+.gwt-PasswordTextBox {
+	
+}
 button,
 input,
 optgroup,

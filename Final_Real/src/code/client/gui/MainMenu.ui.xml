@@ -6,8 +6,10 @@
 	</ui:style>
 	<g:HTMLPanel>
 	    <g:HorizontalPanel >
-	        <g:Button ui:field="Afvej" text="Afvej"/> 
-	        <g:Button ui:field=""
+	        <g:Button ui:field="afvej" text="Afvej"/> 
+	        <g:Button ui:field="skiftPassword" text="Skift password" />
+	        <g:Button ui:field="brugerRedigering" text="Rediger brugere" />
+	        <g:Button ui:field="receptRedigering" text="Rediger recepter" />
 	    </g:HorizontalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
