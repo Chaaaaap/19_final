@@ -10,6 +10,7 @@
 	        <g:Button ui:field="skiftPassword" text="Skift password" />
 	        <g:Button ui:field="brugerRedigering" text="Rediger brugere" />
 	        <g:Button ui:field="receptRedigering" text="Rediger recepter" />
+	        <g:Button ui:field="raavareRedigering" text="Rediger råvarer" />
 	    </g:HorizontalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
