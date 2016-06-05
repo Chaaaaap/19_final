@@ -9,6 +9,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
+import code.client.Final_Real;
 import code.client.service.Client;
 import code.shared.OperatoerDTO;
 
@@ -49,5 +50,9 @@ public class MainMenu extends Composite {
 	@UiHandler("skiftPassword")
 	void onClick(ClickEvent e) {
 		SkiftPassword skiftPassword = new SkiftPassword(opr, client);
+		Final_Real.clearContent();
+		Final_Real.attachContent(this);
+		Final_Real.attachContent(skiftPassword);
+		
 	}
 }

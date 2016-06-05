@@ -5,6 +5,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 import code.client.gui.Login;
 import code.client.gui.Login.LoginListener;
@@ -18,7 +19,7 @@ public class Final_Real implements EntryPoint, LoginListener {
 	
 	private OperatoerDTO oprLoggedIn;
 	private VerticalPanel view = new VerticalPanel();
-	private VerticalPanel content = new VerticalPanel();
+	private static VerticalPanel content = new VerticalPanel();
 	private Client client = new Client(GWT.getHostPageBaseURL()+"19_Final", 
 			new IClientCallback() {
 		
@@ -53,5 +54,13 @@ public class Final_Real implements EntryPoint, LoginListener {
 		Login login = new Login(client);
 		content.add(login);
 		return login.oprLogin();
+	}
+	
+	public static void  clearContent() {
+		content.clear();
+	}
+	
+	public static void attachContent(Widget w) {
+		content.add(w);
 	}
 }

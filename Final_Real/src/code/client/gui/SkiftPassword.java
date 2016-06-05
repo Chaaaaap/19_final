@@ -1,8 +1,13 @@
 package code.client.gui;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.Widget;
 
 import code.client.service.Client;
@@ -23,5 +28,22 @@ public class SkiftPassword extends Composite {
 		this.opr = opr;
 		this.client = client;
 	}
+	
+	@UiField PasswordTextBox gammeltPassword;
+	@UiField PasswordTextBox nytPassword;
+	@UiField PasswordTextBox gentagPassword;
+	@UiField Button submit;
+	
+	@UiHandler("submit")
+	void onClick(ClickEvent e) {
+		String glPassword = gammeltPassword.getText();
+		String nytPass = nytPassword.getText();
+		if(nytPassword.equals(gentagPassword) && !nytPassword.equals(null)) {
+			client.skiftPassword(opr, glPassword, nytPass);
+		}
+		
+	}
+	
+	
 
 }

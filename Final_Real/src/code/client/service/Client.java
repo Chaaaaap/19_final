@@ -41,4 +41,10 @@ public class Client {
 			
 		});
 	}
+
+
+	public void skiftPassword(OperatoerDTO opr, String glPassword, String nyPassword) {
+		// TODO Auto-generated method stub
+		
+	}
 }
