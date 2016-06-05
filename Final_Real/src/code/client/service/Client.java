@@ -44,7 +44,21 @@ public class Client {
 
 
 	public void skiftPassword(OperatoerDTO opr, String glPassword, String nyPassword) {
-		// TODO Auto-generated method stub
+		service.skiftPassword(opr, glPassword, nyPassword, new AsyncCallback<OperatoerDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onSuccess(OperatoerDTO result) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 	}
 }

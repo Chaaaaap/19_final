@@ -20,4 +20,12 @@ public class ServiceImpl extends RemoteServiceServlet implements IService {
 
 	}
 
+	@Override
+	public OperatoerDTO skiftPassword(OperatoerDTO opr, String glPassword, String nyPassword) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
 }
