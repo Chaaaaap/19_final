@@ -81,9 +81,6 @@ public class MainMenu extends Composite {
 	@UiField MenuItem visProduktbatches;
 	
 	
-	
-	
-	
 	@UiHandler("skiftPassword")
 	void skiftPassword(ClickEvent e) {
 		SkiftPassword skiftPassword = new SkiftPassword(opr, client);
@@ -92,7 +89,5 @@ public class MainMenu extends Composite {
 		Final_Real.attachContent(skiftPassword);
 		
 	}
-	
-	
 	
 }
