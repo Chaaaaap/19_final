@@ -35,7 +35,7 @@ public class Final_Real implements EntryPoint, LoginListener {
 
 	public void onModuleLoad() {
 		Image image = new Image();
-		image.setUrl("images/piller2.png");
+		image.setUrl("images/dtu_pharma.png");
 		image.setWidth("800px");
 		image.setHeight("200px");
 		view.add(image);
