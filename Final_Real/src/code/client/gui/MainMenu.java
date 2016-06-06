@@ -33,10 +33,7 @@ public class MainMenu extends Composite {
 		menuBar.setAutoOpen(true);
 		menuBar.setAnimationEnabled(true);
 
-		
-		
 		if(opr.getType().equals("operatør")) {
-			skiftPassword.setVisible(false);
 			brugerMenu.setVisible(false);
 			receptMenu	.setVisible(false);
 			raavareMenu.setVisible(false);
@@ -44,14 +41,11 @@ public class MainMenu extends Composite {
 			produktbatchMenu.setVisible(false);
 	
 		} else if(opr.getType().equals("værkfører")) {
-			skiftPassword.setVisible(false);
 			brugerMenu.setVisible(false);
 			receptMenu.setVisible(false);
 			raavareMenu.setVisible(false);
 			
 		} else if(opr.getType().equals("farmaceut")) {
-			afvej.setVisible(false);
-			skiftPassword.setVisible(false);
 			brugerMenu.setVisible(false);
 			
 		}
