@@ -7,17 +7,17 @@
 	<g:HTMLPanel>
 	    <g:VerticalPanel>
 	        <g:Label text="Indtast operatør ID" />
-	        <g:TextBox  />
+	        <g:TextBox ui:field="boxID" />
 	        <g:Label text="Indtast brugerens navn" />
-	        <g:TextBox  />
+	        <g:TextBox ui:field="boxNavn" />
 	        <g:Label text="Indtast brugerens initialer" />
-	        <g:TextBox  />
+	        <g:TextBox ui:field="boxIni" />
 	        <g:Label text="Indtast brugerens CPR-nummer" />
-	        <g:TextBox  />
+	        <g:TextBox ui:field="boxCPR" />
 	        <g:Label text="Indtast brugerens password" />
-	        <g:TextBox  />
+	        <g:TextBox ui:field="boxPassword" />
 	        <g:Label text="Vælg brugerens rolle" />
-	   		<g:ListBox>
+	   		<g:ListBox ui:field="boxType">
 	   		    <g:item value="operatør">operatør</g:item>
 	   		    <g:item value="værkfører">værkfører</g:item>
 	   		    <g:item value="farmaceut">farmaceut</g:item>
