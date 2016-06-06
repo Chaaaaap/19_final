@@ -5,6 +5,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.MenuBar;
@@ -14,6 +15,7 @@ import com.google.gwt.user.client.ui.Widget;
 import code.client.Final_Real;
 import code.client.service.Client;
 import code.shared.OperatoerDTO;
+import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 
 public class MainMenu extends Composite {
 
@@ -49,7 +51,39 @@ public class MainMenu extends Composite {
 			brugerMenu.setVisible(false);
 			
 		}
+		
+		opretBruger.setScheduledCommand(new LauchCommand(new OpretBruger()));
+		
+		opretBruger.setScheduledCommand(new LauchCommand(null));
+		
+		opretBruger.setScheduledCommand(new LauchCommand(null));
+		
+		opretBruger.setScheduledCommand(new LauchCommand(null));
+		
+		opretBruger.setScheduledCommand(new LauchCommand(null));
+		
+		opretBruger.setScheduledCommand(new LauchCommand(null));
+		
+		opretBruger.setScheduledCommand(new LauchCommand(null));
+		
+		opretBruger.setScheduledCommand(new LauchCommand(null));
+		
+		opretBruger.setScheduledCommand(new LauchCommand(null));
+		
+		opretBruger.setScheduledCommand(new LauchCommand(null));
+		
+		opretBruger.setScheduledCommand(new LauchCommand(null));
+		
+		opretBruger.setScheduledCommand(new LauchCommand(null));
+		
+		opretBruger.setScheduledCommand(new LauchCommand(null));
+		
+		opretBruger.setScheduledCommand(new LauchCommand(null));
+		
+		opretBruger.setScheduledCommand(new LauchCommand(null));
 	}
+	
+	
 
 	@UiField Button afvej;
 	@UiField Button skiftPassword;
@@ -87,6 +121,27 @@ public class MainMenu extends Composite {
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
 		Final_Real.attachContent(skiftPassword);
+		
+	}
+	
+	private void opretBruger() {
+		
+	}
+	private class LauchCommand implements Command{
+
+		Composite c;
+		
+		public LauchCommand(Composite c) {
+			super();
+			this.c = c;
+		}
+
+		@Override
+		public void execute() {
+			Final_Real.clearContent();
+			Final_Real.attachContent(c);
+			
+		}
 		
 	}
 	
