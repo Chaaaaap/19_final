@@ -10,17 +10,51 @@
 			<g:Button ui:field="skiftPassword" text="Skift password" />
 
 			
-			<g:MenuBar ui:field="brugerMenu">
-					<g:MenuItem text="Bruger redigering">
+			<g:MenuBar ui:field="menuBar">
+					<g:MenuItem text="Rediger brugere">
 
 						<g:MenuBar vertical="true">
 							<g:MenuItem ui:field="opretBruger" text="Opret bruger" />
 							<g:MenuItem ui:field="redigerBruger" text="Rediger bruger" />
 							<g:MenuItem ui:field="deaktiverBruger" text="Deaktiver bruger" />
-							
 						</g:MenuBar>
 					</g:MenuItem>
+					
+					<g:MenuItem text="Rediger recepter">
+			        	<g:MenuBar vertical="true">
+			            	<g:MenuItem ui:field="opretRecept" text="Opret recept" />
+			            	<g:MenuItem ui:field="redigerRecept" text="Rediger recept" />
+			            	<g:MenuItem ui:field="visRecepter" text="Vis recepter" />
+			        	</g:MenuBar>
+			    	</g:MenuItem>
+			    	
+					<g:MenuItem text="Rediger råvarer">
+			        	<g:MenuBar vertical="true">
+			            	<g:MenuItem ui:field="opretRaavare" text="Opret råvare" />
+			            	<g:MenuItem ui:field="redigerRaavare" text="Rediger råvare" />
+			            	<g:MenuItem ui:field="visRaavarer" text="Vis råvarer" />
+			        	</g:MenuBar>
+			    	</g:MenuItem>
+			    	
+					<g:MenuItem text="Rediger råvarebatches">
+			        	<g:MenuBar vertical="true">
+			            	<g:MenuItem ui:field="opretRaavarebatch" text="Opret råvarebatch" />
+			            	<g:MenuItem ui:field="redigerRaavarebatch" text="Rediger råvarebatch" />
+			            	<g:MenuItem ui:field="visRaavarebatches" text="Vis råvarebatches" />
+			        	</g:MenuBar>
+			    	</g:MenuItem>
+			    	
+					<g:MenuItem text="Rediger produktbatches">
+			        	<g:MenuBar vertical="true">
+			            	<g:MenuItem ui:field="opretProduktbatch" text="Opret produktbatch" />
+			            	<g:MenuItem ui:field="redigerProduktbatch" text="Rediger produktbatch" />
+			            	<g:MenuItem ui:field="visProduktbatches" text="Vis produktbatches" />
+			        	</g:MenuBar>
+			    	</g:MenuItem>
+			    	
 			</g:MenuBar>
+			
+			   
 				
 
 
@@ -33,8 +67,7 @@
 					</g:MenuBar>
 				</g:MenuItem>
 			</g:MenuBar>  -->	
-			<g:Button ui:field="receptRedigering" text="Rediger recepter" />
-			<g:Button ui:field="raavareRedigering" text="Rediger råvarer" />
+		
 		</g:HorizontalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

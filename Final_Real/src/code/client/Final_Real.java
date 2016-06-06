@@ -19,6 +19,7 @@ public class Final_Real implements EntryPoint, LoginListener {
 	
 	private OperatoerDTO oprLoggedIn;
 	private VerticalPanel view = new VerticalPanel();
+	private VerticalPanel header = new VerticalPanel();
 	private static VerticalPanel content = new VerticalPanel();
 	private Client client = new Client(GWT.getHostPageBaseURL()+"19_Final", 
 			new IClientCallback() {
@@ -38,11 +39,12 @@ public class Final_Real implements EntryPoint, LoginListener {
 		image.setUrl("images/dtu_pharma.png");
 		image.setWidth("800px");
 		image.setHeight("200px");
-		view.add(image);
+		header.add(image);
+		view.add(header);
 		view.add(content);
 		
 		onLogin();
-		
+		header.getElement().setAttribute("align", "center");
 		view.getElement().setAttribute("align", "center");
 		content.getElement().setAttribute("align", "center");
 		
