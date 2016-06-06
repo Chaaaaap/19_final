@@ -41,6 +41,7 @@ public class SkiftPassword extends Composite {
 		String gentagPass = gentagPassword.getText();
 		if(nytPass.equals(gentagPass) && glPassword.equals(opr.getPassword())) {
 			client.skiftPassword(opr, nytPass);
+			opr.skiftPassword(nytPass);
 		}
 		
 	}

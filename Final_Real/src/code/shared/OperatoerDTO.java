@@ -31,5 +31,9 @@ public class OperatoerDTO implements Serializable {
 	public int getOprID() {
 		return oprID;
 	}
+	
+	public void skiftPassword(String password) {
+		this.password = password;
+	}
 
 }
