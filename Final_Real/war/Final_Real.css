@@ -134,11 +134,15 @@ samp {
 }
 
 .gwt-TextBox {
-	
+	width:150px;
 }
 
 .gwt-PasswordTextBox {
-	
+	width:150px;
+}
+
+.gwt-Label {
+	width:150px;
 }
 button,
 input,
@@ -148,6 +152,7 @@ textarea {
   color: BLACK;
   font: inherit;
   margin: 0;
+  width:150px;
 }
 button {
   overflow: visible;
