@@ -32,37 +32,56 @@ public class MainMenu extends Composite {
 		
 		menuBar.setAutoOpen(true);
 		menuBar.setAnimationEnabled(true);
-//		receptMenu.setAutoOpen(true);
-//		receptMenu.setAnimationEnabled(true);
+
 		
 		
 		if(opr.getType().equals("operatør")) {
-			menuBar.setVisible(false);
-//			receptRedigering.setVisible(false);
-//			raavareRedigering.setVisible(false);
+			skiftPassword.setVisible(false);
+			brugerMenu.setVisible(false);
+			receptMenu	.setVisible(false);
+			raavareMenu.setVisible(false);
+			raavarebatchMenu.setVisible(false);
+			produktbatchMenu.setVisible(false);
+	
 		} else if(opr.getType().equals("værkfører")) {
-			menuBar.setVisible(false);
+			skiftPassword.setVisible(false);
+			brugerMenu.setVisible(false);
+			receptMenu.setVisible(false);
+			raavareMenu.setVisible(false);
 			
 		} else if(opr.getType().equals("farmaceut")) {
-			menuBar.setVisible(false);
+			afvej.setVisible(false);
+			skiftPassword.setVisible(false);
+			brugerMenu.setVisible(false);
+			
 		}
 	}
 
 	@UiField Button afvej;
 	@UiField Button skiftPassword;
 	@UiField MenuBar menuBar;
+	
+	@UiField MenuItem brugerMenu;
 	@UiField MenuItem opretBruger;
 	@UiField MenuItem redigerBruger;
 	@UiField MenuItem deaktiverBruger;
+	
+	@UiField MenuItem receptMenu;
 	@UiField MenuItem opretRecept;
 	@UiField MenuItem redigerRecept;
 	@UiField MenuItem visRecepter;
+	
+	@UiField MenuItem raavareMenu;
 	@UiField MenuItem opretRaavare;
 	@UiField MenuItem redigerRaavare;
 	@UiField MenuItem visRaavarer;
+	
+	@UiField MenuItem raavarebatchMenu;
 	@UiField MenuItem opretRaavarebatch;
 	@UiField MenuItem redigerRaavarebatch;
 	@UiField MenuItem visRaavarebatches;
+	
+	@UiField MenuItem produktbatchMenu;
 	@UiField MenuItem opretProduktbatch;
 	@UiField MenuItem redigerProduktbatch;
 	@UiField MenuItem visProduktbatches;
@@ -79,4 +98,5 @@ public class MainMenu extends Composite {
 		Final_Real.attachContent(skiftPassword);
 		
 	}
+	
 }
