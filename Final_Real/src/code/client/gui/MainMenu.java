@@ -54,34 +54,20 @@ public class MainMenu extends Composite {
 		}
 		
 		opretBruger.setScheduledCommand(new LauchCommand(new OpretBruger()));
-		
-		opretBruger.setScheduledCommand(new LauchCommand(null));
-		
-		opretBruger.setScheduledCommand(new LauchCommand(null));
-		
-		opretBruger.setScheduledCommand(new LauchCommand(null));
-		
-		opretBruger.setScheduledCommand(new LauchCommand(null));
-		
-		opretBruger.setScheduledCommand(new LauchCommand(null));
-		
-		opretBruger.setScheduledCommand(new LauchCommand(null));
-		
-		opretBruger.setScheduledCommand(new LauchCommand(null));
-		
-		opretBruger.setScheduledCommand(new LauchCommand(null));
-		
-		opretBruger.setScheduledCommand(new LauchCommand(null));
-		
-		opretBruger.setScheduledCommand(new LauchCommand(null));
-		
-		opretBruger.setScheduledCommand(new LauchCommand(null));
-		
-		opretBruger.setScheduledCommand(new LauchCommand(null));
-		
-		opretBruger.setScheduledCommand(new LauchCommand(null));
-		
-		opretBruger.setScheduledCommand(new LauchCommand(null));
+		redigerBruger.setScheduledCommand(new LauchCommand(new RedigerBruger()));
+		deaktiverBruger.setScheduledCommand(new LauchCommand(new DeaktiverBruger()));
+		opretRecept.setScheduledCommand(new LauchCommand(new OpretRecept()));		
+		redigerRecept.setScheduledCommand(new LauchCommand(new RedigerRecept()));		
+		visRecepter.setScheduledCommand(new LauchCommand(new VisRecepter()));		
+		opretRaavare.setScheduledCommand(new LauchCommand(new OpretRaavare()));		
+		redigerRaavare.setScheduledCommand(new LauchCommand(new RedigerRaavare()));		
+		visRaavarer.setScheduledCommand(new LauchCommand(new VisRaavarer()));		
+		opretRaavarebatch.setScheduledCommand(new LauchCommand(new OpretRaavarebatch()));		
+		redigerRaavarebatch.setScheduledCommand(new LauchCommand(new RedigerRaavarebatch()));		
+		visRaavarebatches.setScheduledCommand(new LauchCommand(new VisRaavarebatches()));		
+		opretProduktbatch.setScheduledCommand(new LauchCommand(new OpretProduktbatch()));		
+		redigerProduktbatch.setScheduledCommand(new LauchCommand(new RedigerProduktbatch()));		
+		visProduktbatches.setScheduledCommand(new LauchCommand(new VisProduktbatches()));
 	}
 	
 	
