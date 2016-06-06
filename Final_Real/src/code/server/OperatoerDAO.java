@@ -28,5 +28,14 @@ public class OperatoerDAO implements IOperatoerDAO {
 	    	throw e;
 	    }
 	}
+	
+	@Override
+	public void skiftPassword(int oprID, String nyPassword) throws Exception {
+		try {
+			connector.doUpdate("UPDATE operatoer SET password = '"+nyPassword+"' WHERE opr_id = '"+oprID+"'");
+		} catch(Exception e) {
+			throw e;
+		}
+	}
 
 }
