@@ -12,9 +12,9 @@ import code.shared.OperatoerDTO;
 public class Connector {
 	private final String HOST     = "Localhost";
 	private final int    PORT     = 3306;
-	private final String DATABASE = "19_CDIO3";
+	private final String DATABASE = "19_cdio3";
 	private final String USERNAME = "root"; 
-	private final String PASSWORD = "";
+	private final String PASSWORD = "silas2903";
 	private Connection connection;
 
 	public Connector() {
