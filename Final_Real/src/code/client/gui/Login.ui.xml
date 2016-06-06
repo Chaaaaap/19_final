@@ -1,25 +1,16 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
-		<ui:style>
-		.loginLabel {
-			width:150px;		
-		}
+		<ui:style>		
 		
-		.loginBox {
-			width:150px;
-		}
-		
-		.submitButton {
-			width:154px;
-			display:block;
-		}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:Label styleName="{style.loginLabel}" ui:field="nameLabel" text="Indtast operatør ID" />
-		<g:TextBox styleName="{style.loginBox}" ui:field="nameBox" />
-		<g:Label styleName="{style.loginLabel}" ui:field="passwordLabel" text="Indtast dit password" />
-		<g:PasswordTextBox styleName="{style.loginBox}" ui:field="passwordBox" />
-		<g:Button styleName="{style.submitButton}" ui:field="submit" text="Login" />
+	    <g:VerticalPanel>
+		<g:Label  ui:field="nameLabel" text="Indtast operatør ID" />
+		<g:TextBox ui:field="nameBox" />
+		<g:Label  ui:field="passwordLabel" text="Indtast dit password" />
+		<g:PasswordTextBox ui:field="passwordBox" />
+		<g:Button  ui:field="submit" text="Login" />
+		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
