@@ -49,8 +49,11 @@ public class MainMenu extends Composite {
 	@UiField Button skiftPassword;
 	@UiField MenuBar brugerMenu;
 	@UiField MenuItem opretBruger;
+	@UiField MenuItem redigerBruger;
+	@UiField MenuItem deaktiverBruger;
 	@UiField Button receptRedigering;
 	@UiField Button raavareRedigering;
+	
 	
 	@UiHandler("skiftPassword")
 	void onClick(ClickEvent e) {

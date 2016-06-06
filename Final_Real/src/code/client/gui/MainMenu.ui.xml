@@ -11,13 +11,17 @@
 
 			
 			<g:MenuBar ui:field="brugerMenu">
-				<g:MenuItem text="Bruger redigering">
+					<g:MenuItem text="Bruger redigering">
 
-					<g:MenuBar>
-						<g:MenuItem ui:field="opretBruger" text="Opret bruger" />
-					</g:MenuBar>
-				</g:MenuItem>
+						<g:MenuBar vertical="true">
+							<g:MenuItem ui:field="opretBruger" text="Opret bruger" />
+							<g:MenuItem ui:field="redigerBruger" text="Rediger bruger" />
+							<g:MenuItem ui:field="deaktiverBruger" text="Deaktiver bruger" />
+							
+						</g:MenuBar>
+					</g:MenuItem>
 			</g:MenuBar>
+				
 
 
 
