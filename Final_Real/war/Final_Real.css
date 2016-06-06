@@ -150,7 +150,9 @@ samp {
 	height:23px;
 	padding-top:3px;
 }
-
+.gwt-ListBox {
+	margin-bottom:15px;
+}
 .gwt-TextBox {
 	width:150px;
 }
