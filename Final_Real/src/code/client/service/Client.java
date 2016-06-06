@@ -50,7 +50,7 @@ public class Client {
 
 			@Override
 			public void onSuccess(OperatoerDTO result) {
-				Window.alert("Det burde virke");
+				Window.alert("Dit password er nu ændret.");
 			}
 			
 		});
