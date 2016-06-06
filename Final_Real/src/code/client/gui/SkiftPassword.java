@@ -5,6 +5,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.PasswordTextBox;
@@ -38,8 +39,9 @@ public class SkiftPassword extends Composite {
 	void onClick(ClickEvent e) {
 		String glPassword = gammeltPassword.getText();
 		String nytPass = nytPassword.getText();
-		if(nytPassword.equals(gentagPassword) && !nytPassword.equals(null)) {
-			client.skiftPassword(opr, glPassword, nytPass);
+		String gentagPass = gentagPassword.getText();
+		if(nytPass.equals(gentagPass) && glPassword.equals(opr.getPassword())) {
+			client.skiftPassword(opr, nytPass);
 		}
 		
 	}

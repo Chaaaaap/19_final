@@ -43,19 +43,17 @@ public class Client {
 	}
 
 
-	public void skiftPassword(OperatoerDTO opr, String glPassword, String nyPassword) {
-		service.skiftPassword(opr, glPassword, nyPassword, new AsyncCallback<OperatoerDTO>() {
+	public void skiftPassword(OperatoerDTO opr, String nyPassword) {
+		service.skiftPassword(opr, nyPassword, new AsyncCallback<OperatoerDTO>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				
+				Window.alert(caught.getMessage());
 			}
 
 			@Override
 			public void onSuccess(OperatoerDTO result) {
-				// TODO Auto-generated method stub
-				
+				Window.alert("Det burde virke");
 			}
 			
 		});

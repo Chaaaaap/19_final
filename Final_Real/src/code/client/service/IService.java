@@ -9,5 +9,5 @@ import code.shared.OperatoerDTO;
 public interface IService extends RemoteService{
 
 	OperatoerDTO login(int oprID, String password) throws Exception;
-	OperatoerDTO skiftPassword(OperatoerDTO opr, String glPassword, String nyPassword);
+	OperatoerDTO skiftPassword(OperatoerDTO opr, String nyPassword) throws Exception;
 }
