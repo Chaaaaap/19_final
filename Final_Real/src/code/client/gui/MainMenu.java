@@ -24,6 +24,7 @@ public class MainMenu extends Composite {
 	interface MainMenuUiBinder extends UiBinder<Widget, MainMenu> {
 	}
 
+	private MainMenu menu = this;
 	private OperatoerDTO opr;
 	private Client client;
 	public MainMenu(OperatoerDTO opr, Client client) {
@@ -139,6 +140,7 @@ public class MainMenu extends Composite {
 		@Override
 		public void execute() {
 			Final_Real.clearContent();
+			Final_Real.attachContent(menu);
 			Final_Real.attachContent(c);
 			
 		}
