@@ -11,7 +11,7 @@
 
 			
 			<g:MenuBar ui:field="menuBar">
-					<g:MenuItem ui:field="brugerMenu" text="Rediger brugere">
+					<g:MenuItem ui:field="brugerMenu" text="Brugere">
 
 						<g:MenuBar vertical="true">
 							<g:MenuItem ui:field="opretBruger" text="Opret bruger" />
@@ -20,7 +20,7 @@
 						</g:MenuBar>
 					</g:MenuItem>
 					
-					<g:MenuItem ui:field="receptMenu" text="Rediger recepter">
+					<g:MenuItem ui:field="receptMenu" text="Recepter">
 			        	<g:MenuBar vertical="true">
 			            	<g:MenuItem ui:field="opretRecept" text="Opret recept" />
 			            	<g:MenuItem ui:field="redigerRecept" text="Rediger recept" />
@@ -28,7 +28,7 @@
 			        	</g:MenuBar>
 			    	</g:MenuItem>
 			    	
-					<g:MenuItem ui:field="raavareMenu" text="Rediger råvarer">
+					<g:MenuItem ui:field="raavareMenu" text="Råvarer">
 			        	<g:MenuBar vertical="true">
 			            	<g:MenuItem ui:field="opretRaavare" text="Opret råvare" />
 			            	<g:MenuItem ui:field="redigerRaavare" text="Rediger råvare" />
@@ -36,7 +36,7 @@
 			        	</g:MenuBar>
 			    	</g:MenuItem>
 			    	
-					<g:MenuItem ui:field="raavarebatchMenu" text="Rediger råvarebatches">
+					<g:MenuItem ui:field="raavarebatchMenu" text="Råvarebatches">
 			        	<g:MenuBar vertical="true">
 			            	<g:MenuItem ui:field="opretRaavarebatch" text="Opret råvarebatch" />
 			            	<g:MenuItem ui:field="redigerRaavarebatch" text="Rediger råvarebatch" />
@@ -44,7 +44,7 @@
 			        	</g:MenuBar>
 			    	</g:MenuItem>
 			    	
-					<g:MenuItem ui:field="produktbatchMenu" text="Rediger produktbatches">
+					<g:MenuItem ui:field="produktbatchMenu" text="Produktbatches">
 			        	<g:MenuBar vertical="true">
 			            	<g:MenuItem ui:field="opretProduktbatch" text="Opret produktbatch" />
 			            	<g:MenuItem ui:field="redigerProduktbatch" text="Rediger produktbatch" />
