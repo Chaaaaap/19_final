@@ -5,5 +5,25 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
+	    <g:VerticalPanel>
+	        <g:Label text="Indtast operatør ID" />
+	        <g:TextBox  />
+	        <g:Label text="Indtast brugerens navn" />
+	        <g:TextBox  />
+	        <g:Label text="Indtast brugerens initialer" />
+	        <g:TextBox  />
+	        <g:Label text="Indtast brugerens CPR-nummer" />
+	        <g:TextBox  />
+	        <g:Label text="Indtast brugerens password" />
+	        <g:TextBox  />
+	        <g:Label text="Vælg brugerens rolle" />
+	   		<g:ListBox>
+	   		    <g:item value="operatør">operatør</g:item>
+	   		    <g:item value="værkfører">værkfører</g:item>
+	   		    <g:item value="farmaceut">farmaceut</g:item>
+	   		    <g:item value="administrator">administrator</g:item>
+	   		</g:ListBox> 
+	   		<g:Button ui:field="submit" text="Opret bruger" />
+	    </g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
