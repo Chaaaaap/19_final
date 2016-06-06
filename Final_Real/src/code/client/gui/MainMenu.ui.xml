@@ -2,16 +2,35 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
-	
+
 	</ui:style>
 	<g:HTMLPanel>
-	    <g:HorizontalPanel >
-	        <g:Button ui:field="afvej" text="Afvej"/> 
-	        <g:Button ui:field="skiftPassword" text="Skift password" />
-	        <g:Button ui:field="brugerRedigering" text="Rediger bruger" />
-	         
-	        <g:Button ui:field="receptRedigering" text="Rediger recepter" />
-	        <g:Button ui:field="raavareRedigering" text="Rediger råvarer" />
-	    </g:HorizontalPanel>
+		<g:HorizontalPanel>
+			<g:Button ui:field="afvej" text="Afvej" />
+			<g:Button ui:field="skiftPassword" text="Skift password" />
+
+			
+			<g:MenuBar ui:field="brugerRedigering">
+				<g:MenuItem text="Bruger redigering">
+
+					<g:MenuBar>
+						<g:MenuItem ui:field="opretBruger" text="Opret bruger" />
+					</g:MenuBar>
+				</g:MenuItem>
+			</g:MenuBar>
+
+
+
+<!-- 		<g:MenuBar ui:field="brugerRedigering">
+				<g:MenuItem text="Bruger redigering">
+
+					<g:MenuBar>
+						<g:MenuItem ui:field="opretBruger" text="Opret bruger" />
+					</g:MenuBar>
+				</g:MenuItem>
+			</g:MenuBar>  -->	
+			<g:Button ui:field="receptRedigering" text="Rediger recepter" />
+			<g:Button ui:field="raavareRedigering" text="Rediger råvarer" />
+		</g:HorizontalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

@@ -30,6 +30,10 @@ public class MainMenu extends Composite {
 		this.opr = opr;
 		this.client = client;
 		
+//		brugerRedigering.setStyleName("navbar navbar-default");
+		brugerRedigering.setAutoOpen(true);
+		brugerRedigering.setAnimationEnabled(true);
+		
 		if(opr.getType().equals("operatør")) {
 			brugerRedigering.setVisible(false);
 			receptRedigering.setVisible(false);
@@ -44,8 +48,8 @@ public class MainMenu extends Composite {
 
 	@UiField Button afvej;
 	@UiField Button skiftPassword;
-	@UiField Button brugerRedigering;
-//	@UiField MenuItem opretBruger;
+	@UiField MenuBar brugerRedigering;
+	@UiField MenuItem opretBruger;
 	@UiField Button receptRedigering;
 	@UiField Button raavareRedigering;
 	
