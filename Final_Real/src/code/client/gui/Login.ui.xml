@@ -1,14 +1,18 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
-	<ui:style>		
+	<ui:style>	
+		.loginLabel {
+			font-size: 14px;
+			text-align: Center;
+		}	
 		
 	</ui:style>
 	<g:HTMLPanel>
 	    <g:VerticalPanel>
-		<g:Label  ui:field="nameLabel" text="Indtast operatør ID" />
+		<g:Label  ui:field="nameLabel" styleName="{style.loginLabel}" text="Indtast operatør ID" />
 		<g:TextBox ui:field="nameBox" >1</g:TextBox>
-		<g:Label  ui:field="passwordLabel" text="Indtast dit password" />
+		<g:Label  ui:field="passwordLabel" styleName="{style.loginLabel}" text="Indtast dit password" />
 		<g:PasswordTextBox ui:field="passwordBox">Test1234</g:PasswordTextBox>
 		<g:Button  ui:field="submit" text="Login" />
 		</g:VerticalPanel>

@@ -10,7 +10,7 @@
 			<g:Button ui:field="skiftPassword" text="Skift password" />
 
 			
-			<g:MenuBar ui:field="brugerRedigering">
+			<g:MenuBar ui:field="brugerMenu">
 				<g:MenuItem text="Bruger redigering">
 
 					<g:MenuBar>

@@ -30,25 +30,24 @@ public class MainMenu extends Composite {
 		this.opr = opr;
 		this.client = client;
 		
-//		brugerRedigering.setStyleName("navbar navbar-default");
-		brugerRedigering.setAutoOpen(true);
-		brugerRedigering.setAnimationEnabled(true);
+		brugerMenu.setAutoOpen(true);
+		brugerMenu.setAnimationEnabled(true);
 		
 		if(opr.getType().equals("operatør")) {
-			brugerRedigering.setVisible(false);
+			brugerMenu.setVisible(false);
 			receptRedigering.setVisible(false);
 			raavareRedigering.setVisible(false);
 		} else if(opr.getType().equals("værkfører")) {
-			brugerRedigering.setVisible(false);
+			brugerMenu.setVisible(false);
 			
 		} else if(opr.getType().equals("farmaceut")) {
-			brugerRedigering.setVisible(false);
+			brugerMenu.setVisible(false);
 		}
 	}
 
 	@UiField Button afvej;
 	@UiField Button skiftPassword;
-	@UiField MenuBar brugerRedigering;
+	@UiField MenuBar brugerMenu;
 	@UiField MenuItem opretBruger;
 	@UiField Button receptRedigering;
 	@UiField Button raavareRedigering;
