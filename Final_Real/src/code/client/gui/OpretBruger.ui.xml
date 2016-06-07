@@ -15,7 +15,9 @@
 	        <g:Label text="Indtast brugerens CPR-nummer" />
 	        <g:TextBox ui:field="boxCPR" />
 	        <g:Label text="Indtast brugerens password" />
-	        <g:TextBox ui:field="boxPassword" />
+	        <g:PasswordTextBox ui:field="boxPassword" />
+	        <g:Label text="Gentag brugerens password" />
+	        <g:PasswordTextBox ui:field="boxGentag" />
 	        <g:Label text="Vælg brugerens rolle" />
 	   		<g:ListBox ui:field="boxType">
 	   		    <g:item value="operatør">operatør</g:item>
@@ -24,6 +26,7 @@
 	   		    <g:item value="administrator">administrator</g:item>
 	   		</g:ListBox> 
 	   		<g:Button ui:field="submit" text="Opret bruger" />
+	   		<g:Label ui:field="labelError" text="" />
 	    </g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
