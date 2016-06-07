@@ -122,7 +122,7 @@ samp {
  	cursor: pointer;
 	color: BLACK;
   	font: monospace;
- 	margin: 0;
+ 	margin: 15px 0px 0px 0px;
  	overflow: visible;
  	text-transform: none;
  	display: inline-block;
@@ -132,6 +132,7 @@ samp {
 	width:150px;
 	font-family: monospace;
 }
+
 
 .gwt-MenuItem {
 	-webkit-appearance: button;
@@ -149,9 +150,10 @@ samp {
 	font-family: monospace;
 	height:23px;
 	padding-top:3px;
+	
 }
 .gwt-ListBox {
-	margin-bottom:15px;
+
 }
 .gwt-TextBox {
 	width:150px;
