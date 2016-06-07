@@ -35,6 +35,8 @@ public class OpretRecept extends Composite {
 		tolBox2.setVisible(false);
 		
 		boxType2.setVisible(false);
+		boxType3.setVisible(false);
+		boxType4.setVisible(false);
 
 		boxType.addChangeHandler(new ChangeHandler() {
 
@@ -89,6 +91,7 @@ public class OpretRecept extends Composite {
 
 			@Override
 			public void onChange(ChangeEvent event) {
+				boxType3.setVisible(true);
 				// Get the index of the selected item
 				int itemSelected = boxType2.getSelectedIndex();
 
@@ -113,22 +116,23 @@ public class OpretRecept extends Composite {
 
 			@Override
 			public void onChange(ChangeEvent event) {
+				boxType4.setVisible(true);
 				// Get the index of the selected item
-				int itemSelected = boxType2.getSelectedIndex();
+				int itemSelected = boxType3.getSelectedIndex();
 
 				// Get the string value of the item that has been selected
-				String itemStringSelected = boxType2.getValue(itemSelected);
+				String itemStringSelected = boxType3.getValue(itemSelected);
 
 				if(itemStringSelected.equals("blank")){
-					lbl4.setVisible(false);
-					lbl5.setVisible(false);
-					maengdeBox2.setVisible(false);
-					tolBox2.setVisible(false);
+					lbl6.setVisible(false);
+					lbl7.setVisible(false);
+					maengdeBox3.setVisible(false);
+					tolBox3.setVisible(false);
 				}else{
-					lbl4.setVisible(true);
-					lbl5.setVisible(true);
-					maengdeBox2.setVisible(true);
-					tolBox2.setVisible(true);
+					lbl6.setVisible(true);
+					lbl7.setVisible(true);
+					maengdeBox3.setVisible(true);
+					tolBox3.setVisible(true);
 				}
 			}
 		});
@@ -138,21 +142,21 @@ public class OpretRecept extends Composite {
 			@Override
 			public void onChange(ChangeEvent event) {
 				// Get the index of the selected item
-				int itemSelected = boxType2.getSelectedIndex();
+				int itemSelected = boxType4.getSelectedIndex();
 
 				// Get the string value of the item that has been selected
-				String itemStringSelected = boxType2.getValue(itemSelected);
+				String itemStringSelected = boxType4.getValue(itemSelected);
 
 				if(itemStringSelected.equals("blank")){
-					lbl4.setVisible(false);
-					lbl5.setVisible(false);
-					maengdeBox2.setVisible(false);
-					tolBox2.setVisible(false);
+					lbl8.setVisible(false);
+					lbl9.setVisible(false);
+					maengdeBox4.setVisible(false);
+					tolBox4.setVisible(false);
 				}else{
-					lbl4.setVisible(true);
-					lbl5.setVisible(true);
-					maengdeBox2.setVisible(true);
-					tolBox2.setVisible(true);
+					lbl8.setVisible(true);
+					lbl9.setVisible(true);
+					maengdeBox4.setVisible(true);
+					tolBox4.setVisible(true);
 				}
 			}
 		});
