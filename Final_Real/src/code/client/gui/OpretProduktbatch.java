@@ -23,5 +23,4 @@ public class OpretProduktbatch extends Composite {
 	@UiField TextBox boxRecept;
 	@UiField Button submit;
 	
-	
 }
