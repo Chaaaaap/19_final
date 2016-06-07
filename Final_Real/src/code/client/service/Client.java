@@ -27,7 +27,6 @@ public class Client {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				GWT.log("lol");
 				Window.alert(caught.getMessage());
 			}
 
@@ -54,6 +53,12 @@ public class Client {
 			}
 			
 		});
+		
+	}
+
+
+	public void opretBruger(int oprID, String navn, String ini, String cpr, String password, String type) {
+		// TODO Auto-generated method stub
 		
 	}
 }

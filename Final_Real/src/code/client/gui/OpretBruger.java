@@ -7,6 +7,7 @@ import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
@@ -15,6 +16,8 @@ import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
+import code.client.service.Client;
+
 public class OpretBruger extends Composite {
 
 	private static OpretBrugerUiBinder uiBinder = GWT.create(OpretBrugerUiBinder.class);
@@ -22,9 +25,12 @@ public class OpretBruger extends Composite {
 	interface OpretBrugerUiBinder extends UiBinder<Widget, OpretBruger> {
 	}
 
-	public OpretBruger() {
+	private Client client;
+
+	public OpretBruger(Client client) {
 		initWidget(uiBinder.createAndBindUi(this));
 		
+		this.client = client;
 		boxGentag.addKeyUpHandler(new KeyUpHandler() {
 
 			@Override
@@ -54,8 +60,10 @@ public class OpretBruger extends Composite {
 	@UiHandler("submit")
 	void opretBruger(ClickEvent e) {
 		if(boxID.getText() == "" || boxNavn.getText() == "" || boxCPR.getText() == "" || 
-				boxPassword.getText() == "" || boxType.getSelectedItemText() == "") {
-			
+				boxPassword.getText() == "") {
+			Window.alert("Alt undtagen initialer SKAL udfyldes!");
+		} else {
+			client.opretBruger(Integer.parseInt(boxID.getText()), boxNavn.getText(), boxIni.getText(),);
 		}
 	}
 
