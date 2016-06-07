@@ -62,7 +62,7 @@ public class OpretBruger extends Composite {
 		if(boxID.getText() == "" || boxNavn.getText() == "" || boxCPR.getText() == "" || 
 				boxPassword.getText() == "") {
 			Window.alert("Alt undtagen initialer SKAL udfyldes!");
-		} else {
+		} else if(boxPassword.getText().equals(boxGentag.getText())) {
 			client.opretBruger(Integer.parseInt(boxID.getText()), boxNavn.getText(), boxIni.getText(), boxCPR.getText(), boxGentag.getText(), boxType.getSelectedItemText());
 		}
 	}
