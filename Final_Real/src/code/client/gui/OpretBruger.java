@@ -36,7 +36,7 @@ public class OpretBruger extends Composite {
 			@Override
 			public void onKeyUp(KeyUpEvent event) {
 				if(boxGentag.getText().equals(boxPassword.getText())) {
-					
+					labelError.setText("");
 				} else {
 					labelError.setText("Passwordet er ikke ens i begge felter");
 				}
