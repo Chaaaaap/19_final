@@ -53,7 +53,7 @@ public class MainMenu extends Composite {
 			
 		}
 		
-		opretBruger.setScheduledCommand(new LaunchCommand(new OpretBruger()));
+		opretBruger.setScheduledCommand(new LaunchCommand(new OpretBruger(client)));
 		redigerBruger.setScheduledCommand(new LaunchCommand(new RedigerBruger()));
 		deaktiverBruger.setScheduledCommand(new LaunchCommand(new DeaktiverBruger()));
 		opretRecept.setScheduledCommand(new LaunchCommand(new OpretRecept()));		
