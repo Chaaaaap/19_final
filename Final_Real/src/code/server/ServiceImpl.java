@@ -25,6 +25,12 @@ public class ServiceImpl extends RemoteServiceServlet implements IService {
 		oprDAO.skiftPassword(opr.getOprID(), nyPassword);
 		return opr;
 	}
+
+	@Override
+	public OperatoerDTO opretBruger(int oprID, String navn, String ini, String CPR, String password, String type) throws Exception {
+		oprDAO.opretBruger(oprID, navn, ini, CPR, password, type);
+		return null;
+	}
 	
 	
 
