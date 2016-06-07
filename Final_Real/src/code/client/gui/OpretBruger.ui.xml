@@ -2,7 +2,10 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
-	
+		.Error {
+			color:RED;
+			size:14px;
+		}
 	</ui:style>
 	<g:HTMLPanel>
 	    <g:VerticalPanel>
@@ -26,7 +29,7 @@
 	   		    <g:item value="administrator">administrator</g:item>
 	   		</g:ListBox> 
 	   		<g:Button ui:field="submit" text="Opret bruger" />
-	   		<g:Label ui:field="labelError" text="" />
+	   		<g:Label ui:field="labelError" text="" styleName="{style.Error}" />
 	    </g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

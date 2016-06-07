@@ -2,6 +2,8 @@ package code.client.gui;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -22,6 +24,19 @@ public class OpretBruger extends Composite {
 
 	public OpretBruger() {
 		initWidget(uiBinder.createAndBindUi(this));
+		
+		boxGentag.addKeyUpHandler(new KeyUpHandler() {
+
+			@Override
+			public void onKeyUp(KeyUpEvent event) {
+				if(boxGentag.getText().equals(boxPassword.getText())) {
+					
+				} else {
+					labelError.setText("Passwordet er ikke ens i begge felter");
+				}
+			}
+			
+		});
 	}
 	
 	@UiField TextBox boxID;
@@ -34,8 +49,7 @@ public class OpretBruger extends Composite {
 	@UiField Label labelError;
 	@UiField Button submit;
 	
-//	@UiHandler("boxGentag")
-//	void
+	
 	
 	@UiHandler("submit")
 	void opretBruger(ClickEvent e) {
