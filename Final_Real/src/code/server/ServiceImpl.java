@@ -2,11 +2,11 @@ package code.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-import code.client.service.IService;
+import code.client.service.IOperatoerService;
 import code.shared.OperatoerDTO;
 
 @SuppressWarnings("serial")
-public class ServiceImpl extends RemoteServiceServlet implements IService {
+public class ServiceImpl extends RemoteServiceServlet implements IOperatoerService {
 
 	private OperatoerDAO oprDAO = new OperatoerDAO();
 

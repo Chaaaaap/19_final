@@ -4,7 +4,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import code.shared.OperatoerDTO;
 
-public interface IServiceAsync {
+public interface IOperatoerServiceAsync {
 
 	void login(int oprID, String password, AsyncCallback<OperatoerDTO> callback);
 	void skiftPassword(OperatoerDTO opr, String nyPassword, AsyncCallback<OperatoerDTO> callback);

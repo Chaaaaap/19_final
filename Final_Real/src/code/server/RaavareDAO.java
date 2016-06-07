@@ -7,8 +7,7 @@ import code.shared.RaavareDTO;
 public class RaavareDAO implements IRaavareDAO {
 
 	@Override
-	public void addRaavare() {
-		// TODO Auto-generated method stub
+	public void addRaavare(int raavare_id, String raavare_navn, String leverandør) {
 		
 	}
 

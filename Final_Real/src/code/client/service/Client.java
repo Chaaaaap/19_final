@@ -9,14 +9,14 @@ import code.shared.OperatoerDTO;
 
 public class Client {
 
-	private IServiceAsync service;
+	private IOperatoerServiceAsync service;
 	private IClientCallback callback;
 	
 	public interface IClientCallback{ public void onLogin(OperatoerDTO opr); }
 	
 	public Client(String URL, IClientCallback callback) {
 		this.callback = callback;
-		service = GWT.create(IService.class);
+		service = GWT.create(IOperatoerService.class);
 		ServiceDefTarget endpoint = (ServiceDefTarget) service;
 		endpoint.setServiceEntryPoint(URL);
 	}
