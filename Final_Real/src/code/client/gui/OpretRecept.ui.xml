@@ -9,7 +9,7 @@
 
 	</ui:style>
 	<g:HTMLPanel>
-		<g:HorizontalPanel>
+		<g:HorizontalPanel height="150px">
 			<g:VerticalPanel>
 				<g:Label text="Indtast recept nr." />
 				<g:TextBox ui:field="boxID" />
