@@ -53,21 +53,21 @@ public class MainMenu extends Composite {
 			
 		}
 		
-		opretBruger.setScheduledCommand(new LauchCommand(new OpretBruger()));
-		redigerBruger.setScheduledCommand(new LauchCommand(new RedigerBruger()));
-		deaktiverBruger.setScheduledCommand(new LauchCommand(new DeaktiverBruger()));
-		opretRecept.setScheduledCommand(new LauchCommand(new OpretRecept()));		
-		redigerRecept.setScheduledCommand(new LauchCommand(new RedigerRecept()));		
-		visRecepter.setScheduledCommand(new LauchCommand(new VisRecepter()));		
-		opretRaavare.setScheduledCommand(new LauchCommand(new OpretRaavare()));		
-		redigerRaavare.setScheduledCommand(new LauchCommand(new RedigerRaavare()));		
-		visRaavarer.setScheduledCommand(new LauchCommand(new VisRaavarer()));		
-		opretRaavarebatch.setScheduledCommand(new LauchCommand(new OpretRaavarebatch()));		
-		redigerRaavarebatch.setScheduledCommand(new LauchCommand(new RedigerRaavarebatch()));		
-		visRaavarebatches.setScheduledCommand(new LauchCommand(new VisRaavarebatches()));		
-		opretProduktbatch.setScheduledCommand(new LauchCommand(new OpretProduktbatch()));		
-		redigerProduktbatch.setScheduledCommand(new LauchCommand(new RedigerProduktbatch()));		
-		visProduktbatches.setScheduledCommand(new LauchCommand(new VisProduktbatches()));
+		opretBruger.setScheduledCommand(new LaunchCommand(new OpretBruger()));
+		redigerBruger.setScheduledCommand(new LaunchCommand(new RedigerBruger()));
+		deaktiverBruger.setScheduledCommand(new LaunchCommand(new DeaktiverBruger()));
+		opretRecept.setScheduledCommand(new LaunchCommand(new OpretRecept()));		
+		redigerRecept.setScheduledCommand(new LaunchCommand(new RedigerRecept()));		
+		visRecepter.setScheduledCommand(new LaunchCommand(new VisRecepter()));		
+		opretRaavare.setScheduledCommand(new LaunchCommand(new OpretRaavare()));		
+		redigerRaavare.setScheduledCommand(new LaunchCommand(new RedigerRaavare()));		
+		visRaavarer.setScheduledCommand(new LaunchCommand(new VisRaavarer()));		
+		opretRaavarebatch.setScheduledCommand(new LaunchCommand(new OpretRaavarebatch()));		
+		redigerRaavarebatch.setScheduledCommand(new LaunchCommand(new RedigerRaavarebatch()));		
+		visRaavarebatches.setScheduledCommand(new LaunchCommand(new VisRaavarebatches()));		
+		opretProduktbatch.setScheduledCommand(new LaunchCommand(new OpretProduktbatch()));		
+		redigerProduktbatch.setScheduledCommand(new LaunchCommand(new RedigerProduktbatch()));		
+		visProduktbatches.setScheduledCommand(new LaunchCommand(new VisProduktbatches()));
 	}
 	
 	
@@ -114,11 +114,11 @@ public class MainMenu extends Composite {
 	private void opretBruger() {
 		
 	}
-	private class LauchCommand implements Command{
+	private class LaunchCommand implements Command{
 
 		Composite c;
 		
-		public LauchCommand(Composite c) {
+		public LaunchCommand(Composite c) {
 			super();
 			this.c = c;
 		}
