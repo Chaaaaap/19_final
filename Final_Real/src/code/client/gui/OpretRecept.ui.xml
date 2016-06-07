@@ -2,23 +2,75 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
-	
+		.ListBox {
+			height:23px;
+			padding-top:3px;
+		}
+
 	</ui:style>
 	<g:HTMLPanel>
-	    <g:VerticalPanel>
-	        <g:Label text="Indtast recept nr." />
-	        <g:TextBox ui:field="boxID" />
-	        <g:Label text="Indtast navn på recept" />
-	        <g:TextBox ui:field="boxNavn" />
-	        
-	        <g:Label text="Vælg råvare type" />
-	        <g:ListBox ui:field="boxType">
-	   		    <g:item value="operatør">operatør</g:item>
-	   		    <g:item value="værkfører">værkfører</g:item>
-	   		    <g:item value="farmaceut">farmaceut</g:item>
-	   		    <g:item value="administrator">administrator</g:item>
-	   		</g:ListBox> 
-	        <g:Button ui:field="submit" text="Opret råvare" />
-	    </g:VerticalPanel>
+		<g:HorizontalPanel>
+			<g:VerticalPanel>
+				<g:Label text="Indtast recept nr." />
+				<g:TextBox ui:field="boxID" />
+			</g:VerticalPanel>
+
+			<g:VerticalPanel>
+				<g:Label text="Indtast navn på recept" />
+				<g:TextBox ui:field="boxNavn" />
+			</g:VerticalPanel>
+
+			<g:VerticalPanel>
+				<g:Label text="Vælg råvare" />
+				<g:ListBox ui:field="boxType" styleName="{style.ListBox}">
+				    <g:item value="blank"></g:item>
+					<g:item value="operatør">operatør</g:item>
+					<g:item value="værkfører">værkfører</g:item>
+					<g:item value="farmaceut">farmaceut</g:item>
+					<g:item value="administrator">administrator</g:item>
+				</g:ListBox>
+				<g:Label text="Indtast mængde" ui:field="lbl"/>
+				<g:TextBox ui:field="maengdeBox" />
+				<g:Label text="Indtast tolerance" ui:field="lbl1"/>
+				<g:TextBox ui:field="tolBox" />
+			</g:VerticalPanel>
+
+			<g:VerticalPanel>
+				<g:Label text="Vælg råvare" />
+				<g:ListBox ui:field="boxType1" styleName="{style.ListBox}">
+				    <g:item value="blank"></g:item>
+					<g:item value="operatør">operatør</g:item>
+					<g:item value="værkfører">værkfører</g:item>
+					<g:item value="farmaceut">farmaceut</g:item>
+					<g:item value="administrator">administrator</g:item>
+				</g:ListBox>
+				<g:Label text="Indtast mængde" ui:field="lbl2"/>
+				<g:TextBox ui:field="maengdeBox1" />
+				<g:Label text="Indtast tolerance" ui:field="lbl3"/>
+				<g:TextBox ui:field="tolBox1" />
+			</g:VerticalPanel>
+
+			<g:VerticalPanel>
+				<g:Label text="Vælg råvare" />
+				<g:ListBox ui:field="boxType2" styleName="{style.ListBox}">
+				    <g:item value="blank"></g:item>
+					<g:item value="operatør">operatør</g:item>
+					<g:item value="værkfører">værkfører</g:item>
+					<g:item value="farmaceut">farmaceut</g:item>
+					<g:item value="administrator">administrator</g:item>
+				</g:ListBox>
+				<g:Label text="Indtast mængde" ui:field="lbl4"/>
+				<g:TextBox ui:field="maengdeBox2" />
+				<g:Label text="Indtast tolerance" ui:field="lbl5"/>
+				<g:TextBox ui:field="tolBox2" />
+			</g:VerticalPanel>
+		</g:HorizontalPanel>
+
+		<g:HorizontalPanel width="100%">
+		    <g:cell horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE">
+				<g:Button ui:field="submit" text="Opret recept"/>
+			</g:cell>
+		</g:HorizontalPanel>
+		
 	</g:HTMLPanel>
 </ui:UiBinder> 
