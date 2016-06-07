@@ -23,5 +23,5 @@ public class OpretRaavarebatch extends Composite {
 	@UiField TextBox boxRaavareNr;
 	@UiField TextBox boxMaengde;
 	@UiField Button submit;
-	
+
 }
