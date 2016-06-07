@@ -24,7 +24,6 @@ public class OperatoerDAO implements IOperatoerDAO {
 	    			rs.getString("cpr"), rs.getString("password"), Integer.parseInt(rs.getString("aktiv")), rs.getString("type"));
 	    }
 	    catch (SQLException e) {
-	    	e.printStackTrace();
 	    	throw e;
 	    }
 	}
@@ -33,7 +32,20 @@ public class OperatoerDAO implements IOperatoerDAO {
 	public void skiftPassword(int oprID, String nyPassword) throws Exception {
 		try {
 			connector.doUpdate("UPDATE operatoer SET password = '"+nyPassword+"' WHERE opr_id = '"+oprID+"'");
-		} catch(Exception e) {
+		} catch(SQLException e) {
+			throw e;
+		}
+	}
+
+	@Override
+	public void opretBruger(int oprID, String navn, String ini, String CPR, String password, String type)
+			throws Exception {
+		try {
+			connector.doUpdate("INSERT INTO operatoer(opr_id, opr_navn, ini, cpr, password, aktiv, type)"
+					+ " VALUES " + "(" + oprID + ", '" + navn + "', '" + ini + "', '" + 
+					CPR + "', '" + password + "'"+", '1', '"+type+"')");
+			
+		} catch(SQLException e) {
 			throw e;
 		}
 	}

@@ -57,8 +57,22 @@ public class Client {
 	}
 
 
-	public void opretBruger(int oprID, String navn, String ini, String cpr, String password, String type) {
-		// TODO Auto-generated method stub
-		
+	public void opretBruger(int oprID, String navn, String ini, String cpr, 
+			String password, String type) {
+		service.opretBruger(oprID, navn, ini, cpr, password, type, new AsyncCallback<OperatoerDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onSuccess(OperatoerDTO result) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 	}
 }
