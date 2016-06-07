@@ -2,8 +2,15 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
-	
+
 	</ui:style>
 	<g:HTMLPanel>
+		<g:VerticalPanel>
+			<g:Label text="Indtast Produktbatch nr." />
+			<g:TextBox ui:field="boxID" />
+			<g:Label text="Indtast Recept nr." />
+			<g:TextBox ui:field="boxRecept" />
+			<g:Button ui:field="submit" text="Opret råvare" />
+		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
