@@ -5,5 +5,14 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
+	     <g:VerticalPanel>
+	        <g:Label text="Indtast råvare nr." />
+	        <g:TextBox ui:field="boxID" />
+	        <g:Label text="Indtast navn på råvare" />
+	        <g:TextBox ui:field="boxNavn" />
+	        <g:Label text="Angiv leverandør" />
+	        <g:TextBox ui:field="boxSupplier" />
+	        <g:Button ui:field="submit" text="Opret råvare" />
+	    </g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
