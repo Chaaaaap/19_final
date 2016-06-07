@@ -3,9 +3,7 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
 		.menuButton {
-
 		margin: 0px 0px 0px 0px;
-
 		}
 
 	</ui:style>
