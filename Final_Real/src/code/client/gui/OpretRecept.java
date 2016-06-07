@@ -33,6 +33,8 @@ public class OpretRecept extends Composite {
 		lbl5.setVisible(false);
 		maengdeBox2.setVisible(false);
 		tolBox2.setVisible(false);
+		
+		boxType2.setVisible(false);
 
 		boxType.addChangeHandler(new ChangeHandler() {
 
@@ -62,11 +64,12 @@ public class OpretRecept extends Composite {
 
 			@Override
 			public void onChange(ChangeEvent event) {
+				boxType2.setVisible(true);
 				// Get the index of the selected item
-				int itemSelected = boxType.getSelectedIndex();
+				int itemSelected = boxType1.getSelectedIndex();
 
 				// Get the string value of the item that has been selected
-				String itemStringSelected = boxType.getValue(itemSelected);
+				String itemStringSelected = boxType1.getValue(itemSelected);
 
 				if(itemStringSelected.equals("blank")){
 					lbl2.setVisible(false);
@@ -87,10 +90,58 @@ public class OpretRecept extends Composite {
 			@Override
 			public void onChange(ChangeEvent event) {
 				// Get the index of the selected item
-				int itemSelected = boxType.getSelectedIndex();
+				int itemSelected = boxType2.getSelectedIndex();
 
 				// Get the string value of the item that has been selected
-				String itemStringSelected = boxType.getValue(itemSelected);
+				String itemStringSelected = boxType2.getValue(itemSelected);
+
+				if(itemStringSelected.equals("blank")){
+					lbl4.setVisible(false);
+					lbl5.setVisible(false);
+					maengdeBox2.setVisible(false);
+					tolBox2.setVisible(false);
+				}else{
+					lbl4.setVisible(true);
+					lbl5.setVisible(true);
+					maengdeBox2.setVisible(true);
+					tolBox2.setVisible(true);
+				}
+			}
+		});
+		
+		boxType3.addChangeHandler(new ChangeHandler() {
+
+			@Override
+			public void onChange(ChangeEvent event) {
+				// Get the index of the selected item
+				int itemSelected = boxType2.getSelectedIndex();
+
+				// Get the string value of the item that has been selected
+				String itemStringSelected = boxType2.getValue(itemSelected);
+
+				if(itemStringSelected.equals("blank")){
+					lbl4.setVisible(false);
+					lbl5.setVisible(false);
+					maengdeBox2.setVisible(false);
+					tolBox2.setVisible(false);
+				}else{
+					lbl4.setVisible(true);
+					lbl5.setVisible(true);
+					maengdeBox2.setVisible(true);
+					tolBox2.setVisible(true);
+				}
+			}
+		});
+		
+		boxType4.addChangeHandler(new ChangeHandler() {
+
+			@Override
+			public void onChange(ChangeEvent event) {
+				// Get the index of the selected item
+				int itemSelected = boxType2.getSelectedIndex();
+
+				// Get the string value of the item that has been selected
+				String itemStringSelected = boxType2.getValue(itemSelected);
 
 				if(itemStringSelected.equals("blank")){
 					lbl4.setVisible(false);
@@ -131,6 +182,18 @@ public class OpretRecept extends Composite {
 	@UiField Label lbl5;
 	@UiField TextBox maengdeBox2;
 	@UiField TextBox tolBox2;
+	
+	@UiField ListBox boxType3;
+	@UiField Label lbl6;
+	@UiField Label lbl7;
+	@UiField TextBox maengdeBox3;
+	@UiField TextBox tolBox3;
+	
+	@UiField ListBox boxType4;
+	@UiField Label lbl8;
+	@UiField Label lbl9;
+	@UiField TextBox maengdeBox4;
+	@UiField TextBox tolBox4;
 
 
 }
