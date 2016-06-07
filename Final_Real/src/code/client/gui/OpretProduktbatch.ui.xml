@@ -5,6 +5,7 @@
 
 	</ui:style>
 	<g:HTMLPanel>
+	    
 		<g:VerticalPanel>
 			<g:Label text="Indtast Produktbatch nr." />
 			<g:TextBox ui:field="boxID" />
@@ -12,5 +13,7 @@
 			<g:TextBox ui:field="boxRecept" />
 			<g:Button ui:field="submit" text="Opret råvare" />
 		</g:VerticalPanel>
+	
 	</g:HTMLPanel>
+	
 </ui:UiBinder> 
