@@ -40,5 +40,11 @@ public class RaavareDAO implements IRaavareDAO {
 		
 	}
 
+	@Override
+	public void redigerRaavare(int raavare_id, String raavare_navn, String leverandør) throws Exception {
+		// TODO Hvad skal jeg insert på?
+		
+	}
+
 	
 }
