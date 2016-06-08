@@ -6,7 +6,7 @@ import code.client.service.IOperatoerService;
 import code.shared.OperatoerDTO;
 
 @SuppressWarnings("serial")
-public class ServiceImpl extends RemoteServiceServlet implements IOperatoerService {
+public class OperatoerServiceImpl extends RemoteServiceServlet implements IOperatoerService {
 
 	private OperatoerDAO oprDAO = new OperatoerDAO();
 
