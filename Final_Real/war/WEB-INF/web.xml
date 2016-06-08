@@ -10,21 +10,51 @@
     <servlet-name>19_CDIO_Final</servlet-name>
     <servlet-class>code.server.OperatoerServiceImpl</servlet-class>
   </servlet>
-  
-   <servlet>
-    <servlet-name>19_CDIO_Final2</servlet-name>
-    <servlet-class>code.server.VsConServiceImpl</servlet-class>
-  </servlet>
-  
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>19_CDIO_Final</servlet-name>
     <url-pattern>/19_Final</url-pattern>
   </servlet-mapping>
   
-   <servlet-mapping>
+  <servlet>
+    <servlet-name>19_CDIO_Raavare</servlet-name>
+    <servlet-class>code.server.RaavareServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>19_CDIO_Raavare</servlet-name>
+    <url-pattern>/19_Final_Raavare</url-pattern>
+  </servlet-mapping>
+<!--  -->  
+  <servlet>
+    <servlet-name>19_CDIO_Recept</servlet-name>
+    <servlet-class>code.server.ReceptServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>19_CDIO_Recept</servlet-name>
+    <url-pattern>/19_Final_Recept</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>19_CDIO_ProduktBatch</servlet-name>
+    <servlet-class>code.server.ProduktBatchServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>19_CDIO_ProduktBatch</servlet-name>
+    <url-pattern>/19_Final_ProduktBatch</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>19_CDIO_Final2</servlet-name>
+    <servlet-class>code.server.VsConServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
     <servlet-name>19_CDIO_Final2</servlet-name>
     <url-pattern>/19_Final_afvejning</url-pattern>
   </servlet-mapping>
+  
+  
+    
+  
+   
   
 	<dependency>
       <groupId>mysql</groupId>
