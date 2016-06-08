@@ -59,8 +59,15 @@ public class VisRaavarer extends Composite {
 				levLabel.setText("Leverandør");
 				
 				if(!result.isEmpty()) {
-					for (RaavareDTO raavareDTO : result) {
-						
+					for (RaavareDTO raavare : result) {
+						HorizontalPanel hPanel = new HorizontalPanel();
+						Label id = new Label(raavare.getRaavare_id()+"");
+						Label navn = new Label(raavare.getRaavare_navn());
+						Label lev = new Label(raavare.getLeverandør());
+						hPanel.add(id);
+						hPanel.add(navn);
+						hPanel.add(lev);
+						vPanel.add(hPanel);
 					}
 				}
 
