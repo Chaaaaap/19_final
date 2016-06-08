@@ -18,6 +18,7 @@ public class VsCon{
 	private BufferedReader instream;
 	private DataOutputStream outstream;
 	private Scanner scan;
+	private String[] arr = new String[20]; 
 
 	public void Simulator() throws Exception{
 		
@@ -103,6 +104,31 @@ public class VsCon{
 	}
 	public void printmenu(){
 		for (int i=0;i<2;i++)
+			
+//			arr[0] = "                                                 ";
+//			arr[1] = "*************************************************";
+//			arr[2] = "Netto: " + (brutto-tara)+ " kg"                   ;
+//			arr[3] = "Instruktionsdisplay: " +  indtDisp.replaceAll("\"", "");
+//			arr[4] = "*************************************************";
+//			arr[5] = "                                                 ";
+//			arr[6] = "                                                 ";
+//			arr[7] = "Debug info:                                      ";
+//			arr[8] = "Hooked up to " + sock.getInetAddress()            ;
+//			arr[9] = "Brutto: " + (brutto)+ " kg"                       ;
+//			arr[10] = "Streng modtaget: "+inline                         ;
+//			arr[11] = "                                                 ";
+//			arr[12] = "Denne vægt simulator lytter på ordrene           ";
+//			arr[13] = "S, T, D 'TEST', DW, RM20 8 .... , B og Q         ";
+//			arr[14] = "på kommunikationsporten.                         ";
+//			arr[15] = "******"											 ;
+//			arr[16] = "Tast T for tara (svarende til knaptryk paa vegt)" ;
+//			arr[17] = "Tast B for ny brutto (svarende til at belastningen paa vegt ændres)";
+//			arr[18] = "Tast Q for at afslutte program program";
+//			arr[19] = "Indtast (T/B/Q for knaptryk / brutto ændring / quit)";
+//			arr[20] = "Tast her: ";
+//			
+			
+			
 			System.out.println("                                                 ");
 		System.out.println("*************************************************");
 		System.out.println("Netto: " + (brutto-tara)+ " kg"                   );
