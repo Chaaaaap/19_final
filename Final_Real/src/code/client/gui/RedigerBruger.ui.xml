@@ -5,5 +5,12 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
+	    <g:HorizontalPanel>
+	        <g:Label text="Operatør ID" />
+	        <g:Label text="Operatør navn" />
+	        <g:Label text="Initialer" />
+	        <g:Label text="CPR-nummer" />
+	        <g:Label text="Password" />
+	    </g:HorizontalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
