@@ -1,6 +1,9 @@
 package code.shared;
 
-public class RaavareBatchDTO {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class RaavareBatchDTO implements Serializable {
 
 	public RaavareBatchDTO() {}
 	
