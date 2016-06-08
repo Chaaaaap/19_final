@@ -10,7 +10,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-import code.client.service.Client;
+import code.client.service.OperatoerClient;
 import code.shared.OperatoerDTO;
 
 public class SkiftPassword extends Composite {
@@ -21,9 +21,9 @@ public class SkiftPassword extends Composite {
 	}
 	
 	private OperatoerDTO opr;
-	private Client client;
+	private OperatoerClient client;
 
-	public SkiftPassword(OperatoerDTO opr, Client client) {
+	public SkiftPassword(OperatoerDTO opr, OperatoerClient client) {
 		initWidget(uiBinder.createAndBindUi(this));
 		this.opr = opr;
 		this.client = client;

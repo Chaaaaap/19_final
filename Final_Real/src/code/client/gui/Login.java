@@ -12,7 +12,7 @@ import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-import code.client.service.Client;
+import code.client.service.OperatoerClient;
 import code.shared.OperatoerDTO;
 
 public class Login extends Composite {
@@ -24,9 +24,9 @@ public class Login extends Composite {
 	
 	 public interface LoginListener { public OperatoerDTO onLogin(); }
 	
-	private Client client;
+	private OperatoerClient client;
 
-	public Login(Client client) {
+	public Login(OperatoerClient client) {
 		initWidget(uiBinder.createAndBindUi(this));
 		this.client = client;
 	}

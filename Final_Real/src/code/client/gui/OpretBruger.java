@@ -16,7 +16,7 @@ import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-import code.client.service.Client;
+import code.client.service.OperatoerClient;
 
 public class OpretBruger extends Composite {
 
@@ -25,9 +25,9 @@ public class OpretBruger extends Composite {
 	interface OpretBrugerUiBinder extends UiBinder<Widget, OpretBruger> {
 	}
 
-	private Client client;
+	private OperatoerClient client;
 
-	public OpretBruger(Client client) {
+	public OpretBruger(OperatoerClient client) {
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		this.client = client;

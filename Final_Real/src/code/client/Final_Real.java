@@ -10,8 +10,8 @@ import com.google.gwt.user.client.ui.Widget;
 import code.client.gui.Login;
 import code.client.gui.Login.LoginListener;
 import code.client.gui.MainMenu;
-import code.client.service.Client;
-import code.client.service.Client.IClientCallback;
+import code.client.service.OperatoerClient;
+import code.client.service.OperatoerClient.IClientCallback;
 import code.shared.OperatoerDTO;
 
 
@@ -21,7 +21,7 @@ public class Final_Real implements EntryPoint, LoginListener {
 	private VerticalPanel view = new VerticalPanel();
 	private VerticalPanel header = new VerticalPanel();
 	private static VerticalPanel content = new VerticalPanel();
-	private Client client = new Client(GWT.getHostPageBaseURL()+"19_Final", 
+	private OperatoerClient client = new OperatoerClient(GWT.getHostPageBaseURL()+"19_Final", 
 			new IClientCallback() {
 		
 		@Override

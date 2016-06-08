@@ -7,14 +7,14 @@ import com.google.gwt.user.client.rpc.ServiceDefTarget;
 
 import code.shared.OperatoerDTO;
 
-public class Client {
+public class OperatoerClient {
 
 	private IOperatoerServiceAsync service;
 	private IClientCallback callback;
 	
 	public interface IClientCallback{ public void onLogin(OperatoerDTO opr); }
 	
-	public Client(String URL, IClientCallback callback) {
+	public OperatoerClient(String URL, IClientCallback callback) {
 		this.callback = callback;
 		service = GWT.create(IOperatoerService.class);
 		ServiceDefTarget endpoint = (ServiceDefTarget) service;
@@ -63,14 +63,12 @@ public class Client {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				
+				Window.alert(caught.getMessage());
 			}
 
 			@Override
 			public void onSuccess(OperatoerDTO result) {
-				// TODO Auto-generated method stub
-				
+				Window.alert("Brugeren er nu oprettet");
 			}
 			
 		});
