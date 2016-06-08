@@ -111,6 +111,14 @@ public class MainMenu extends Composite {
 		
 	}
 	
+	@UiHandler("afvej")
+	void afvej(ClickEvent e) {
+		Afvejning afveje = new Afvejning();
+		Final_Real.clearContent();
+		Final_Real.attachContent(this);
+		Final_Real.attachContent(afveje);
+	}
+	
 	private void opretBruger() {
 		
 	}
