@@ -118,7 +118,21 @@ public class RedigerRaavare extends Composite {
 
 							@Override
 							public void onClick(ClickEvent event) {
-//								service.redigerRaavare();
+								service.redigerRaavare(Integer.parseInt(id.getText()),
+										navn.getText(), lev.getText(), 
+										new AsyncCallback<Void>() {
+
+									@Override
+									public void onFailure(Throwable caught) {
+										Window.alert(caught.getMessage());
+									}
+
+									@Override
+									public void onSuccess(Void result) {
+										// TODO noget meningsfuldt.
+									}
+									
+								});
 							}
 							
 						});
