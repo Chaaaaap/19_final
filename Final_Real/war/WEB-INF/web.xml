@@ -8,7 +8,7 @@
   <!-- Servlets -->
    <servlet>
     <servlet-name>19_CDIO_Final</servlet-name>
-    <servlet-class>code.server.ServiceImpl</servlet-class>
+    <servlet-class>code.server.OperatoerServiceImpl</servlet-class>
   </servlet>
   
    <servlet>
