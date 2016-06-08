@@ -48,7 +48,7 @@ public class VisRaavarer extends Composite {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				Window.alert(caught.getMessage()+"\n\n\n FUCK");	
+				Window.alert(caught.getMessage());	
 			}
 
 			@Override
