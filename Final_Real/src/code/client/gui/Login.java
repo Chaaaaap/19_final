@@ -32,7 +32,6 @@ public class Login extends Composite {
 	}
 
 	public OperatoerDTO oprLogin() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
