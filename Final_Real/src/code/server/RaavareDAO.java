@@ -1,6 +1,7 @@
 package code.server;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import code.connector.Connector;
@@ -12,9 +13,11 @@ public class RaavareDAO implements IRaavareDAO {
 
 	@Override
 	public void addRaavare(int raavare_id, String raavare_navn, String leverandør) throws Exception{
+		String query = "INSERT INTO raavare VALUES("+raavare_id+
+					", '"+raavare_navn+"', '"+leverandør+"');";
+		System.out.println("Hulubulu2\n"+query);
 		try {
-			connector.doUpdate("INSERT INTO raavare VALUES("+raavare_id+
-					", "+raavare_navn+", "+leverandør+")");
+			connector.doUpdate(query);
 		} catch(Exception e) {
 			throw e;
 		}

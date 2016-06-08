@@ -21,7 +21,6 @@ public class RaavareServiceImpl extends RemoteServiceServlet implements IRaavare
 	}
 	@Override
 	public void addRaavare(int raavare_id, String raavare_navn, String leverandør) throws Exception {
-		rvDAO.addRaavare(raavare_id, raavare_navn, leverandør);
+			rvDAO.addRaavare(raavare_id, raavare_navn, leverandør);
 	}
-
 }
