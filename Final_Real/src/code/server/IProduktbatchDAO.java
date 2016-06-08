@@ -7,6 +7,6 @@ import code.shared.ProduktBatchDTO;
 
 public interface IProduktbatchDAO {
 
-	void startProduktBatch(int oprID, int pb_id, int rb_id, int tara, int netto, int recept_id);
+	void startProduktBatch(int oprID, int pb_id, int rb_id, int tara, int netto, int recept_id) throws SQLException;
 	ArrayList<ProduktBatchDTO> getProduktBatches() throws SQLException;
 }

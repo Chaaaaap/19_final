@@ -1,5 +1,6 @@
 package code.server;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,10 +12,25 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 	
 	Connector connector = new Connector();
 	ArrayList<ProduktBatchDTO> produktList;
+	Connection con;
 
 	@Override
-	public void startProduktBatch(int oprID, int pb_id, int rb_id, int tara, int netto, int recept_id) {
-		// TODO Auto-generated method stub
+	public void startProduktBatch(int oprID, int pb_id, int rb_id, int tara, int netto, int recept_id) throws SQLException {
+		
+		try {
+			
+			con = connector.getConnection();
+			con.setAutoCommit(false);
+			
+			connector.doUpdate("INSERT INTO produktbatch VALUES("+pb_id+", "+1+", "+recept_id+")");
+			connector.doUpdate("INSERT INTO produktbatchkomponent VALUES("+pb_id+", "+rb_id
+					+", "+tara+", "+netto+", "+oprID+")");
+		} catch(SQLException e) {
+			con.rollback();
+			throw e;
+		} finally {
+			con.setAutoCommit(true);
+		}
 		
 	}
 
