@@ -13,7 +13,7 @@ import com.google.gwt.user.client.ui.MenuItem;
 import com.google.gwt.user.client.ui.Widget;
 
 import code.client.Final_Real;
-import code.client.service.Client;
+import code.client.service.OperatoerClient;
 import code.shared.OperatoerDTO;
 import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 
@@ -26,8 +26,8 @@ public class MainMenu extends Composite {
 
 	private MainMenu menu = this;
 	private OperatoerDTO opr;
-	private Client client;
-	public MainMenu(OperatoerDTO opr, Client client) {
+	private OperatoerClient client;
+	public MainMenu(OperatoerDTO opr, OperatoerClient client) {
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		this.opr = opr;
