@@ -1,6 +1,5 @@
 package code.server;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -17,11 +16,12 @@ public class RaavareServiceImpl extends RemoteServiceServlet implements IRaavare
 	RaavareDAO rvDAO = new RaavareDAO();
 	@Override
 	public ArrayList<RaavareDTO> getRaavarer() throws Exception {
-		try{
 			return rvDAO.getRaavarer();
-		}catch(Exception e){
-			throw e;
-		}
+
+	}
+	@Override
+	public void addRaavare(int raavare_id, String raavare_navn, String leverandør) throws Exception {
+		rvDAO.addRaavare(raavare_id, raavare_navn, leverandør);
 	}
 
 }
