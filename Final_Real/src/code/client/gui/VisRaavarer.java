@@ -44,6 +44,8 @@ public class VisRaavarer extends Composite {
 		visRaavarer();
 	}
 	private void visRaavarer() {
+		Final_Real.clearContent();
+		Final_Real.attachContent(this);
 		service.getRaavarer(new AsyncCallback<ArrayList<RaavareDTO>>() {
 
 			@Override

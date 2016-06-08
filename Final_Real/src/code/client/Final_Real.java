@@ -18,8 +18,10 @@ import code.shared.OperatoerDTO;
 public class Final_Real implements EntryPoint, LoginListener {
 	
 	private OperatoerDTO oprLoggedIn;
+	private static MainMenu menu;
 	private VerticalPanel view = new VerticalPanel();
 	private VerticalPanel header = new VerticalPanel();
+	private VerticalPanel menuView = new VerticalPanel();
 	private static VerticalPanel content = new VerticalPanel();
 	private OperatoerClient client = new OperatoerClient(GWT.getHostPageBaseURL()+"19_Final", 
 			new IClientCallback() {
@@ -28,7 +30,7 @@ public class Final_Real implements EntryPoint, LoginListener {
 		public void onLogin(OperatoerDTO opr) {
 			oprLoggedIn = opr;
 			content.clear();
-			MainMenu menu = new MainMenu(oprLoggedIn, client);
+			menu = new MainMenu(oprLoggedIn, client);
 			content.add(menu);
 		}
 	});
@@ -42,6 +44,7 @@ public class Final_Real implements EntryPoint, LoginListener {
 		image.setHeight("200px");
 		header.add(image);
 		view.add(header);
+		view.add(menuView);
 		view.add(content);
 		
 		onLogin();
@@ -61,6 +64,7 @@ public class Final_Real implements EntryPoint, LoginListener {
 	
 	public static void  clearContent() {
 		content.clear();
+		content.add(menu);
 	}
 	
 	public static void attachContent(Widget w) {
