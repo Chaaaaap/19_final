@@ -11,10 +11,17 @@ import code.shared.RaavareDTO;
 @SuppressWarnings("serial")
 public class RaavareServiceImpl extends RemoteServiceServlet implements IRaavareService {
 
+	public RaavareServiceImpl() {
+		
+	}
 	RaavareDAO rvDAO = new RaavareDAO();
 	@Override
-	public ArrayList<RaavareDTO> getRaavarer() throws SQLException {
-		return rvDAO.getRaavarer();
+	public ArrayList<RaavareDTO> getRaavarer() throws Exception {
+		try{
+			return rvDAO.getRaavarer();
+		}catch(Exception e){
+			throw e;
+		}
 	}
 
 }

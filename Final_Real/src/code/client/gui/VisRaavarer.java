@@ -25,12 +25,16 @@ public class VisRaavarer extends Composite {
 	public VisRaavarer() {
 		initWidget(uiBinder.createAndBindUi(this));
 		service = GWT.create(IRaavareService.class);
-		service.getRaavarer(new AsyncCallback<ArrayList<RaavareDTO>>() {
+		lala();
+	}
+	
+	private void lala() {
+service.getRaavarer(new AsyncCallback<ArrayList<RaavareDTO>>() {
 
 			
 			@Override
 			public void onFailure(Throwable caught) {
-				Window.alert(caught.getMessage());
+				Window.alert(caught.getMessage()+"\n\n\n FUCK");
 				
 			}
 

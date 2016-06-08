@@ -12,25 +12,28 @@ public class RaavareDAO implements IRaavareDAO {
 	private Connector connector = new Connector();
 
 	@Override
-	public void addRaavare(int raavare_id, String raavare_navn, String leverandør) throws SQLException{
-		
+	public void addRaavare(int raavare_id, String raavare_navn, String leverandør) throws Exception{
+//		try {
+//			connector.doUpdate("INSERT INTO raav);
+//		}
 	}
 
 	@Override
-	public ArrayList<RaavareDTO> getRaavarer() throws SQLException {
+	public ArrayList<RaavareDTO> getRaavarer() throws Exception {
 		ArrayList<RaavareDTO> rvList = new ArrayList<RaavareDTO>();
 		ResultSet rs;
 		try {
 			rs = connector.doQuery("SELECT * FROM raavare");
-			if(!rs.first()) throw new SQLException("Listen er tom");
+			if(!rs.next()) throw new Exception("Listen er tom");
 			do {
 				rvList.add(new RaavareDTO(rs.getInt("raavare_id"), rs.getString("raavare_navn"),
 						rs.getString("leverandoer")));
 			} while(rs.next());
-		} catch(SQLException e) {
+		} catch(Exception e) {
 			throw e;
-		}
+		} 
 		return rvList;
+		
 	}
 
 	
