@@ -21,7 +21,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>19_CDIO_Raavare</servlet-name>
-    <url-pattern>/19_Final_Raavare</url-pattern>
+    <url-pattern>/final_real/19_Final_Raavare</url-pattern>
   </servlet-mapping>
 <!--  -->  
   <servlet>
@@ -30,7 +30,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>19_CDIO_Recept</servlet-name>
-    <url-pattern>/19_Final_Recept</url-pattern>
+    <url-pattern>/final_real/19_Final_Recept</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -39,7 +39,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>19_CDIO_ProduktBatch</servlet-name>
-    <url-pattern>/19_Final_ProduktBatch</url-pattern>
+    <url-pattern>/final_real/19_Final_ProduktBatch</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -48,7 +48,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>19_CDIO_RaavareBatch</servlet-name>
-    <url-pattern>/19_Final_RaavareBatch</url-pattern>
+    <url-pattern>/final_real/19_Final_RaavareBatch</url-pattern>
   </servlet-mapping>
   
   <servlet>
