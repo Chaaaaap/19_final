@@ -13,9 +13,12 @@ public class RaavareDAO implements IRaavareDAO {
 
 	@Override
 	public void addRaavare(int raavare_id, String raavare_navn, String leverandør) throws Exception{
-//		try {
-//			connector.doUpdate("INSERT INTO raav);
-//		}
+		try {
+			connector.doUpdate("INSERT INTO raavare VALUES("+raavare_id+
+					", "+raavare_navn+", "+leverandør+")");
+		} catch(Exception e) {
+			throw e;
+		}
 	}
 
 	@Override
