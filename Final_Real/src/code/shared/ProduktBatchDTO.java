@@ -17,6 +17,7 @@ public class ProduktBatchDTO implements Serializable {
 		this.oprID = oprID;
 		this.rb_id = rb_id;
 	}
+	public ProduktBatchDTO() {}
 
 	public String getStatus() {
 		return status;

@@ -15,6 +15,8 @@ public class ReceptDTO implements Serializable {
 		this.tolerance = tolerance;
 		this.receptNavn = receptNavn;
 	}
+	
+	public ReceptDTO() {}
 
 	public int getRecept_id() {
 		return recept_id;

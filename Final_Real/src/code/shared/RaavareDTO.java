@@ -1,10 +1,14 @@
 package code.shared;
 
-public class RaavareDTO {
+import java.io.Serializable;
 
+public class RaavareDTO implements Serializable {
+	private static final long serialVersionUID = -6970077387551979504L;
 	private int raavare_id;
 	private String raavare_navn;
 	private String leverandør;
+	
+	public RaavareDTO(){}
 
 	public RaavareDTO(int raavare_id, String raavare_navn, String leverandør) {
 		this.raavare_id = raavare_id;
