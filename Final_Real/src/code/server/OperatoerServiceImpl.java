@@ -1,5 +1,7 @@
 package code.server;
 
+import java.util.ArrayList;
+
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import code.client.service.IOperatoerService;
@@ -32,10 +34,16 @@ public class OperatoerServiceImpl extends RemoteServiceServlet implements IOpera
 		return null;
 	}
 
+
 	@Override
-	public OperatoerDTO getOperatoerer() {
+	public ArrayList<OperatoerDTO> getOperatoerer() throws Exception {
+		return oprDAO.getOperatoerer();
+	}
+
+	@Override
+	public void redigerBruger(int oprID, String navn, String ini, String CPR, String password, int aktiv)
+			throws Exception {
 		
-		return null;
 	}
 	
 	

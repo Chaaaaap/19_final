@@ -2,6 +2,7 @@ package code.server;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import code.connector.Connector;
 import code.shared.OperatoerDTO;
@@ -46,6 +47,33 @@ public class OperatoerDAO implements IOperatoerDAO {
 					CPR + "', '" + password + "'"+", '1', '"+type+"')");
 			
 		} catch(SQLException e) {
+			throw e;
+		}
+	}
+
+	@Override
+	public ArrayList<OperatoerDTO> getOperatoerer() throws Exception {
+		ArrayList<OperatoerDTO> oprList = new ArrayList<OperatoerDTO>();
+		ResultSet rs;
+		try {
+			rs = connector.doQuery("SELECT * FROM grp19.operatoer");
+			if(!rs.next()) throw new Exception("Listen er tom");
+			do {
+				oprList.add(new OperatoerDTO(rs.getInt("opr_id"), rs.getString("opr_navn"),
+						rs.getString("ini"), rs.getString("cpr"), rs.getString("password"), rs.getInt("aktiv"), rs.getString("type")));
+			} while(rs.next());
+		} catch(Exception e) {
+			throw e;
+		} 
+		return oprList;
+	}
+	
+	@Override
+	public void redigerBruger(int opr_id, String opr_navn, String ini, int aktiv, String cpr, String password) throws Exception {
+		try {
+		connector.doUpdate("UPDATE operatoer SET opr_id = "+opr_id+", opr_navn = "
+		+opr_navn+", ini = "+ini+", cpr = "+cpr+", password = "+password+" WHERE opr_id = "+opr_id+" ;)");		
+		} catch(Exception e) {
 			throw e;
 		}
 	}

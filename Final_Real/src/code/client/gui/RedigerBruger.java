@@ -1,25 +1,26 @@
 package code.client.gui;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import code.client.Final_Real;
 import code.client.service.IOperatoerService;
 import code.client.service.IOperatoerServiceAsync;
-import code.client.service.IRaavareService;
-import code.client.service.IRaavareServiceAsync;
 import code.shared.OperatoerDTO;
 
 public class RedigerBruger extends Composite {
@@ -35,86 +36,154 @@ public class RedigerBruger extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 		service = GWT.create(IOperatoerService.class);
 	}
+	@UiField Button visListe;
+	@UiField Label oprID;
+	@UiField Label oprNavn;
+	@UiField Label ini;
+	@UiField Label cpr;
+	@UiField Label pswd;
 	
-//	public void getOperatoerer() {
-//		service.getOperatoerer(new AsyncCallback<List<OperatoerDTO>>() {
-//
-//			@Override
-//			public void onFailure(Throwable caught) {
-//				Window.alert(caught.getMessage());
-//			}
-//
-//			@Override
-//			public void onSuccess(List<OperatoerDTO> result) {
-//				if(!result.isEmpty()) {
-//					for (int i = 0; i <= result.size(); i++) {
-//						if(i == 0)  {
-//							HorizontalPanel hPanel = new HorizontalPanel();
-//							Label labelID = new Label("Operatør ID");
-//							labelID.setWidth("187px");
-//							Label labelNavn = new Label("Operatør navn");
-//							labelNavn.setWidth("187px");
-//							Label labelIni = new Label("Initialer");
-//							labelIni.setWidth("187px");
-//							Label labelCpr = new Label("CPR-nummer");
-//							labelCpr.setWidth("187px");
-//							Label labelPassword = new Label("Password");
-//							labelPassword.setWidth("187px");
-//
-//							hPanel.add(labelID);
-//							hPanel.add(labelNavn);
-//							hPanel.add(labelIni);
-//							hPanel.add(labelCpr);
-//							hPanel.add(labelPassword);
-//
-//							hPanel.getElement().setAttribute("align", "center");
-//
-//							CDIO3.attachContent(hPanel);
-//						} else {
-//							final OperatoerDTO opr = result.get(i-1);
-//							HorizontalPanel hPanel = new HorizontalPanel();
-//							final TextBox boxID = new TextBox();
-//							boxID.setEnabled(false);
-//							boxID.setText(opr.getOprID()+"");
-//							hPanel.add(boxID);
-//							
-//							final TextBox boxNavn = new TextBox();
-//							boxNavn.setEnabled(false);
-//							boxNavn.setText(opr.getOprNavn());
-//							hPanel.add(boxNavn);
-//							
-//							final TextBox boxIni = new TextBox();
-//							boxIni.setEnabled(false);
-//							boxIni.setText(opr.getIni());
-//							hPanel.add(boxIni);
-//							
-//							final TextBox boxCpr = new TextBox();
-//							boxCpr.setEnabled(false);
-//							boxCpr.setText(result.get(i-1).getCpr());
-//							hPanel.add(boxCpr);
-//							
-//							final PasswordTextBox boxPassword = new PasswordTextBox();
-//							boxPassword.setEnabled(false);
-//							boxPassword.setText(opr.getPassword());
-//							hPanel.add(boxPassword);
-//							
-//							final Button rediger = new Button("Rediger");
-//							hPanel.add(rediger);
-//
-//							final Button ok = new Button("Gem");
-//							ok.setVisible(false);
-//							hPanel.add(ok);
-//							
-//							final Button annuller = new Button("Annuller");
-//							annuller.setVisible(false);
-//							hPanel.add(annuller);	
-//
-//						}
-//					}
-//		
-//				}
-//			}
-//			
-//		});
-//	}
+	@UiHandler("visListe")
+	void visListe(ClickEvent e) {
+		redigerBruger();
+	}
+	
+	private void redigerBruger() {
+		Final_Real.clearContent();
+		Final_Real.attachContent(this);
+		
+		service.getOperatoerer(new AsyncCallback<ArrayList<OperatoerDTO>>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert(caught.getMessage());
+			}
+
+			@Override
+			public void onSuccess(ArrayList<OperatoerDTO> result) {
+				VerticalPanel vPanel = new VerticalPanel();
+				oprID.setText("Operatør ID");
+				oprNavn.setText("Operatør navn");
+				ini.setText("Inititaler");
+				cpr.setText("CPR-nummer");
+				pswd.setText("Password");
+				
+				if(!result.isEmpty()) {
+					for (OperatoerDTO operatoer : result) {
+						final OperatoerDTO opr = operatoer;
+						final HorizontalPanel hPanel = new HorizontalPanel();
+						final TextBox id = new TextBox();
+						final TextBox navn = new TextBox();
+						final TextBox ini = new TextBox();
+						final TextBox cpr = new TextBox();
+						final TextBox pswd = new TextBox();
+						final Button rediger = new Button("Rediger");
+						final Button gem = new Button("Gem");
+						final Button annuller = new Button("Annuller");
+						
+						id.setText(operatoer.getOprID()+"");
+						navn.setText(operatoer.getOprNavn());
+						ini.setText(operatoer.getIni()+"");
+						cpr.setText(operatoer.getCPR()+"");
+						pswd.setText(operatoer.getPassword()+"");
+						
+						rediger.setStyleName("style.Rediger");
+						gem.setStyleName("style.Rediger");
+						annuller.setStyleName("style.Rediger");
+						
+						gem.setVisible(false);
+						annuller.setVisible(false);
+						
+						id.setEnabled(false);
+						navn.setEnabled(false);
+						ini.setEnabled(false);
+						cpr.setEnabled(false);
+						pswd.setEnabled(false);
+						
+						hPanel.add(id);
+						hPanel.add(navn);
+						hPanel.add(ini);
+						hPanel.add(cpr);
+						hPanel.add(pswd);
+						
+						hPanel.add(rediger);
+						hPanel.add(gem);
+						hPanel.add(annuller);
+						vPanel.add(hPanel);
+						
+						rediger.addClickHandler(new ClickHandler() {
+
+							@Override
+							public void onClick(ClickEvent event) {
+								id.setEnabled(true);
+								navn.setEnabled(true);
+								ini.setEnabled(true);
+								cpr.setEnabled(true);
+								pswd.setEnabled(true);
+								
+								rediger.setVisible(false);
+								gem.setVisible(true);
+								annuller.setVisible(true);								
+							}
+							
+						});
+						
+						gem.addClickHandler(new ClickHandler() {
+
+							@Override
+							public void onClick(ClickEvent event) {
+								service.redigerBruger(Integer.parseInt(id.getText()),
+										navn.getText(), ini.getText(), cpr.getText(), pswd.getText(),
+										Integer.parseInt(opr.getOprID()+""), 
+										new AsyncCallback<Void>() {
+
+									@Override
+									public void onFailure(Throwable caught) {
+										Window.alert(caught.getMessage());
+									}
+
+									@Override
+									public void onSuccess(Void result) {
+										// TODO noget meningsfuldt.
+										Window.alert("LULZ");
+									}
+									
+								});
+							}
+							
+						});
+						
+						annuller.addClickHandler(new ClickHandler() {
+
+							@Override
+							public void onClick(ClickEvent event) {
+								id.setText(opr.getOprID()+"");
+								navn.setText(opr.getOprNavn());
+								ini.setText(opr.getIni());
+								cpr.setText(opr.getCPR());
+								pswd.setText(opr.getPassword());
+								
+								id.setEnabled(false);
+								navn.setEnabled(false);
+								ini.setEnabled(false);
+								cpr.setEnabled(false);
+								pswd.setEnabled(false);
+								
+								gem.setVisible(false);
+								annuller.setVisible(false);
+								rediger.setVisible(true);
+							}
+							
+						});
+					}
+				}
+
+				Final_Real.attachContent(vPanel);
+			
+			}
+
+			
+		});
+		
+	}
 }

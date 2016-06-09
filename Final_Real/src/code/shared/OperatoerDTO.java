@@ -8,12 +8,18 @@ public class OperatoerDTO implements Serializable {
 	private String password;
 	private String type;
 	private int oprID;
+	private String oprNavn;
+	private String ini;
+	private String cpr;
 	
 	public OperatoerDTO(int oprID, String oprNavn, String ini, String cpr, 
 			String password, int aktiv, String type) {
 		this.password = password;
 		this.type = type;
 		this.oprID = oprID;
+		this.oprNavn = oprNavn;
+		this.ini = ini;
+		this.cpr = cpr;
 	}
 	
 	public OperatoerDTO() {
@@ -34,6 +40,18 @@ public class OperatoerDTO implements Serializable {
 	
 	public void skiftPassword(String password) {
 		this.password = password;
+	}
+
+	public String getOprNavn() {
+		return oprNavn;
+	}
+
+	public String getIni() {
+		return ini;
+	}
+
+	public String getCPR() {
+		return cpr;
 	}
 
 }
