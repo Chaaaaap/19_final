@@ -32,11 +32,9 @@ public class RedigerBruger extends Composite {
 	}
 	
 	private IOperatoerServiceAsync service;
-//	private OperatoerClient client;
 
 	public RedigerBruger(OperatoerClient client) {
 		initWidget(uiBinder.createAndBindUi(this));
-//		this.client = client;
 		service = GWT.create(IOperatoerService.class);
 	}
 	@UiField Button visListe;
@@ -151,10 +149,11 @@ public class RedigerBruger extends Composite {
 										ini.setEnabled(false);
 										cpr.setEnabled(false);
 										passwordBox.setEnabled(false);
-										
 										gem.setVisible(false);
 										annuller.setVisible(false);
 										rediger.setVisible(true);
+										
+										
 									}
 									
 								});
