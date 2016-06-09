@@ -142,25 +142,12 @@ public class MainMenu extends Composite {
 	
 	@UiHandler("logOut")
 	void logOut(ClickEvent e) {
+		Login login = new Login(client);
+		Final_Real.clearContent();
+		Final_Real.attachContent(this);
+		Final_Real.attachContent(login);
 		
 	}
-//	private class LaunchCommand implements Command{
-//
-//		Composite c;
-//		
-//		public LaunchCommand(Composite c) {
-//			super();
-//			this.c = c;
-//		}
-//
-//		@Override
-//		public void execute() {
-//			Final_Real.clearContent();
-//			Final_Real.attachContent(menu);
-//			Final_Real.attachContent(c);
-//			
-//		}
-//		
-//	}
+
 	
 }
