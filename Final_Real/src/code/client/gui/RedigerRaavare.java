@@ -120,6 +120,7 @@ public class RedigerRaavare extends Composite {
 							public void onClick(ClickEvent event) {
 								service.redigerRaavare(Integer.parseInt(id.getText()),
 										navn.getText(), lev.getText(), 
+										Integer.parseInt(rv.getRaavare_id()+""), 
 										new AsyncCallback<Void>() {
 
 									@Override

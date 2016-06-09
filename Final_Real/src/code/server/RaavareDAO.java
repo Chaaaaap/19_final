@@ -14,7 +14,6 @@ public class RaavareDAO implements IRaavareDAO {
 	public void addRaavare(int raavare_id, String raavare_navn, String leverandør) throws Exception{
 		String query = "INSERT INTO raavare VALUES("+raavare_id+
 					", '"+raavare_navn+"', '"+leverandør+"');";
-		System.out.println("Hulubulu2\n"+query);
 		try {
 			connector.doUpdate(query);
 		} catch(Exception e) {
@@ -41,9 +40,13 @@ public class RaavareDAO implements IRaavareDAO {
 	}
 
 	@Override
-	public void redigerRaavare(int raavare_id, String raavare_navn, String leverandør) throws Exception {
-		// TODO Hvad skal jeg insert på?
-		
+	public void redigerRaavare(int raavare_id, String raavare_navn, String leverandør, int glid) throws Exception {
+		try {
+		connector.doUpdate("UPDATE raavare SET raavare_id = "+raavare_id+", raavare_navn = "
+		+raavare_navn+", leverandoer = "+leverandør+" WHERE raavare_id = "+glid+" ;)");		
+		} catch(Exception e) {
+			throw e;
+		}
 	}
 
 	
