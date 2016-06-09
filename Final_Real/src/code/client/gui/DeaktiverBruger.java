@@ -37,24 +37,17 @@ public class DeaktiverBruger extends Composite {
 		deaktiverBruger();
 	}
 
-	//	@UiField Button visListe;
 	@UiField Label oprID;
 	@UiField Label oprNavn;
 	@UiField Label ini;
 	@UiField Label cpr;
 	@UiField Label aktiv;
 
-	//	@UiHandler("visListe")
-	//	void visListe(ClickEvent e) {
-	//		redigerBruger();
-	//	}
-
 	private void deaktiverBruger() {
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
 
 		service.getOperatoerer(new AsyncCallback<ArrayList<OperatoerDTO>>() {
-
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -98,7 +91,6 @@ public class DeaktiverBruger extends Composite {
 							status.setText("Nej");	
 						}
 
-
 						deaktiver.setStyleName("style.Rediger");
 						ok.setStyleName("style.Rediger");
 						annuller.setStyleName("style.Rediger");
@@ -115,8 +107,6 @@ public class DeaktiverBruger extends Composite {
 							deaktiver.setVisible(false);
 							aktiver.setVisible(true);
 						}
-
-
 
 						hPanel.add(id);
 						hPanel.add(navn);
@@ -166,13 +156,9 @@ public class DeaktiverBruger extends Composite {
 										annuller.setVisible(false);
 										deaktiver.setVisible(false);
 										aktiver.setVisible(true);
-
-
 									}
-
 								});
 							}
-
 						});
 
 						annuller.addClickHandler(new ClickHandler() {
@@ -185,12 +171,10 @@ public class DeaktiverBruger extends Composite {
 								cpr.setText(opr.getCPR());
 								status.setText(opr.getStatus()+"");
 
-
 								ok.setVisible(false);
 								annuller.setVisible(false);
 								deaktiver.setVisible(true);
 							}
-
 						});
 
 						aktiver.addClickHandler(new ClickHandler() {
@@ -214,13 +198,9 @@ public class DeaktiverBruger extends Composite {
 										deaktiver.setVisible(true);
 										aktiver.setVisible(false);
 
-
 									}
-
 								});
-
 							}
-
 						});
 					}
 				}
@@ -228,11 +208,6 @@ public class DeaktiverBruger extends Composite {
 				Final_Real.attachContent(vPanel);
 
 			}
-
-
 		});
-
 	}
-
-
 }
