@@ -31,6 +31,12 @@ public class OperatoerServiceImpl extends RemoteServiceServlet implements IOpera
 		oprDAO.opretBruger(oprID, navn, ini, CPR, password, type);
 		return null;
 	}
+
+	@Override
+	public OperatoerDTO getOperatoerer() {
+		
+		return null;
+	}
 	
 	
 
