@@ -71,4 +71,8 @@ public class Final_Real implements EntryPoint, LoginListener {
 	public static void attachContent(Widget w) {
 		content.add(w);
 	}
+	
+	public static void clearAll() {
+		content.clear();
+	}
 }

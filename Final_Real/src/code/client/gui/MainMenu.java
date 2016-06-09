@@ -143,8 +143,7 @@ public class MainMenu extends Composite {
 	@UiHandler("logOut")
 	void logOut(ClickEvent e) {
 		Login login = new Login(client);
-		Final_Real.clearContent();
-		Final_Real.attachContent(this);
+		Final_Real.clearAll();
 		Final_Real.attachContent(login);
 		
 	}
