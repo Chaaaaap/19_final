@@ -8,6 +8,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.MenuItem;
 import com.google.gwt.user.client.ui.Widget;
@@ -32,6 +33,9 @@ public class MainMenu extends Composite {
 		
 		this.opr = opr;
 		this.client = client;
+		
+		loggedIn.setWidth("300px");
+		loggedIn.setText("Du er logget ind som: "+opr.getOprNavn());
 		
 		menuBar.setAutoOpen(true);
 		menuBar.setAnimationEnabled(true);
@@ -70,7 +74,7 @@ public class MainMenu extends Composite {
 		visProduktbatches.setScheduledCommand(new LaunchCommand(new VisProduktbatches()));
 	}
 	
-	
+	@UiField Label loggedIn;
 
 	@UiField Button afvej;
 	@UiField Button skiftPassword;

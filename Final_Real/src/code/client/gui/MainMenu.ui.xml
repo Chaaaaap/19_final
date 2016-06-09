@@ -8,6 +8,13 @@
 
 	</ui:style>
 	<g:HTMLPanel>
+
+		<g:HorizontalPanel width="100%" height="100%">
+			<g:cell horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE">
+				<g:Label ui:field="loggedIn" text="Du er logget ind som:" />
+			</g:cell>
+		</g:HorizontalPanel>
+
 		<g:HorizontalPanel>
 			<g:Button ui:field="afvej" styleName="{style.menuButton}"
 				text="Afvej" />
@@ -57,11 +64,9 @@
 					</g:MenuBar>
 				</g:MenuItem>
 
+
+
 			</g:MenuBar>
-
-
-
-
 
 
 			<!-- <g:MenuBar ui:field="brugerRedigering"> <g:MenuItem text="Bruger 
@@ -69,5 +74,6 @@
 				/> </g:MenuBar> </g:MenuItem> </g:MenuBar> -->
 
 		</g:HorizontalPanel>
+
 	</g:HTMLPanel>
 </ui:UiBinder> 
