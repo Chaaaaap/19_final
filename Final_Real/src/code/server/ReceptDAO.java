@@ -12,6 +12,7 @@ public class ReceptDAO implements IReceptDAO {
 
 	@Override
 	public void addRecept(String receptNavn, int recept_id, int raavare_id, int nom_netto, int tolerance) throws Exception{
+		// TODO Skal laves om
 		String query = "INSERT INTO recept VALUES('"+receptNavn+
 				"', "+recept_id+", "+raavare_id+", "+nom_netto+", "+tolerance+" );";
 		try {
