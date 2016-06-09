@@ -12,6 +12,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
+import code.client.Final_Real;
 import code.client.service.IRaavareService;
 import code.client.service.IRaavareServiceAsync;
 import code.shared.RaavareDTO;
@@ -27,6 +28,8 @@ public class OpretRaavare extends Composite {
 
 	public OpretRaavare() {
 		initWidget(uiBinder.createAndBindUi(this));
+		Final_Real.clearContent();
+		Final_Real.attachContent(this);
 		service = GWT.create(IRaavareService.class);
 		
 	}

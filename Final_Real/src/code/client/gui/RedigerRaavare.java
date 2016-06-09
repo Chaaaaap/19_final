@@ -34,6 +34,8 @@ public class RedigerRaavare extends Composite {
 
 	public RedigerRaavare() {
 		initWidget(uiBinder.createAndBindUi(this));
+		Final_Real.clearContent();
+		Final_Real.attachContent(this);
 		service = GWT.create(IRaavareService.class);
 	}
 	

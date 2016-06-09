@@ -5,6 +5,8 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
+import code.client.Final_Real;
+
 public class RedigerRaavarebatch extends Composite {
 
 	private static RedigerRaavarebatchUiBinder uiBinder = GWT.create(RedigerRaavarebatchUiBinder.class);
@@ -14,6 +16,8 @@ public class RedigerRaavarebatch extends Composite {
 
 	public RedigerRaavarebatch() {
 		initWidget(uiBinder.createAndBindUi(this));
+		Final_Real.clearContent();
+		Final_Real.attachContent(this);
 	}
 
 }

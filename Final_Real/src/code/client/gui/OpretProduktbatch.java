@@ -8,6 +8,8 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
+import code.client.Final_Real;
+
 public class OpretProduktbatch extends Composite {
 
 	private static OpretProduktbatchUiBinder uiBinder = GWT.create(OpretProduktbatchUiBinder.class);
@@ -17,6 +19,8 @@ public class OpretProduktbatch extends Composite {
 
 	public OpretProduktbatch() {
 		initWidget(uiBinder.createAndBindUi(this));
+		Final_Real.clearContent();
+		Final_Real.attachContent(this);
 	}
 
 	@UiField TextBox boxID;

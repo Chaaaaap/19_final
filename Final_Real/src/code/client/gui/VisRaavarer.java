@@ -31,6 +31,8 @@ public class VisRaavarer extends Composite {
 
 	public VisRaavarer() {
 		initWidget(uiBinder.createAndBindUi(this));
+		Final_Real.clearContent();
+		Final_Real.attachContent(this);
 		service = GWT.create(IRaavareService.class);
 		
 	}
