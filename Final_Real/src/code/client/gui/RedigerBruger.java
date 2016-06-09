@@ -17,9 +17,10 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.sun.security.ntlm.Client;
 
 import code.client.Final_Real;
+import code.client.service.IOperatoerService;
+import code.client.service.IOperatoerServiceAsync;
 import code.client.service.OperatoerClient;
 import code.shared.OperatoerDTO;
 
@@ -30,13 +31,13 @@ public class RedigerBruger extends Composite {
 	interface RedigerBrugerUiBinder extends UiBinder<Widget, RedigerBruger> {
 	}
 	
-//	private IOperatoerServiceAsync service;
-	private OperatoerClient client;
+	private IOperatoerServiceAsync service;
+//	private OperatoerClient client;
 
 	public RedigerBruger(OperatoerClient client) {
 		initWidget(uiBinder.createAndBindUi(this));
-		this.client = client;
-//		service = GWT.create(IOperatoerService.class);
+//		this.client = client;
+		service = GWT.create(IOperatoerService.class);
 	}
 	@UiField Button visListe;
 	@UiField Label oprID;
@@ -59,7 +60,6 @@ public class RedigerBruger extends Composite {
 			@Override
 			public void onFailure(Throwable caught) {
 				Window.alert(caught.getMessage());
-				Window.alert("LULZ");
 			}
 
 			@Override
@@ -146,8 +146,15 @@ public class RedigerBruger extends Composite {
 
 									@Override
 									public void onSuccess(Void result) {
-										// TODO noget meningsfuldt.
-										Window.alert("LULZ");
+										id.setEnabled(false);
+										navn.setEnabled(false);
+										ini.setEnabled(false);
+										cpr.setEnabled(false);
+										passwordBox.setEnabled(false);
+										
+										gem.setVisible(false);
+										annuller.setVisible(false);
+										rediger.setVisible(true);
 									}
 									
 								});

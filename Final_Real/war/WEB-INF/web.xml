@@ -16,6 +16,15 @@
   </servlet-mapping>
   
   <servlet>
+    <servlet-name>19_CDIO_Final</servlet-name>
+    <servlet-class>code.server.OperatoerServiceImpl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>19_CDIO_Final</servlet-name>
+    <url-pattern>/final_real/19_Final</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>19_CDIO_Raavare</servlet-name>
     <servlet-class>code.server.RaavareServiceImpl</servlet-class>
   </servlet>

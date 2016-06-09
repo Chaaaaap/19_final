@@ -41,7 +41,7 @@ public class OperatoerServiceImpl extends RemoteServiceServlet implements IOpera
 	}
 
 	@Override
-	public void redigerBruger(int oprID, String navn, String ini, String CPR, String password) throws Exception {
+	public void redigerBruger(int oprID, String navn, String ini, String cpr, String password) throws Exception {
 		
 	}
 	
