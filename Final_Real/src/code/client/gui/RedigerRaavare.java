@@ -130,7 +130,13 @@ public class RedigerRaavare extends Composite {
 
 									@Override
 									public void onSuccess(Void result) {
-										// TODO noget meningsfuldt.
+										id.setEnabled(false);
+										navn.setEnabled(false);
+										lev.setEnabled(false);
+										
+										rediger.setVisible(true);
+										gem.setVisible(false);
+										annuller.setVisible(false);
 									}
 									
 								});
