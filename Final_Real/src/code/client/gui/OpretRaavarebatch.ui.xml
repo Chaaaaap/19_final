@@ -9,7 +9,7 @@
 			<g:Label text="Indtast råvarebatch nr." />
 			<g:TextBox ui:field="boxID" />
 			<g:Label text="Indtast råvare nr." />
-			<g:TextBox ui:field="boxRaavareNr" />
+			<g:ListBox ui:field="boxRaavareNr" />
 			<g:Label text="Angiv Mængde" />
 			<g:TextBox ui:field="boxMaengde" />
 			<g:Button ui:field="submit" text="Opret råvarebatch" />

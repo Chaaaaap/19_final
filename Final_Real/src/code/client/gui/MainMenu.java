@@ -32,7 +32,8 @@ public class MainMenu extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		this.opr = opr;
-		this.client = client;
+		final OperatoerClient oprClient = client;
+		this.client = oprClient;
 		
 		loggedIn.setWidth("300px");
 		loggedIn.setText("Du er logget ind som: "+opr.getOprNavn());
@@ -57,21 +58,35 @@ public class MainMenu extends Composite {
 			
 		}
 		
-		opretBruger.setScheduledCommand(new LaunchCommand(new OpretBruger(client)));
-		redigerBruger.setScheduledCommand(new LaunchCommand(new RedigerBruger(client)));
-		deaktiverBruger.setScheduledCommand(new LaunchCommand(new DeaktiverBruger(client)));
-		opretRecept.setScheduledCommand(new LaunchCommand(new OpretRecept()));		
-		redigerRecept.setScheduledCommand(new LaunchCommand(new RedigerRecept()));		
-		visRecepter.setScheduledCommand(new LaunchCommand(new VisRecepter()));		
-		opretRaavare.setScheduledCommand(new LaunchCommand(new OpretRaavare()));		
-		redigerRaavare.setScheduledCommand(new LaunchCommand(new RedigerRaavare()));		
-		visRaavarer.setScheduledCommand(new LaunchCommand(new VisRaavarer()));		
-		opretRaavarebatch.setScheduledCommand(new LaunchCommand(new OpretRaavarebatch()));		
-		redigerRaavarebatch.setScheduledCommand(new LaunchCommand(new RedigerRaavarebatch()));		
-		visRaavarebatches.setScheduledCommand(new LaunchCommand(new VisRaavarebatches()));		
-		opretProduktbatch.setScheduledCommand(new LaunchCommand(new OpretProduktbatch()));		
-		redigerProduktbatch.setScheduledCommand(new LaunchCommand(new RedigerProduktbatch()));		
+//		opretBruger.setScheduledCommand(new LaunchCommand(new OpretBruger(client)));
+//		redigerBruger.setScheduledCommand(new LaunchCommand(new RedigerBruger()));
+//		deaktiverBruger.setScheduledCommand(new LaunchCommand(new DeaktiverBruger()));
+//		opretRecept.setScheduledCommand(new LaunchCommand(new OpretRecept()));		
+//		redigerRecept.setScheduledCommand(new LaunchCommand(new RedigerRecept()));		
+//		visRecepter.setScheduledCommand(new LaunchCommand(new VisRecepter()));		
+//		opretRaavare.setScheduledCommand(new LaunchCommand(new OpretRaavare()));		
+//		redigerRaavare.setScheduledCommand(new LaunchCommand(new RedigerRaavare()));		
+//		visRaavarer.setScheduledCommand(new LaunchCommand(new VisRaavarer()));		
+//		opretRaavarebatch.setScheduledCommand(new LaunchCommand(new OpretRaavarebatch()));		
+//		redigerRaavarebatch.setScheduledCommand(new LaunchCommand(new RedigerRaavarebatch()));		
+//		visRaavarebatches.setScheduledCommand(new LaunchCommand(new VisRaavarebatches()));		
+//		opretProduktbatch.setScheduledCommand(new LaunchCommand(new OpretProduktbatch()));		
+//		redigerProduktbatch.setScheduledCommand(new LaunchCommand(new RedigerProduktbatch()));		
 //		visProduktbatches.setScheduledCommand(new LaunchCommand(new VisProduktbatches()));
+		opretBruger.setScheduledCommand(new Command() {@Override public void execute() {new OpretBruger(oprClient); } });
+		redigerBruger.setScheduledCommand(new Command() {@Override public void execute() {new RedigerBruger(); } });
+		deaktiverBruger.setScheduledCommand(new Command() {@Override public void execute() {new DeaktiverBruger(); } });
+		opretRecept.setScheduledCommand(new Command() {@Override public void execute() {new OpretRecept(); } });
+		redigerRecept.setScheduledCommand(new Command() {@Override public void execute() {new RedigerRecept(); } });
+		visRecepter.setScheduledCommand(new Command() {@Override public void execute() {new VisRecepter(); } });
+		opretRaavare.setScheduledCommand(new Command() {@Override public void execute() {new OpretRaavare(); } });
+		redigerRaavare.setScheduledCommand(new Command() {@Override public void execute() {new RedigerRaavare(); } });
+		visRaavarer.setScheduledCommand(new Command() {@Override public void execute() {new VisRaavarer(); } });
+		opretRaavarebatch.setScheduledCommand(new Command() {@Override public void execute() {new OpretRaavarebatch(); } });
+		redigerRaavarebatch.setScheduledCommand(new Command() {@Override public void execute() {new RedigerRaavarebatch(); } });
+		visRaavarebatches.setScheduledCommand(new Command() {@Override public void execute() {new VisRaavarebatches(); } });
+		opretProduktbatch.setScheduledCommand(new Command() {@Override public void execute() {new OpretProduktbatch(); } });
+		redigerProduktbatch.setScheduledCommand(new Command() {@Override public void execute() {new RedigerProduktbatch(); } });
 		visProduktbatches.setScheduledCommand(new Command() {@Override public void execute() {new VisProduktbatches(); } });
 	}
 	
@@ -124,26 +139,24 @@ public class MainMenu extends Composite {
 		Final_Real.attachContent(afveje);
 	}
 	
-	private void opretBruger() {
-		
-	}
-	private class LaunchCommand implements Command{
 
-		Composite c;
-		
-		public LaunchCommand(Composite c) {
-			super();
-			this.c = c;
-		}
-
-		@Override
-		public void execute() {
-			Final_Real.clearContent();
-			Final_Real.attachContent(menu);
-			Final_Real.attachContent(c);
-			
-		}
-		
-	}
+//	private class LaunchCommand implements Command{
+//
+//		Composite c;
+//		
+//		public LaunchCommand(Composite c) {
+//			super();
+//			this.c = c;
+//		}
+//
+//		@Override
+//		public void execute() {
+//			Final_Real.clearContent();
+//			Final_Real.attachContent(menu);
+//			Final_Real.attachContent(c);
+//			
+//		}
+//		
+//	}
 	
 }

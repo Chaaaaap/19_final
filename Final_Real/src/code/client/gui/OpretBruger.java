@@ -16,6 +16,7 @@ import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
+import code.client.Final_Real;
 import code.client.service.OperatoerClient;
 
 public class OpretBruger extends Composite {
@@ -29,6 +30,8 @@ public class OpretBruger extends Composite {
 
 	public OpretBruger(OperatoerClient client) {
 		initWidget(uiBinder.createAndBindUi(this));
+		Final_Real.clearContent();
+		Final_Real.attachContent(this);
 		
 		this.client = client;
 		boxGentag.addKeyUpHandler(new KeyUpHandler() {
