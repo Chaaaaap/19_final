@@ -42,8 +42,8 @@ public class RaavareDAO implements IRaavareDAO {
 	@Override
 	public void redigerRaavare(int raavare_id, String raavare_navn, String leverandør, int glid) throws Exception {
 		try {
-		connector.doUpdate("UPDATE raavare SET raavare_id = "+raavare_id+", raavare_navn = "
-		+raavare_navn+", leverandoer = "+leverandør+" WHERE raavare_id = "+glid+" ;)");		
+		connector.doUpdate("UPDATE raavare SET raavare_id = "+raavare_id+", raavare_navn = '"
+		+raavare_navn+"', leverandoer = '"+leverandør+"' WHERE raavare_id = "+glid+";");		
 		} catch(Exception e) {
 			throw e;
 		}
