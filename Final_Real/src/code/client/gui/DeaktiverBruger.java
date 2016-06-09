@@ -15,5 +15,6 @@ public class DeaktiverBruger extends Composite {
 	public DeaktiverBruger() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
+	
 
 }
