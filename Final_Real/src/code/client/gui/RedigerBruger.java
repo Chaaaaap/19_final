@@ -21,7 +21,6 @@ import com.google.gwt.user.client.ui.Widget;
 import code.client.Final_Real;
 import code.client.service.IOperatoerService;
 import code.client.service.IOperatoerServiceAsync;
-import code.client.service.OperatoerClient;
 import code.shared.OperatoerDTO;
 
 public class RedigerBruger extends Composite {
@@ -33,7 +32,7 @@ public class RedigerBruger extends Composite {
 	
 	private IOperatoerServiceAsync service;
 
-	public RedigerBruger(OperatoerClient client) {
+	public RedigerBruger() {
 		initWidget(uiBinder.createAndBindUi(this));
 		service = GWT.create(IOperatoerService.class);
 	}
