@@ -37,17 +37,18 @@ public class RedigerRaavare extends Composite {
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
 		service = GWT.create(IRaavareService.class);
+		redigerRaavare();
 	}
 	
-	@UiField Button visListe;
+//	@UiField Button visListe;
 	@UiField Label idLabel;
 	@UiField Label navnLabel;
 	@UiField Label levLabel;
 	
-	@UiHandler("visListe")
-	void visListe(ClickEvent e) {
-		redigerRaavare();
-	}
+//	@UiHandler("visListe")
+//	void visListe(ClickEvent e) {
+//		redigerRaavare();
+//	}
 	
 	private void redigerRaavare() {
 		Final_Real.clearContent();

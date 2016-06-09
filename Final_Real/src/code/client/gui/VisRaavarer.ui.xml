@@ -10,7 +10,6 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
-	    <g:Button ui:field="visListe" text="Vis liste" />
 	    <g:HorizontalPanel>
 	    	<g:Label ui:field="idLabel" styleName="{style.Labels}" />
 	    	<g:Label ui:field="navnLabel" styleName="{style.Labels}" />

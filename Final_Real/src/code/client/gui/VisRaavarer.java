@@ -34,17 +34,17 @@ public class VisRaavarer extends Composite {
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
 		service = GWT.create(IRaavareService.class);
-		
+		visRaavarer();
 	}
 	
-	@UiField Button visListe;
+//	@UiField Button visListe;
 	@UiField Label idLabel;
 	@UiField Label navnLabel;
 	@UiField Label levLabel;
-	@UiHandler("visListe")
-	void visListe(ClickEvent e) {
-		visRaavarer();
-	}
+//	@UiHandler("visListe")
+//	void visListe(ClickEvent e) {
+//		visRaavarer();
+//	}
 	private void visRaavarer() {
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
