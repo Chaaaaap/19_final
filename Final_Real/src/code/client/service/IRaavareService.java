@@ -12,5 +12,5 @@ public interface IRaavareService extends RemoteService {
 
 	ArrayList<RaavareDTO> getRaavarer() throws Exception;
 	void addRaavare(int raavare_id, String raavare_navn, String leverandør) throws Exception;
-	void redigerRaavare(int raavare_id, String raavare_navn, String leverandør) throws Exception;
+	void redigerRaavare(int raavare_id, String raavare_navn, String leverandør, int glid) throws Exception;
 }

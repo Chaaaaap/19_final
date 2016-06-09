@@ -10,5 +10,5 @@ public interface IRaavareServiceAsync {
 
 	void getRaavarer(AsyncCallback<ArrayList<RaavareDTO>> callback);
 	void addRaavare(int raavare_id, String raavare_navn, String leverandør, AsyncCallback<Void> asyncCallback);
-	void redigerRaavare(int raavare_id, String raavare_navn, String leverandør, AsyncCallback<Void> asyncCallback);
+	void redigerRaavare(int raavare_id, String raavare_navn, String leverandør, int glid, AsyncCallback<Void> asyncCallback);
 }
