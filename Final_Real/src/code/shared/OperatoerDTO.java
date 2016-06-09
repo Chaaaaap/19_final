@@ -54,4 +54,5 @@ public class OperatoerDTO implements Serializable {
 		return cpr;
 	}
 
+
 }

@@ -35,6 +35,8 @@ public class RedigerBruger extends Composite {
 	public RedigerBruger() {
 		initWidget(uiBinder.createAndBindUi(this));
 		service = GWT.create(IOperatoerService.class);
+		Final_Real.clearContent();
+		Final_Real.attachContent(this);
 	}
 	@UiField Button visListe;
 	@UiField Label oprID;
@@ -53,6 +55,7 @@ public class RedigerBruger extends Composite {
 		Final_Real.attachContent(this);
 		
 		service.getOperatoerer(new AsyncCallback<ArrayList<OperatoerDTO>>() {
+			
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -132,7 +135,7 @@ public class RedigerBruger extends Composite {
 
 							@Override
 							public void onClick(ClickEvent event) {
-								service.redigerBruger(Integer.parseInt(id.getText()),
+								service.redigerBruger(Integer.parseInt(id.getText()), opr.getOprID(),
 										navn.getText(), ini.getText(), cpr.getText(), passwordBox.getText(),
 										new AsyncCallback<Void>() {
 
