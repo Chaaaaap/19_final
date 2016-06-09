@@ -15,5 +15,5 @@ public interface IOperatoerService extends RemoteService{
 	OperatoerDTO login(int oprID, String password) throws Exception;
 	OperatoerDTO skiftPassword(OperatoerDTO opr, String nyPassword) throws Exception;
 	OperatoerDTO opretBruger(int oprID, String navn, String ini, String CPR, String password, String type) throws Exception;
-	void redigerBruger(int oprID, String navn, String ini, String CPR, String password, int aktiv) throws Exception;
+	void redigerBruger(int oprID, String navn, String ini, String CPR, String password) throws Exception;
 }

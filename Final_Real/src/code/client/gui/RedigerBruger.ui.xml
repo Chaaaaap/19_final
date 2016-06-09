@@ -19,7 +19,7 @@
 	        <g:Label ui:field="oprNavn" text="Operatør navn" />
 	        <g:Label ui:field="ini" text="Initialer" />
 	        <g:Label ui:field="cpr" text="CPR-nummer" />
-	        <g:Label ui:field="pswd" text="Password" />
+	        <g:Label ui:field="password" text="Password" />
 	    </g:HorizontalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

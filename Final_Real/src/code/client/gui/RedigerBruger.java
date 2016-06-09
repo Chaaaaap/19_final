@@ -30,18 +30,18 @@ public class RedigerBruger extends Composite {
 	interface RedigerBrugerUiBinder extends UiBinder<Widget, RedigerBruger> {
 	}
 	
-	private IOperatoerServiceAsync service;
+//	private IOperatoerServiceAsync service;
 
 	public RedigerBruger() {
 		initWidget(uiBinder.createAndBindUi(this));
-		service = GWT.create(IOperatoerService.class);
+//		service = GWT.create(IOperatoerService.class);
 	}
 	@UiField Button visListe;
 	@UiField Label oprID;
 	@UiField Label oprNavn;
 	@UiField Label ini;
 	@UiField Label cpr;
-	@UiField Label pswd;
+	@UiField Label password;
 	
 	@UiHandler("visListe")
 	void visListe(ClickEvent e) {
@@ -57,6 +57,7 @@ public class RedigerBruger extends Composite {
 			@Override
 			public void onFailure(Throwable caught) {
 				Window.alert(caught.getMessage());
+				Window.alert("LULZ");
 			}
 
 			@Override
@@ -66,7 +67,7 @@ public class RedigerBruger extends Composite {
 				oprNavn.setText("Operatør navn");
 				ini.setText("Inititaler");
 				cpr.setText("CPR-nummer");
-				pswd.setText("Password");
+				password.setText("Password");
 				
 				if(!result.isEmpty()) {
 					for (OperatoerDTO operatoer : result) {
@@ -76,7 +77,7 @@ public class RedigerBruger extends Composite {
 						final TextBox navn = new TextBox();
 						final TextBox ini = new TextBox();
 						final TextBox cpr = new TextBox();
-						final TextBox pswd = new TextBox();
+						final TextBox passwordBox = new TextBox();
 						final Button rediger = new Button("Rediger");
 						final Button gem = new Button("Gem");
 						final Button annuller = new Button("Annuller");
@@ -85,7 +86,7 @@ public class RedigerBruger extends Composite {
 						navn.setText(operatoer.getOprNavn());
 						ini.setText(operatoer.getIni()+"");
 						cpr.setText(operatoer.getCPR()+"");
-						pswd.setText(operatoer.getPassword()+"");
+						passwordBox.setText(operatoer.getPassword()+"");
 						
 						rediger.setStyleName("style.Rediger");
 						gem.setStyleName("style.Rediger");
@@ -98,13 +99,13 @@ public class RedigerBruger extends Composite {
 						navn.setEnabled(false);
 						ini.setEnabled(false);
 						cpr.setEnabled(false);
-						pswd.setEnabled(false);
+						passwordBox.setEnabled(false);
 						
 						hPanel.add(id);
 						hPanel.add(navn);
 						hPanel.add(ini);
 						hPanel.add(cpr);
-						hPanel.add(pswd);
+						hPanel.add(passwordBox);
 						
 						hPanel.add(rediger);
 						hPanel.add(gem);
@@ -119,7 +120,7 @@ public class RedigerBruger extends Composite {
 								navn.setEnabled(true);
 								ini.setEnabled(true);
 								cpr.setEnabled(true);
-								pswd.setEnabled(true);
+								passwordBox.setEnabled(true);
 								
 								rediger.setVisible(false);
 								gem.setVisible(true);
@@ -133,8 +134,7 @@ public class RedigerBruger extends Composite {
 							@Override
 							public void onClick(ClickEvent event) {
 								service.redigerBruger(Integer.parseInt(id.getText()),
-										navn.getText(), ini.getText(), cpr.getText(), pswd.getText(),
-										Integer.parseInt(opr.getOprID()+""), 
+										navn.getText(), ini.getText(), cpr.getText(), passwordBox.getText(),
 										new AsyncCallback<Void>() {
 
 									@Override
@@ -161,13 +161,13 @@ public class RedigerBruger extends Composite {
 								navn.setText(opr.getOprNavn());
 								ini.setText(opr.getIni());
 								cpr.setText(opr.getCPR());
-								pswd.setText(opr.getPassword());
+								passwordBox.setText(opr.getPassword());
 								
 								id.setEnabled(false);
 								navn.setEnabled(false);
 								ini.setEnabled(false);
 								cpr.setEnabled(false);
-								pswd.setEnabled(false);
+								passwordBox.setEnabled(false);
 								
 								gem.setVisible(false);
 								annuller.setVisible(false);
