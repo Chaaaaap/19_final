@@ -11,6 +11,7 @@ public class OperatoerDTO implements Serializable {
 	private String oprNavn;
 	private String ini;
 	private String cpr;
+	private int aktiv;
 	
 	public OperatoerDTO(int oprID, String oprNavn, String ini, String cpr, 
 			String password, int aktiv, String type) {
@@ -20,6 +21,7 @@ public class OperatoerDTO implements Serializable {
 		this.oprNavn = oprNavn;
 		this.ini = ini;
 		this.cpr = cpr;
+		this.aktiv = aktiv;
 	}
 	
 	public OperatoerDTO() {
@@ -52,6 +54,10 @@ public class OperatoerDTO implements Serializable {
 
 	public String getCPR() {
 		return cpr;
+	}
+	
+	public int getStatus() {
+		return aktiv;
 	}
 
 

@@ -44,6 +44,18 @@ public class OperatoerServiceImpl extends RemoteServiceServlet implements IOpera
 	public void redigerBruger(int oprID, int old_id, String navn, String ini, String cpr, String password) throws Exception {
 		oprDAO.redigerBruger(oprID, old_id, navn, ini, cpr, password);
 	}
+
+	@Override
+	public void deaktiverBruger(int oprID, int aktiv) throws Exception {
+		oprDAO.deaktiverBruger(oprID, aktiv);
+		
+	}
+
+	@Override
+	public void aktiverBruger(int oprID, int aktiv) throws Exception {
+		oprDAO.aktiverBruger(oprID, aktiv);
+		
+	}
 	
 	
 

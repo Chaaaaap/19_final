@@ -78,4 +78,22 @@ public class OperatoerDAO implements IOperatoerDAO {
 		}
 	}
 
+	public void deaktiverBruger(int oprID, int aktiv) throws Exception{
+		try {
+			connector.doUpdate("UPDATE operatoer SET aktiv = "+0+" WHERE opr_id = "+oprID+" ;");		
+			} catch(Exception e) {
+				throw e;
+			}
+		
+	}
+	
+	public void aktiverBruger(int oprID, int aktiv) throws Exception{
+		try {
+			connector.doUpdate("UPDATE operatoer SET aktiv = "+1+" WHERE opr_id = "+oprID+" ;");		
+			} catch(Exception e) {
+				throw e;
+			}
+		
+	}
+
 }

@@ -37,20 +37,20 @@ public class RedigerBruger extends Composite {
 		service = GWT.create(IOperatoerService.class);
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
-		
+		redigerBruger();
 	
 	}
-	@UiField Button visListe;
+//	@UiField Button visListe;
 	@UiField Label oprID;
 	@UiField Label oprNavn;
 	@UiField Label ini;
 	@UiField Label cpr;
 	@UiField Label password;
 	
-	@UiHandler("visListe")
-	void visListe(ClickEvent e) {
-		redigerBruger();
-	}
+//	@UiHandler("visListe")
+//	void visListe(ClickEvent e) {
+//		redigerBruger();
+//	}
 	
 	private void redigerBruger() {
 		Final_Real.clearContent();
