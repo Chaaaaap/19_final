@@ -17,10 +17,10 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.sun.security.ntlm.Client;
 
 import code.client.Final_Real;
-import code.client.service.IOperatoerService;
-import code.client.service.IOperatoerServiceAsync;
+import code.client.service.OperatoerClient;
 import code.shared.OperatoerDTO;
 
 public class RedigerBruger extends Composite {
@@ -31,9 +31,11 @@ public class RedigerBruger extends Composite {
 	}
 	
 //	private IOperatoerServiceAsync service;
+	private OperatoerClient client;
 
-	public RedigerBruger() {
+	public RedigerBruger(OperatoerClient client) {
 		initWidget(uiBinder.createAndBindUi(this));
+		this.client = client;
 //		service = GWT.create(IOperatoerService.class);
 	}
 	@UiField Button visListe;

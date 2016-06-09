@@ -58,8 +58,8 @@ public class MainMenu extends Composite {
 		}
 		
 		opretBruger.setScheduledCommand(new LaunchCommand(new OpretBruger(client)));
-		redigerBruger.setScheduledCommand(new LaunchCommand(new RedigerBruger()));
-		deaktiverBruger.setScheduledCommand(new LaunchCommand(new DeaktiverBruger()));
+		redigerBruger.setScheduledCommand(new LaunchCommand(new RedigerBruger(client)));
+		deaktiverBruger.setScheduledCommand(new LaunchCommand(new DeaktiverBruger(client)));
 		opretRecept.setScheduledCommand(new LaunchCommand(new OpretRecept()));		
 		redigerRecept.setScheduledCommand(new LaunchCommand(new RedigerRecept()));		
 		visRecepter.setScheduledCommand(new LaunchCommand(new VisRecepter()));		
@@ -71,7 +71,8 @@ public class MainMenu extends Composite {
 		visRaavarebatches.setScheduledCommand(new LaunchCommand(new VisRaavarebatches()));		
 		opretProduktbatch.setScheduledCommand(new LaunchCommand(new OpretProduktbatch()));		
 		redigerProduktbatch.setScheduledCommand(new LaunchCommand(new RedigerProduktbatch()));		
-		visProduktbatches.setScheduledCommand(new LaunchCommand(new VisProduktbatches()));
+//		visProduktbatches.setScheduledCommand(new LaunchCommand(new VisProduktbatches()));
+		visProduktbatches.setScheduledCommand(new Command() {@Override public void execute() {new VisProduktbatches(); } });
 	}
 	
 	@UiField Label loggedIn;

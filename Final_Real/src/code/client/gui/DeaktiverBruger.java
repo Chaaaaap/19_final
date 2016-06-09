@@ -5,6 +5,8 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
+import code.client.service.OperatoerClient;
+
 public class DeaktiverBruger extends Composite {
 
 	private static DeaktiverBrugerUiBinder uiBinder = GWT.create(DeaktiverBrugerUiBinder.class);
@@ -12,7 +14,7 @@ public class DeaktiverBruger extends Composite {
 	interface DeaktiverBrugerUiBinder extends UiBinder<Widget, DeaktiverBruger> {
 	}
 
-	public DeaktiverBruger() {
+	public DeaktiverBruger(OperatoerClient client) {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
