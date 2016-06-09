@@ -37,6 +37,8 @@ public class RedigerBruger extends Composite {
 		service = GWT.create(IOperatoerService.class);
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
+		
+	
 	}
 	@UiField Button visListe;
 	@UiField Label oprID;

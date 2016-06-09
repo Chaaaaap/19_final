@@ -15,11 +15,11 @@
 	<g:HTMLPanel>
 	    <g:Button ui:field="visListe" text="Vis liste" />
 	    <g:HorizontalPanel>
-	        <g:Label ui:field="oprID" text="Operatør ID" styleName="{style.Labels}"/>
-	        <g:Label ui:field="oprNavn" text="Operatør navn" styleName="{style.Labels}"/>
-	        <g:Label ui:field="ini" text="Initialer" styleName="{style.Labels}"/>
-	        <g:Label ui:field="cpr" text="CPR-nummer" styleName="{style.Labels}"/>
-	        <g:Label ui:field="password" text="Password" styleName="{style.Labels}"/>
+	        <g:Label ui:field="oprID" styleName="{style.Labels}"/>
+	        <g:Label ui:field="oprNavn" styleName="{style.Labels}"/>
+	        <g:Label ui:field="ini" styleName="{style.Labels}"/>
+	        <g:Label ui:field="cpr" styleName="{style.Labels}"/>
+	        <g:Label ui:field="password" styleName="{style.Labels}"/>
 	    </g:HorizontalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

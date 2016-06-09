@@ -16,7 +16,6 @@ import com.google.gwt.user.client.ui.Widget;
 import code.client.Final_Real;
 import code.client.service.OperatoerClient;
 import code.shared.OperatoerDTO;
-import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 
 public class MainMenu extends Composite {
 
@@ -35,8 +34,9 @@ public class MainMenu extends Composite {
 		final OperatoerClient oprClient = client;
 		this.client = oprClient;
 		
-		loggedIn.setWidth("300px");
+		loggedIn.setWidth("200px");
 		loggedIn.setText("Du er logget ind som: "+opr.getOprNavn());
+		
 		
 		menuBar.setAutoOpen(true);
 		menuBar.setAnimationEnabled(true);
@@ -91,7 +91,8 @@ public class MainMenu extends Composite {
 	}
 	
 	@UiField Label loggedIn;
-
+	@UiField Button logOut;
+	
 	@UiField Button afvej;
 	@UiField Button skiftPassword;
 	@UiField MenuBar menuBar;
@@ -139,7 +140,10 @@ public class MainMenu extends Composite {
 		Final_Real.attachContent(afveje);
 	}
 	
-
+	@UiHandler("logOut")
+	void logOut(ClickEvent e) {
+		
+	}
 //	private class LaunchCommand implements Command{
 //
 //		Composite c;
