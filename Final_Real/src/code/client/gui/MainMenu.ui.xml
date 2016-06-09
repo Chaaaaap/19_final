@@ -10,10 +10,6 @@
 		margin-bottom: 15px;
 		}
 
-		.hPanel {
-		margin-left: auto;
- 		margin-right: auto;
-		}
 
 	</ui:style>
 	<g:HTMLPanel>
@@ -26,7 +22,7 @@
 			</g:cell>
 		</g:HorizontalPanel>
 
-		<g:HorizontalPanel styleName="{style.hPanel}">
+		<g:HorizontalPanel>
 			<g:Button ui:field="afvej" styleName="{style.menuButton}"
 				text="Afvej" />
 			<g:Button ui:field="skiftPassword" styleName="{style.menuButton}"
