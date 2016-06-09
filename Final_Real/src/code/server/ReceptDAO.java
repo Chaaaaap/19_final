@@ -12,8 +12,8 @@ public class ReceptDAO implements IReceptDAO {
 
 	@Override
 	public void addRecept(String receptNavn, int recept_id, int raavare_id, int nom_netto, int tolerance) throws Exception{
-		String query = "INSERT INTO raavare VALUES("+receptNavn+
-				", '"+recept_id+"', '"+raavare_id+"', '"+nom_netto+"', '"+tolerance+"' );";
+		String query = "INSERT INTO recept VALUES('"+receptNavn+
+				"', "+recept_id+", "+raavare_id+", "+nom_netto+", "+tolerance+" );";
 		try {
 			connector.doUpdate(query);
 		} catch(Exception e) 
@@ -46,7 +46,7 @@ public class ReceptDAO implements IReceptDAO {
 	public void redigerRecept(String receptNavn, int recept_id, int raavare_id, int nom_netto, int tolerance, int glid) 
 			throws Exception {
 		try {
-			connector.doUpdate("UPDATE recept SET receptNavn = "+receptNavn+", recept_id = "
+			connector.doUpdate("UPDATE recept SET receptNavn = '"+receptNavn+"', recept_id = "
 					+recept_id+", raavare_id = "+raavare_id+", nom_netto = "+nom_netto+", tolerance = "+tolerance+" "
 					+ "WHERE recept_id = "+glid+" ;)");		
 		} catch(Exception e) {
