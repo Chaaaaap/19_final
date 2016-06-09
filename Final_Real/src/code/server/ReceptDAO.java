@@ -28,7 +28,7 @@ public class ReceptDAO implements IReceptDAO {
 		ArrayList<ReceptDTO> rvList = new ArrayList<ReceptDTO>();
 		ResultSet resultSet;
 		try {
-			resultSet = connector.doQuery("SELECT * FROM raavare");
+			resultSet = connector.doQuery("SELECT * FROM recept NATURAL JOIN receptkomponent");
 			if(!resultSet.next()) throw new Exception("Listen er tom");
 			do {
 				rvList.add(new ReceptDTO(resultSet.getString("receptNavn"),resultSet.getInt("recept_id"),
