@@ -6,6 +6,7 @@ import code.shared.ReceptDTO;
 
 public interface IReceptDAO {
 
-	void addRecept();
-	ArrayList<ReceptDTO> getRecepter();
+	void addRecept(String receptNavn, int recept_id, int raavare_id, int nom_netto, int tolerance) throws Exception;
+	ArrayList<ReceptDTO> getRecepter() throws Exception;
+	void redigerRecept(String receptNavn, int recept_id, int raavare_id, int nom_netto, int tolerance, int glid) throws Exception;
 }

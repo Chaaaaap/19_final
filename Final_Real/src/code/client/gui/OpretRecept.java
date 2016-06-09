@@ -11,6 +11,8 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
+import code.client.Final_Real;
+
 public class OpretRecept extends Composite {
 
 	private static OpretReceptUiBinder uiBinder = GWT.create(OpretReceptUiBinder.class);
@@ -20,6 +22,9 @@ public class OpretRecept extends Composite {
 
 	public OpretRecept() {
 		initWidget(uiBinder.createAndBindUi(this));
+		
+		Final_Real.clearContent();
+		Final_Real.attachContent(this);
 
 		maengde_lbl.setVisible(false);
 		tol_lbl.setVisible(false);
