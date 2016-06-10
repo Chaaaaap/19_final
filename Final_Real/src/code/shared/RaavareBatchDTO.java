@@ -6,11 +6,11 @@ import java.io.Serializable;
 public class RaavareBatchDTO implements Serializable {
 
 	private int mængde;
-	private int rb_id;
+	private int raavareBatch_id;
 	private int raavare_id;
 
-	public RaavareBatchDTO(int rb_id, int raavare_id, int mængde) {
-		this.rb_id = rb_id;
+	public RaavareBatchDTO(int raavareBatch_id, int raavare_id, int mængde) {
+		this.raavareBatch_id = raavareBatch_id;
 		this.raavare_id = raavare_id;
 		this.mængde = mængde;
 	}
@@ -19,8 +19,8 @@ public class RaavareBatchDTO implements Serializable {
 		return mængde;
 	}
 
-	public int getRb_id() {
-		return rb_id;
+	public int getRaavareBatch_id() {
+		return raavareBatch_id;
 	}
 
 	public int getRaavare_id() {
