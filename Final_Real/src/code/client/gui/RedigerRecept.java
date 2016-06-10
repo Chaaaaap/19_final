@@ -42,20 +42,21 @@ public class RedigerRecept extends Composite
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
 		service = GWT.create(IReceptService.class);
+		redigerRecept();
 	}
 
-	@UiField Button visListe;
+//	@UiField Button visListe;
 	@UiField Label receptNavnLabel;
 	@UiField Label receptIdLabel;
 	@UiField Label raavareIdLabel;
 	@UiField Label nomNettoLabel;
 	@UiField Label toleranceLabel;
 
-	@UiHandler("visListe")
-	void visListe(ClickEvent e) 
-	{
-		redigerRecept();
-	}
+//	@UiHandler("visListe")
+//	void visListe(ClickEvent e) 
+//	{
+//		redigerRecept();
+//	}
 
 	private void redigerRecept() 
 	{

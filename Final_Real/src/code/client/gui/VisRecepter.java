@@ -6,6 +6,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -38,20 +39,22 @@ public class VisRecepter extends Composite
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
 		service = GWT.create(IReceptService.class);
+		visRaavarer();
 	}
 
-	@UiField Button visListe;
+//	@UiField Button visListe;
 	@UiField Label receptNavnLabel;
 	@UiField Label receptIdLabel;
 	@UiField Label raavareIdLabel;
 	@UiField Label nomNettoLabel;
 	@UiField Label toleranceLabel;
-	
+//	@UiHandler("visListe")
 
-	void visListe(ClickEvent e) 
-	{
-		visRaavarer();
-	}
+
+//	void visListe(ClickEvent e) 
+//	{
+//		visRaavarer();
+//	}
 	private void visRaavarer() 
 	{
 		Final_Real.clearContent();
