@@ -5,8 +5,10 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
-		<g:Label ui:field="label" text="Indtast dit opr_ID"/>
-		<g:TextBox ui:field="textbox"/>
-		<g:Button ui:field="OK" text="OK!!!"/>
+		<g:VerticalPanel>
+			<g:Label ui:field="label" text="Indtast dit Operatør ID" />
+			<g:TextBox ui:field="textbox" />
+			<g:Button ui:field="OK" text="OK!!!" />
+		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
