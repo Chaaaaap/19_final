@@ -158,7 +158,7 @@ public class RedigerRecept extends Composite
 										Integer.parseInt(raavareID.getText()), 
 										Integer.parseInt(nomNetto.getText()), 
 										Integer.parseInt(tolerance.getText()),
-										Integer.parseInt(rv.getRecept_id()+""),
+										rv.getRecept_id(),
 										new AsyncCallback<Void>() 
 								{
 
