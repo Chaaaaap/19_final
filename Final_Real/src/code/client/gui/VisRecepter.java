@@ -39,7 +39,7 @@ public class VisRecepter extends Composite
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
 		service = GWT.create(IReceptService.class);
-		visRaavarer();
+		visRecept();
 	}
 
 //	@UiField Button visListe;
@@ -55,7 +55,7 @@ public class VisRecepter extends Composite
 //	{
 //		visRaavarer();
 //	}
-	private void visRaavarer() 
+	private void visRecept() 
 	{
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
