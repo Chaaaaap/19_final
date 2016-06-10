@@ -29,6 +29,7 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 			con.rollback();
 			throw e;
 		} finally {
+			con.commit();
 			con.setAutoCommit(true);
 		}
 		
@@ -49,6 +50,25 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 			throw e;
 		}
 		return null;
+	}
+
+	@Override
+	public void redigerProduktBatch(int oprID, int pb_id, int rb_id, int tara, int netto, int recept_id, int oldPb_id) throws Exception {
+		Connection con = connector.getConnection();
+		
+		try {
+			con.setAutoCommit(false);
+			connector.doUpdate("UPDATE produktbatch SET pb_id = "+pb_id+", recept_id ="+recept_id+" WHERE pb_id = "+oldPb_id+";");
+			connector.doUpdate("UPDATE produktbatchkomponent SET pb_id = "+pb_id+", rb_id = "+pb_id+", tara = "+tara+
+					", netto = "+netto+", opr_id = "+oprID+" WHERE pb_id = "+oldPb_id+";");
+			
+		} catch(Exception e) {
+			con.rollback();
+			throw e;
+		} finally {
+			con.commit();
+			con.setAutoCommit(true);
+		}
 	}
 
 }
