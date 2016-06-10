@@ -15,7 +15,6 @@
 
 	</ui:style>
 	<g:HTMLPanel>
-		<g:Button ui:field="visListe" text="Vis liste" />
 		<g:HorizontalPanel>
 			<g:Label ui:field="receptNavnLabel" styleName="{style.Labels}" />
 			<g:Label ui:field="receptIdLabel" styleName="{style.Labels}" />
