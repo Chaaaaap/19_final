@@ -86,15 +86,17 @@ public class VisRecepter extends Composite
 						
 						Label receptNavn = new Label(raavare.getReceptNavn());
 						Label receptId = new Label(raavare.getRecept_id()+"");
-						Label raavareId = new Label(raavare.getRaavare_id()+"");
-						Label nomNetto = new Label(raavare.getNom_netto()+"");
-						Label tolerance = new Label(raavare.getTolerance()+"");
+						//TODO Skal laves
+//						Label raavareId = new Label(raavare.getRaavare_id()+"");
+//						Label nomNetto = new Label(raavare.getNom_netto()+"");
+//						Label tolerance = new Label(raavare.getTolerance()+"");
 						
 						hPanel.add(receptNavn);
 						hPanel.add(receptId);
-						hPanel.add(raavareId);
-						hPanel.add(nomNetto);
-						hPanel.add(tolerance);
+						//TODO Skal laves
+//						hPanel.add(raavareId);
+//						hPanel.add(nomNetto);
+//						hPanel.add(tolerance);
 						vPanel.add(hPanel);
 					}
 				}

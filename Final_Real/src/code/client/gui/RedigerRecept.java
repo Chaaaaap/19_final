@@ -95,9 +95,10 @@ public class RedigerRecept extends Composite
 
 						receptNavn.setText(recept.getReceptNavn());
 						receptID.setText(recept.getRecept_id()+"");
-						raavareID.setText(recept.getRaavare_id()+"");
-						nomNetto.setText(recept.getNom_netto()+"");
-						tolerance.setText(recept.getTolerance()+"");
+						//TODO Skal laves
+//						raavareID.setText(recept.getRaavare_id()+"");
+//						nomNetto.setText(recept.getNom_netto()+"");
+//						tolerance.setText(recept.getTolerance()+"");
 
 						rediger.setStyleName("style.Rediger");
 						gem.setStyleName("style.Rediger");
@@ -179,9 +180,10 @@ public class RedigerRecept extends Composite
 									public void onClick(ClickEvent event) {
 										receptNavn.setText(rv.getReceptNavn());
 										receptID.setText(rv.getRecept_id()+"");
-										raavareID.setText(rv.getRaavare_id()+"");
-										nomNetto.setText(rv.getNom_netto()+"");
-										tolerance.setText(rv.getTolerance()+"");
+										//TODO Skal laves
+//										raavareID.setText(rv.getRaavare_id()+"");
+//										nomNetto.setText(rv.getNom_netto()+"");
+//										tolerance.setText(rv.getTolerance()+"");
 
 										receptNavn.setEnabled(false);
 										receptID.setEnabled(false);

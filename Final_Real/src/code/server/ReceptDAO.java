@@ -12,7 +12,7 @@ public class ReceptDAO implements IReceptDAO {
 	private Connector connector = new Connector();
 
 	@Override
-	public void addRecept(String receptNavn, int recept_id, int[] raavare_id, int[] nom_netto, int[] tolerance) throws Exception{
+	public void addRecept(String receptNavn, int recept_id, int raavare_id, int nom_netto, int tolerance) throws Exception{
 		Connection con = connector.getConnection();
 		try {
 			con.setAutoCommit(false);
@@ -32,24 +32,24 @@ public class ReceptDAO implements IReceptDAO {
 	@Override
 	public ArrayList<ReceptDTO> getRecepter() throws Exception {
 		ArrayList<ReceptDTO> rvList = new ArrayList<ReceptDTO>();
-		ResultSet resultSet;
-		try {
-			resultSet = connector.doQuery("SELECT * FROM recept NATURAL JOIN receptkomponent");
-			if(!resultSet.first()) throw new Exception("Listen er tom");
-			do {
-				rvList.add(new ReceptDTO(resultSet.getString("recept_navn"),resultSet.getInt("recept_id"),
-						resultSet.getInt("raavare_id"), resultSet.getInt("nom_netto"),resultSet.getInt("tolerance")));
-
-			} while(resultSet.next());
-		} catch(Exception e) {
-			throw e;
-		} 
+//		ResultSet resultSet;
+//		try {
+//			resultSet = connector.doQuery("SELECT * FROM recept NATURAL JOIN receptkomponent");
+//			if(!resultSet.first()) throw new Exception("Listen er tom");
+//			do {
+//				rvList.add(new ReceptDTO(resultSet.getString("recept_navn"),resultSet.getInt("recept_id"),
+//						resultSet.getInt("raavare_id"), resultSet.getInt("nom_netto"),resultSet.getInt("tolerance")));
+//
+//			} while(resultSet.next());
+//		} catch(Exception e) {
+//			throw e;
+//		} 
 		return rvList;
 
 	}
 
 	@Override
-	public void redigerRecept(String receptNavn, int recept_id, int[] raavare_id, int[] nom_netto, int[] tolerance, int glid) 
+	public void redigerRecept(String receptNavn, int recept_id, int raavare_id, int nom_netto, int tolerance, int glid) 
 			throws Exception {
 		Connection con = connector.getConnection();
 		try {
