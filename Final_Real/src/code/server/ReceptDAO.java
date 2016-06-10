@@ -1,5 +1,6 @@
 package code.server;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -13,13 +14,20 @@ public class ReceptDAO implements IReceptDAO {
 	@Override
 	public void addRecept(String receptNavn, int recept_id, int raavare_id, int nom_netto, int tolerance) throws Exception{
 		// TODO Skal laves om med transaction pewpew
+		Connection con = connector.getConnection();
 		String query = "INSERT INTO recept VALUES('"+receptNavn+
 				"', "+recept_id+", "+raavare_id+", "+nom_netto+", "+tolerance+" );";
 		try {
-			connector.doUpdate(query);
-		} catch(Exception e) 
-		{
+			con.setAutoCommit(false);
+			connector.doUpdate("INSERT INTO recept VALUES("+recept_id+", '"+receptNavn+"';");
+			connector.doUpdate("INSERT INTO receptkomponent VALUES("+recept_id+", "+raavare_id+", "+nom_netto+", "+tolerance+";");
+			
+		} catch(Exception e) {
+			con.rollback();
 			throw e;
+		} finally {
+			con.commit();
+			con.setAutoCommit(true);
 		}
 
 	}
