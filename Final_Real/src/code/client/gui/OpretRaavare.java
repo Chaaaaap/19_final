@@ -23,7 +23,7 @@ public class OpretRaavare extends Composite {
 
 	interface OpretRaavareUiBinder extends UiBinder<Widget, OpretRaavare> {
 	}
-	
+
 	private IRaavareServiceAsync service;
 
 	public OpretRaavare() {
@@ -31,29 +31,35 @@ public class OpretRaavare extends Composite {
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
 		service = GWT.create(IRaavareService.class);
-		
+
 	}
-	
+
 	@UiField TextBox boxID;
 	@UiField TextBox boxNavn;
 	@UiField TextBox boxSupplier;
 	@UiField Button submit;
-	
+
 	@UiHandler("submit")
 	void opretRaavare(ClickEvent e) {
-		service.addRaavare(Integer.parseInt(boxID.getText()), 
+		if(boxID.getText() == "" || boxNavn.getText() == "" || boxSupplier.getText() == "") {
+			Window.alert("Alle felter skal udfyldes!");
+		}else { service.addRaavare(Integer.parseInt(boxID.getText()), 
 				boxNavn.getText(), boxSupplier.getText(), new AsyncCallback<Void>() {
 
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert(caught.getMessage());
-					}
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert(caught.getMessage());
+			}
 
-					@Override
-					public void onSuccess(Void result) {
-						Window.alert("Raavaren er oprettet");
-					}
-			
+			@Override
+			public void onSuccess(Void result) {
+				Window.alert("Raavaren er oprettet");
+				boxID.setText("");
+				boxNavn.setText("");
+				boxSupplier.setText("");
+			}
+
 		});
+		}
 	}
 }
