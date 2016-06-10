@@ -7,7 +7,7 @@
 	<g:HTMLPanel>
 		<g:VerticalPanel>
 			<g:Label text="Indtast råvarebatch nr." />
-			<g:TextBox ui:field="boxID" />
+			<g:TextBox ui:field="boxRaavareBatchID" />
 			<g:Label text="Indtast råvare nr." />
 			<g:ListBox ui:field="boxRaavareNr" />
 			<g:Label text="Angiv Mængde" />
