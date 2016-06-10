@@ -1,13 +1,16 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
-	<ui:style> .Labels {
+	<ui:style>
+		.Labels
+		{
 		font-size:18px;
 		width:150px;
 		text-align:center;
 		}
 
-		.Rediger {
+		.Rediger
+		{
 		margin-top:0;
 		}
 
