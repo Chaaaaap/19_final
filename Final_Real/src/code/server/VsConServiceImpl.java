@@ -7,11 +7,11 @@ import code.client.service.IServiceVsCon;
 @SuppressWarnings("serial")
 public class VsConServiceImpl extends RemoteServiceServlet implements IServiceVsCon{
 
-	private ConnectorVaegt vsCon = new ConnectorVaegt();
+	private VsConController vsCon = new VsConController();
 	
 	@Override
 	public void ConnectorVaegt() throws Exception {
-		vsCon.VaegtConnect();
+		vsCon.run();
 	}
 
 }
