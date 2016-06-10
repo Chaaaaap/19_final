@@ -16,8 +16,8 @@ public class VsConClient {
 		endpoint.setServiceEntryPoint(URL);
 	}
 	
-	public void Simulator() {
-		service.Simulator(new AsyncCallback<Void>() {
+	public void VaegtConnect() {
+		service.ConnectorVaegt(new AsyncCallback<Void>() {
 
 			@Override
 			public void onFailure(Throwable caught) {

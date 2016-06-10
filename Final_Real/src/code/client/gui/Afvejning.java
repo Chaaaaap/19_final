@@ -63,7 +63,7 @@ public class Afvejning extends Composite {
 		textIP.setVisible(false);
 		okIP.setVisible(false);
 
-		
+		vsclient.VaegtConnect();
 		
 	}
 

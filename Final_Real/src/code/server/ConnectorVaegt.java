@@ -1,4 +1,4 @@
-package code.client.service;
+package code.server;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -12,9 +12,9 @@ import java.net.UnknownHostException;
 
 public class ConnectorVaegt {
 
-	static Socket socket;
+	private Socket socket;
 	
-	public static void main(String[] args) {
+	public void VaegtConnect() {
 
 		try {
 			socket = new Socket("169.254.2.2", 8000);
