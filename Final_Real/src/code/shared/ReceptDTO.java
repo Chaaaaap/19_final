@@ -5,15 +5,13 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class ReceptDTO implements Serializable {
 	
-	private int[] raavare_id, nom_netto, tolerance;
+	private ReceptKomponentDTO[] komp;
 	private int recept_id;
 	private String receptNavn;
 	
-	public ReceptDTO(String receptNavn, int recept_id, int[] raavare_id, int[] nom_netto, int[] tolerance) {
+	public ReceptDTO(String receptNavn, int recept_id, ReceptKomponentDTO[] komp) {
 		this.recept_id = recept_id;
-		this.raavare_id = raavare_id;
-		this.nom_netto = nom_netto;
-		this.tolerance = tolerance;
+		this.komp = komp;
 		this.receptNavn = receptNavn;
 	}
 	
@@ -23,16 +21,8 @@ public class ReceptDTO implements Serializable {
 		return recept_id;
 	}
 
-	public int[] getRaavare_id() {
-		return raavare_id;
-	}
-
-	public int[] getNom_netto() {
-		return nom_netto;
-	}
-
-	public int[] getTolerance() {
-		return tolerance;
+	public ReceptKomponentDTO[] getKomp() {
+		return komp;
 	}
 
 	public String getReceptNavn() {
