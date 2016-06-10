@@ -58,23 +58,19 @@ public class RedigerRecept extends Composite
 //		redigerRecept();
 //	}
 
-	private void redigerRecept() 
-	{
+	private void redigerRecept() {
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
 
-		service.getRecept(new AsyncCallback<ArrayList<ReceptDTO>>() 
-		{
+		service.getRecept(new AsyncCallback<ArrayList<ReceptDTO>>() {
 
 			@Override
-			public void onFailure(Throwable caught) 
-			{
+			public void onFailure(Throwable caught) {
 				Window.alert(caught.getMessage());
 			}
 
 			@Override
-			public void onSuccess(ArrayList<ReceptDTO> result) 
-			{
+			public void onSuccess(ArrayList<ReceptDTO> result) {
 				VerticalPanel vPanel = new VerticalPanel();
 				receptNavnLabel.setText("Recept Navn");
 				receptIdLabel.setText("Recept ID");
@@ -82,10 +78,8 @@ public class RedigerRecept extends Composite
 				nomNettoLabel.setText("nom-Netto");
 				toleranceLabel.setText("Tolerance");
 
-				if(!result.isEmpty()) 
-				{
-					for (ReceptDTO recept : result) 
-					{
+				if(!result.isEmpty()) {
+					for (ReceptDTO recept : result) {
 						final ReceptDTO rv = recept;
 						final HorizontalPanel hPanel = new HorizontalPanel();
 
@@ -128,12 +122,10 @@ public class RedigerRecept extends Composite
 						hPanel.add(annuller);
 						vPanel.add(hPanel);
 
-						rediger.addClickHandler(new ClickHandler() 
-						{
+						rediger.addClickHandler(new ClickHandler() {
 
 							@Override
-							public void onClick(ClickEvent event) 
-							{
+							public void onClick(ClickEvent event) {
 								receptNavn.setEnabled(true);
 								receptID.setEnabled(true);
 								raavareID.setEnabled(true);
@@ -147,41 +139,44 @@ public class RedigerRecept extends Composite
 
 						});
 
-						gem.addClickHandler(new ClickHandler() 
-						{
+						gem.addClickHandler(new ClickHandler() {
 
 							@Override
-							public void onClick(ClickEvent event) 
-							{
+							public void onClick(ClickEvent event) {
 								service.redigerRecept(receptNavn.getText(), 
 										Integer.parseInt(receptID.getText()), 
 										Integer.parseInt(raavareID.getText()), 
 										Integer.parseInt(nomNetto.getText()), 
 										Integer.parseInt(tolerance.getText()),
 										rv.getRecept_id(),
-										new AsyncCallback<Void>() 
-								{
+										new AsyncCallback<Void>() {
 
 									@Override
-									public void onFailure(Throwable caught) 
-									{
+									public void onFailure(Throwable caught) {
 										Window.alert(caught.getMessage());
 									}
 
 									@Override
-									public void onSuccess(Void result) 
-									{
-										// TODO noget meningsfuldt.
+									public void onSuccess(Void result) {
+										
+										rediger.setVisible(true);
+										gem.setVisible(false);
+										annuller.setVisible(false);
+										
+										receptNavn.setEnabled(false);
+										receptID.setEnabled(false);
+										raavareID.setEnabled(false);
+										nomNetto.setEnabled(false);
+										tolerance.setEnabled(false);
+										
 									}
 
 								});
 
-								annuller.addClickHandler(new ClickHandler() 
-								{
+								annuller.addClickHandler(new ClickHandler() {
 
 									@Override
-									public void onClick(ClickEvent event) 
-									{
+									public void onClick(ClickEvent event) {
 										receptNavn.setText(rv.getReceptNavn());
 										receptID.setText(rv.getRecept_id()+"");
 										raavareID.setText(rv.getRaavare_id()+"");
