@@ -45,6 +45,9 @@ public class Afvejning extends Composite {
 
 	@UiHandler("OK")
 	void onClick(ClickEvent e) {
+		
+		Window.alert("Mr MUFFINMAN");
+		
 		if(Integer.parseInt(textbox.getText()) == dto.getOprID()){
 
 			label.setVisible(false);
