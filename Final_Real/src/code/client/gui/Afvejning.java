@@ -36,8 +36,9 @@ public class Afvejning extends Composite {
 
 	@UiHandler("OK")
 	void onClick(ClickEvent e) {
-		if(Integer.parseInt(textbox.getText()) == dto.getOprID())
+		if(Integer.parseInt(textbox.getText()) == dto.getOprID()){
 		vsclient.Simulator();
+		}
 	}
 	
 }
