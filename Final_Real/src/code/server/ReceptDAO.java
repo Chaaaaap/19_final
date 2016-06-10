@@ -16,8 +16,8 @@ public class ReceptDAO implements IReceptDAO {
 		Connection con = connector.getConnection();
 		try {
 			con.setAutoCommit(false);
-			connector.doUpdate("INSERT INTO recept VALUES("+recept_id+", '"+receptNavn+"';");
-			connector.doUpdate("INSERT INTO receptkomponent VALUES("+recept_id+", "+raavare_id+", "+nom_netto+", "+tolerance+";");
+			connector.doUpdate("INSERT INTO recept VALUES("+recept_id+", '"+receptNavn+"');");
+			connector.doUpdate("INSERT INTO receptkomponent VALUES("+recept_id+", "+raavare_id+", "+nom_netto+", "+tolerance+");");
 			
 		} catch(Exception e) {
 			con.rollback();
@@ -37,7 +37,7 @@ public class ReceptDAO implements IReceptDAO {
 			resultSet = connector.doQuery("SELECT * FROM recept NATURAL JOIN receptkomponent");
 			if(!resultSet.first()) throw new Exception("Listen er tom");
 			do {
-				rvList.add(new ReceptDTO(resultSet.getString("receptNavn"),resultSet.getInt("recept_id"),
+				rvList.add(new ReceptDTO(resultSet.getString("recept_navn"),resultSet.getInt("recept_id"),
 						resultSet.getInt("raavare_id"), resultSet.getInt("nom_netto"),resultSet.getInt("tolerance")));
 
 			} while(resultSet.next());
