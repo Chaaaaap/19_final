@@ -11,7 +11,7 @@ import code.shared.ProduktBatchDTO;
 public class ProduktBatchDAO implements IProduktbatchDAO {
 	
 	Connector connector = new Connector();
-	ArrayList<ProduktBatchDTO> produktList;
+//	ArrayList<ProduktBatchDTO> produktList;
 	Connection con;
 
 	@Override
@@ -37,10 +37,11 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 
 	@Override
 	public ArrayList<ProduktBatchDTO> getProduktBatches() throws SQLException {
-		
+		ArrayList<ProduktBatchDTO> produktList = new ArrayList<ProduktBatchDTO>();
+		ResultSet rs;
 		try {
-			ResultSet rs = connector.doQuery("SELECT * FROM produktbatch NATURAL JOIN produktbatchkomponent");
-			if(!rs.first()) throw new SQLException("Der findes ingen produktbatches.");
+			rs = connector.doQuery("SELECT * FROM produktbatch NATURAL JOIN produktbatchkomponent");
+			if(!rs.next()) throw new SQLException("Der findes ingen produktbatches.");
 			do {
 				produktList.add(new ProduktBatchDTO(rs.getInt("pb_id"), rs.getString("status"),
 						rs.getInt("recept_id"), rs.getInt("tara"), rs.getInt("netto"), 
@@ -49,7 +50,7 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 		} catch(SQLException e) {
 			throw e;
 		}
-		return null;
+		return produktList;
 	}
 
 	@Override
