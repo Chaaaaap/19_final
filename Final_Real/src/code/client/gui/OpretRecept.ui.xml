@@ -23,11 +23,7 @@
 			<g:VerticalPanel>
 				<g:Label text="Vælg råvare" />
 				<g:ListBox ui:field="boxType" styleName="{style.ListBox}">
-					<g:item value="blank"></g:item>
-					<g:item value="operatør">operatør</g:item>
-					<g:item value="værkfører">værkfører</g:item>
-					<g:item value="farmaceut">farmaceut</g:item>
-					<g:item value="administrator">administrator</g:item>
+				    <g:item value="blank"></g:item>
 				</g:ListBox>
 				<g:Label text="Indtast mængde" ui:field="maengde_lbl" />
 				<g:TextBox ui:field="maengdeBox" />
@@ -39,10 +35,6 @@
 				<g:Label text="Vælg råvare" />
 				<g:ListBox ui:field="boxType1" styleName="{style.ListBox}">
 					<g:item value="blank"></g:item>
-					<g:item value="operatør">operatør</g:item>
-					<g:item value="værkfører">værkfører</g:item>
-					<g:item value="farmaceut">farmaceut</g:item>
-					<g:item value="administrator">administrator</g:item>
 				</g:ListBox>
 				<g:Label text="Indtast mængde" ui:field="maengde_lbl1" />
 				<g:TextBox ui:field="maengdeBox1" />
@@ -54,10 +46,6 @@
 				<g:Label text="Vælg råvare" ui:field="raavare_lbl2"/>
 				<g:ListBox ui:field="boxType2" styleName="{style.ListBox}">
 					<g:item value="blank"></g:item>
-					<g:item value="operatør">operatør</g:item>
-					<g:item value="værkfører">værkfører</g:item>
-					<g:item value="farmaceut">farmaceut</g:item>
-					<g:item value="administrator">administrator</g:item>
 				</g:ListBox>
 				<g:Label text="Indtast mængde" ui:field="maengde_lbl2" />
 				<g:TextBox ui:field="maengdeBox2" />
@@ -69,10 +57,6 @@
 				<g:Label text="Vælg råvare" ui:field="raavare_lbl3"/>
 				<g:ListBox ui:field="boxType3" styleName="{style.ListBox}">
 					<g:item value="blank"></g:item>
-					<g:item value="operatør">operatør</g:item>
-					<g:item value="værkfører">værkfører</g:item>
-					<g:item value="farmaceut">farmaceut</g:item>
-					<g:item value="administrator">administrator</g:item>
 				</g:ListBox>
 				<g:Label text="Indtast mængde" ui:field="maengde_lbl3" />
 				<g:TextBox ui:field="maengdeBox3" />
@@ -84,16 +68,13 @@
 				<g:Label text="Vælg råvare" ui:field="raavare_lbl4"/>
 				<g:ListBox ui:field="boxType4" styleName="{style.ListBox}">
 					<g:item value="blank"></g:item>
-					<g:item value="operatør">operatør</g:item>
-					<g:item value="værkfører">værkfører</g:item>
-					<g:item value="farmaceut">farmaceut</g:item>
-					<g:item value="administrator">administrator</g:item>
 				</g:ListBox>
 				<g:Label text="Indtast mængde" ui:field="maengde_lbl4" />
 				<g:TextBox ui:field="maengdeBox4" />
 				<g:Label text="Indtast tolerance" ui:field="tol_lbl4" />
 				<g:TextBox ui:field="tolBox4" />
 			</g:VerticalPanel>
+	
 		</g:HorizontalPanel>
 		<g:HorizontalPanel width="100%">
 			<g:cell horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE">
