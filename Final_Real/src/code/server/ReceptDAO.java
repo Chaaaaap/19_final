@@ -30,7 +30,7 @@ public class ReceptDAO implements IReceptDAO {
 		ResultSet resultSet;
 		try {
 			resultSet = connector.doQuery("SELECT * FROM recept NATURAL JOIN receptkomponent");
-			if(!resultSet.next()) throw new Exception("Listen er tom");
+			if(!resultSet.first()) throw new Exception("Listen er tom");
 			do {
 				rvList.add(new ReceptDTO(resultSet.getString("receptNavn"),resultSet.getInt("recept_id"),
 						resultSet.getInt("raavare_id"), resultSet.getInt("nom_netto"),resultSet.getInt("tolerance")));
