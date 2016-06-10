@@ -28,6 +28,7 @@ public class DeaktiverBruger extends Composite {
 	interface DeaktiverBrugerUiBinder extends UiBinder<Widget, DeaktiverBruger> {
 	}
 	private IOperatoerServiceAsync service;
+	private OperatoerDTO opr;
 
 	public DeaktiverBruger() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -65,143 +66,139 @@ public class DeaktiverBruger extends Composite {
 
 				if(!result.isEmpty() ) {
 					for (OperatoerDTO operatoer : result) {
-						final OperatoerDTO opr = operatoer;
-						final HorizontalPanel hPanel = new HorizontalPanel();
-						final Label id = new Label();
-						final Label navn = new Label();
-						final Label ini = new Label();
-						final Label cpr = new Label();
-						final Label status = new Label();
-						final Button deaktiver = new Button("Deaktiver");
-						final Button ok = new Button("OK");
-						final Button annuller = new Button("Annuller");
-						final Button aktiver = new Button("Aktiver");
+						if(operatoer.getOprID() != 1) {
+							final OperatoerDTO opr = operatoer;
+							final HorizontalPanel hPanel = new HorizontalPanel();
+							final Label id = new Label();
+							final Label navn = new Label();
+							final Label ini = new Label();
+							final Label cpr = new Label();
+							final Label status = new Label();
+							final Button deaktiver = new Button("Deaktiver");
+							final Button ok = new Button("OK");
+							final Button annuller = new Button("Annuller");
+							final Button aktiver = new Button("Aktiver");
 
-						if(opr.getStatus() == 1) {
-							id.setText(operatoer.getOprID()+"");
-							navn.setText(operatoer.getOprNavn());
-							ini.setText(operatoer.getIni()+"");
-							cpr.setText(operatoer.getCPR()+"");
-							status.setText("Ja");
-						}else {
-							id.setText(operatoer.getOprID()+"");
-							navn.setText(operatoer.getOprNavn());
-							ini.setText(operatoer.getIni()+"");
-							cpr.setText(operatoer.getCPR()+"");
-							status.setText("Nej");	
-						}
-
-						deaktiver.setStyleName("style.Rediger");
-						ok.setStyleName("style.Rediger");
-						annuller.setStyleName("style.Rediger");
-						aktiver.setStyleName("style.Rediger");
-
-						if(opr.getStatus() == 1) {
-							ok.setVisible(false);
-							annuller.setVisible(false);
-							deaktiver.setVisible(true);
-							aktiver.setVisible(false);
-						}else{
-							ok.setVisible(false);
-							annuller.setVisible(false);
-							deaktiver.setVisible(false);
-							aktiver.setVisible(true);
-						}
-
-						hPanel.add(id);
-						hPanel.add(navn);
-						hPanel.add(ini);
-						hPanel.add(cpr);
-						hPanel.add(status);
-
-						hPanel.add(deaktiver);
-						hPanel.add(ok);
-						hPanel.add(annuller);
-						hPanel.add(aktiver);
-						vPanel.add(hPanel);
-
-						deaktiver.addClickHandler(new ClickHandler() {
-
-							@Override
-							public void onClick(ClickEvent event) {
-
-								if(opr.getOprID() == 1) {
-									Window.alert("Du kan ikke deaktivere Sys-Admin!!");
-								}else {
-									deaktiver.setVisible(false);
-									ok.setVisible(true);
-									annuller.setVisible(true);	
-								}
+							if(opr.getStatus() == 1) {
+								id.setText(operatoer.getOprID()+"");
+								navn.setText(operatoer.getOprNavn());
+								ini.setText(operatoer.getIni()+"");
+								cpr.setText(operatoer.getCPR()+"");
+								status.setText("Ja");
+							}else {
+								id.setText(operatoer.getOprID()+"");
+								navn.setText(operatoer.getOprNavn());
+								ini.setText(operatoer.getIni()+"");
+								cpr.setText(operatoer.getCPR()+"");
+								status.setText("Nej");	
 							}
 
-						});
+							deaktiver.setStyleName("style.Rediger");
+							ok.setStyleName("style.Rediger");
+							annuller.setStyleName("style.Rediger");
+							aktiver.setStyleName("style.Rediger");
 
-						ok.addClickHandler(new ClickHandler() {
-
-							@Override
-							public void onClick(ClickEvent event) {
-								service.deaktiverBruger(opr.getOprID(), opr.getStatus(),
-										new AsyncCallback<Void>() {
-
-									@Override
-									public void onFailure(Throwable caught) {
-										Window.alert(caught.getMessage());
-									}
-
-									@Override
-									public void onSuccess(Void result) {
-
-										deaktiverBruger();
-										ok.setVisible(false);
-										annuller.setVisible(false);
-										deaktiver.setVisible(false);
-										aktiver.setVisible(true);
-									}
-								});
-							}
-						});
-
-						annuller.addClickHandler(new ClickHandler() {
-
-							@Override
-							public void onClick(ClickEvent event) {
-								id.setText(opr.getOprID()+"");
-								navn.setText(opr.getOprNavn());
-								ini.setText(opr.getIni());
-								cpr.setText(opr.getCPR());
-								status.setText(opr.getStatus()+"");
-
+							if(opr.getStatus() == 1) {
 								ok.setVisible(false);
 								annuller.setVisible(false);
 								deaktiver.setVisible(true);
+								aktiver.setVisible(false);
+							}else{
+								ok.setVisible(false);
+								annuller.setVisible(false);
+								deaktiver.setVisible(false);
+								aktiver.setVisible(true);
 							}
-						});
 
-						aktiver.addClickHandler(new ClickHandler() {
+							hPanel.add(id);
+							hPanel.add(navn);
+							hPanel.add(ini);
+							hPanel.add(cpr);
+							hPanel.add(status);
 
-							@Override
-							public void onClick(ClickEvent event) {
-								service.aktiverBruger(opr.getOprID(), opr.getStatus(),
-										new AsyncCallback<Void>() {
+							hPanel.add(deaktiver);
+							hPanel.add(ok);
+							hPanel.add(annuller);
+							hPanel.add(aktiver);
+							vPanel.add(hPanel);
 
-									@Override
-									public void onFailure(Throwable caught) {
-										Window.alert(caught.getMessage());
+							deaktiver.addClickHandler(new ClickHandler() {
+
+								@Override
+								public void onClick(ClickEvent event) {
+
+									if(opr.getOprID() == 1) {
+										Window.alert("Du kan ikke deaktivere Sys-Admin!!");
+									}else {
+										deaktiver.setVisible(false);
+										ok.setVisible(true);
+										annuller.setVisible(true);	
 									}
+								}
 
-									@Override
-									public void onSuccess(Void result) {
+							});
 
-										deaktiverBruger();
-										ok.setVisible(false);
-										annuller.setVisible(false);
-										deaktiver.setVisible(true);
-										aktiver.setVisible(false);
+							ok.addClickHandler(new ClickHandler() {
 
-									}
-								});
-							}
-						});
+								@Override
+								public void onClick(ClickEvent event) {
+									service.deaktiverBruger(opr.getOprID(), opr.getStatus(),
+											new AsyncCallback<Void>() {
+
+										@Override
+										public void onFailure(Throwable caught) {
+											Window.alert(caught.getMessage());
+										}
+
+										@Override
+										public void onSuccess(Void result) {
+
+											deaktiverBruger();
+											ok.setVisible(false);
+											annuller.setVisible(false);
+											deaktiver.setVisible(false);
+											aktiver.setVisible(true);
+										}
+									});
+								}
+							});
+
+							annuller.addClickHandler(new ClickHandler() {
+
+								@Override
+								public void onClick(ClickEvent event) {
+									ok.setVisible(false);
+									annuller.setVisible(false);
+									deaktiver.setVisible(true);
+								}
+							});
+
+							aktiver.addClickHandler(new ClickHandler() {
+
+								@Override
+								public void onClick(ClickEvent event) {
+									service.aktiverBruger(opr.getOprID(), opr.getStatus(),
+											new AsyncCallback<Void>() {
+
+										@Override
+										public void onFailure(Throwable caught) {
+											Window.alert(caught.getMessage());
+										}
+
+										@Override
+										public void onSuccess(Void result) {
+
+											deaktiverBruger();
+											ok.setVisible(false);
+											annuller.setVisible(false);
+											deaktiver.setVisible(true);
+											aktiver.setVisible(false);
+
+										}
+									});
+								}
+							});
+						}
 					}
 				}
 
