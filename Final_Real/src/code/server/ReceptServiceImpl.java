@@ -22,11 +22,11 @@ public class ReceptServiceImpl extends RemoteServiceServlet implements IReceptSe
 
 	}
 	@Override
-	public void addRecept(String receptNavn, int recept_id, int raavare_id, int nom_netto, int tolerance) throws Exception {
+	public void addRecept(String receptNavn, int recept_id, int[] raavare_id, int[] nom_netto, int[] tolerance) throws Exception {
 		receptDAO.addRecept(receptNavn, recept_id, raavare_id,nom_netto,tolerance);
 	}
 	@Override
-	public void redigerRecept(String receptNavn, int recept_id, int raavare_id, int nom_netto, int tolerance, int glid) throws Exception {
+	public void redigerRecept(String receptNavn, int recept_id, int[] raavare_id, int[] nom_netto, int[] tolerance, int glid) throws Exception {
 		receptDAO.redigerRecept(receptNavn, recept_id, raavare_id,nom_netto,tolerance, glid);
 	}
 }
