@@ -12,7 +12,7 @@ public class ReceptDAO implements IReceptDAO {
 	private Connector connector = new Connector();
 
 	@Override
-	public void addRecept(String receptNavn, int recept_id, int raavare_id, int nom_netto, int tolerance) throws Exception{
+	public void addRecept(String receptNavn, int recept_id, int[] raavare_id, int[] nom_netto, int[] tolerance) throws Exception{
 		Connection con = connector.getConnection();
 		try {
 			con.setAutoCommit(false);
@@ -49,7 +49,7 @@ public class ReceptDAO implements IReceptDAO {
 	}
 
 	@Override
-	public void redigerRecept(String receptNavn, int recept_id, int raavare_id, int nom_netto, int tolerance, int glid) 
+	public void redigerRecept(String receptNavn, int recept_id, int[] raavare_id, int[] nom_netto, int[] tolerance, int glid) 
 			throws Exception {
 		Connection con = connector.getConnection();
 		try {
