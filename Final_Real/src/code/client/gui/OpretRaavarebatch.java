@@ -34,7 +34,7 @@ public class OpretRaavarebatch extends Composite {
 		
 	}
 
-	@UiField TextBox boxID;
+	@UiField TextBox boxRaavareBatchID;
 	@UiField ListBox boxRaavareNr;
 	@UiField TextBox boxMaengde;
 	@UiField Button submit;
@@ -43,7 +43,7 @@ public class OpretRaavarebatch extends Composite {
 	void opretRaavareBatch(ClickEvent e) 
 	{
 	
-		service.addRaavareBatch(Integer.parseInt(boxID.getText()), 
+		service.addRaavareBatch(Integer.parseInt(boxRaavareBatchID.getText()), 
 				Integer.parseInt(boxRaavareNr.getTitle()), Integer.parseInt(boxMaengde.getText()), new AsyncCallback<Void>() 
 		{
 
@@ -56,7 +56,7 @@ public class OpretRaavarebatch extends Composite {
 					@Override
 					public void onSuccess(Void result) 
 					{
-						Window.alert("Raavaren er oprettet");
+						Window.alert("RaavarenBatch er oprettet");
 					}
 			
 		});
