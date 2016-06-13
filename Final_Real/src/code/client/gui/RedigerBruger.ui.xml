@@ -11,6 +11,11 @@
 		.Rediger {
 			margin-top:0;
 		}
+
+		.ListBox {
+			height:23px;
+			padding-top:3px;
+		}
 	</ui:style>
 	<g:HTMLPanel>
 	    <g:HorizontalPanel>
@@ -19,6 +24,7 @@
 	        <g:Label ui:field="ini" styleName="{style.Labels}"/>
 	        <g:Label ui:field="cpr" styleName="{style.Labels}"/>
 	        <g:Label ui:field="password" styleName="{style.Labels}"/>
+	        <g:Label ui:field="type" styleName="{style.Labels}"/>
 	    </g:HorizontalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

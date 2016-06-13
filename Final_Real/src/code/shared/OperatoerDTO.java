@@ -12,7 +12,7 @@ public class OperatoerDTO implements Serializable {
 	private String ini;
 	private String cpr;
 	private int aktiv;
-	
+
 	public OperatoerDTO(int oprID, String oprNavn, String ini, String cpr, 
 			String password, int aktiv, String type) {
 		this.password = password;
@@ -23,23 +23,23 @@ public class OperatoerDTO implements Serializable {
 		this.cpr = cpr;
 		this.aktiv = aktiv;
 	}
-	
+
 	public OperatoerDTO() {
-		
+
 	}
 
 	public String getPassword() {
 		return password;
 	}
 
-	public Object getType() {
+	public String getType() {
 		return type;
 	}
 
 	public int getOprID() {
 		return oprID;
 	}
-	
+
 	public void skiftPassword(String password) {
 		this.password = password;
 	}
@@ -55,10 +55,9 @@ public class OperatoerDTO implements Serializable {
 	public String getCPR() {
 		return cpr;
 	}
-	
+
 	public int getStatus() {
 		return aktiv;
 	}
-
 
 }
