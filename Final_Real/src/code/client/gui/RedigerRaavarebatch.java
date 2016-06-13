@@ -21,7 +21,6 @@ import code.client.Final_Real;
 import code.client.service.IRaavareBatchService;
 import code.client.service.IRaavareBatchServiceAsync;
 import code.shared.RaavareBatchDTO;
-import code.shared.ReceptDTO;
 
 
 public class RedigerRaavarebatch extends Composite 
@@ -69,8 +68,8 @@ public class RedigerRaavarebatch extends Composite
 				mængdeLabel.setText("Mængde");
 
 				if(!result.isEmpty()) {
-					for (RaavareBatchDTO recept : result) {
-						final RaavareBatchDTO rv = recept;
+					for (RaavareBatchDTO raavareBatch : result) {
+						final RaavareBatchDTO rv = raavareBatch;;
 						final HorizontalPanel hPanel = new HorizontalPanel();
 
 						final TextBox raavareBatchID = new TextBox();
@@ -81,9 +80,9 @@ public class RedigerRaavarebatch extends Composite
 						final Button gem = new Button("Gem");
 						final Button annuller = new Button("Annuller");
 
-						raavareBatchID.setText(recept.getRaavareBatch_id()+"");
-						raavareId.setText(recept.getRaavare_id()+"");
-						mængde.setText(recept.getMængde()+"");
+						raavareBatchID.setText(raavareBatch.getRaavareBatch_id()+"");
+						raavareId.setText(raavareBatch.getRaavare_id()+"");
+						mængde.setText(raavareBatch.getMængde()+"");
 
 						rediger.setStyleName("style.Rediger");
 						gem.setStyleName("style.Rediger");
