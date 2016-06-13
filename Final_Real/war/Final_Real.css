@@ -152,8 +152,8 @@ samp {
 	padding-top:3px;
 	
 }
-.gwt-ListBox {
-
+.gwt-ListBox:disabled{
+	background-color: #EBEBE3;
 }
 .gwt-TextBox {
 	width:150px;
