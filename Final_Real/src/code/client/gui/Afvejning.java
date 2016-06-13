@@ -17,7 +17,6 @@ import com.google.gwt.user.client.ui.Widget;
 
 import code.client.service.IServiceVsCon;
 import code.client.service.IServiceVsConAsync;
-import code.client.service.VsConClient;
 import code.shared.OperatoerDTO;
 
 public class Afvejning extends Composite {
