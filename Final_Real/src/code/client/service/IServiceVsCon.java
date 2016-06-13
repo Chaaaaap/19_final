@@ -8,5 +8,5 @@ public interface IServiceVsCon extends RemoteService {
 	
 	void ConnectorVaegt(String ip) throws Exception;
 
-	void Simulator() throws Exception;
+	
 }

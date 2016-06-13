@@ -30,7 +30,7 @@ public class VsConController implements IVsConController {
 					DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
 					BufferedReader scan = new BufferedReader (new InputStreamReader(System.in));
 
-					os.writeBytes("RM20 8 \"Indtast\" \"Operatør\" \"ID\"\r\n");
+					//					os.writeBytes("RM20 8 \"Indtast\" \"Operatør\" \"ID\"\r\n");
 
 					while (run) {
 
@@ -60,14 +60,16 @@ public class VsConController implements IVsConController {
 				try {
 					is = new DataInputStream(conV.getSocket().getInputStream());
 					while(true){
-						String read = is.readLine();
+
+						String read = is.readLine();	
+
 						if(read.equals("ES")||read.equals("P111 L")||read.equals("RM20 L")||read.equals("D L")){
 							Window.alert("Den indtastede kommando er ikke korrekt syntax");
 						}
 						else {
 							System.out.println(read);
-						}
 
+						}
 					}
 
 				} catch (IOException e) {
@@ -105,5 +107,5 @@ public class VsConController implements IVsConController {
 		}
 		return read;
 	}
-	
+
 }

@@ -23,12 +23,12 @@ import code.client.service.IRaavareBatchServiceAsync;
 import code.shared.RaavareBatchDTO;
 
 
-public class RedigerRaavarebatch extends Composite 
+public class RedigerRaavareBatch extends Composite 
 {
 
 	private static RedigerRaavarebatchUiBinder uiBinder = GWT.create(RedigerRaavarebatchUiBinder.class);
 
-	interface RedigerRaavarebatchUiBinder extends UiBinder<Widget, RedigerRaavarebatch> 
+	interface RedigerRaavarebatchUiBinder extends UiBinder<Widget, RedigerRaavareBatch> 
 	{
 
 	}
@@ -36,7 +36,7 @@ public class RedigerRaavarebatch extends Composite
 	private IRaavareBatchServiceAsync service;
 
 
-	public RedigerRaavarebatch() 
+	public RedigerRaavareBatch() 
 	{
 		initWidget(uiBinder.createAndBindUi(this));
 		Final_Real.clearContent();
@@ -49,40 +49,33 @@ public class RedigerRaavarebatch extends Composite
 	@UiField Label raavareIdLabel;
 	@UiField Label mængdeLabel;
 
-
-	private void redigerRaavareBatch()
-	{
+	private void redigerRaavareBatch() {
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
 
-		service.getRaavarerBatch(new AsyncCallback<ArrayList<RaavareBatchDTO>>() 
-		{
+		service.getRaavareBatch(new AsyncCallback<ArrayList<RaavareBatchDTO>>() {
 
 			@Override
-			public void onFailure(Throwable caught) 
-			{
-				Window.alert(caught.getMessage()+"nej");
+			public void onFailure(Throwable caught) {
+				Window.alert(caught.getMessage());
 			}
 
 			@Override
-			public void onSuccess(ArrayList<RaavareBatchDTO> result) 
-			{
+			public void onSuccess(ArrayList<RaavareBatchDTO> result) {
 				VerticalPanel vPanel = new VerticalPanel();
 				raavareBatchIdLabel.setText("RåvareBatch ID");
 				raavareIdLabel.setText("Råvare ID");
 				mængdeLabel.setText("Mængde");
 
-				if(!result.isEmpty()) 
-				{
-					for (RaavareBatchDTO raavareBatch : result) 
-					{
-						final RaavareBatchDTO rv = raavareBatch;
+				if(!result.isEmpty()) {
+					for (RaavareBatchDTO raavareBatch : result) {
+						final RaavareBatchDTO rv = raavareBatch;;
 						final HorizontalPanel hPanel = new HorizontalPanel();
-						
+
 						final TextBox raavareBatchID = new TextBox();
 						final TextBox raavareId = new TextBox();
 						final TextBox mængde = new TextBox();
-						
+
 						final Button rediger = new Button("Rediger");
 						final Button gem = new Button("Gem");
 						final Button annuller = new Button("Annuller");
@@ -102,6 +95,7 @@ public class RedigerRaavarebatch extends Composite
 						raavareId.setEnabled(false);
 						mængde.setEnabled(false);
 
+
 						hPanel.add(raavareBatchID);
 						hPanel.add(raavareId);
 						hPanel.add(mængde);
@@ -111,9 +105,9 @@ public class RedigerRaavarebatch extends Composite
 						hPanel.add(annuller);
 						vPanel.add(hPanel);
 
+
 						rediger.addClickHandler(new ClickHandler() 
 						{
-
 							@Override
 							public void onClick(ClickEvent event) 
 							{
@@ -128,18 +122,16 @@ public class RedigerRaavarebatch extends Composite
 
 						});
 
-						gem.addClickHandler(new ClickHandler() 
-						{
+						gem.addClickHandler(new ClickHandler() {
 
 							@Override
-							public void onClick(ClickEvent event) 
-							{
+							public void onClick(ClickEvent event) {
 								service.redigerRaavareBatch(Integer.parseInt(raavareBatchID.getText()),
 										Integer.parseInt(raavareId.getText()), 
 										Integer.parseInt(mængde.getText()), 
-										Integer.parseInt(rv.getRaavareBatch_id()+""), 
-										new AsyncCallback<Void>() 
-								{
+										
+										rv.getRaavareBatch_id(),
+										new AsyncCallback<Void>() {
 
 									@Override
 									public void onFailure(Throwable caught) 
@@ -148,50 +140,47 @@ public class RedigerRaavarebatch extends Composite
 									}
 
 									@Override
-									public void onSuccess(Void result) 
+									public void onSuccess(Void result) {
+										
+										rediger.setVisible(true);
+										gem.setVisible(false);
+										annuller.setVisible(false);
+										
+										raavareBatchID.setEnabled(false);
+										raavareId.setEnabled(false);
+										mængde.setEnabled(false);
+										
+									}
+
+								});
+
+								annuller.addClickHandler(new ClickHandler() {
+
+									@Override
+									public void onClick(ClickEvent event) 
 									{
+										raavareBatchID.setText(rv.getRaavareBatch_id()+"");
+										raavareId.setText(rv.getRaavare_id()+"");
+										mængde.setText(rv.getMængde()+"");
+
 										raavareBatchID.setEnabled(false);
 										raavareId.setEnabled(false);
 										mængde.setEnabled(false);
 
-										rediger.setVisible(true);
 										gem.setVisible(false);
 										annuller.setVisible(false);
+										rediger.setVisible(true);
 									}
 
 								});
 							}
-
 						});
 
-						annuller.addClickHandler(new ClickHandler() 
-						{
+						Final_Real.attachContent(vPanel);
 
-							@Override
-							public void onClick(ClickEvent event) 
-							{
-								raavareBatchID.setText(rv.getRaavareBatch_id()+"");
-								raavareId.setText(rv.getRaavare_id()+"");
-								mængde.setText(rv.getMængde()+"");
-
-								raavareBatchID.setEnabled(false);
-								raavareId.setEnabled(false);
-								mængde.setEnabled(false);
-
-								gem.setVisible(false);
-								annuller.setVisible(false);
-								rediger.setVisible(true);
-							}
-
-						});
 					}
 				}
-
-				Final_Real.attachContent(vPanel);
-
 			}
-
 		});
 	}
-
 }

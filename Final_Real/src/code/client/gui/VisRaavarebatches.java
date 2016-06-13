@@ -28,14 +28,14 @@ public class VisRaavarebatches extends Composite {
 	interface VisRaavarebatchesUiBinder extends UiBinder<Widget, VisRaavarebatches> {
 	}
 	
-	private IRaavareBatchServiceAsync service;
+	private IRaavareBatchServiceAsync RbService;
 
 
 	public VisRaavarebatches() {
 		initWidget(uiBinder.createAndBindUi(this));
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
-		service = GWT.create(IRaavareBatchService.class);
+		RbService = GWT.create(IRaavareBatchService.class);
 		visRaavarerBatch();
 	}
 	
@@ -47,7 +47,7 @@ public class VisRaavarebatches extends Composite {
 	{
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
-		service.getRaavarerBatch(new AsyncCallback<ArrayList<RaavareBatchDTO>>() 
+		RbService.getRaavareBatch(new AsyncCallback<ArrayList<RaavareBatchDTO>>() 
 		{
 
 			@Override
@@ -66,11 +66,11 @@ public class VisRaavarebatches extends Composite {
 				
 				if(!result.isEmpty()) 
 				{
-					for (RaavareBatchDTO raavare : result) {
+					for (RaavareBatchDTO raavareBatch : result) {
 						HorizontalPanel hPanel = new HorizontalPanel();
-						Label raavareBatchId = new Label(raavare.getRaavareBatch_id()+"");
-						Label raavareId = new Label(raavare.getRaavare_id()+"");
-						Label Mængde = new Label(raavare.getMængde()+"");
+						Label raavareBatchId = new Label(raavareBatch.getRaavareBatch_id()+"");
+						Label raavareId = new Label(raavareBatch.getRaavare_id()+"");
+						Label Mængde = new Label(raavareBatch.getMængde()+"");
 						
 						hPanel.add(raavareBatchId);
 						hPanel.add(raavareId);

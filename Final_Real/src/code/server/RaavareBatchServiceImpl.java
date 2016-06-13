@@ -16,7 +16,7 @@ public RaavareBatchServiceImpl() {
 	}
 	RaavareBatchDAO rvDAO = new RaavareBatchDAO();
 	@Override
-	public ArrayList<RaavareBatchDTO> getRaavarerBatch() throws Exception {
+	public ArrayList<RaavareBatchDTO> getRaavareBatch() throws Exception {
 			return rvDAO.getRaavareBatch();
 
 	}
