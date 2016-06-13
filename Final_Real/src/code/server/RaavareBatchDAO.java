@@ -39,8 +39,8 @@ public class RaavareBatchDAO implements IRaavareBatchDAO {
 	@Override
 	public void redigerRaavareBatch(int raavareBatch_id, int raavare_id, int mængde, int glid) throws Exception {
 		try {
-			connector.doUpdate("UPDATE raavarebatch SET rb_id = "+raavareBatch_id+", raavare_id = "+raavare_id+
-					", maengde = "+mængde+" WHERE rb_id = "+glid+";");
+			connector.doUpdate("UPDATE raavarebatch SET raavareBatch_id = "+raavareBatch_id+", raavare_id = "+raavare_id+
+					", maengde = "+mængde+" WHERE raavareBatch_id = "+glid+";");
 		} catch(Exception e) {
 			throw e;
 		}
