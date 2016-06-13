@@ -144,35 +144,35 @@ public class RedigerRecept extends Composite
 
 							@Override
 							public void onClick(ClickEvent event) {
-								service.redigerRecept(receptNavn.getText(), 
-										Integer.parseInt(receptID.getText()), 
-										Integer.parseInt(raavareID.getText()), 
-										Integer.parseInt(nomNetto.getText()), 
-										Integer.parseInt(tolerance.getText()),
-										rv.getRecept_id(),
-										new AsyncCallback<Void>() {
-
-									@Override
-									public void onFailure(Throwable caught) {
-										Window.alert(caught.getMessage());
-									}
-
-									@Override
-									public void onSuccess(Void result) {
-										
-										rediger.setVisible(true);
-										gem.setVisible(false);
-										annuller.setVisible(false);
-										
-										receptNavn.setEnabled(false);
-										receptID.setEnabled(false);
-										raavareID.setEnabled(false);
-										nomNetto.setEnabled(false);
-										tolerance.setEnabled(false);
-										
-									}
-
-								});
+//								service.redigerRecept(receptNavn.getText(), 
+//										Integer.parseInt(receptID.getText()), 
+//										Integer.parseInt(raavareID.getText()), 
+//										Integer.parseInt(nomNetto.getText()), 
+//										Integer.parseInt(tolerance.getText()),
+//										rv.getRecept_id(),
+//										new AsyncCallback<Void>() {
+//
+//									@Override
+//									public void onFailure(Throwable caught) {
+//										Window.alert(caught.getMessage());
+//									}
+//
+//									@Override
+//									public void onSuccess(Void result) {
+//										
+//										rediger.setVisible(true);
+//										gem.setVisible(false);
+//										annuller.setVisible(false);
+//										
+//										receptNavn.setEnabled(false);
+//										receptID.setEnabled(false);
+//										raavareID.setEnabled(false);
+//										nomNetto.setEnabled(false);
+//										tolerance.setEnabled(false);
+//										
+//									}
+//
+//								});
 
 								annuller.addClickHandler(new ClickHandler() {
 
