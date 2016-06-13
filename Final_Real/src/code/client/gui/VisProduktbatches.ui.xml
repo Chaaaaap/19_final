@@ -3,16 +3,21 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
 		.Labels {
-			font-size:18px;
-			width:150px;
-			text-align:center;
+		font-size:18px;
+		width:150px;
+		text-align:center;
 		}
 	</ui:style>
 	<g:HTMLPanel>
-	        <g:HorizontalPanel>
-	    	<g:Label ui:field="idLabel" styleName="{style.Labels}" />
-	    	<g:Label ui:field="statusLabel" styleName="{style.Labels}" />
-	   		<g:Label ui:field="receptIDLabel" styleName="{style.Labels}" />
-	    </g:HorizontalPanel>
+		<g:HorizontalPanel>
+			<g:Label ui:field="oprIDLabel" styleName="{style.Labels}" />
+			<g:Label ui:field="pbIDLabel" styleName="{style.Labels}" />
+			<g:Label ui:field="rbIDLabel" styleName="{style.Labels}" />
+			<g:Label ui:field="receptIDLabel" styleName="{style.Labels}" />
+			<g:Label ui:field="statusLabel" styleName="{style.Labels}" />
+			<g:Label ui:field="taraLabel" styleName="{style.Labels}" />
+			<g:Label ui:field="nettoLabel" styleName="{style.Labels}" />
+
+		</g:HorizontalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

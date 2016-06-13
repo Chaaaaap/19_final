@@ -40,11 +40,11 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 		ArrayList<ProduktBatchDTO> produktList = new ArrayList<ProduktBatchDTO>();
 		ResultSet rs;
 		try {
-			rs = connector.doQuery("SELECT * FROM produktbatch");
+			rs = connector.doQuery("SELECT * FROM produktbatch NATURAL JOIN produktbatchkomponent");
 			if(!rs.next()) throw new Exception("Listen er tom");
 			do {
 				produktList.add(new ProduktBatchDTO(rs.getInt("pb_id"), rs.getInt("status"),
-						rs.getInt("recept_id")));
+						rs.getInt("recept_id"), rs.getInt("rb_id"), rs.getInt("tara"), rs.getInt("netto"), rs.getInt("opr_id")));
 			} while(rs.next());
 		} catch(Exception e) {
 			throw e;

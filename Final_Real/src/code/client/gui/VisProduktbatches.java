@@ -34,10 +34,15 @@ public class VisProduktbatches extends Composite {
 		visProduktBatch();
 	}
 	
-//	@UiField Button visListe;
-	@UiField Label idLabel;
-	@UiField Label statusLabel;
+
+	@UiField Label oprIDLabel;
+	@UiField Label pbIDLabel;
 	@UiField Label receptIDLabel;
+	@UiField Label statusLabel;
+	@UiField Label rbIDLabel;
+	@UiField Label taraLabel;
+	@UiField Label nettoLabel;
+	
 //	@UiHandler("visListe")
 //	void visListe(ClickEvent e) {
 //		visRaavarer();
@@ -55,19 +60,34 @@ public class VisProduktbatches extends Composite {
 			@Override
 			public void onSuccess(ArrayList<ProduktBatchDTO> result) {
 				VerticalPanel vPanel = new VerticalPanel();
-				idLabel.setText("ProduktBatch ID");
-				statusLabel.setText("Status nr.");
+				oprIDLabel.setText("Operatør ID");
+				pbIDLabel.setText("ProduktBatch ID");
+				rbIDLabel.setText("Råvarebatch ID");
 				receptIDLabel.setText("Recept ID");
+				statusLabel.setText("Status nr.");
+				taraLabel.setText("Tara");
+				nettoLabel.setText("Netto");
+				
 				
 				if(!result.isEmpty()) {
 					for (ProduktBatchDTO produkt : result) {
 						HorizontalPanel hPanel = new HorizontalPanel();
-						Label id = new Label(produkt.getPb_id()+"");
-						Label navn = new Label(produkt.getStatus()+"");
-						Label lev = new Label(produkt.getRecept_id()+"");
-						hPanel.add(id);
-						hPanel.add(navn);
-						hPanel.add(lev);
+						Label pb_id = new Label(produkt.getPb_id()+"");
+						Label status = new Label(produkt.getStatus()+"");
+						Label receptID = new Label(produkt.getRecept_id()+"");
+						Label rb_id = new Label (produkt.getRb_id()+"");
+						Label tara = new Label(produkt.getTara()+"");
+						Label netto = new Label(produkt.getNetto()+"");
+						Label oprID = new Label(produkt.getOprID()+"");
+						
+						hPanel.add(oprID);
+						hPanel.add(pb_id);
+						hPanel.add(rb_id);
+						hPanel.add(receptID);
+						hPanel.add(status);
+						hPanel.add(tara);
+						hPanel.add(netto);
+						
 						vPanel.add(hPanel);
 					}
 				}
