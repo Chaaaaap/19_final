@@ -83,7 +83,7 @@ public class MainMenu extends Composite {
 		redigerRaavare.setScheduledCommand(new Command() {@Override public void execute() {new RedigerRaavare(); } });
 		visRaavarer.setScheduledCommand(new Command() {@Override public void execute() {new VisRaavarer(); } });
 		opretRaavarebatch.setScheduledCommand(new Command() {@Override public void execute() {new OpretRaavarebatch(); } });
-		redigerRaavarebatch.setScheduledCommand(new Command() {@Override public void execute() {new RedigerRaavarebatch(); } });
+		redigerRaavarebatch.setScheduledCommand(new Command() {@Override public void execute() {new RedigerRaavareBatch(); } });
 		visRaavarebatches.setScheduledCommand(new Command() {@Override public void execute() {new VisRaavarebatches(); } });
 		opretProduktbatch.setScheduledCommand(new Command() {@Override public void execute() {new OpretProduktbatch(); } });
 		redigerProduktbatch.setScheduledCommand(new Command() {@Override public void execute() {new RedigerProduktbatch(); } });
