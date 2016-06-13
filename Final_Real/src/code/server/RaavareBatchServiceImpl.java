@@ -6,7 +6,6 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import code.client.service.IRaavareBatchService;
 import code.shared.RaavareBatchDTO;
-import code.shared.RaavareDTO;
 
 @SuppressWarnings("serial")
 public class RaavareBatchServiceImpl extends RemoteServiceServlet implements IRaavareBatchService 
