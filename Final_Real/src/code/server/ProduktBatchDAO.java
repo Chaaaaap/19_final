@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import code.connector.Connector;
+import code.shared.OperatoerDTO;
 import code.shared.ProduktBatchDTO;
 
 public class ProduktBatchDAO implements IProduktbatchDAO {
@@ -32,7 +33,6 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 			con.commit();
 			con.setAutoCommit(true);
 		}
-		
 	}
 
 	@Override
@@ -70,6 +70,19 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 			con.commit();
 			con.setAutoCommit(true);
 		}
+	}
+	
+	@Override
+	public ProduktBatchDTO getProduktBatch(int pbID) throws Exception{
+		
+	    try {
+	    	ResultSet rs = connector.doQuery("SELECT * FROM produktbatch WHERE pb_id = '" + pbID+"'");
+	    	if (!rs.first()) throw new Exception("Operatoeren '" + pbID + "' findes ikke");
+	    	return new ProduktBatchDTO(rs.getInt("pb_id"), rs.getInt("status"),
+					rs.getInt("recept_id"), rs.getInt("rb_id"), rs.getInt("tara"), rs.getInt("netto"), rs.getInt("opr_id"));	    }
+	    catch (SQLException e) {
+	    	throw e;
+	    }
 	}
 
 }

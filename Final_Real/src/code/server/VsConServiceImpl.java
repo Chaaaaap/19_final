@@ -11,8 +11,10 @@ public class VsConServiceImpl extends RemoteServiceServlet implements IServiceVs
 	
 	
 	@Override
-	public void ConnectorVaegt(String ip) throws Exception {
-		vsCon.run();
+	public void ConnectorVaegt() throws Exception {
+//		vsCon.run();
+		vsCon.login();
+		
 	}
 
 }

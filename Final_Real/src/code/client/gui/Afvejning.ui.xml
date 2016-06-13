@@ -6,13 +6,8 @@
 	</ui:style>
 	<g:HTMLPanel>
 		<g:VerticalPanel>
-			<g:Label ui:field="label" text="Indtast en kommando" />
-			<g:TextBox ui:field="textbox" />
+			<g:Label ui:field="label" text="Start Afvejning" />
 			<g:Button ui:field="OK" text="OK" />
-			<g:Label ui:field="labelIP" text="Indtast IP" />
-			<g:TextBox ui:field="textIP" />
-			<g:Button ui:field="okIP" text="OK" />
-			
 		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

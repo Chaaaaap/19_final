@@ -36,52 +36,26 @@ public class Afvejning extends Composite {
 		service = GWT.create(IServiceVsCon.class);
 		
 		this.dto = oprDTO;
-		label.setVisible(false);
-		textbox.setVisible(false);
-		OK.setVisible(false);
 	}
 
 	@UiField Label label;
-	@UiField TextBox textbox;
 	@UiField Button OK;
-	@UiField Label labelIP;
-	@UiField TextBox textIP;
-	@UiField Button okIP;
 
 
-
-	@UiHandler("okIP")
-	void onClickIP(ClickEvent e) {
-
-		ip = textIP.getText();
-
-		labelIP.setVisible(false);
-		textIP.setVisible(false);
-		okIP.setVisible(false);
-		label.setVisible(true);
-		textbox.setVisible(true);
-		OK.setVisible(true);
-		
-		VaegtConnect(ip);
-	
-	}
 
 
 	@UiHandler("OK")
-	void onClick(ClickEvent e) {
-		
-//		label.setVisible(false);
-//		textbox.setVisible(false);
-//		OK.setVisible(false);
-		
-		command = textbox.getText();
-		
-		onClickIP(e);
-	}
+	void onClickIP(ClickEvent e) {
+
+		VaegtConnect();
 	
-	public void VaegtConnect(String ip) {
-		
-		service.ConnectorVaegt(ip, new AsyncCallback<Void>() {
+	}
+
+
+	
+	public void VaegtConnect() {
+
+		service.ConnectorVaegt(new AsyncCallback<Void>() {
 
 			@Override
 			public void onFailure(Throwable caught) {

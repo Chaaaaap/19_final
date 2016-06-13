@@ -2,7 +2,8 @@ package code.server;
 
 public interface IVsConController {
 	
-	void run();
-	void sendBesked(String sendB);
+//	void run();
 	String modtagBesked();
+	void login();
+	void vaelgProduktbatch();
 }

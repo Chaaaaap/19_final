@@ -58,7 +58,7 @@ public class ReceptDAO implements IReceptDAO {
 				do {
 					x = resultSet.getInt("recept_id");
 					komp.add(new ReceptKomponentDTO());
-					
+
 
 				} while(resultSet.next() && resultSet.getInt("recept_id") == x);
 				rvList.add(new ReceptDTO(resultSet.getString("recept_navn"),resultSet.getInt("recept_id"),
@@ -88,4 +88,21 @@ public class ReceptDAO implements IReceptDAO {
 		}
 	}
 
+	@Override
+	public ReceptDTO getRecept(int recept_id) throws Exception{
+
+		try {
+			ResultSet rs = connector.doQuery("SELECT * FROM recept NATURAL JOIN receptkomponent WHERE recept_id = '" + recept_id+"'");
+			if (!rs.first()) throw new Exception("Operatoeren '" + recept_id + "' findes ikke");
+			ArrayList<ReceptKomponentDTO> komp = new ArrayList<ReceptKomponentDTO>();
+			do {
+				komp.add(new ReceptKomponentDTO(rs.getInt("recept_id"), rs.getInt("raavare_id"),
+						rs.getInt("nom_netto"), rs.getInt("tolerance")));
+			}while(rs.next());
+			return new ReceptDTO(rs.getString("recept_navn"), rs.getInt("recept_id"), komp);
+		}catch (SQLException e) {
+			throw e;
+		}
+
+	}
 }

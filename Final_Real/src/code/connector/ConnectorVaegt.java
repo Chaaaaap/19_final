@@ -7,10 +7,9 @@ import java.net.Socket;
 public class ConnectorVaegt {
 
 	private Socket socket;
-	private String IP;
+	private String IP = "169.254.2.3";
 
-	public ConnectorVaegt(String ip) {
-		this.IP = ip;
+	public ConnectorVaegt() {
 		try {
 			socket = new Socket(IP, 8000);
 		} catch (IOException e1) {
