@@ -20,59 +20,34 @@
 				<g:TextBox ui:field="boxNavn" />
 			</g:VerticalPanel>
 
-			<g:VerticalPanel>
+			<g:VerticalPanel ui:field="panelEt">
 				<g:Label text="Vælg råvare" />
-				<g:ListBox ui:field="boxType" styleName="{style.ListBox}">
-				    <g:item value="blank"></g:item>
-				</g:ListBox>
 				<g:Label text="Indtast mængde" ui:field="maengde_lbl" />
-				<g:TextBox ui:field="maengdeBox" />
 				<g:Label text="Indtast tolerance" ui:field="tol_lbl" />
-				<g:TextBox ui:field="tolBox" />
 			</g:VerticalPanel>
 
-			<g:VerticalPanel>
+			<g:VerticalPanel ui:field="panelTo">
 				<g:Label text="Vælg råvare" />
-				<g:ListBox ui:field="boxType1" styleName="{style.ListBox}">
-					<g:item value="blank"></g:item>
-				</g:ListBox>
 				<g:Label text="Indtast mængde" ui:field="maengde_lbl1" />
-				<g:TextBox ui:field="maengdeBox1" />
 				<g:Label text="Indtast tolerance" ui:field="tol_lbl1" />
-				<g:TextBox ui:field="tolBox1" />
 			</g:VerticalPanel>
 
-			<g:VerticalPanel>
+			<g:VerticalPanel ui:field="panelTre">
 				<g:Label text="Vælg råvare" ui:field="raavare_lbl2"/>
-				<g:ListBox ui:field="boxType2" styleName="{style.ListBox}">
-					<g:item value="blank"></g:item>
-				</g:ListBox>
 				<g:Label text="Indtast mængde" ui:field="maengde_lbl2" />
-				<g:TextBox ui:field="maengdeBox2" />
 				<g:Label text="Indtast tolerance" ui:field="tol_lbl2" />
-				<g:TextBox ui:field="tolBox2" />
 			</g:VerticalPanel>
 
-			<g:VerticalPanel>
+			<g:VerticalPanel ui:field="panelFire">
 				<g:Label text="Vælg råvare" ui:field="raavare_lbl3"/>
-				<g:ListBox ui:field="boxType3" styleName="{style.ListBox}">
-					<g:item value="blank"></g:item>
-				</g:ListBox>
 				<g:Label text="Indtast mængde" ui:field="maengde_lbl3" />
-				<g:TextBox ui:field="maengdeBox3" />
 				<g:Label text="Indtast tolerance" ui:field="tol_lbl3" />
-				<g:TextBox ui:field="tolBox3" />
 			</g:VerticalPanel>
 
-			<g:VerticalPanel>
+			<g:VerticalPanel ui:field="panelFem">
 				<g:Label text="Vælg råvare" ui:field="raavare_lbl4"/>
-				<g:ListBox ui:field="boxType4" styleName="{style.ListBox}">
-					<g:item value="blank"></g:item>
-				</g:ListBox>
 				<g:Label text="Indtast mængde" ui:field="maengde_lbl4" />
-				<g:TextBox ui:field="maengdeBox4" />
 				<g:Label text="Indtast tolerance" ui:field="tol_lbl4" />
-				<g:TextBox ui:field="tolBox4" />
 			</g:VerticalPanel>
 	
 		</g:HorizontalPanel>

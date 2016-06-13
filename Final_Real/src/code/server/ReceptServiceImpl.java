@@ -2,19 +2,19 @@ package code.server;
 
 import java.util.ArrayList;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import code.client.service.IReceptService;
-import code.shared.RaavareDTO;
+import code.shared.DALException;
 import code.shared.ReceptDTO;
+import code.shared.ReceptKomponentDTO;
 
 //TODO Skal laves om
 @SuppressWarnings("serial")
 public class ReceptServiceImpl extends RemoteServiceServlet implements IReceptService {
 
-	public ReceptServiceImpl() {
-		
-	}
+	public ReceptServiceImpl() {}
 	ReceptDAO receptDAO = new ReceptDAO();
 	@Override
 	public ArrayList<ReceptDTO> getRecept() throws Exception {
@@ -22,11 +22,12 @@ public class ReceptServiceImpl extends RemoteServiceServlet implements IReceptSe
 
 	}
 	@Override
-	public void addRecept(String receptNavn, int recept_id, int raavare_id, int nom_netto, int tolerance) throws Exception {
-		receptDAO.addRecept(receptNavn, recept_id, raavare_id,nom_netto,tolerance);
+	public void addRecept(String receptNavn, int recept_id, ArrayList<ReceptKomponentDTO> komp) throws DALException {
+		System.out.println("\n\n\n HULUBULU");
+		receptDAO.addRecept(receptNavn, recept_id, komp);
 	}
 	@Override
-	public void redigerRecept(String receptNavn, int recept_id, int raavare_id, int nom_netto, int tolerance, int glid) throws Exception {
-		receptDAO.redigerRecept(receptNavn, recept_id, raavare_id,nom_netto,tolerance, glid);
+	public void redigerRecept(String receptNavn, int recept_id, ArrayList<ReceptKomponentDTO> komp, int glid) throws Exception {
+		receptDAO.redigerRecept(receptNavn, recept_id, komp, glid);
 	}
 }

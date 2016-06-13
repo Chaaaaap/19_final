@@ -1,30 +1,45 @@
 package code.server;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import code.connector.Connector;
+import code.shared.DALException;
 import code.shared.ReceptDTO;
+import code.shared.ReceptKomponentDTO;
 
 public class ReceptDAO implements IReceptDAO {
 
 	private Connector connector = new Connector();
 
 	@Override
-	public void addRecept(String receptNavn, int recept_id, int raavare_id, int nom_netto, int tolerance) throws Exception{
+	public void addRecept(String receptNavn, int recept_id, ArrayList<ReceptKomponentDTO> komp) throws DALException{
+		System.out.println("\n\n\n SUUUUUUP");
 		Connection con = connector.getConnection();
 		try {
 			con.setAutoCommit(false);
 			connector.doUpdate("INSERT INTO recept VALUES("+recept_id+", '"+receptNavn+"');");
-			connector.doUpdate("INSERT INTO receptkomponent VALUES("+recept_id+", "+raavare_id+", "+nom_netto+", "+tolerance+");");
+			for (int i = 0; i < komp.size(); i++) {
+				connector.doUpdate("INSERT INTO receptkomponent VALUES("+recept_id+", "+komp.get(i).getRaavare_id()+", "
+						+ komp.get(i).getMængde()+", "+komp.get(i).getTolerance()+");");
+			}
 			
-		} catch(Exception e) {
-			con.rollback();
-			throw e;
+		} catch(SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			throw new DALException(e.getMessage());
 		} finally {
-			con.commit();
-			con.setAutoCommit(true);
+			try {
+				con.commit();
+				con.setAutoCommit(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
 		}
 
 	}
@@ -49,15 +64,13 @@ public class ReceptDAO implements IReceptDAO {
 	}
 
 	@Override
-	public void redigerRecept(String receptNavn, int recept_id, int raavare_id, int nom_netto, int tolerance, int glid) 
+	public void redigerRecept(String receptNavn, int recept_id, ArrayList<ReceptKomponentDTO> komp, int glid) 
 			throws Exception {
 		Connection con = connector.getConnection();
 		try {
 			con.setAutoCommit(false);
 			connector.doUpdate("UPDATE recept SET recept_id = "+recept_id+", recept_navn = '"+receptNavn+
 					"' WHERE recept_id = "+glid+";");
-			connector.doUpdate("UPDATE receptkomponent SET recept_id = "+recept_id+", raavare_id = "+raavare_id+", nom_netto = "
-					+nom_netto+", tolerance = "+tolerance+" WHERE recept_id = "+glid+";");
 		} catch(Exception e) {
 			con.rollback();
 			throw e;
