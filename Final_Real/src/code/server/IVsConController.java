@@ -1,5 +1,8 @@
 package code.server;
 
 public interface IVsConController {
-	void VaegtConnect();
+	
+	void run();
+	void sendBesked(String sendB);
+	String modtagBesked();
 }
