@@ -1,15 +1,16 @@
 package code.shared;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 @SuppressWarnings("serial")
 public class ReceptDTO implements Serializable {
 	
-	private ReceptKomponentDTO[] komp;
+	private ArrayList<ReceptKomponentDTO> komp;
 	private int recept_id;
 	private String receptNavn;
 	
-	public ReceptDTO(String receptNavn, int recept_id, ReceptKomponentDTO[] komp) {
+	public ReceptDTO(String receptNavn, int recept_id, ArrayList<ReceptKomponentDTO> komp) {
 		this.recept_id = recept_id;
 		this.komp = komp;
 		this.receptNavn = receptNavn;
@@ -21,7 +22,7 @@ public class ReceptDTO implements Serializable {
 		return recept_id;
 	}
 
-	public ReceptKomponentDTO[] getKomp() {
+	public ArrayList<ReceptKomponentDTO> getKomp() {
 		return komp;
 	}
 
