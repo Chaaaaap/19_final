@@ -15,12 +15,17 @@
 
 	</ui:style>
 	<g:HTMLPanel>
-		<g:HorizontalPanel>
-			<g:Label ui:field="receptNavnLabel" styleName="{style.Labels}" />
-			<g:Label ui:field="receptIdLabel" styleName="{style.Labels}" />
-			<g:Label ui:field="raavareIdLabel" styleName="{style.Labels}" />
-			<g:Label ui:field="nomNettoLabel" styleName="{style.Labels}" />
-			<g:Label ui:field="toleranceLabel" styleName="{style.Labels}" />
+		<g:VerticalPanel ui:field="vPanel">
+		    <g:ListBox ui:field="receptList">
+		        <g:item value="blank" />
+		    </g:ListBox>
+			<g:HorizontalPanel>
+				<g:Label ui:field="receptNavnLabel" styleName="{style.Labels}" />
+				<g:Label ui:field="receptIdLabel" styleName="{style.Labels}" />
+				<g:Label ui:field="raavareIdLabel" styleName="{style.Labels}" />
+				<g:Label ui:field="nomNettoLabel" styleName="{style.Labels}" />
+				<g:Label ui:field="toleranceLabel" styleName="{style.Labels}" />
 		</g:HorizontalPanel>
+	</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

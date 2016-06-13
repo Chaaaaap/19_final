@@ -135,7 +135,6 @@ public class OpretRecept extends Composite {
 			}
 		}
 		
-		try {
 		receptService.addRecept(boxNavn.getText(), Integer.parseInt(boxID.getText()),
 				komp, new AsyncCallback<Void>() {
 
@@ -157,11 +156,6 @@ public class OpretRecept extends Composite {
 			}
 
 		});
-		} catch (Throwable t){
-			com.google.gwt.core.shared.GWT.log(t.getMessage());
-		}
-		
-		Window.alert("HULUNULU");
 	}
 
 	

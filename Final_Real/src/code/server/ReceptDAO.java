@@ -14,6 +14,7 @@ public class ReceptDAO implements IReceptDAO {
 
 	private Connector connector = new Connector();
 	private int x = 0;
+	private int i = 0, l;
 
 	@Override
 	public void addRecept(String receptNavn, int recept_id, ArrayList<ReceptKomponentDTO> komp) throws DALException{
@@ -47,25 +48,30 @@ public class ReceptDAO implements IReceptDAO {
 	}
 
 	@Override
-	public ArrayList<ReceptDTO> getRecepter() throws Exception {
+	public ArrayList<ReceptDTO> getRecepter() throws DALException {
 		ArrayList<ReceptDTO> rvList = new ArrayList<ReceptDTO>();
 		ResultSet resultSet;
 		try {
+			ResultSet length = connector.doQuery("SELECT COUNT(recept_id) FROM recept;");
+			if(!length.first()) throw new DALException("Listen er tom");
+			l = length.getInt("COUNT(recept_id)");
 			resultSet = connector.doQuery("SELECT * FROM recept NATURAL JOIN receptkomponent");
-			if(!resultSet.first()) throw new Exception("Listen er tom");
-			do {
+			if(!resultSet.first()) throw new DALException("Listen er tom");
+			while(i < l-1) {
 				ArrayList<ReceptKomponentDTO> komp = new ArrayList<ReceptKomponentDTO>();
 				do {
 					x = resultSet.getInt("recept_id");
-					komp.add(new ReceptKomponentDTO());
+					komp.add(new ReceptKomponentDTO(resultSet.getInt("recept_id"), resultSet.getInt("raavare_id"),
+							resultSet.getInt("nom_netto"), resultSet.getInt("tolerance")));
 
 
 				} while(resultSet.next() && resultSet.getInt("recept_id") == x);
-				rvList.add(new ReceptDTO(resultSet.getString("recept_navn"),resultSet.getInt("recept_id"),
-						komp));
-			}while(resultSet.next());
-		} catch(Exception e) {
-			throw e;
+				rvList.add(new ReceptDTO(resultSet.getString("recept_navn"),resultSet.getInt("recept_id"),komp));
+				i++;
+				System.out.println("\n\n\nl = "+l+" i = "+i);
+			}
+		} catch(SQLException e) {
+			throw new DALException(e.getMessage());
 		} 
 		return rvList;
 
