@@ -10,6 +10,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
@@ -20,6 +21,7 @@ import code.client.Final_Real;
 import code.client.service.IReceptService;
 import code.client.service.IReceptServiceAsync;
 import code.shared.ReceptDTO;
+import code.shared.ReceptKomponentDTO;
 
 
 public class RedigerRecept extends Composite 
@@ -38,10 +40,18 @@ public class RedigerRecept extends Composite
 	private TextBox[] type;
 	private TextBox[] maengde;
 	private TextBox[] tol;
+	private ListBox receptList;
 
 	public RedigerRecept() 
 	{
 		initWidget(uiBinder.createAndBindUi(this));
+		type = new TextBox[5];
+		maengde = new TextBox[5];
+		tol = new TextBox[5];
+		receptList = new ListBox();
+		receptList.addItem("", "blank");
+		vPanel.insert(receptList, 1);
+		
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
 		service = GWT.create(IReceptService.class);
@@ -51,11 +61,13 @@ public class RedigerRecept extends Composite
 
 	@UiField Label receptNavnLabel;
 	@UiField Label receptIdLabel;
-	@UiField Label raavareIdLabel;
-	@UiField Label nomNettoLabel;
-	@UiField Label toleranceLabel;
-	@UiField ListBox receptList;
+	@UiField Label raavare1Label;
+	@UiField Label raavare2Label;
+	@UiField Label raavare3Label;
+	@UiField Label raavare4Label;
+	@UiField Label raavare5Label;
 	@UiField VerticalPanel vPanel;
+	@UiField HorizontalPanel hPanel;
 
 
 
@@ -72,9 +84,12 @@ public class RedigerRecept extends Composite
 
 			@Override
 			public void onSuccess(ArrayList<ReceptDTO> result) {
-				int i;
+				final ArrayList<ReceptDTO> dtoList = result;
+				
+				
+				
+				
 				for (ReceptDTO rDTO : result) {
-					i = result.indexOf(rDTO);
 					receptList.addItem(rDTO.getReceptNavn(), rDTO.getRecept_id()+"");
 				}
 				
@@ -82,13 +97,56 @@ public class RedigerRecept extends Composite
 
 					@Override
 					public void onChange(ChangeEvent event) {
-						String receptValgt = receptList.getSelectedValue();
-						receptNavnLabel.setText("Recept navn");
-						receptIdLabel.setText("Recept ID");
-						raavareIdLabel.setText("Raavare ID");
-						nomNettoLabel.setText("Mængde");
-						toleranceLabel.setText("Tolerence");
 						
+						int i = receptList.getSelectedIndex();
+						String receptValgt = receptList.getSelectedValue();
+						ArrayList<ReceptKomponentDTO> list = dtoList.get(i).getKomp();
+						
+						//TODO Index fucker mega...
+						nameBox.setEnabled(false);
+						nameBox.setText(dtoList.get(i-1).getReceptNavn());
+						receptIDBox.setEnabled(false);
+						receptIDBox.setText(dtoList.get(i-1).getRecept_id()+"");
+						hPanel.add(nameBox);
+						hPanel.add(receptIDBox);
+						
+						if(!receptValgt.equals("blank")) {
+//						receptNavnLabel.setText("Recept navn");
+//						receptIdLabel.setText("Recept ID");
+//						raavareIdLabel.setText("Raavare ID");
+//						nomNettoLabel.setText("Mængde");
+//						toleranceLabel.setText("Tolerence");
+						
+						
+						for (int j = 0; j < list.size(); j++) {
+							Window.alert(list.get(j).getRaavare_id()+"");
+							VerticalPanel redigerPanel = new VerticalPanel();
+							Label idLabel = new Label("Raavare ID");
+							type[j] = new TextBox();
+							type[j].setText(list.get(j).getRaavare_id()+"");
+							type[j].setEnabled(false);
+							
+							Label maengdeLabel = new Label("Maengde");
+							maengde[j] = new TextBox();
+							maengde[j].setText(list.get(j).getMængde()+"");
+							maengde[j].setEnabled(false);
+							
+							Label tolLabel = new Label("Tolerance");
+							tol[j] = new TextBox();
+							tol[j].setText(list.get(j).getTolerance()+"");
+							tol[j].setEnabled(false);
+							
+							redigerPanel.add(idLabel);
+							redigerPanel.add(type[j]);
+							redigerPanel.add(maengdeLabel);
+							redigerPanel.add(maengde[j]);
+							redigerPanel.add(tolLabel);
+							redigerPanel.add(tol[j]);
+							
+							hPanel.add(redigerPanel);
+						}
+						
+						}
 					}
 					
 				});

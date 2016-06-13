@@ -16,16 +16,18 @@
 	</ui:style>
 	<g:HTMLPanel>
 		<g:VerticalPanel ui:field="vPanel">
-		    <g:ListBox ui:field="receptList">
-		        <g:item value="blank" />
-		    </g:ListBox>
 			<g:HorizontalPanel>
-				<g:Label ui:field="receptNavnLabel" styleName="{style.Labels}" />
-				<g:Label ui:field="receptIdLabel" styleName="{style.Labels}" />
-				<g:Label ui:field="raavareIdLabel" styleName="{style.Labels}" />
-				<g:Label ui:field="nomNettoLabel" styleName="{style.Labels}" />
-				<g:Label ui:field="toleranceLabel" styleName="{style.Labels}" />
-		</g:HorizontalPanel>
-	</g:VerticalPanel>
+				<g:Label ui:field="receptNavnLabel" styleName="{style.Labels}" text="Recept navn"/>
+				<g:Label ui:field="receptIdLabel" styleName="{style.Labels}" text="Recept ID"/>
+				<g:Label ui:field="raavare1Label" styleName="{style.Labels}" text="Raavare 1"/>
+				<g:Label ui:field="raavare2Label" styleName="{style.Labels}" text="Raavare 2"/>
+				<g:Label ui:field="raavare3Label" styleName="{style.Labels}" text="Raavare 3"/>
+				<g:Label ui:field="raavare4Label" styleName="{style.Labels}" text="Raavare 4"/>
+				<g:Label ui:field="raavare5Label" styleName="{style.Labels}" text="Raavare 5"/>
+			</g:HorizontalPanel>
+			<g:HorizontalPanel ui:field="hPanel">
+			    
+			</g:HorizontalPanel>
+		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

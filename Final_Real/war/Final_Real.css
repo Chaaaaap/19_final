@@ -117,6 +117,11 @@ samp {
   font-size: 1em;
 }
 
+.gwt-ListBox {
+	height:23px;
+	padding-top:3px;
+}
+
 .gwt-Button {
 	-webkit-appearance: button;
  	cursor: pointer;
