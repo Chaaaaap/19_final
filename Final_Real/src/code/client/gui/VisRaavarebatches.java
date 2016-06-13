@@ -30,6 +30,7 @@ public class VisRaavarebatches extends Composite {
 	
 	private IRaavareBatchServiceAsync RbService;
 
+	
 
 	public VisRaavarebatches() {
 		initWidget(uiBinder.createAndBindUi(this));
