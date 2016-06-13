@@ -6,7 +6,6 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import code.client.service.IProduktBatchService;
 import code.shared.ProduktBatchDTO;
-import code.shared.RaavareDTO;
 
 @SuppressWarnings("serial")
 public class ProduktBatchServiceImpl extends RemoteServiceServlet implements IProduktBatchService {
@@ -14,12 +13,11 @@ public class ProduktBatchServiceImpl extends RemoteServiceServlet implements IPr
 	public ProduktBatchServiceImpl() {
 		
 	}
-	
 	ProduktBatchDAO pbDAO = new ProduktBatchDAO();
-	
 	@Override
 	public ArrayList<ProduktBatchDTO> getProduktBatches() throws Exception {
-		return pbDAO.getProduktBatches();
+			return pbDAO.getProduktBatches();
+
 	}
 
 }

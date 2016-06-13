@@ -13,10 +13,6 @@
 	    	<g:Label ui:field="idLabel" styleName="{style.Labels}" />
 	    	<g:Label ui:field="statusLabel" styleName="{style.Labels}" />
 	   		<g:Label ui:field="receptIDLabel" styleName="{style.Labels}" />
-	   		<g:Label ui:field="rb_idLabel" styleName="{style.Labels}" />
-	   		<g:Label ui:field="taraLabel" styleName="{style.Labels}" />
-	   		<g:Label ui:field="nettoLabel" styleName="{style.Labels}" />
-	   		<g:Label ui:field="oprLabel" styleName="{style.Labels}" />
 	    </g:HorizontalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

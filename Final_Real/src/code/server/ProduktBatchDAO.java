@@ -10,9 +10,9 @@ import code.shared.ProduktBatchDTO;
 
 public class ProduktBatchDAO implements IProduktbatchDAO {
 	
-	Connector connector = new Connector();
+	private Connector connector = new Connector();
 //	ArrayList<ProduktBatchDTO> produktList;
-	Connection con;
+	private Connection con;
 
 	@Override
 	public void startProduktBatch(int oprID, int pb_id, int rb_id, int tara, int netto, int recept_id) throws SQLException {
@@ -36,21 +36,21 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 	}
 
 	@Override
-	public ArrayList<ProduktBatchDTO> getProduktBatches() throws SQLException {
+	public ArrayList<ProduktBatchDTO> getProduktBatches() throws Exception {
 		ArrayList<ProduktBatchDTO> produktList = new ArrayList<ProduktBatchDTO>();
 		ResultSet rs;
 		try {
-			rs = connector.doQuery("SELECT * FROM produktbatch NATURAL JOIN produktbatchkomponent");
-			if(!rs.next()) throw new SQLException("Der findes ingen produktbatches.");
+			rs = connector.doQuery("SELECT * FROM produktbatch");
+			if(!rs.next()) throw new Exception("Listen er tom");
 			do {
-				produktList.add(new ProduktBatchDTO(rs.getInt("pb_id"), rs.getString("status"),
-						rs.getInt("recept_id"), rs.getInt("tara"), rs.getInt("netto"), 
-						rs.getInt("oprID"), rs.getInt("rb_id")));
+				produktList.add(new ProduktBatchDTO(rs.getInt("pb_id"), rs.getInt("status"),
+						rs.getInt("recept_id")));
 			} while(rs.next());
-		} catch(SQLException e) {
+		} catch(Exception e) {
 			throw e;
-		}
+		} 
 		return produktList;
+		
 	}
 
 	@Override

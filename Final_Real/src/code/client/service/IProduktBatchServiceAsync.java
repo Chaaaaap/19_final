@@ -9,5 +9,6 @@ import code.shared.ProduktBatchDTO;
 public interface IProduktBatchServiceAsync {
 
 	void getProduktBatches(AsyncCallback<ArrayList<ProduktBatchDTO>> callback);
-
+	
 }
+

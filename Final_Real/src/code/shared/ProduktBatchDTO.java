@@ -2,24 +2,21 @@ package code.shared;
 
 import java.io.Serializable;
 
-@SuppressWarnings("serial")
 public class ProduktBatchDTO implements Serializable {
-
-	private String status;
-	private int pb_id, recept_id, tara, netto, oprID, rb_id;
+	private static final long serialVersionUID = 5417965784796499144L;
 	
-	public ProduktBatchDTO(int pb_id, String status, int recept_id, int tara, int netto, int oprID, int rb_id) {
+	private int pb_id, status, recept_id;
+	
+	public ProduktBatchDTO() {}
+	
+	public ProduktBatchDTO(int pb_id, int status, int recept_id) {
 		this.pb_id = pb_id;
 		this.recept_id = recept_id;
 		this.status = status;
-		this.tara = tara;
-		this.netto = netto;
-		this.oprID = oprID;
-		this.rb_id = rb_id;
 	}
-	public ProduktBatchDTO() {}
 
-	public String getStatus() {
+
+	public int getStatus() {
 		return status;
 	}
 
@@ -29,22 +26,6 @@ public class ProduktBatchDTO implements Serializable {
 
 	public int getRecept_id() {
 		return recept_id;
-	}
-
-	public int getTara() {
-		return tara;
-	}
-
-	public int getNetto() {
-		return netto;
-	}
-
-	public int getOprID() {
-		return oprID;
-	}
-	
-	public int getRb_id() {
-		return rb_id;
 	}
 	
 	
