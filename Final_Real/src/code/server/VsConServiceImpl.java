@@ -14,6 +14,7 @@ public class VsConServiceImpl extends RemoteServiceServlet implements IServiceVs
 	public void ConnectorVaegt() throws Exception {
 //		vsCon.run();
 		vsCon.login();
+		vsCon.vaelgProduktbatch();
 		
 	}
 

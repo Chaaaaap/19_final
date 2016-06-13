@@ -17,6 +17,7 @@ public class VsConController implements IVsConController {
 	Connector conDB = new Connector();
 	OperatoerDAO oprDAO = new OperatoerDAO();
 	ProduktBatchDAO pbDAO = new ProduktBatchDAO();
+	ReceptDAO receptDAO = new ReceptDAO();
 	RaavareDAO raaDAO = new RaavareDAO();
 
 	//	@Override
@@ -92,7 +93,7 @@ public class VsConController implements IVsConController {
 	public void login(){
 		try {
 			DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
-			os.writeBytes("RM20 8 \"Indtast\" \"Operatør\" \"ID\"\r\n");
+			os.writeBytes("RM20 8 \"Indtast Operatør ID\" \"\" \"\"\r\n");
 
 			String oprID;
 
@@ -100,7 +101,7 @@ public class VsConController implements IVsConController {
 
 			oprID = modtagBesked();
 
-			oprID = oprID.substring(oprID.length()-2, oprID.length()-1);
+			oprID = oprID.substring(7);
 
 			try {
 				String oprNavn = oprDAO.getOperatoer(Integer.parseInt(oprID)).getOprNavn();
@@ -122,13 +123,13 @@ public class VsConController implements IVsConController {
 	public void vaelgProduktbatch(){
 		try {
 			DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
-			os.writeBytes("RM20 8 \"Indtast\" \"Produktbatch\" \"Nummer\"\r\n");
+			os.writeBytes("RM20 8 \"Indtast produktbatch nr\" \"\" \"\"\r\n");
 			
 			modtagBesked();
 			String produktBatch;
 			produktBatch = modtagBesked();
 
-			produktBatch = produktBatch.substring(produktBatch.length()-2, produktBatch.length()-1);
+			produktBatch = produktBatch.substring(7);
 
 
 			try {
@@ -137,10 +138,10 @@ public class VsConController implements IVsConController {
 				
 				receptNr = pbDAO.getProduktBatch(Integer.parseInt(produktBatch)).getRecept_id();
 
-				String receptNavn = raaDAO.get
+				String receptNavn = receptDAO.getRecept(receptNr).getReceptNavn();
 				
 				
-				os.writeBytes("P111 \"" + produktBatchen + "\"\r\n");
+				os.writeBytes("P111 \"" + receptNavn + "\"\r\n");
 
 			}catch (Exception e) {
 				// TODO Auto-generated catch block
