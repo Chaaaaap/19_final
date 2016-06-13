@@ -6,10 +6,18 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class VsConController {
+import com.google.gwt.user.client.Window;
 
-	ConnectorVaegt con = new ConnectorVaegt();
-	
+import code.connector.Connector;
+import code.connector.ConnectorVaegt;
+
+public class VsConController implements IVsConController {
+
+	String ip;
+	ConnectorVaegt conV = new ConnectorVaegt(ip);
+	Connector conDB = new Connector();
+
+	@Override
 	public void run(){
 		Thread send = new Thread(new Runnable() {
 
@@ -19,8 +27,10 @@ public class VsConController {
 				try {
 					boolean run = true;
 
-					DataOutputStream os = new DataOutputStream(con.getSocket().getOutputStream());
+					DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
 					BufferedReader scan = new BufferedReader (new InputStreamReader(System.in));
+
+					os.writeBytes("RM20 8 \"Indtast\" \"Operatør\" \"ID\"\r\n");
 
 					while (run) {
 
@@ -48,10 +58,16 @@ public class VsConController {
 
 				DataInputStream is;
 				try {
-					is = new DataInputStream(con.getSocket().getInputStream());
+					is = new DataInputStream(conV.getSocket().getInputStream());
 					while(true){
 						String read = is.readLine();
-						System.out.println(read);
+						if(read.equals("ES")||read.equals("P111 L")||read.equals("RM20 L")||read.equals("D L")){
+							Window.alert("Den indtastede kommando er ikke korrekt syntax");
+						}
+						else {
+							System.out.println(read);
+						}
+
 					}
 
 				} catch (IOException e) {
@@ -63,6 +79,31 @@ public class VsConController {
 		send.start();
 		receive.start();
 
-
 	}
+
+	@Override
+	public void sendBesked(String sendB){
+		try {
+			DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
+			os.writeBytes(sendB+"\r\n");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public String modtagBesked(){
+		DataInputStream is;
+		String read = null;
+		try {
+			is = new DataInputStream(conV.getSocket().getInputStream());
+			read = is.readLine();
+
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+		return read;
+	}
+	
 }

@@ -1,4 +1,4 @@
-package code.server;
+package code.connector;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -7,11 +7,12 @@ import java.net.Socket;
 public class ConnectorVaegt {
 
 	private Socket socket;
+	private String IP;
 
-	public ConnectorVaegt() {
-
+	public ConnectorVaegt(String ip) {
+		this.IP = ip;
 		try {
-			socket = new Socket("169.254.2.2", 8000);
+			socket = new Socket(IP, 8000);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -19,5 +20,9 @@ public class ConnectorVaegt {
 	}
 	public Socket getSocket(){
 		return socket;
+	}
+	
+	public String getIP(){
+		return IP;
 	}
 }
