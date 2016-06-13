@@ -66,11 +66,11 @@ public class VisRaavarebatches extends Composite {
 				
 				if(!result.isEmpty()) 
 				{
-					for (RaavareBatchDTO raavare : result) {
+					for (RaavareBatchDTO raavareBatch : result) {
 						HorizontalPanel hPanel = new HorizontalPanel();
-						Label raavareBatchId = new Label(raavare.getRaavareBatch_id()+"");
-						Label raavareId = new Label(raavare.getRaavare_id()+"");
-						Label Mængde = new Label(raavare.getMængde()+"");
+						Label raavareBatchId = new Label(raavareBatch.getRaavareBatch_id()+"");
+						Label raavareId = new Label(raavareBatch.getRaavare_id()+"");
+						Label Mængde = new Label(raavareBatch.getMængde()+"");
 						
 						hPanel.add(raavareBatchId);
 						hPanel.add(raavareId);
