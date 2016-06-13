@@ -17,21 +17,7 @@ public class VsConClient {
 	}
 
 	public void VaegtConnect(String ip) {
-		if(ip.equals("localhost")){
-			service.Simulator(new AsyncCallback<Void>() {
-
-				@Override
-				public void onFailure(Throwable caught) {
-					Window.alert("Simulatoren virker ikke");
-				}
-
-				@Override
-				public void onSuccess(Void result) {
-					Window.alert("Simulatoren virker");
-				}
-
-			});
-		}else{
+		
 			service.ConnectorVaegt(ip, new AsyncCallback<Void>() {
 
 				@Override
@@ -44,6 +30,5 @@ public class VsConClient {
 					Window.alert("Virker!!");
 				}
 			});
-		}
 	}
 }
