@@ -54,14 +54,13 @@ public class RedigerRaavarebatch extends Composite
 	{
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
-Window.alert("hej");
+
 		service.getRaavareBatch(new AsyncCallback<ArrayList<RaavareBatchDTO>>() 
 		{
 
 			@Override
 			public void onFailure(Throwable caught) 
 			{
-				Window.alert("hej1");
 				Window.alert(caught.getMessage()+"nej");
 			}
 
@@ -70,7 +69,6 @@ Window.alert("hej");
 			@Override
 			public void onSuccess(ArrayList<RaavareBatchDTO> result) 
 			{
-				Window.alert("hej2");
 				VerticalPanel vPanel = new VerticalPanel();
 				raavareBatchIdLabel.setText("RåvareBatch ID");
 				raavareIdLabel.setText("Råvare ID");

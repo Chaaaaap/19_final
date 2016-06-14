@@ -27,8 +27,11 @@ public class RaavareBatchDAO implements IRaavareBatchDAO
 	@Override
 	public ArrayList<RaavareBatchDTO> getRaavareBatch() throws Exception 
 	{
+
+		
 		ArrayList<RaavareBatchDTO> rbList = new ArrayList<RaavareBatchDTO>();
 		ResultSet rs;
+		
 
 		try 
 		{
@@ -37,7 +40,7 @@ public class RaavareBatchDAO implements IRaavareBatchDAO
 			if(!rs.first()) throw new Exception("Listen er tom");
 			do 
 			{
-				rbList.add(new RaavareBatchDTO(rs.getInt("raavareBatch_id"), rs.getInt("raavare_id"), rs.getInt("maengde")));
+				rbList.add(new RaavareBatchDTO(rs.getInt("rb_id"), rs.getInt("raavare_id"), rs.getInt("maengde")));
 			} 
 			while(rs.next());
 		} 
@@ -53,7 +56,7 @@ public class RaavareBatchDAO implements IRaavareBatchDAO
 	{
 		try 
 		{
-			connector.doUpdate("UPDATE raavarebatch SET raavareBatch_id = "+raavareBatch_id+", raavare_id = "+raavare_id+
+			connector.doUpdate("UPDATE raavarebatch SET rb_id = "+raavareBatch_id+", raavare_id = "+raavare_id+
 					", maengde = "+mængde+" WHERE raavareBatch_id = "+glid+";");
 		} 
 		catch(Exception e) 
