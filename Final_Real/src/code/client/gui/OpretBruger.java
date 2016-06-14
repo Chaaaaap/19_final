@@ -18,6 +18,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 import code.client.Final_Real;
 import code.client.service.OperatoerClient;
+import code.shared.validate.Validator;
 
 public class OpretBruger extends Composite {
 
@@ -27,27 +28,36 @@ public class OpretBruger extends Composite {
 	}
 
 	private OperatoerClient client;
+	private Validator validator = new Validator();
 
 	public OpretBruger(OperatoerClient client) {
 		initWidget(uiBinder.createAndBindUi(this));
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
-		
+
 		this.client = client;
 		boxGentag.addKeyUpHandler(new KeyUpHandler() {
-
 			@Override
 			public void onKeyUp(KeyUpEvent event) {
-				if(boxGentag.getText().equals(boxPassword.getText())) {
-					labelError.setText("");
-				} else {
-					labelError.setText("Passwordet er ikke ens i begge felter");
-				}
+				passwordCheck();
 			}
+		});
+		boxID.addKeyUpHandler(new KeyUpHandler() {
 			
+			@Override
+			public void onKeyUp(KeyUpEvent event) {
+				idCheck(boxID.getText());
+			}
+		});
+		boxCPR.addKeyUpHandler(new KeyUpHandler() {
+			
+			@Override
+			public void onKeyUp(KeyUpEvent event) {
+				cprCheck(boxCPR.getText());
+			}
 		});
 	}
-	
+
 	@UiField TextBox boxID;
 	@UiField TextBox boxNavn;
 	@UiField TextBox boxIni;
@@ -55,11 +65,13 @@ public class OpretBruger extends Composite {
 	@UiField PasswordTextBox boxPassword;
 	@UiField PasswordTextBox boxGentag;
 	@UiField ListBox boxType;
-	@UiField Label labelError;
+	@UiField Label labelPassError;
+	@UiField Label labelIDError;
+	@UiField Label labelCPRError;
 	@UiField Button submit;
-	
-	
-	
+
+
+
 	@UiHandler("submit")
 	void opretBruger(ClickEvent e) {
 		if(boxID.getText() == "" || boxNavn.getText() == "" || boxCPR.getText() == "" || 
@@ -67,6 +79,37 @@ public class OpretBruger extends Composite {
 			Window.alert("Alt undtagen initialer SKAL udfyldes!");
 		} else if(boxPassword.getText().equals(boxGentag.getText())) {
 			client.opretBruger(Integer.parseInt(boxID.getText()), boxNavn.getText(), boxIni.getText(), boxCPR.getText(), boxGentag.getText(), boxType.getSelectedItemText());
+		}
+	}
+	
+	
+	private void idCheck(String value) {
+		if(validator.validateInt(value)) {
+			labelIDError.setText("");
+		} else {
+			labelIDError.setText("Operatør ID skal være et heltal");
+		}
+	}
+	
+	private void passwordCheck() {
+		if(validator.validatePassword(boxGentag.getText())) {
+			if(boxGentag.getText().equals(boxPassword.getText())) {
+				labelPassError.setText("");
+				submit.setEnabled(true);
+			} else {
+				labelPassError.setText("Passwordet er ikke ens i begge felter");
+			}
+		} else {
+			submit.setEnabled(false);
+			labelPassError.setText("Passwordet er ikke godt nok");
+		}
+	}
+	
+	private void cprCheck(String value) {
+		if(validator.validateCPR(value)) {
+			labelCPRError.setText("");
+		} else {
+			labelCPRError.setText("CPR-nummeret skal stå ddmmååxxxx");
 		}
 	}
 

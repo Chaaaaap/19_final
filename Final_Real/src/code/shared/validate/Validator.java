@@ -19,7 +19,7 @@ public class Validator implements Serializable {
 		}
 		return true;
 	}
-	
+
 	public boolean validateDouble(String value) {
 		try {
 			Double.parseDouble(value);
@@ -28,7 +28,7 @@ public class Validator implements Serializable {
 		}
 		return true;
 	}
-	
+
 	public boolean validatePassword(String password) {
 		try {
 			if(password.length() < 6) {
@@ -51,13 +51,26 @@ public class Validator implements Serializable {
 			if((capLetters + smallLetters + numbers) < 3) {
 				throw new DALException("Passwordet er ikke godt nok");
 			}
-			
+
 			return true;
-			
+
 		} catch(DALException e) {
 			return false;
 		}
-		
+
+	}
+
+	public boolean validateCPR(String value) {
+		try {
+			if(value.length() == 10) {
+				Integer.parseInt(value);
+			} else {
+				throw new DALException("CPR nummeret er for langt");
+			}
+		} catch(NumberFormatException | DALException e) {
+			return false;
+		}
+		return true;
 	}
 
 }
