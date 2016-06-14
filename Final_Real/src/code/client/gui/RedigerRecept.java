@@ -54,6 +54,8 @@ public class RedigerRecept extends Composite
 		receptList = new ListBox();
 		receptList.addItem("", "blank");
 		vPanel.insert(receptList, 0);
+		nameBox.getElement().getStyle().setProperty("margin", "17px 0px 0px 0px");
+		receptIDBox.getElement().getStyle().setProperty("margin", "17px 0px 0px 0px");
 		
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
@@ -101,13 +103,12 @@ public class RedigerRecept extends Composite
 					@Override
 					public void onChange(ChangeEvent event) {
 						
-						int i = receptList.getSelectedIndex();
+						final int i = receptList.getSelectedIndex();
 						String receptValgt = receptList.getSelectedValue();
 						ArrayList<ReceptKomponentDTO> list = dtoList.get(i-1).getKomp();
 						
 						//TODO Index fucker mega...
 						nameBox.setEnabled(false);
-						nameBox.setStyleName("style.Btn");
 						nameBox.setText(dtoList.get(i-1).getReceptNavn());
 						receptIDBox.setEnabled(false);
 						receptIDBox.setText(dtoList.get(i-1).getRecept_id()+"");
@@ -117,6 +118,7 @@ public class RedigerRecept extends Composite
 						if(!receptValgt.equals("blank")) {
 						
 						for (int j = 0; j < list.size(); j++) {
+							final int index = j;
 							Window.alert(list.get(j).getRaavare_id()+"");
 							VerticalPanel redigerPanel = new VerticalPanel();
 							HorizontalPanel knapPanel = new HorizontalPanel();
@@ -163,6 +165,45 @@ public class RedigerRecept extends Composite
 									rediger.setVisible(false);
 									ok.setVisible(true);
 									annuller.setVisible(true);
+									
+									nameBox.setEnabled(true);
+									receptIDBox.setEnabled(true);
+									type[index].setEnabled(true);
+									maengde[index].setEnabled(true);
+									tol[index].setEnabled(true);
+									
+								}
+								
+							});
+							
+							ok.addClickHandler(new ClickHandler() {
+
+								@Override
+								public void onClick(ClickEvent event) {
+									// TODO Auto-generated method stub
+									
+								}
+								
+							});
+							
+							annuller.addClickHandler(new ClickHandler() {
+
+								@Override
+								public void onClick(ClickEvent event) {
+									rediger.setVisible(true);
+									ok.setVisible(false);
+									annuller.setVisible(false);
+									
+									nameBox.setEnabled(false);
+									nameBox.setText(dtoList.get(i-1).getReceptNavn());
+									receptIDBox.setEnabled(false);
+									receptIDBox.setText(dtoList.get(i-1).getRecept_id()+"");
+									type[index].setEnabled(false);
+									type[index].setText(list.get(index).getRaavare_id()+"");
+									maengde[index].setEnabled(false);
+//									maengde[index].setText(list.get(index).getMængde()+"");
+									tol[index].setEnabled(false);
+//									tol[index].setText(list.get(index).getTolerance()+"");
 									
 								}
 								
