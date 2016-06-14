@@ -16,10 +16,8 @@ import com.google.gwt.user.client.ui.Widget;
 import code.client.Final_Real;
 import code.client.service.IRaavareBatchService;
 import code.client.service.IRaavareBatchServiceAsync;
-import code.client.service.IRaavareService;
-import code.client.service.IRaavareServiceAsync;
 import code.shared.RaavareBatchDTO;
-import code.shared.RaavareDTO;
+
 
 public class VisRaavarebatches extends Composite {
 
@@ -30,7 +28,6 @@ public class VisRaavarebatches extends Composite {
 	
 	private IRaavareBatchServiceAsync RbService;
 
-	
 
 	public VisRaavarebatches() {
 		initWidget(uiBinder.createAndBindUi(this));
