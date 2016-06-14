@@ -62,7 +62,7 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 					System.out.println("\nx = "+x);
 				} while(resultSet.next() && resultSet.getInt("pb_id") == x);
 				resultSet.previous();
-				pbList.add(new ProduktBatchDTO(resultSet.getInt("pb_id"),resultSet.getInt("status"), resultSet.getInt("recept_id"),komp));
+				pbList.add(new ProduktBatchDTO(resultSet.getInt("pb_id"),resultSet.getInt("status"), resultSet.getInt("recept_id"), resultSet.getString("dato")));
 				if(!resultSet.next())
 					return pbList;
 			}
@@ -73,23 +73,24 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 
 	}
 
-	//	@Override
-	//	public ArrayList<ProduktBatchDTO> getProduktBatches() throws Exception {
-	//		ArrayList<ProduktBatchDTO> produktList = new ArrayList<ProduktBatchDTO>();
-	//		ResultSet rs;
-	//		try {
-	//			rs = connector.doQuery("SELECT * FROM produktbatch");
-	//			if(!rs.next()) throw new Exception("Listen er tom");
-	//			do {
-	//				produktList.add(new ProduktBatchDTO(rs.getInt("pb_id"), rs.getInt("status"),
-	//						rs.getInt("recept_id")  /*, rs.getInt("rb_id"), rs.getInt("tara"), rs.getInt("netto"), rs.getInt("opr_id")*/));
-	//			} while(rs.next());
-	//		} catch(Exception e) {
-	//			throw e;
-	//		} 
-	//		return produktList;
-	//		
-	//	}
+//		@Override
+//		public ArrayList<ProduktBatchDTO> getProduktBatches() throws Exception {
+//			ArrayList<ProduktBatchDTO> produktList = new ArrayList<ProduktBatchDTO>();
+//			ResultSet rs;
+//			try {
+//				rs = connector.doQuery("SELECT * FROM produktbatch");
+//				if(!rs.next()) throw new Exception("Listen er tom");
+//				do {
+//					produktList.add(new ProduktBatchDTO(rs.getInt("pb_id"), rs.getInt("status"),
+//							rs.getInt("recept_id"), rs.getString("dato") ));
+//			}while(rs.next());
+//			}
+//				catch(Exception e) {
+//				throw e;
+//			} 
+//			return produktList;
+//			
+//		}
 
 	@Override
 	public void redigerProduktBatch(int oprID, int pb_id, int rb_id, int tara, int netto, int recept_id, int oldPb_id) throws Exception {
