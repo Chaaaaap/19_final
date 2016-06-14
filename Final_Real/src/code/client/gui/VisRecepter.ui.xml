@@ -10,12 +10,11 @@
 
 	</ui:style>
 	<g:HTMLPanel>
+	    <g:VerticalPanel ui:field="vPanel">
 		<g:HorizontalPanel>
-			<g:Label ui:field="receptNavnLabel" styleName="{style.Labels}" />
-			<g:Label ui:field="receptIdLabel" styleName="{style.Labels}" />
-			<g:Label ui:field="raavareIdLabel" styleName="{style.Labels}" />
-			<g:Label ui:field="nomNettoLabel" styleName="{style.Labels}" />
-			<g:Label ui:field="toleranceLabel" styleName="{style.Labels}" />
+			<g:Label ui:field="receptNavnLabel" styleName="{style.Labels}" text="Recept navn"/>
+			<g:Label ui:field="receptIdLabel" styleName="{style.Labels}" text="Recept ID"/>
 		</g:HorizontalPanel>
+		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
