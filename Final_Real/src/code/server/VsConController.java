@@ -49,7 +49,6 @@ public class VsConController implements IVsConController {
 
 			try {
 				String oprNavn = oprDAO.getOperatoer(Integer.parseInt(oprID)).getOprNavn();
-				System.out.println("hallo"+oprNavn);
 
 				os.writeBytes("P111 \"" + oprNavn + "\"\r\n");
 				modtagBesked();
@@ -145,14 +144,7 @@ public class VsConController implements IVsConController {
 
 
 			//			punkt 14
-//			try {
-//				raavareNavn = raaDAO.getRaavare(Integer.parseInt(produktBatch));
-//				System.out.println(Integer.parseInt(produktBatch));
-//				System.out.println("hej"+raavareNavn);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-			os.writeBytes("RM20 8 \"Indtast raavarebatch nummer\" \"\" \"\"\r\n");
+			os.writeBytes("RM20 8 \"Indtast rb nummer\" \"\" \"\"\r\n");
 
 			modtagBesked();
 			modtagBesked();
