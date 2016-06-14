@@ -103,10 +103,10 @@ public void aseRun(){
 			DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
 
 			//punkt 7
-			os.writeBytes("RM20 8 \"Tjek at vaegten er ubelastet. \" \"OK\" \"\"\r\n");
+			os.writeBytes("RM20 8 \"Er vægten ubelastet\" \"OK\" \"\"\r\n");
 
-			modtagBesked();
-			modtagBesked();
+			System.out.println("hej" + modtagBesked());
+			System.out.println("med"+modtagBesked());
 			
 			//punkt 8
 			try {
