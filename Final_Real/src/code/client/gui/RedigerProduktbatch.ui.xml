@@ -1,9 +1,38 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
-	<ui:style>
-	
+<ui:style>
+		.Labels {
+		font-size:18px;
+		width:150px;
+		text-align:center;
+		}
+
+		.Rediger {
+		margin-top:0;
+		}
+
+		.Btn {
+			margin-top:17px;
+		}
+
+
 	</ui:style>
 	<g:HTMLPanel>
+		<g:VerticalPanel ui:field="vPanel">
+			<g:HorizontalPanel>
+				<g:Label ui:field="pbIDLabel" styleName="{style.Labels}" text="Produktbatch ID"/>
+				<g:Label ui:field="statusLabel" styleName="{style.Labels}" text="Status"/>
+				<g:Label ui:field="receptIDLabel" styleName="{style.Labels}" text="Recept ID"/>
+				<g:Label ui:field="pbkomp1Label" styleName="{style.Labels}" text="Produktbatchkomponent 1"/>
+				<g:Label ui:field="pbkomp2Label" styleName="{style.Labels}" text="Produktbatchkomponent 2"/>
+				<g:Label ui:field="pbkomp3Label" styleName="{style.Labels}" text="Produktbatchkomponent 3"/>
+				<g:Label ui:field="pbkomp4Label" styleName="{style.Labels}" text="Produktbatchkomponent 4"/>
+				<g:Label ui:field="pbkomp5Label" styleName="{style.Labels}" text="Produktbatchkomponent 5"/>
+			</g:HorizontalPanel>
+			<g:HorizontalPanel ui:field="hPanel">
+			    
+			</g:HorizontalPanel>
+		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
