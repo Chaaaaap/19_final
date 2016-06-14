@@ -105,7 +105,7 @@ public class RedigerRecept extends Composite
 						
 						final int i = receptList.getSelectedIndex();
 						String receptValgt = receptList.getSelectedValue();
-						ArrayList<ReceptKomponentDTO> list = dtoList.get(i-1).getKomp();
+						final ArrayList<ReceptKomponentDTO> list = dtoList.get(i-1).getKomp();
 						
 						//TODO Index fucker mega...
 						nameBox.setEnabled(false);
@@ -194,16 +194,16 @@ public class RedigerRecept extends Composite
 									ok.setVisible(false);
 									annuller.setVisible(false);
 									
-//									nameBox.setEnabled(false);
-//									nameBox.setText(dtoList.get(i-1).getReceptNavn());
-//									receptIDBox.setEnabled(false);
-//									receptIDBox.setText(dtoList.get(i-1).getRecept_id()+"");
-//									type[index].setEnabled(false);
-//									type[index].setText(list.get(index).getRaavare_id()+"");
-//									maengde[index].setEnabled(false);
-//									maengde[index].setText(list.get(index).getMængde()+"");
-//									tol[index].setEnabled(false);
-//									tol[index].setText(list.get(index).getTolerance()+"");
+									nameBox.setEnabled(false);
+									nameBox.setText(dtoList.get(i-1).getReceptNavn());
+									receptIDBox.setEnabled(false);
+									receptIDBox.setText(dtoList.get(i-1).getRecept_id()+"");
+									type[index].setEnabled(false);
+									type[index].setText(list.get(index).getRaavare_id()+"");
+									maengde[index].setEnabled(false);
+									maengde[index].setText(list.get(index).getMængde()+"");
+									tol[index].setEnabled(false);
+									tol[index].setText(list.get(index).getTolerance()+"");
 									
 								}
 								
