@@ -1,6 +1,7 @@
 package code.server;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import code.connector.Connector;
@@ -40,9 +41,9 @@ public class RaavareBatchDAO implements IRaavareBatchDAO
 			} 
 			while(rs.next());
 		} 
-		catch(Exception e) 
+		catch(SQLException e) 
 		{
-			throw e;
+			throw new Exception(e.getMessage());
 		}
 		return null;
 	}
