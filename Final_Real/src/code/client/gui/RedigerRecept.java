@@ -53,7 +53,7 @@ public class RedigerRecept extends Composite
 		tol = new TextBox[5];
 		receptList = new ListBox();
 		receptList.addItem("", "blank");
-		vPanel.insert(receptList, 1);
+		vPanel.insert(receptList, 0);
 		
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
