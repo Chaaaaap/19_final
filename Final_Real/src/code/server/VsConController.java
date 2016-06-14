@@ -20,74 +20,7 @@ public class VsConController implements IVsConController {
 	ReceptDAO receptDAO = new ReceptDAO();
 	RaavareDAO raaDAO = new RaavareDAO();
 
-	//	@Override
-	//	public void run(){
-	//		Thread send = new Thread(new Runnable() {
-	//
-	//			@Override
-	//			public void run() {
-	//
-	//				//				try {
-	//				//					boolean run = true;
-	//				//
-	//				//					DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
-	//				//					BufferedReader scan = new BufferedReader (new InputStreamReader(System.in));
-	//				//
-	//				//					os.writeBytes("RM20 8 \"Indtast\" \"Operatør\" \"ID\"\r\n");
-	//				//					
-	//				//					
-	//				//
-	//				//					//					while (run) {
-	//				//					//
-	//				//					//						String command = scan.readLine().toString();
-	//				//					//
-	//				//					//						os.writeBytes(command+ "\r\n");
-	//				//					//
-	//				//					//						if (command.equals("Q")) {
-	//				//					//							run = false;
-	//				//					//							scan.close();
-	//				//					//						}
-	//				//					//					}
-	//				//
-	//				//				} catch (Exception e) {
-	//				//					System.err.println("Exception:  " + e);
-	//				//				}
-	//				//
-	//				//			}
-	//				//		});
-	//
-	//				Thread receive = new Thread(new Runnable() {
-	//
-	//					@Override
-	//					public void run() {
-	//
-	//						DataInputStream is;
-	//						try {
-	//							is = new DataInputStream(conV.getSocket().getInputStream());
-	//							while(true){
-	//
-	//								String read = is.readLine();	
-	//
-	//								if(read.equals("ES")||read.equals("P111 L")||read.equals("RM20 L")||read.equals("D L")){
-	//									Window.alert("Den indtastede kommando er ikke korrekt syntax");
-	//								}
-	//								else {
-	//									System.out.println(read);
-	//
-	//								}
-	//							}
-	//
-	//						} catch (IOException e) {
-	//							e.printStackTrace();
-	//						}		
-	//					}
-	//				});
-	//
-	//				//		send.start();
-	//				receive.start();
-	//
-	//			
-	//		}
+
 
 	@Override
 	public void login(){
@@ -101,19 +34,19 @@ public class VsConController implements IVsConController {
 
 			oprID = modtagBesked();
 
-			oprID = oprID.substring(7);
+			oprID = oprID.substring(oprID.length()-2, oprID.length()-1);
 
 			try {
 				String oprNavn = oprDAO.getOperatoer(Integer.parseInt(oprID)).getOprNavn();
 
 
 				os.writeBytes("P111 \"" + oprNavn + "\"\r\n");
-
+				modtagBesked();
 			}catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			os.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -123,36 +56,57 @@ public class VsConController implements IVsConController {
 	public void vaelgProduktbatch(){
 		try {
 			DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
-			os.writeBytes("RM20 8 \"Indtast produktbatch nr\" \"\" \"\"\r\n");
-			
+			os.writeBytes("RM20 8 \"Indtast produktbatch nr \" \"\" \"\"\r\n");
+
 			modtagBesked();
 			String produktBatch;
 			produktBatch = modtagBesked();
-
-			produktBatch = produktBatch.substring(7);
-
+			produktBatch = produktBatch.substring(produktBatch.length()-2, produktBatch.length()-1);
 
 			try {
-				
+
 				int receptNr;
-				
+
 				receptNr = pbDAO.getProduktBatch(Integer.parseInt(produktBatch)).getRecept_id();
 
 				String receptNavn = receptDAO.getRecept(receptNr).getReceptNavn();
-				
-				
-				os.writeBytes("P111 \"" + receptNavn + "\"\r\n");
 
+
+				os.writeBytes("P111 \"" + receptNavn + "\"\r\n");
+				modtagBesked();
 			}catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			os.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
+	@Override
+	public void vaegtkontrol() {
+		DataOutputStream os;
+		try {
+			os = new DataOutputStream(conV.getSocket().getOutputStream());
+
+			os.writeBytes("RM20 8 \"Tjek at vaegten er ubelastet. \" \"OK\" \"\"\r\n");
+
+			modtagBesked();
+			modtagBesked();
+			
+			try {
+				pbDAO.updateStatus(1, 1);
+			} catch (Exception e) {
+			
+				e.printStackTrace();
+			}
+
+			os.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+
 
 	@Override
 	public String modtagBesked(){
@@ -164,7 +118,7 @@ public class VsConController implements IVsConController {
 			read = is.readLine();
 
 			System.out.println(read);
-
+			is.close();
 		}catch (IOException e) {
 			e.printStackTrace();
 		}

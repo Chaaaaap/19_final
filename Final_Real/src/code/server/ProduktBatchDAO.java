@@ -84,5 +84,14 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 	    	throw e;
 	    }
 	}
+	
+	@Override
+	public void updateStatus(int pb_id, int status) throws Exception{
+		try {
+			ResultSet rs = connector.doQuery("UPDATE `produktbatch` SET `status`='"+status+"' WHERE `pb_id`='" +pb_id+ "'");
+		} catch (SQLException e) {
+		throw e;
+		}
+	}
 
 }
