@@ -50,17 +50,18 @@ public class RaavareDAO implements IRaavareDAO {
 	}
 	
 	@Override
-	public RaavareDTO getRaavare(int pb_id) throws Exception {
-		RaavareDTO raaDTO = new RaavareDTO();
+	public String getRaavare(int pb_id) throws Exception {
 		ResultSet rs;
+		String navn;
 		try {
 			rs = connector.doQuery("SELECT raavare_navn FROM produktbatch natural join produktbatchkomponent natural join raavarebatch natural join raavare where pb_id ="+pb_id +" group by raavare_navn;");
-			if(!rs.next()) throw new Exception("Listen er tom");
+			navn = rs.getString("raavare_navn");
+			if(!rs.next()) throw new Exception("Raavaren findes ikke");
 			
 		} catch(Exception e) {
 			throw e;
 		} 
-		return raaDTO;
+		return navn;
 		
 	}
 
