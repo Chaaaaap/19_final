@@ -1,37 +1,32 @@
 package code.server;
 
-import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
-import com.google.gwt.user.client.Window;
-
-import code.connector.Connector;
 import code.connector.ConnectorVaegt;
 
 public class VsConController implements IVsConController {
 
 	private ConnectorVaegt conV = new ConnectorVaegt();
-	private Connector conDB = new Connector();
 	private OperatoerDAO oprDAO = new OperatoerDAO();
 	private ProduktBatchDAO pbDAO = new ProduktBatchDAO();
 	private ReceptDAO receptDAO = new ReceptDAO();
 	private RaavareDAO raaDAO = new RaavareDAO();
 	private double taraBeholder;
+	private String produktBatch = null;
 
 
-@Override
-public void aseRun(){
-	login();
-	vaelgProduktbatch();	
-	vaegtkontrol();
-	afvejBeholder();	
+	@Override
+	public void aseRun(){
+		login();
+		vaelgProduktbatch();	
+		vaegtkontrol();
+		afvejBeholder();	
 
-}
-	
-	
+	}
+
+
 	@Override
 	public void login(){
 		try {
@@ -57,7 +52,7 @@ public void aseRun(){
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-//			os.close();
+			//			os.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -65,13 +60,12 @@ public void aseRun(){
 
 	@Override
 	public int vaelgProduktbatch(){
-		String produktBatch = null;
 		try {
 			DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
 			os.writeBytes("RM20 8 \"Indtast produktbatch nr \" \"\" \"\"\r\n");
 
 			modtagBesked();
-			
+
 			produktBatch = modtagBesked();
 			produktBatch = produktBatch.substring(produktBatch.length()-2, produktBatch.length()-1);
 
@@ -88,16 +82,16 @@ public void aseRun(){
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-//			os.close();
+			//			os.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return Integer.parseInt(produktBatch);
 	}
 	@Override
 	public void vaegtkontrol() {
-		
+
 		try {
 			DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
 
@@ -106,70 +100,53 @@ public void aseRun(){
 
 			System.out.println("hej" + modtagBesked());
 			System.out.println("med"+modtagBesked());
-			
+
 			//punkt 8 vaelgproduktbatch virker måske ikke.
 			try {
 				pbDAO.updateStatus(vaelgProduktbatch(), 1);
 			} catch (Exception e) {
-			
+
 				e.printStackTrace();
 			}
 
-//			os.close();
+			//			os.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 	public void afvejBeholder(){
 		try {
 			DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
-			
-//			tarer fra vægt, punkt 9	
+
+			//			tarer fra vægt, punkt 9	
 			os.writeBytes("T\r\n");
 			modtagBesked();
-				
 
-			
-//			punkt 10 og 11
+
+
+			//			punkt 10 og 11
 			os.writeBytes("RM20 8 \"Placer beholder på vægt\" \"OK\" \"\"\r\n");
 
 			modtagBesked();
 			modtagBesked();
-					
-//			punkt 12, 13
+
+			//			punkt 12, 13
 			os.writeBytes("T\r\n");
 			String beholderVaegt = modtagBesked();
 			beholderVaegt = beholderVaegt.substring(8, 15);
 			taraBeholder = Double.parseDouble(beholderVaegt);		
-		
-			
-//			punkt 14
-			
-			
-//			os.close();
+
+
+			//			punkt 14
+
+
+			//			os.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}	
-
-	@Override
-	public void tarer(){
-		DataOutputStream os;
-		try {
-			os = new DataOutputStream(conV.getSocket().getOutputStream());
-
-			os.writeBytes("T\r\n");
-
-			modtagBesked();
-			
-//			os.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 
 	@Override
 	public String modtagBesked(){
@@ -181,7 +158,7 @@ public void aseRun(){
 			read = is.readLine();
 
 			System.out.println(read);
-//			is.close();
+			//			is.close();
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
