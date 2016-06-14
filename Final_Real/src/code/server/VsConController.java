@@ -24,10 +24,10 @@ public class VsConController implements IVsConController {
 @Override
 public void aseRun(){
 //	login();
-	vaelgProduktbatch();
+//	vaelgProduktbatch();
 	
 //		vaegtkontrol();
-//		afvejBeholder();	
+		afvejBeholder();	
 
 }
 	
@@ -80,7 +80,6 @@ public void aseRun(){
 				int receptNr;
 
 				receptNr = pbDAO.getProduktBatch(Integer.parseInt(produktBatch)).getRecept_id();
-
 				String receptNavn = receptDAO.getRecept(receptNr).getReceptNavn();
 
 
