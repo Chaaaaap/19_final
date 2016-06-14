@@ -6,6 +6,8 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -26,6 +28,7 @@ import code.client.service.IReceptService;
 import code.client.service.IReceptServiceAsync;
 import code.shared.RaavareDTO;
 import code.shared.ReceptKomponentDTO;
+import code.shared.validate.Validator;
 
 public class OpretRecept extends Composite {
 
@@ -41,6 +44,7 @@ public class OpretRecept extends Composite {
 	private int length = 0;
 	private TextBox[] maengde;
 	private TextBox[] tol;
+	private Validator validator = new Validator();
 
 	public OpretRecept() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -54,56 +58,56 @@ public class OpretRecept extends Composite {
 			maengde[i] = new TextBox();
 			tol[i] = new TextBox();
 		}
-		panelEt.insert(type[0], 1);
-		panelEt.insert(maengde[0], 3);
-		panelEt.insert(tol[0], 5);
-		
-		panelTo.insert(type[1], 1);
-		panelTo.insert(maengde[1], 3);
-		panelTo.insert(tol[1], 5);
-		
-		panelTre.insert(type[2], 1);
-		panelTre.insert(maengde[2], 3);
-		panelTre.insert(tol[2], 5);
-		
-		panelFire.insert(type[3], 1);
-		panelFire.insert(maengde[3], 3);
-		panelFire.insert(tol[3], 5);
-		
-		panelFem.insert(type[4], 1);
-		panelFem.insert(maengde[4], 3);
-		panelFem.insert(tol[4], 5);
-		
+
+		initPanels();
+		boxID.addKeyUpHandler(new KeyUpHandler() {
+
+			@Override
+			public void onKeyUp(KeyUpEvent event) {
+				if(validator.validateInt(boxID.getText())) {
+					idErrorLabel.setText("");
+					submit.setEnabled(true);
+				} else {
+					idErrorLabel.setText("Recept ID skal være et heltal");
+					submit.setEnabled(false);
+				}
+			}
+		});
+
+
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
 		raavareService = GWT.create(IRaavareService.class);
 		receptService = GWT.create(IReceptService.class);
-		
+
 		opretRecept();
-		
-		
+
+
 
 	}
-	
+
 	@UiField VerticalPanel panelEt;
 	@UiField VerticalPanel panelTo;
 	@UiField VerticalPanel panelTre;
 	@UiField VerticalPanel panelFire;
 	@UiField VerticalPanel panelFem;
-	
+
 	@UiField TextBox boxID;
 	@UiField TextBox boxNavn;
+
+	@UiField Label idErrorLabel;
+	@UiField Label navnErrorLabel;
 
 	@UiField Label maengde_lbl;
 	@UiField Label tol_lbl;
 
 	@UiField Label maengde_lbl1;
 	@UiField Label tol_lbl1;
-	
+
 	@UiField Label raavare_lbl2;
 	@UiField Label maengde_lbl2;
 	@UiField Label tol_lbl2;
-	
+
 	@UiField Label raavare_lbl3;
 	@UiField Label maengde_lbl3;
 	@UiField Label tol_lbl3;
@@ -111,55 +115,58 @@ public class OpretRecept extends Composite {
 	@UiField Label raavare_lbl4;
 	@UiField Label maengde_lbl4;
 	@UiField Label tol_lbl4;
-	
+
 	@UiField Button submit;
-	
+
 	@UiHandler("submit")
 	void opretReceptKnap(ClickEvent e) {
-		
-		for (int i = 0; i < type.length; i++) {
-			if(!type[i].getSelectedValue().equals("blank"))
-				length++;
-		}
-		
-		final ArrayList<ReceptKomponentDTO> komp = new ArrayList<ReceptKomponentDTO>();
-		
-		for (int i = 0; i < length; i++) {
-			if(!type[i].getSelectedValue().equals("blank")) {
-				komp.add(new ReceptKomponentDTO(Integer.parseInt(boxID.getText()), Integer.parseInt(type[i].getSelectedValue()),
-						Integer.parseInt(maengde[i].getText()), Integer.parseInt(tol[i].getText())));
-				
-			}
-		}
-		
-		receptService.addRecept(boxNavn.getText(), Integer.parseInt(boxID.getText()),
-				komp, new AsyncCallback<Void>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-				Window.alert(caught.getMessage());
+		if(boxID.getText().equals("") || boxNavn.getText().equals("")) {
+			Window.alert("Udfyld recept ID, recept navn og mindst to råvarer");
+		} else {
+			for (int i = 0; i < type.length; i++) {
+				if(!type[i].getSelectedValue().equals("blank"))
+					length++;
 			}
 
-			@Override
-			public void onSuccess(Void result) {
-				Window.alert("Recepten er oprettet");
-				boxNavn.setText("");
-				boxID.setText("");
-				for (int i = 0; i < komp.size(); i++) {
-					type[i].setSelectedIndex(0);
-					maengde[i].setText("");
-					tol[i].setText("");
+			final ArrayList<ReceptKomponentDTO> komp = new ArrayList<ReceptKomponentDTO>();
+
+			for (int i = 0; i < length; i++) {
+				if(!type[i].getSelectedValue().equals("blank")) {
+					komp.add(new ReceptKomponentDTO(Integer.parseInt(boxID.getText()), Integer.parseInt(type[i].getSelectedValue()),
+							Integer.parseInt(maengde[i].getText()), Integer.parseInt(tol[i].getText())));
+
 				}
 			}
 
-		});
+			receptService.addRecept(boxNavn.getText(), Integer.parseInt(boxID.getText()),
+					komp, new AsyncCallback<Void>() {
+
+				@Override
+				public void onFailure(Throwable caught) {
+					Window.alert(caught.getMessage());
+				}
+
+				@Override
+				public void onSuccess(Void result) {
+					Window.alert("Recepten er oprettet");
+					boxNavn.setText("");
+					boxID.setText("");
+					for (int i = 0; i < komp.size(); i++) {
+						type[i].setSelectedIndex(0);
+						maengde[i].setText("");
+						tol[i].setText("");
+					}
+				}
+
+			});
+		}
 	}
 
-	
+
 
 
 	private void opretRecept() {
-		
+
 		raavareService.getRaavarer(new AsyncCallback<ArrayList<RaavareDTO>>() {
 
 			@Override
@@ -178,8 +185,8 @@ public class OpretRecept extends Composite {
 					type[3].addItem(raavareDTO.getRaavare_navn()+" fra "+raavareDTO.getLeverandør(), raavareDTO.getRaavare_id()+"");
 					type[4].addItem(raavareDTO.getRaavare_navn()+" fra "+raavareDTO.getLeverandør(), raavareDTO.getRaavare_id()+"");
 				}
-				
-				
+
+
 			}
 
 		});
@@ -354,7 +361,28 @@ public class OpretRecept extends Composite {
 				}
 			}
 		});
-		
-		
+
+	}
+
+	private void initPanels() {
+		panelEt.insert(type[0], 1);
+		panelEt.insert(maengde[0], 3);
+		panelEt.insert(tol[0], 5);
+
+		panelTo.insert(type[1], 1);
+		panelTo.insert(maengde[1], 3);
+		panelTo.insert(tol[1], 5);
+
+		panelTre.insert(type[2], 1);
+		panelTre.insert(maengde[2], 3);
+		panelTre.insert(tol[2], 5);
+
+		panelFire.insert(type[3], 1);
+		panelFire.insert(maengde[3], 3);
+		panelFire.insert(tol[3], 5);
+
+		panelFem.insert(type[4], 1);
+		panelFem.insert(maengde[4], 3);
+		panelFem.insert(tol[4], 5);
 	}
 }

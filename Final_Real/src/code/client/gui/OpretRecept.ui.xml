@@ -7,17 +7,24 @@
 		padding-top:3px;
 		}
 
+		.Error {
+			color:RED;
+			size:14px;
+		}
+
 	</ui:style>
 	<g:HTMLPanel>
 		<g:HorizontalPanel height="150px">
 			<g:VerticalPanel>
 				<g:Label text="Indtast recept nr." />
 				<g:TextBox ui:field="boxID" />
+				<g:Label ui:field="idErrorLabel" styleName="{style.Error}" />
 			</g:VerticalPanel>
 
 			<g:VerticalPanel>
 				<g:Label text="Indtast navn på recept" />
 				<g:TextBox ui:field="boxNavn" />
+				<g:Label ui:field="navnErrorLabel" styleName="{style.Error}" />
 			</g:VerticalPanel>
 
 			<g:VerticalPanel ui:field="panelEt">
