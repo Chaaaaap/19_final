@@ -107,18 +107,18 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 		}
 	}
 	
-//	@Override
-//	public ProduktBatchDTO getProduktBatch(int pbID) throws Exception{
-//		
-//	    try {
-//	    	ResultSet rs = connector.doQuery("SELECT * FROM produktbatch WHERE pb_id = '" + pbID+"'");
-//	    	if (!rs.first()) throw new Exception("Operatoeren '" + pbID + "' findes ikke");
-//	    	return new ProduktBatchDTO(rs.getInt("pb_id"), rs.getInt("status"),
-//					rs.getInt("recept_id") /* , rs.getInt("rb_id"), rs.getInt("tara"), rs.getInt("netto"), rs.getInt("opr_id") */);	    }
-//	    catch (SQLException e) {
-//	    	throw e;
-//	    }
-//	}
+	@Override
+	public ProduktBatchDTO getProduktBatch(int pbID) throws Exception{
+		
+	    try {
+	    	ResultSet rs = connector.doQuery("SELECT * FROM produktbatch WHERE pb_id = '" + pbID+"'");
+	    	if (!rs.first()) throw new Exception("Operatoeren '" + pbID + "' findes ikke");
+	    	return new ProduktBatchDTO(rs.getInt("pb_id"), rs.getInt("status"),
+					rs.getInt("recept_id"), null);	    }
+	    catch (SQLException e) {
+	    	throw e;
+	    }
+	}
 	
 	@Override
 	public void updateStatus(int pb_id, int status) throws Exception{
