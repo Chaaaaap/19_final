@@ -16,6 +16,11 @@
 			height:23px;
 			padding-top:3px;
 		}
+
+		.Error {
+			color:RED;
+			size:14px;
+		}
 	</ui:style>
 	<g:HTMLPanel>
 	    <g:HorizontalPanel>
@@ -26,5 +31,6 @@
 	        <g:Label ui:field="password" styleName="{style.Labels}"/>
 	        <g:Label ui:field="type" styleName="{style.Labels}"/>
 	    </g:HorizontalPanel>
+	    <g:Label ui:field="errorLabel" styleName="{style.Error}" />
 	</g:HTMLPanel>
 </ui:UiBinder> 

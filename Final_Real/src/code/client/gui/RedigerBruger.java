@@ -35,7 +35,7 @@ public class RedigerBruger extends Composite {
 	
 	private IOperatoerServiceAsync service;
 	private Validator validator = new Validator();
-	private Label errorLabel = new Label();
+//	private Label errorLabel = new Label();
 
 	public RedigerBruger() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -51,6 +51,7 @@ public class RedigerBruger extends Composite {
 	@UiField Label cpr;
 	@UiField Label password;
 	@UiField Label type;
+	@UiField Label errorLabel;
 	
 	private void redigerBruger() {
 		Final_Real.clearContent();

@@ -180,7 +180,29 @@ public class RedigerRecept extends Composite
 
 								@Override
 								public void onClick(ClickEvent event) {
-									// TODO Auto-generated method stub
+									service.redigerRecept(nameBox.getText(), Integer.parseInt(receptIDBox.getText()),
+											list, dtoList.get(i-1).getRecept_id(), new AsyncCallback<Void>() {
+
+												@Override
+												public void onFailure(Throwable caught) {
+													Window.alert(caught.getMessage());
+												}
+
+												@Override
+												public void onSuccess(Void result) {
+													Window.alert("Recepten er ændret");
+													rediger.setVisible(true);
+													ok.setVisible(false);
+													annuller.setVisible(false);
+													
+													nameBox.setEnabled(false);
+													receptIDBox.setEnabled(false);
+													type[index].setEnabled(false);
+													maengde[index].setEnabled(false);
+													tol[index].setEnabled(false);
+												}
+
+									});
 									
 								}
 								
