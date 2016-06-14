@@ -22,10 +22,11 @@ public class VsConController implements IVsConController {
 	public void aseRun(){
 		login();
 		vaelgProduktbatch();	
-		for (int i = 0; i < 2; i++) {
-		vaegtkontrol();
-		afvejBeholder();	
+		for (int i = 0; i < 1; i++) {
+			vaegtkontrol();
+			afvejBeholder();	
 		}
+		afslutning();
 	}
 
 
@@ -39,7 +40,7 @@ public class VsConController implements IVsConController {
 
 			String oprID;
 			if(!hej.equals("RM20 B")){
-			modtagBesked();
+				modtagBesked();
 			}
 
 			oprID = modtagBesked();
@@ -60,7 +61,7 @@ public class VsConController implements IVsConController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
@@ -148,12 +149,38 @@ public class VsConController implements IVsConController {
 
 			modtagBesked();
 			modtagBesked();
-			
+
+			boolean erDetHerDenOnskedeMaengde = true;
+			while(erDetHerDenOnskedeMaengde){
+
+				os.writeBytes("S\r\n");
+				String vaegt = modtagBesked();
+				vaegt = vaegt.substring(8, 15);
+
+				os.writeBytes("RM20 8 \"Vil du " +vaegt+"\" \"JA\" \"NEJ\"\r\n");
+				modtagBesked();
+				String test = modtagBesked();
+
+				if (test.equals("JA")) {
+					erDetHerDenOnskedeMaengde = false;
+				} else if (test.equals("NEJ")) {
+					System.out.println("DER SKAL MERE TIL");
+				}
+			}
 			//			os.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}	
+	
+	@Override
+	public void afslutning(){
+		try {
+			pbDAO.updateStatus(Integer.parseInt(produktBatch), 2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	public String modtagBesked(){

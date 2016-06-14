@@ -7,5 +7,6 @@ public interface IVsConController {
 	void login() throws Exception;
 	void vaelgProduktbatch();
 	void vaegtkontrol();
+	void afslutning();
 
 }
