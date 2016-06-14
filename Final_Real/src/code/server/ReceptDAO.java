@@ -14,7 +14,7 @@ public class ReceptDAO implements IReceptDAO {
 
 	private Connector connector = new Connector();
 	private int x = 0;
-	private int i = 0, l;
+	private int l;
 
 	@Override
 	public void addRecept(String receptNavn, int recept_id, ArrayList<ReceptKomponentDTO> komp) throws DALException{
@@ -49,6 +49,7 @@ public class ReceptDAO implements IReceptDAO {
 
 	@Override
 	public ArrayList<ReceptDTO> getRecepter() throws DALException {
+		int i = 0;
 		ArrayList<ReceptDTO> rvList = new ArrayList<ReceptDTO>();
 		ResultSet resultSet;
 		try {
@@ -64,11 +65,12 @@ public class ReceptDAO implements IReceptDAO {
 					komp.add(new ReceptKomponentDTO(resultSet.getInt("recept_id"), resultSet.getInt("raavare_id"),
 							resultSet.getInt("nom_netto"), resultSet.getInt("tolerance")));
 
-
+					System.out.println("\nx = "+x);
 				} while(resultSet.next() && resultSet.getInt("recept_id") == x);
+				resultSet.previous();
 				rvList.add(new ReceptDTO(resultSet.getString("recept_navn"),resultSet.getInt("recept_id"),komp));
-				i++;
-				System.out.println("\n\n\nl = "+l+" i = "+i);
+				if(!resultSet.next())
+					return rvList;
 			}
 		} catch(SQLException e) {
 			throw new DALException(e.getMessage());
@@ -98,13 +100,14 @@ public class ReceptDAO implements IReceptDAO {
 	public ReceptDTO getRecept(int recept_id) throws Exception{
 
 		try {
-			ResultSet rs = connector.doQuery("SELECT * FROM recept NATURAL JOIN receptkomponent WHERE recept_id = '" + recept_id+"'");
-			if (!rs.first()) throw new Exception("Operatoeren '" + recept_id + "' findes ikke");
+			ResultSet rs = connector.doQuery("SELECT * FROM recept NATURAL JOIN receptkomponent WHERE recept_id = " + recept_id+";");
+			if (!rs.first()) throw new Exception("Recepted " + recept_id + " findes ikke");
 			ArrayList<ReceptKomponentDTO> komp = new ArrayList<ReceptKomponentDTO>();
 			do {
 				komp.add(new ReceptKomponentDTO(rs.getInt("recept_id"), rs.getInt("raavare_id"),
 						rs.getInt("nom_netto"), rs.getInt("tolerance")));
 			}while(rs.next());
+			System.out.println(komp);
 			return new ReceptDTO(rs.getString("recept_navn"), rs.getInt("recept_id"), komp);
 		}catch (SQLException e) {
 			throw e;

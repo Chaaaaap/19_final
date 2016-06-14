@@ -100,7 +100,7 @@ public class RedigerRecept extends Composite
 						
 						int i = receptList.getSelectedIndex();
 						String receptValgt = receptList.getSelectedValue();
-						ArrayList<ReceptKomponentDTO> list = dtoList.get(i).getKomp();
+						ArrayList<ReceptKomponentDTO> list = dtoList.get(i-1).getKomp();
 						
 						//TODO Index fucker mega...
 						nameBox.setEnabled(false);
