@@ -13,21 +13,21 @@ import code.connector.ConnectorVaegt;
 
 public class VsConController implements IVsConController {
 
-	ConnectorVaegt conV = new ConnectorVaegt();
-	Connector conDB = new Connector();
-	OperatoerDAO oprDAO = new OperatoerDAO();
-	ProduktBatchDAO pbDAO = new ProduktBatchDAO();
-	ReceptDAO receptDAO = new ReceptDAO();
-	RaavareDAO raaDAO = new RaavareDAO();
+	private ConnectorVaegt conV = new ConnectorVaegt();
+	private Connector conDB = new Connector();
+	private OperatoerDAO oprDAO = new OperatoerDAO();
+	private ProduktBatchDAO pbDAO = new ProduktBatchDAO();
+	private ReceptDAO receptDAO = new ReceptDAO();
+	private RaavareDAO raaDAO = new RaavareDAO();
+	private double taraBeholder;
 
 
 @Override
 public void aseRun(){
-//	login();
-//	vaelgProduktbatch();
-	
-//		vaegtkontrol();
-		afvejBeholder();	
+	login();
+	vaelgProduktbatch();	
+	vaegtkontrol();
+	afvejBeholder();	
 
 }
 	
@@ -126,33 +126,24 @@ public void aseRun(){
 		try {
 			DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
 			
-//			tarer fra vægt, punkt 9		
-			do{
-				modtagBesked();
+//			tarer fra vægt, punkt 9	
+			os.writeBytes("T\r\n");
+			modtagBesked();
 				
-			}while(modtagBesked() != "TA");
-		
+
 			
 //			punkt 10 og 11
 			os.writeBytes("RM20 8 \"Placer beholder på vægt\" \"OK\" \"\"\r\n");
 
 			modtagBesked();
 			modtagBesked();
-
-			
-		
-//			PLAN B dwadadohafoahfiowfoaifhoawfhaohfhwofhafhwoahfohawofhaohfoaho
-//			os.writeBytes("S\r\n");
 					
-//			punkt 12
+//			punkt 12, 13
+			os.writeBytes("T\r\n");
 			String beholderVaegt = modtagBesked();
-System.out.println(beholderVaegt);
-
-//			punkt 13		
-			do{
-				modtagBesked();
-				
-			}while(modtagBesked() != "TA");
+			beholderVaegt = beholderVaegt.substring(8, 15);
+			taraBeholder = Double.parseDouble(beholderVaegt);		
+		
 			
 //			punkt 14
 			
