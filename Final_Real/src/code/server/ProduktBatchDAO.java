@@ -40,11 +40,11 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 		ArrayList<ProduktBatchDTO> produktList = new ArrayList<ProduktBatchDTO>();
 		ResultSet rs;
 		try {
-			rs = connector.doQuery("SELECT * FROM produktbatch NATURAL JOIN produktbatchkomponent");
+			rs = connector.doQuery("SELECT * FROM produktbatch");
 			if(!rs.next()) throw new Exception("Listen er tom");
 			do {
 				produktList.add(new ProduktBatchDTO(rs.getInt("pb_id"), rs.getInt("status"),
-						rs.getInt("recept_id"), rs.getInt("rb_id"), rs.getInt("tara"), rs.getInt("netto"), rs.getInt("opr_id")));
+						rs.getInt("recept_id")  /*, rs.getInt("rb_id"), rs.getInt("tara"), rs.getInt("netto"), rs.getInt("opr_id")*/));
 			} while(rs.next());
 		} catch(Exception e) {
 			throw e;
@@ -79,7 +79,7 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 	    	ResultSet rs = connector.doQuery("SELECT * FROM produktbatch WHERE pb_id = '" + pbID+"'");
 	    	if (!rs.first()) throw new Exception("Operatoeren '" + pbID + "' findes ikke");
 	    	return new ProduktBatchDTO(rs.getInt("pb_id"), rs.getInt("status"),
-					rs.getInt("recept_id"), rs.getInt("rb_id"), rs.getInt("tara"), rs.getInt("netto"), rs.getInt("opr_id"));	    }
+					rs.getInt("recept_id") /* , rs.getInt("rb_id"), rs.getInt("tara"), rs.getInt("netto"), rs.getInt("opr_id") */);	    }
 	    catch (SQLException e) {
 	    	throw e;
 	    }
