@@ -72,5 +72,9 @@ public class Validator implements Serializable {
 		}
 		return true;
 	}
+	
+	public boolean validate() {
+		return true;
+	}
 
 }

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
@@ -22,6 +24,7 @@ import code.client.Final_Real;
 import code.client.service.IOperatoerService;
 import code.client.service.IOperatoerServiceAsync;
 import code.shared.OperatoerDTO;
+import code.shared.validate.Validator;
 
 public class RedigerBruger extends Composite {
 
@@ -31,6 +34,8 @@ public class RedigerBruger extends Composite {
 	}
 	
 	private IOperatoerServiceAsync service;
+	private Validator validator = new Validator();
+	private Label errorLabel = new Label();
 
 	public RedigerBruger() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -40,19 +45,12 @@ public class RedigerBruger extends Composite {
 		redigerBruger();
 	
 	}
-//	@UiField Button visListe;
 	@UiField Label oprID;
 	@UiField Label oprNavn;
 	@UiField Label ini;
 	@UiField Label cpr;
 	@UiField Label password;
 	@UiField Label type;
-//	@UiField ListBox lbType;
-	
-//	@UiHandler("visListe")
-//	void visListe(ClickEvent e) {
-//		redigerBruger();
-//	}
 	
 	private void redigerBruger() {
 		Final_Real.clearContent();
@@ -218,7 +216,51 @@ public class RedigerBruger extends Composite {
 							}
 							
 						});
+						
+						id.addKeyUpHandler(new KeyUpHandler() {
+							
+							@Override
+							public void onKeyUp(KeyUpEvent event) {
+								if(validator.validateInt(id.getText())) {
+									errorLabel.setText("");
+									gem.setEnabled(true);
+								} else {
+									gem.setEnabled(false);
+									errorLabel.setText("Operatør ID skal være et heltal");
+								}
+							}
+						});
+						cpr.addKeyUpHandler(new KeyUpHandler() {
+							
+							@Override
+							public void onKeyUp(KeyUpEvent event) {
+								if(validator.validateCPR(cpr.getText())) {
+									errorLabel.setText("");
+									gem.setEnabled(true);
+								} else {
+									errorLabel.setText("CPR nummer skal skrive ddmmååxxxx");
+									gem.setEnabled(false);
+								}
+							}
+						});
+						
+						passwordBox.addKeyUpHandler(new KeyUpHandler() {
+							
+							@Override
+							public void onKeyUp(KeyUpEvent event) {
+								if(validator.validatePassword(passwordBox.getText())) {
+									errorLabel.setText("");
+									gem.setEnabled(true);
+								} else {
+									errorLabel.setText("Passwordet er ikke godt nok");
+									gem.setEnabled(false);
+								}
+							}
+						});
 					}
+					
+					
+					vPanel.add(errorLabel);
 				}
 
 				Final_Real.attachContent(vPanel);
