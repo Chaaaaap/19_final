@@ -9,14 +9,14 @@ public class ProduktBatchDTO implements Serializable {
 	
 	public ProduktBatchDTO() {}
 	
-	public ProduktBatchDTO(int pb_id, int status, int recept_id, int rb_id, int tara, int netto, int oprID) {
+	public ProduktBatchDTO(int pb_id, int status, int recept_id  /*, int rb_id, int tara, int netto, int oprID */) {
 		this.pb_id = pb_id;
 		this.recept_id = recept_id;
 		this.status = status;
-		this.rb_id = rb_id;
-		this.tara = tara;
-		this.netto = netto;
-		this.oprID = oprID;
+//		this.rb_id = rb_id;
+//		this.tara = tara;
+//		this.netto = netto;
+//		this.oprID = oprID;
 	}
 
 
