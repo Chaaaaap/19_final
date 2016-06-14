@@ -117,8 +117,6 @@ public class OpretRecept extends Composite {
 	@UiHandler("submit")
 	void opretReceptKnap(ClickEvent e) {
 		
-		//TODO Skal laves
-		
 		for (int i = 0; i < type.length; i++) {
 			if(!type[i].getSelectedValue().equals("blank"))
 				length++;
@@ -126,7 +124,6 @@ public class OpretRecept extends Composite {
 		
 		final ArrayList<ReceptKomponentDTO> komp = new ArrayList<ReceptKomponentDTO>();
 		
-		//TODO Lav resten af textbox som array til, at hente data'en i forløkke. Mon det virker?
 		for (int i = 0; i < length; i++) {
 			if(!type[i].getSelectedValue().equals("blank")) {
 				komp.add(new ReceptKomponentDTO(Integer.parseInt(boxID.getText()), Integer.parseInt(type[i].getSelectedValue()),
