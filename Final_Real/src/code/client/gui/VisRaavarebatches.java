@@ -62,6 +62,7 @@ public class VisRaavarebatches extends Composite
 			public void onSuccess(ArrayList<RaavareBatchDTO> result) 
 			{
 				VerticalPanel vPanel = new VerticalPanel();
+				
 				raavareBatchIdLabel.setText("RåvareBatch ID");
 				raavareIdLabel.setText("Råvare ID");
 				mængdeLabel.setText("Mængde");

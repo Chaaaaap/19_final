@@ -43,12 +43,12 @@ public class RaavareBatchDAO implements IRaavareBatchDAO
 				rbList.add(new RaavareBatchDTO(rs.getInt("rb_id"), rs.getInt("raavare_id"), rs.getInt("maengde")));
 			} 
 			while(rs.next());
+			return rbList;
 		} 
 		catch(SQLException e) 
 		{
 			throw new Exception(e.getMessage());
 		}
-		return null;
 	}
 
 	@Override
