@@ -86,8 +86,10 @@ public class OpretBruger extends Composite {
 	private void idCheck(String value) {
 		if(validator.validateInt(value)) {
 			labelIDError.setText("");
+			submit.setEnabled(true);
 		} else {
 			labelIDError.setText("Operatør ID skal være et heltal");
+			submit.setEnabled(false);
 		}
 	}
 	
@@ -108,8 +110,10 @@ public class OpretBruger extends Composite {
 	private void cprCheck(String value) {
 		if(validator.validateCPR(value)) {
 			labelCPRError.setText("");
+			submit.setEnabled(true);
 		} else {
 			labelCPRError.setText("CPR-nummeret skal stå ddmmååxxxx");
+			submit.setEnabled(false);
 		}
 	}
 

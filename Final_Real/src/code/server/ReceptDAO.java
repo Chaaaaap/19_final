@@ -87,9 +87,13 @@ public class ReceptDAO implements IReceptDAO {
 			con.setAutoCommit(false);
 			connector.doUpdate("UPDATE recept SET recept_id = "+recept_id+", recept_navn = '"+receptNavn+
 					"' WHERE recept_id = "+glid+";");
+			for (ReceptKomponentDTO rkDTO : komp) {
+				connector.doUpdate("UPDATE receptkomponent SET recept_id = "+recept_id+", raavare_id = "
+			+rkDTO.getRaavare_id()+", nom_netto = "+rkDTO.getMængde()+", tolerance = "+rkDTO.getTolerance()+";");
+			}
 		} catch(Exception e) {
 			con.rollback();
-			throw e;
+			throw new DALException(e.getMessage());
 		} finally {
 			con.commit();
 			con.setAutoCommit(true);
