@@ -129,4 +129,14 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 		}
 	}
 
+	@Override
+	public void addProduktBatch(int pb_id, int recept_id, int status, String dato) throws DALException {
+		String query = "INSERT INTO produktbatch VALUES("+pb_id+", "+status+", "+recept_id+", '"+dato+"');";
+		try {
+			connector.doUpdate(query);
+		} catch(Exception e) {
+			throw new DALException(e.getMessage());
+		}
+	}
+
 }

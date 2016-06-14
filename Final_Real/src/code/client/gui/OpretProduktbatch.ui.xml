@@ -2,15 +2,42 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
+		.ListBox {
+		height:23px;
+		padding-top:3px;
+		}
 
 	</ui:style>
-	<g:HTMLPanel>    
-		<g:VerticalPanel>
-			<g:Label text="Indtast Produktbatch nr." />
-			<g:TextBox ui:field="boxID" />
-			<g:Label text="Indtast Recept nr." />
-			<g:TextBox ui:field="boxRecept" />
-			<g:Button ui:field="submit" text="Opret råvare" />
-		</g:VerticalPanel>
-	</g:HTMLPanel>	
+	<g:HTMLPanel>
+		<g:HorizontalPanel height="80px">
+			<g:VerticalPanel>
+				<g:Label text="Indtast produktbatch ID" />
+				<g:TextBox ui:field="boxID" />
+			</g:VerticalPanel>
+			
+			<g:VerticalPanel>
+				<g:Label text="Indtast recept ID" />
+				<g:TextBox ui:field="receptBox" />
+			</g:VerticalPanel>	
+			
+			<g:VerticalPanel>
+				<g:Label text="Indtast dato" />
+				<g:TextBox ui:field="datoBox" />
+			</g:VerticalPanel>	
+			
+			<g:VerticalPanel>
+				<g:Label text="Indtast status (0-2)" />
+				<g:TextBox ui:field="statusBox" />
+			</g:VerticalPanel>	
+			
+			
+	
+		</g:HorizontalPanel>
+		<g:HorizontalPanel width="100%">
+			<g:cell horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE">
+				<g:Button ui:field="submit" text="Opret recept" />
+			</g:cell>
+		</g:HorizontalPanel>
+
+	</g:HTMLPanel>
 </ui:UiBinder> 

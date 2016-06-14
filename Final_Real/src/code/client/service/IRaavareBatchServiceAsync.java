@@ -9,6 +9,7 @@ import code.shared.RaavareBatchDTO;
 public interface IRaavareBatchServiceAsync 
 {
 	void getRaavareBatch(AsyncCallback<ArrayList<RaavareBatchDTO>> callback);
+	
 	void addRaavareBatch(int raavareBatch_id, int raavare_id, int mængde, AsyncCallback<Void> asyncCallback);
 	void redigerRaavareBatch(int raavareBatch_id, int raavare_id, int mængde, int glid, AsyncCallback<Void> asyncCallback);
 }

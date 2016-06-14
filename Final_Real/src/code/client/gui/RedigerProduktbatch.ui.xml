@@ -24,11 +24,11 @@
 				<g:Label ui:field="pbIDLabel" styleName="{style.Labels}" text="Produktbatch ID"/>
 				<g:Label ui:field="statusLabel" styleName="{style.Labels}" text="Status"/>
 				<g:Label ui:field="receptIDLabel" styleName="{style.Labels}" text="Recept ID"/>
-				<g:Label ui:field="pbkomp1Label" styleName="{style.Labels}" text="Produktbatchkomponent 1"/>
-				<g:Label ui:field="pbkomp2Label" styleName="{style.Labels}" text="Produktbatchkomponent 2"/>
-				<g:Label ui:field="pbkomp3Label" styleName="{style.Labels}" text="Produktbatchkomponent 3"/>
-				<g:Label ui:field="pbkomp4Label" styleName="{style.Labels}" text="Produktbatchkomponent 4"/>
-				<g:Label ui:field="pbkomp5Label" styleName="{style.Labels}" text="Produktbatchkomponent 5"/>
+				<g:Label ui:field="pbkomp1Label" styleName="{style.Labels}" text="PB Komp 1"/>
+				<g:Label ui:field="pbkomp2Label" styleName="{style.Labels}" text="PB Komp 2"/>
+				<g:Label ui:field="pbkomp3Label" styleName="{style.Labels}" text="PB Komp 3"/>
+				<g:Label ui:field="pbkomp4Label" styleName="{style.Labels}" text="PB Komp 4"/>
+				<g:Label ui:field="pbkomp5Label" styleName="{style.Labels}" text="PB Komp 5"/>
 			</g:HorizontalPanel>
 			<g:HorizontalPanel ui:field="hPanel">
 			    
