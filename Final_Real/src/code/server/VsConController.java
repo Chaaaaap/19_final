@@ -24,9 +24,9 @@ public class VsConController implements IVsConController {
 @Override
 public void aseRun(){
 //	login();
-//	vaelgProduktbatch();
+	vaelgProduktbatch();
 	
-		vaegtkontrol();
+//		vaegtkontrol();
 //		afvejBeholder();	
 
 }
@@ -108,11 +108,9 @@ public void aseRun(){
 			System.out.println("hej" + modtagBesked());
 			System.out.println("med"+modtagBesked());
 			
-			//punkt 8
+			//punkt 8 vaelgproduktbatch virker måske ikke.
 			try {
-				System.out.println("heja");
-				pbDAO.updateStatus(1, 1);
-				System.out.println("hej");
+				pbDAO.updateStatus(vaelgProduktbatch(), 1);
 			} catch (Exception e) {
 			
 				e.printStackTrace();
