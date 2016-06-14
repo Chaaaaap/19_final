@@ -48,6 +48,21 @@ public class RaavareDAO implements IRaavareDAO {
 			throw e;
 		}
 	}
+	
+	@Override
+	public RaavareDTO getRaavare(int pb_id) throws Exception {
+		RaavareDTO raaDTO = new RaavareDTO();
+		ResultSet rs;
+		try {
+			rs = connector.doQuery("SELECT raavare_navn FROM produktbatch natural join produktbatchkomponent natural join raavarebatch natural join raavare where pb_id ="+pb_id +" group by raavare_navn;");
+			if(!rs.next()) throw new Exception("Listen er tom");
+			
+		} catch(Exception e) {
+			throw e;
+		} 
+		return raaDTO;
+		
+	}
 
 	
 }

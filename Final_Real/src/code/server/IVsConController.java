@@ -5,7 +5,7 @@ public interface IVsConController {
 	void aseRun();
 	String modtagBesked();
 	void login() throws Exception;
-	int vaelgProduktbatch();
+	void vaelgProduktbatch();
 	void vaegtkontrol();
 
 }

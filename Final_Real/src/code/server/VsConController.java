@@ -59,7 +59,7 @@ public class VsConController implements IVsConController {
 	}
 
 	@Override
-	public int vaelgProduktbatch(){
+	public void vaelgProduktbatch(){
 		try {
 			DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
 			os.writeBytes("RM20 8 \"Indtast produktbatch nr \" \"\" \"\"\r\n");
@@ -87,7 +87,6 @@ public class VsConController implements IVsConController {
 			e.printStackTrace();
 		}
 
-		return Integer.parseInt(produktBatch);
 	}
 	@Override
 	public void vaegtkontrol() {
@@ -103,7 +102,7 @@ public class VsConController implements IVsConController {
 
 			//punkt 8 vaelgproduktbatch virker måske ikke.
 			try {
-				pbDAO.updateStatus(vaelgProduktbatch(), 1);
+				pbDAO.updateStatus(Integer.parseInt(produktBatch), 1);
 			} catch (Exception e) {
 
 				e.printStackTrace();
@@ -140,8 +139,17 @@ public class VsConController implements IVsConController {
 
 
 			//			punkt 14
+			String raavareNavn = null;
+			try {
+				raavareNavn = raaDAO.getRaavare(Integer.parseInt(produktBatch)).getRaavare_navn();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			os.writeBytes("RM20 8 \"Indtast rb.nr fra"+raavareNavn+"\" \"\" \"\"\r\n");
 
-
+			modtagBesked();
+			modtagBesked();
+			
 			//			os.close();
 		} catch (IOException e) {
 			e.printStackTrace();
