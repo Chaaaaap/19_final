@@ -1,6 +1,8 @@
 package code.client.gui;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -9,12 +11,14 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
 import code.client.Final_Real;
 import code.client.service.IRaavareService;
 import code.client.service.IRaavareServiceAsync;
+import code.shared.validate.Validator;
 
 public class OpretRaavare extends Composite {
 
@@ -24,6 +28,7 @@ public class OpretRaavare extends Composite {
 	}
 
 	private IRaavareServiceAsync service;
+	private Validator validator = new Validator();
 
 	public OpretRaavare() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -31,11 +36,25 @@ public class OpretRaavare extends Composite {
 		Final_Real.attachContent(this);
 		service = GWT.create(IRaavareService.class);
 
+		boxID.addChangeHandler(new ChangeHandler() {
+			
+			@Override
+			public void onChange(ChangeEvent event) {
+				if(validator.validateInt(boxID.getText())) {
+					idErrorLabel.setText("");
+					submit.setEnabled(true);
+				} else {
+					idErrorLabel.setText("Råvare ID skal være et heltal");
+					submit.setEnabled(false);
+				}
+			}
+		});
 	}
 
 	@UiField TextBox boxID;
 	@UiField TextBox boxNavn;
 	@UiField TextBox boxSupplier;
+	@UiField Label idErrorLabel;
 	@UiField Button submit;
 
 	@UiHandler("submit")
