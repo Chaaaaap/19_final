@@ -14,16 +14,18 @@ public class VsConController implements IVsConController {
 	private ReceptDAO receptDAO = new ReceptDAO();
 	private RaavareDAO raaDAO = new RaavareDAO();
 	private double taraBeholder;
-	private String produktBatch = null;
+	private String produktBatch;
+	private String raavareNavn;
 
 
 	@Override
 	public void aseRun(){
 		login();
 		vaelgProduktbatch();	
+		for (int i = 0; i < 2; i++) {
 		vaegtkontrol();
 		afvejBeholder();	
-
+		}
 	}
 
 
@@ -32,10 +34,13 @@ public class VsConController implements IVsConController {
 		try {
 			DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
 			os.writeBytes("RM20 8 \"Indtast Operatør ID\" \"\" \"\"\r\n");
+			String hej;
+			hej = modtagBesked();
 
 			String oprID;
-
+			if(!hej.equals("RM20 B")){
 			modtagBesked();
+			}
 
 			oprID = modtagBesked();
 
@@ -44,7 +49,6 @@ public class VsConController implements IVsConController {
 
 			try {
 				String oprNavn = oprDAO.getOperatoer(Integer.parseInt(oprID)).getOprNavn();
-
 
 				os.writeBytes("P111 \"" + oprNavn + "\"\r\n");
 				modtagBesked();
@@ -56,6 +60,7 @@ public class VsConController implements IVsConController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
 
 	@Override
@@ -97,8 +102,8 @@ public class VsConController implements IVsConController {
 			//punkt 7
 			os.writeBytes("RM20 8 \"Er vægten ubelastet\" \"OK\" \"\"\r\n");
 
-			System.out.println("hej" + modtagBesked());
-			System.out.println("med"+modtagBesked());
+			modtagBesked();
+			modtagBesked();
 
 			//punkt 8 vaelgproduktbatch virker måske ikke.
 			try {
@@ -139,13 +144,7 @@ public class VsConController implements IVsConController {
 
 
 			//			punkt 14
-			String raavareNavn = null;
-			try {
-				raavareNavn = raaDAO.getRaavare(Integer.parseInt(produktBatch)).getRaavare_navn();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			os.writeBytes("RM20 8 \"Indtast rb.nr fra"+raavareNavn+"\" \"\" \"\"\r\n");
+			os.writeBytes("RM20 8 \"Indtast rb nummer\" \"\" \"\"\r\n");
 
 			modtagBesked();
 			modtagBesked();
@@ -173,7 +172,5 @@ public class VsConController implements IVsConController {
 		return read;
 
 	}
-
-
 
 }
