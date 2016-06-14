@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
@@ -104,6 +107,7 @@ public class RedigerRecept extends Composite
 						
 						//TODO Index fucker mega...
 						nameBox.setEnabled(false);
+						nameBox.setStyleName("style.Btn");
 						nameBox.setText(dtoList.get(i-1).getReceptNavn());
 						receptIDBox.setEnabled(false);
 						receptIDBox.setText(dtoList.get(i-1).getRecept_id()+"");
@@ -111,16 +115,11 @@ public class RedigerRecept extends Composite
 						hPanel.add(receptIDBox);
 						
 						if(!receptValgt.equals("blank")) {
-//						receptNavnLabel.setText("Recept navn");
-//						receptIdLabel.setText("Recept ID");
-//						raavareIdLabel.setText("Raavare ID");
-//						nomNettoLabel.setText("Mængde");
-//						toleranceLabel.setText("Tolerence");
-						
 						
 						for (int j = 0; j < list.size(); j++) {
 							Window.alert(list.get(j).getRaavare_id()+"");
 							VerticalPanel redigerPanel = new VerticalPanel();
+							HorizontalPanel knapPanel = new HorizontalPanel();
 							Label idLabel = new Label("Raavare ID");
 							type[j] = new TextBox();
 							type[j].setText(list.get(j).getRaavare_id()+"");
@@ -136,14 +135,38 @@ public class RedigerRecept extends Composite
 							tol[j].setText(list.get(j).getTolerance()+"");
 							tol[j].setEnabled(false);
 							
+							final Button rediger = new Button("Rediger");
+							final Button ok = new Button("Gem");
+							ok.setVisible(false);
+							ok.setWidth("75px");
+							final Button annuller = new Button("Annuller");
+							annuller.setVisible(false);
+							annuller.setWidth("75px");
+							
 							redigerPanel.add(idLabel);
 							redigerPanel.add(type[j]);
 							redigerPanel.add(maengdeLabel);
 							redigerPanel.add(maengde[j]);
 							redigerPanel.add(tolLabel);
 							redigerPanel.add(tol[j]);
+							knapPanel.add(rediger);
+							knapPanel.add(ok);
+							knapPanel.add(annuller);
+							redigerPanel.add(knapPanel);
 							
 							hPanel.add(redigerPanel);
+							
+							rediger.addClickHandler(new ClickHandler() {
+
+								@Override
+								public void onClick(ClickEvent event) {
+									rediger.setVisible(false);
+									ok.setVisible(true);
+									annuller.setVisible(true);
+									
+								}
+								
+							});
 						}
 						
 						}

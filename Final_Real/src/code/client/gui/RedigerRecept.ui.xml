@@ -12,6 +12,10 @@
 		margin-top:0;
 		}
 
+		.Btn {
+			margin-top:17px;
+		}
+
 
 	</ui:style>
 	<g:HTMLPanel>
