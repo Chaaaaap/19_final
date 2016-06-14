@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+
+import com.google.gwt.i18n.client.DateTimeFormat;
 
 import code.connector.Connector;
 import code.shared.DALException;
@@ -131,7 +134,9 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 
 	@Override
 	public void addProduktBatch(int pb_id, int recept_id, int status, String dato) throws DALException {
-		String query = "INSERT INTO produktbatch VALUES("+pb_id+", "+status+", "+recept_id+", '"+dato+"');";
+//		Date today = new Date();
+//		String dato = DateTimeFormat.getShortDateFormat().format(today);
+		String query = "INSERT INTO produktbatch VALUES("+pb_id+", "+status+", "+recept_id+", '"+dato+"')";
 		try {
 			connector.doUpdate(query);
 		} catch(Exception e) {

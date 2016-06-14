@@ -1,7 +1,10 @@
 package code.client.gui;
 
+import java.util.Date;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -25,12 +28,20 @@ public class OpretProduktbatch extends Composite {
 
 	private IProduktBatchServiceAsync pbService;
 	
+
+	
+	
 	public OpretProduktbatch() {
 		initWidget(uiBinder.createAndBindUi(this));
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
 		pbService = GWT.create(IProduktBatchService.class);
-	
+		
+		Date date = new Date();
+		String test = DateTimeFormat.getShortDateFormat().format(date);
+		datoBox.setText(test);
+		
+		
 	}
 
 	
