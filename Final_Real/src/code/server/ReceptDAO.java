@@ -106,9 +106,12 @@ public class ReceptDAO implements IReceptDAO {
 			do {
 				komp.add(new ReceptKomponentDTO(rs.getInt("recept_id"), rs.getInt("raavare_id"),
 						rs.getInt("nom_netto"), rs.getInt("tolerance")));
-			}while(rs.next());
-			System.out.println(komp);
-			return new ReceptDTO(rs.getString("recept_navn"), rs.getInt("recept_id"), komp);
+			}while(rs.next() && recept_id == rs.getInt("recept_id"));
+			rs.previous();
+			ReceptDTO dto =  new ReceptDTO(rs.getString("recept_navn"), rs.getInt("recept_id"), komp);
+			if(!rs.next())
+				return dto;
+			return null;
 		}catch (SQLException e) {
 			throw e;
 		}
