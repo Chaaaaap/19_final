@@ -12,10 +12,7 @@ public class VsConServiceImpl extends RemoteServiceServlet implements IServiceVs
 	
 	@Override
 	public void ConnectorVaegt() throws Exception {
-//		vsCon.run();
-		vsCon.login();
-		vsCon.vaelgProduktbatch();
-		
+		vsCon.aseRun();	
 	}
 
 }

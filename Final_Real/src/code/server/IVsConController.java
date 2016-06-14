@@ -2,9 +2,10 @@ package code.server;
 
 public interface IVsConController {
 	
-//	void run();
+	void aseRun();
 	String modtagBesked();
 	void login() throws Exception;
-	void vaelgProduktbatch();
+	int vaelgProduktbatch();
 	void vaegtkontrol();
+	void tarer();
 }
