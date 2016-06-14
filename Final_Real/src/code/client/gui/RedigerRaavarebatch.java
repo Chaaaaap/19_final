@@ -61,7 +61,7 @@ public class RedigerRaavarebatch extends Composite
 			@Override
 			public void onFailure(Throwable caught) 
 			{
-				Window.alert(caught.getMessage()+"nej");
+				Window.alert(caught.getMessage());
 			}
 
 			
@@ -69,13 +69,19 @@ public class RedigerRaavarebatch extends Composite
 			@Override
 			public void onSuccess(ArrayList<RaavareBatchDTO> result) 
 			{
+				Window.alert("hej1");
+
 				VerticalPanel vPanel = new VerticalPanel();
 				raavareBatchIdLabel.setText("RåvareBatch ID");
 				raavareIdLabel.setText("Råvare ID");
 				mængdeLabel.setText("Mængde");
+				
+				Window.alert("hej2");
 
 				if(!result.isEmpty()) 
 				{
+					Window.alert("hej3");
+					
 					for (RaavareBatchDTO raavareBatch : result) 
 					{
 						final RaavareBatchDTO rv = raavareBatch;
@@ -187,6 +193,10 @@ public class RedigerRaavarebatch extends Composite
 
 						});
 					}
+				}
+				else
+				{
+					Window.alert("hej4");
 				}
 
 				Final_Real.attachContent(vPanel);
