@@ -19,24 +19,28 @@ import code.client.service.IRaavareBatchServiceAsync;
 import code.shared.RaavareBatchDTO;
 
 
-public class VisRaavarebatches extends Composite {
+public class VisRaavarebatches extends Composite 
+{
 
 	private static VisRaavarebatchesUiBinder uiBinder = GWT.create(VisRaavarebatchesUiBinder.class);
 
-	interface VisRaavarebatchesUiBinder extends UiBinder<Widget, VisRaavarebatches> {
+	interface VisRaavarebatchesUiBinder extends UiBinder<Widget, VisRaavarebatches> 
+	{
+
 	}
-	
+
 	private IRaavareBatchServiceAsync RbService;
 
 
-	public VisRaavarebatches() {
+	public VisRaavarebatches() 
+	{
 		initWidget(uiBinder.createAndBindUi(this));
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
 		RbService = GWT.create(IRaavareBatchService.class);
 		visRaavarerBatch();
 	}
-	
+
 	@UiField Label raavareBatchIdLabel;
 	@UiField Label raavareIdLabel;
 	@UiField Label mængdeLabel;
@@ -61,15 +65,16 @@ public class VisRaavarebatches extends Composite {
 				raavareBatchIdLabel.setText("RåvareBatch ID");
 				raavareIdLabel.setText("Råvare ID");
 				mængdeLabel.setText("Mængde");
-				
+
 				if(!result.isEmpty()) 
 				{
-					for (RaavareBatchDTO raavareBatch : result) {
+					for (RaavareBatchDTO raavareBatch : result) 
+					{
 						HorizontalPanel hPanel = new HorizontalPanel();
 						Label raavareBatchId = new Label(raavareBatch.getRaavareBatch_id()+"");
 						Label raavareId = new Label(raavareBatch.getRaavare_id()+"");
 						Label Mængde = new Label(raavareBatch.getMængde()+"");
-						
+
 						hPanel.add(raavareBatchId);
 						hPanel.add(raavareId);
 						hPanel.add(Mængde);
@@ -79,7 +84,7 @@ public class VisRaavarebatches extends Composite {
 
 				Final_Real.attachContent(vPanel);
 			}
-			
+
 		});
 	}
 }

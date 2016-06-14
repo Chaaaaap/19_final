@@ -11,22 +11,28 @@ import code.shared.RaavareBatchDTO;
 public class RaavareBatchServiceImpl extends RemoteServiceServlet implements IRaavareBatchService 
 {
 
-public RaavareBatchServiceImpl() {
-		
-	}
-	RaavareBatchDAO rvDAO = new RaavareBatchDAO();
-	@Override
-	public ArrayList<RaavareBatchDTO> getRaavareBatch() throws Exception {
-			return rvDAO.getRaavareBatch();
+	public RaavareBatchServiceImpl() 
+	{
 
 	}
+	
+	RaavareBatchDAO raavareBatchDAO = new RaavareBatchDAO();
+	
 	@Override
-	public void addRaavareBatch(int raavareBatch_id, int raavare_id, int mængde) throws Exception {
-			rvDAO.addRaavareBatch( raavareBatch_id, raavare_id, mængde);
-	}
-	@Override
-	public void redigerRaavareBatch(int raavareBatch_id, int raavare_id, int mængde, int glid) throws Exception {
-		rvDAO.redigerRaavareBatch(raavareBatch_id, raavare_id, mængde, glid);
+	public ArrayList<RaavareBatchDTO> getRaavareBatch() throws Exception 
+	{
+		return raavareBatchDAO.getRaavareBatch();
 	}
 	
+	@Override
+	public void addRaavareBatch(int raavareBatch_id, int raavare_id, int mængde) throws Exception 
+	{
+		raavareBatchDAO.addRaavareBatch( raavareBatch_id, raavare_id, mængde);
+	}
+	
+	@Override
+	public void redigerRaavareBatch(int raavareBatch_id, int raavare_id, int mængde, int glid) throws Exception 
+	{
+		raavareBatchDAO.redigerRaavareBatch(raavareBatch_id, raavare_id, mængde, glid);
+	}
 }
