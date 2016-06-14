@@ -59,51 +59,51 @@ public class VisRecepter extends Composite
 	{
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
-		service.getRecept(new AsyncCallback<ArrayList<ReceptDTO>>() 
-		{
-
-			@Override
-			public void onFailure(Throwable caught) 
-			{
-				Window.alert(caught.getMessage());	
-			}
-
-			@Override
-			public void onSuccess(ArrayList<ReceptDTO> result) 
-			{
-				VerticalPanel vPanel = new VerticalPanel();
-				receptNavnLabel.setText("Recept Navn");
-				receptIdLabel.setText("Recept ID");
-				raavareIdLabel.setText("Råvare ID");
-				nomNettoLabel.setText("nom-Netto");
-				toleranceLabel.setText("Tolerance");
-
-				if(!result.isEmpty()) 
-				{
-					for (ReceptDTO raavare : result) 
-					{
-						HorizontalPanel hPanel = new HorizontalPanel();
-						
-						Label receptNavn = new Label(raavare.getReceptNavn());
-						Label receptId = new Label(raavare.getRecept_id()+"");
-						//TODO Skal laves
-//						Label raavareId = new Label(raavare.getRaavare_id()+"");
-//						Label nomNetto = new Label(raavare.getNom_netto()+"");
-//						Label tolerance = new Label(raavare.getTolerance()+"");
-						
-						hPanel.add(receptNavn);
-						hPanel.add(receptId);
-						//TODO Skal laves
-//						hPanel.add(raavareId);
-//						hPanel.add(nomNetto);
-//						hPanel.add(tolerance);
-						vPanel.add(hPanel);
-					}
-				}
-
-				Final_Real.attachContent(vPanel);
-			}
-
-		});
+//		service.getRecept(new AsyncCallback<ArrayList<ReceptDTO>>() 
+//		{
+//
+//			@Override
+//			public void onFailure(Throwable caught) 
+//			{
+//				Window.alert(caught.getMessage());	
+//			}
+//
+//			@Override
+//			public void onSuccess(ArrayList<ReceptDTO> result) 
+//			{
+//				VerticalPanel vPanel = new VerticalPanel();
+//				receptNavnLabel.setText("Recept Navn");
+//				receptIdLabel.setText("Recept ID");
+//				raavareIdLabel.setText("Råvare ID");
+//				nomNettoLabel.setText("nom-Netto");
+//				toleranceLabel.setText("Tolerance");
+//
+//				if(!result.isEmpty()) 
+//				{
+//					for (ReceptDTO raavare : result) 
+//					{
+//						HorizontalPanel hPanel = new HorizontalPanel();
+//						
+//						Label receptNavn = new Label(raavare.getReceptNavn());
+//						Label receptId = new Label(raavare.getRecept_id()+"");
+//						//TODO Skal laves
+////						Label raavareId = new Label(raavare.getRaavare_id()+"");
+////						Label nomNetto = new Label(raavare.getNom_netto()+"");
+////						Label tolerance = new Label(raavare.getTolerance()+"");
+//						
+//						hPanel.add(receptNavn);
+//						hPanel.add(receptId);
+//						//TODO Skal laves
+////						hPanel.add(raavareId);
+////						hPanel.add(nomNetto);
+////						hPanel.add(tolerance);
+//						vPanel.add(hPanel);
+//					}
+//				}
+//
+//				Final_Real.attachContent(vPanel);
+//			}
+//
+//		});
 	}
 }
