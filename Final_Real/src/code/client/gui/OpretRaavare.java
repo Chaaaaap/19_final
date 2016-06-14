@@ -15,7 +15,6 @@ import com.google.gwt.user.client.ui.Widget;
 import code.client.Final_Real;
 import code.client.service.IRaavareService;
 import code.client.service.IRaavareServiceAsync;
-import code.shared.RaavareDTO;
 
 public class OpretRaavare extends Composite {
 

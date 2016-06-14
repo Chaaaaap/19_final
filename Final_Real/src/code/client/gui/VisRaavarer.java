@@ -3,13 +3,10 @@ package code.client.gui;
 import java.util.ArrayList;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
@@ -37,14 +34,10 @@ public class VisRaavarer extends Composite {
 		visRaavarer();
 	}
 	
-//	@UiField Button visListe;
 	@UiField Label idLabel;
 	@UiField Label navnLabel;
 	@UiField Label levLabel;
-//	@UiHandler("visListe")
-//	void visListe(ClickEvent e) {
-//		visRaavarer();
-//	}
+	
 	private void visRaavarer() {
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);

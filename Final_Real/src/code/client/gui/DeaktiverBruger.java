@@ -28,7 +28,6 @@ public class DeaktiverBruger extends Composite {
 	interface DeaktiverBrugerUiBinder extends UiBinder<Widget, DeaktiverBruger> {
 	}
 	private IOperatoerServiceAsync service;
-	private OperatoerDTO opr;
 
 	public DeaktiverBruger() {
 		initWidget(uiBinder.createAndBindUi(this));

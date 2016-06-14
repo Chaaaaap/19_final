@@ -7,7 +7,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -40,15 +39,10 @@ public class RedigerRaavare extends Composite {
 		redigerRaavare();
 	}
 	
-//	@UiField Button visListe;
 	@UiField Label idLabel;
 	@UiField Label navnLabel;
 	@UiField Label levLabel;
 	
-//	@UiHandler("visListe")
-//	void visListe(ClickEvent e) {
-//		redigerRaavare();
-//	}
 	
 	private void redigerRaavare() {
 		Final_Real.clearContent();

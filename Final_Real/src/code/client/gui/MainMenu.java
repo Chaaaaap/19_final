@@ -24,7 +24,6 @@ public class MainMenu extends Composite {
 	interface MainMenuUiBinder extends UiBinder<Widget, MainMenu> {
 	}
 
-	private MainMenu menu = this;
 	private OperatoerDTO opr;
 	private OperatoerClient client;
 	public MainMenu(OperatoerDTO opr, OperatoerClient client) {
@@ -58,21 +57,6 @@ public class MainMenu extends Composite {
 			
 		}
 		
-//		opretBruger.setScheduledCommand(new LaunchCommand(new OpretBruger(client)));
-//		redigerBruger.setScheduledCommand(new LaunchCommand(new RedigerBruger()));
-//		deaktiverBruger.setScheduledCommand(new LaunchCommand(new DeaktiverBruger()));
-//		opretRecept.setScheduledCommand(new LaunchCommand(new OpretRecept()));		
-//		redigerRecept.setScheduledCommand(new LaunchCommand(new RedigerRecept()));		
-//		visRecepter.setScheduledCommand(new LaunchCommand(new VisRecepter()));		
-//		opretRaavare.setScheduledCommand(new LaunchCommand(new OpretRaavare()));		
-//		redigerRaavare.setScheduledCommand(new LaunchCommand(new RedigerRaavare()));		
-//		visRaavarer.setScheduledCommand(new LaunchCommand(new VisRaavarer()));		
-//		opretRaavarebatch.setScheduledCommand(new LaunchCommand(new OpretRaavarebatch()));		
-//		redigerRaavarebatch.setScheduledCommand(new LaunchCommand(new RedigerRaavarebatch()));		
-//		visRaavarebatches.setScheduledCommand(new LaunchCommand(new VisRaavarebatches()));		
-//		opretProduktbatch.setScheduledCommand(new LaunchCommand(new OpretProduktbatch()));		
-//		redigerProduktbatch.setScheduledCommand(new LaunchCommand(new RedigerProduktbatch()));		
-//		visProduktbatches.setScheduledCommand(new LaunchCommand(new VisProduktbatches()));
 		opretBruger.setScheduledCommand(new Command() {@Override public void execute() {new OpretBruger(oprClient); } });
 		redigerBruger.setScheduledCommand(new Command() {@Override public void execute() {new RedigerBruger(); } });
 		deaktiverBruger.setScheduledCommand(new Command() {@Override public void execute() {new DeaktiverBruger(); } });
@@ -127,7 +111,6 @@ public class MainMenu extends Composite {
 	void skiftPassword(ClickEvent e) {
 		SkiftPassword skiftPassword = new SkiftPassword(opr, client);
 		Final_Real.clearContent();
-		Final_Real.attachContent(this);
 		Final_Real.attachContent(skiftPassword);
 		
 	}
@@ -136,7 +119,6 @@ public class MainMenu extends Composite {
 	void afvej(ClickEvent e) {
 		Afvejning afveje = new Afvejning(opr);
 		Final_Real.clearContent();
-		Final_Real.attachContent(this);
 		Final_Real.attachContent(afveje);
 	}
 	
