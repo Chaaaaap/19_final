@@ -4,7 +4,10 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import org.apache.tools.ant.types.CommandlineJava.SysProperties;
+
 import code.connector.ConnectorVaegt;
+import code.shared.DALException;
 
 public class VsConController implements IVsConController {
 
@@ -16,18 +19,20 @@ public class VsConController implements IVsConController {
 	private double taraBeholder;
 	private String produktBatch;
 	private String raavareNavn;
+	private String vaegt;
 
 
 	@Override
-	public void aseRun(){
-		login();
-		vaelgProduktbatch();	
-		for (int i = 0; i < 1; i++) {
-			vaegtkontrol();
-			afvejBeholder();	
+		public void aseRun() throws NumberFormatException, DALException{
+
+			login();
+			vaelgProduktbatch();
+			for (int i = 0; i < 2; i++) {
+				vaegtkontrol();
+				afvejBeholder();	
+			}
+			afslutning();
 		}
-		afslutning();
-	}
 
 
 	@Override
@@ -46,7 +51,6 @@ public class VsConController implements IVsConController {
 			oprID = modtagBesked();
 
 			oprID = oprID.substring(oprID.length()-2, oprID.length()-1);
-			System.out.println(oprID);
 
 			try {
 				String oprNavn = oprDAO.getOperatoer(Integer.parseInt(oprID)).getOprNavn();
@@ -54,7 +58,6 @@ public class VsConController implements IVsConController {
 				os.writeBytes("P111 \"" + oprNavn + "\"\r\n");
 				modtagBesked();
 			}catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			//			os.close();
@@ -146,27 +149,34 @@ public class VsConController implements IVsConController {
 
 			//			punkt 14
 			os.writeBytes("RM20 8 \"Indtast rb nummer\" \"\" \"\"\r\n");
-
 			modtagBesked();
 			modtagBesked();
 
-			boolean erDetHerDenOnskedeMaengde = true;
-			while(erDetHerDenOnskedeMaengde){
-
-				os.writeBytes("S\r\n");
-				String vaegt = modtagBesked();
-				vaegt = vaegt.substring(8, 15);
-
-				os.writeBytes("RM20 8 \"Vil du " +vaegt+"\" \"JA\" \"NEJ\"\r\n");
+			os.writeBytes("P111 \"Tryk [-> for afvej\"\r\n");
+			modtagBesked();
+			
+			os.writeBytes("K 3\r\n");
+			
+			boolean hej = true;
+			while(hej){
+			
 				modtagBesked();
-				String test = modtagBesked();
-
-				if (test.equals("JA")) {
-					erDetHerDenOnskedeMaengde = false;
-				} else if (test.equals("NEJ")) {
-					System.out.println("DER SKAL MERE TIL");
+			
+				if (modtagBesked().contains("K C 4")) {
+					hej = false;
 				}
 			}
+			
+			os.writeBytes("S\r\n");
+			vaegt = modtagBesked();
+			
+			
+			vaegt = vaegt.substring(8, 15);
+
+				System.out.println(vaegt);
+			
+			
+			
 			//			os.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -176,6 +186,15 @@ public class VsConController implements IVsConController {
 	@Override
 	public void afslutning(){
 		try {
+			DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
+			
+			os.writeBytes("K 1\r\n");
+			modtagBesked();
+			
+			
+			os.writeBytes("D \"Afvejning afsluttet\"\r\n");
+			modtagBesked();
+			
 			pbDAO.updateStatus(Integer.parseInt(produktBatch), 2);
 		} catch (Exception e) {
 			e.printStackTrace();

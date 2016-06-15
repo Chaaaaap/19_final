@@ -7,7 +7,7 @@ import java.net.Socket;
 public class ConnectorVaegt {
 
 	private Socket socket;
-	private String IP = "169.254.2.2";
+	private String IP = "169.254.2.3";
 
 	public ConnectorVaegt() {
 		try {
