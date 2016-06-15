@@ -70,12 +70,12 @@ public class OperatoerDAO implements IOperatoerDAO {
 	}
 	
 	@Override // GAMMELT ID 
-	public void redigerBruger(int opr_id, int old_id, String opr_navn, String ini, String cpr, String password, String type) throws Exception {
+	public void redigerBruger(int opr_id, int old_id, String opr_navn, String ini, String cpr, String password, String type) throws DALException {
 		try {
 		connector.doUpdate("UPDATE operatoer SET opr_id = "+opr_id+", opr_navn = '"
 		+opr_navn+"', ini = '"+ini+"', cpr = '"+cpr+"', password = '"+password+"', type = '"+type+"' WHERE opr_id = "+old_id+" ;");		
-		} catch(Exception e) {
-			throw e;
+		} catch(SQLException e) {
+			throw new DALException(e.getMessage());
 		}
 	}
 
