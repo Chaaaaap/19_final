@@ -121,4 +121,20 @@ public class ReceptDAO implements IReceptDAO {
 		}
 
 	}
+	@Override
+	public int countPBK(int recept_id)throws DALException {
+		ResultSet rs;
+		String countString;
+		int countInt;
+		try {
+			rs = connector.doQuery("Select count(recept_id) from receptkomponent where recept_id ="+recept_id);
+			countString = rs.getString("count(recept_id)");
+			countInt = Integer.parseInt(countString);
+
+			return countInt;
+		} catch(Exception e) {
+			throw new DALException(e.getMessage());
+		}
+
+	}
 }

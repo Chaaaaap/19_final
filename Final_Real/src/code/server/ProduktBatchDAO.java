@@ -145,22 +145,6 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 		}
 	}
 
-	public int countPBK(int pb_id)throws DALException {
-		ResultSet rs;
-		String countString;
-		int countInt;
-		try {
-			rs = connector.doQuery("Select count(raavare_id) from produktbatch natural join recept natural join receptkomponent where pb_id ="+pb_id);
-			countString = rs.getString("count(raavare_id)");
-			countInt = Integer.parseInt(countString);
-
-			return countInt;
-		} catch(Exception e) {
-			throw new DALException(e.getMessage());
-		}
-
-	}
-
 	public void orpetPBKomp(int pb_id, int rb_id, int tara, int netto, int opr_id) throws DALException{
 		try {
 			connector.doUpdate("INSERT INTO produktbatchkomponent values ("+pb_id+","+rb_id+","+tara+","+netto+","+opr_id+")");
