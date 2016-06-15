@@ -2,7 +2,6 @@ package code.server;
 
 import java.util.ArrayList;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import code.client.service.IReceptService;
@@ -23,7 +22,6 @@ public class ReceptServiceImpl extends RemoteServiceServlet implements IReceptSe
 	}
 	@Override
 	public void addRecept(String receptNavn, int recept_id, ArrayList<ReceptKomponentDTO> komp) throws DALException {
-		System.out.println("\n\n\n HULUBULU");
 		receptDAO.addRecept(receptNavn, recept_id, komp);
 	}
 	@Override
