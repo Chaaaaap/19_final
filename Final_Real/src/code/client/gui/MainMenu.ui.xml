@@ -42,7 +42,7 @@
 				<g:MenuItem ui:field="receptMenu" text="Recepter">
 					<g:MenuBar vertical="true">
 						<g:MenuItem ui:field="opretRecept" text="Opret recept" />
-						<g:MenuItem ui:field="redigerRecept" text="Rediger recept" />
+
 						<g:MenuItem ui:field="visRecepter" text="Vis recepter" />
 					</g:MenuBar>
 				</g:MenuItem>
@@ -66,7 +66,7 @@
 				<g:MenuItem ui:field="produktbatchMenu" text="Produktbatches">
 					<g:MenuBar vertical="true">
 						<g:MenuItem ui:field="opretProduktbatch" text="Opret produktbatch" />
-						<g:MenuItem ui:field="redigerProduktbatch" text="Rediger produktbatch" />
+		
 						<g:MenuItem ui:field="visProduktbatches" text="Vis produktbatches" />
 					</g:MenuBar>
 				</g:MenuItem>

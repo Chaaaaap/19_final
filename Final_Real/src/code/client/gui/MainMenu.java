@@ -61,7 +61,7 @@ public class MainMenu extends Composite {
 		redigerBruger.setScheduledCommand(new Command() {@Override public void execute() {new RedigerBruger(); } });
 		deaktiverBruger.setScheduledCommand(new Command() {@Override public void execute() {new DeaktiverBruger(); } });
 		opretRecept.setScheduledCommand(new Command() {@Override public void execute() {new OpretRecept(); } });
-		redigerRecept.setScheduledCommand(new Command() {@Override public void execute() {new RedigerRecept(); } });
+//		redigerRecept.setScheduledCommand(new Command() {@Override public void execute() {new RedigerRecept(); } });
 		visRecepter.setScheduledCommand(new Command() {@Override public void execute() {new VisRecepter(); } });
 		opretRaavare.setScheduledCommand(new Command() {@Override public void execute() {new OpretRaavare(); } });
 		redigerRaavare.setScheduledCommand(new Command() {@Override public void execute() {new RedigerRaavare(); } });
@@ -70,7 +70,7 @@ public class MainMenu extends Composite {
 //		redigerRaavarebatch.setScheduledCommand(new Command() {@Override public void execute() {new RedigerRaavarebatch(); } });
 		visRaavarebatches.setScheduledCommand(new Command() {@Override public void execute() {new VisRaavarebatches(); } });
 		opretProduktbatch.setScheduledCommand(new Command() {@Override public void execute() {new OpretProduktbatch(); } });
-		redigerProduktbatch.setScheduledCommand(new Command() {@Override public void execute() {new RedigerProduktbatch(); } });
+//		redigerProduktbatch.setScheduledCommand(new Command() {@Override public void execute() {new RedigerProduktbatch(); } });
 		visProduktbatches.setScheduledCommand(new Command() {@Override public void execute() {new VisProduktbatches(); } });
 	}
 	
@@ -88,7 +88,7 @@ public class MainMenu extends Composite {
 	
 	@UiField MenuItem receptMenu;
 	@UiField MenuItem opretRecept;
-	@UiField MenuItem redigerRecept;
+//	@UiField MenuItem redigerRecept;
 	@UiField MenuItem visRecepter;
 	
 	@UiField MenuItem raavareMenu;
@@ -103,7 +103,7 @@ public class MainMenu extends Composite {
 	
 	@UiField MenuItem produktbatchMenu;
 	@UiField MenuItem opretProduktbatch;
-	@UiField MenuItem redigerProduktbatch;
+//	@UiField MenuItem redigerProduktbatch;
 	@UiField MenuItem visProduktbatches;
 	
 	
