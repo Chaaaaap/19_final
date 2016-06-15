@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import code.connector.Connector;
+import code.shared.DALException;
 import code.shared.RaavareBatchDTO;
 
 public class RaavareBatchDAO implements IRaavareBatchDAO 
@@ -12,20 +13,20 @@ public class RaavareBatchDAO implements IRaavareBatchDAO
 	Connector connector = new Connector();
 
 	@Override
-	public void addRaavareBatch(int raavareBatch_id, int raavare_id, int mængde) throws Exception 
+	public void addRaavareBatch(int raavareBatch_id, int raavare_id, int mængde) throws DALException 
 	{
 		try 
 		{
 			connector.doUpdate("INSERT INTO raavarebatch VALUES("+raavareBatch_id+", "+raavare_id+", '"+mængde+"');");
 		} 
-		catch(Exception e) 
+		catch(SQLException e) 
 		{
-			throw e;
+			throw new DALException(e.getMessage());
 		}
 	}
 
 	@Override
-	public ArrayList<RaavareBatchDTO> getRaavareBatch() throws Exception 
+	public ArrayList<RaavareBatchDTO> getRaavareBatch() throws DALException 
 	{
 
 		
@@ -37,7 +38,7 @@ public class RaavareBatchDAO implements IRaavareBatchDAO
 		{
 			rs = connector.doQuery("SELECT * FROM raavarebatch;");
 
-			if(!rs.first()) throw new Exception("Listen er tom");
+			if(!rs.first()) throw new DALException("Listen er tom");
 			do 
 			{
 				rbList.add(new RaavareBatchDTO(rs.getInt("rb_id"), rs.getInt("raavare_id"), rs.getInt("maengde")));
@@ -47,21 +48,21 @@ public class RaavareBatchDAO implements IRaavareBatchDAO
 		} 
 		catch(SQLException e) 
 		{
-			throw new Exception(e.getMessage());
+			throw new DALException(e.getMessage());
 		}
 	}
 
 	@Override
-	public void redigerRaavareBatch(int raavareBatch_id, int raavare_id, int mængde, int glid) throws Exception 
+	public void redigerRaavareBatch(int raavareBatch_id, int raavare_id, int mængde, int glid) throws DALException 
 	{
 		try 
 		{
 			connector.doUpdate("UPDATE raavarebatch SET rb_id = "+raavareBatch_id+", raavare_id = "+raavare_id+
 					", maengde = "+mængde+" WHERE raavareBatch_id = "+glid+";");
 		} 
-		catch(Exception e) 
+		catch(SQLException e) 
 		{
-			throw e;
+			throw new DALException(e.getMessage());
 		}
 	}
 }
