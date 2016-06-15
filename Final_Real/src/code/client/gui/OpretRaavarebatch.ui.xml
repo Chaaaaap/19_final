@@ -2,16 +2,21 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
-
+		.Error {
+			color:RED;
+			size:14px;
+		}
 	</ui:style>
 	<g:HTMLPanel>
 		<g:VerticalPanel>
 			<g:Label text="Indtast råvarebatch nr." />
 			<g:TextBox ui:field="boxRaavareBatchID" />
+			<g:Label ui:field="idErrorLabel" styleName="{style.Error}" />
 			<g:Label text="Indtast råvare nr." />
 			<g:ListBox ui:field="boxRaavareNr" />
 			<g:Label text="Angiv Mængde" />
 			<g:TextBox ui:field="boxMaengde" />
+			<g:Label ui:field="maengdeErrorLabel" styleName="{style.Error}" />
 			<g:Button ui:field="submit" text="Opret råvarebatch" />
 		</g:VerticalPanel>
 
