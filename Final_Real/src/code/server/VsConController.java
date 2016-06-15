@@ -4,8 +4,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import org.apache.tools.ant.types.CommandlineJava.SysProperties;
-
 import code.connector.ConnectorVaegt;
 import code.shared.DALException;
 
@@ -15,10 +13,8 @@ public class VsConController implements IVsConController {
 	private OperatoerDAO oprDAO = new OperatoerDAO();
 	private ProduktBatchDAO pbDAO = new ProduktBatchDAO();
 	private ReceptDAO receptDAO = new ReceptDAO();
-	private RaavareDAO raaDAO = new RaavareDAO();
 	private double taraBeholder;
 	private String produktBatch;
-	private String raavareNavn;
 	private String vaegt;
 	private int oprNr;
 	private String oprID;
@@ -27,29 +23,29 @@ public class VsConController implements IVsConController {
 	private int pbNr;
 	private Double vaegtInt;
 	private int receptNr;
-	
-	@Override
-		public void aseRun() throws NumberFormatException, DALException{
 
-			login();
-			vaelgProduktbatch();
-			for (int i = 0; i < receptDAO.countPBK(receptNr); i++) {
-				vaegtkontrol();
-				afvejBeholder();	
-			}
-			afslutning();
+	@Override
+	public void aseRun() throws NumberFormatException, DALException{
+
+		login();
+		vaelgProduktbatch();
+		for (int i = 0; i < receptDAO.countPBK(receptNr); i++) {
+			afvejBeholder();	
 		}
+		afslutning();
+	}
 
 
 	@Override
 	public void login(){
 		try {
 			DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
-			os.writeBytes("RM20 8 \"Indtast Operatoer ID\" \"\" \"\"\r\n");
-			String hej;
-			hej = modtagBesked();
-			
-			if(!hej.equals("RM20 B")){
+
+			os.writeBytes("RM20 8 \"Tast Operatoer ID\" \"\" \"\"\r\n");
+			String tjekStart;
+			tjekStart = modtagBesked();
+
+			if(!tjekStart.equals("RM20 B")){
 				modtagBesked();
 			}
 
@@ -57,16 +53,20 @@ public class VsConController implements IVsConController {
 
 			oprID = oprID.substring(8, oprID.length()-1);
 
-			oprNr = Integer.parseInt(oprID);
-			
 			try {
-				String oprNavn = oprDAO.getOperatoer(oprNr).getOprNavn();
+				oprNr = Integer.parseInt(oprID);
 
+				String oprNavn = oprDAO.getOperatoer(oprNr).getOprNavn();
 				os.writeBytes("P111 \"" + oprNavn + "\"\r\n");
 				modtagBesked();
 			}catch (Exception e) {
 				e.printStackTrace();
+				os.writeBytes("RM20 8 \"ID findes ikke\" \"OK\" \"\"\r\n");
+				modtagBesked();
+				modtagBesked();
+				login();
 			}
+
 			//			os.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -78,17 +78,15 @@ public class VsConController implements IVsConController {
 	public void vaelgProduktbatch(){
 		try {
 			DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
-			os.writeBytes("RM20 8 \"Indtast produktbatch nr \" \"\" \"\"\r\n");
+			os.writeBytes("RM20 8 \"Tast produktbatch nr \" \"\" \"\"\r\n");
 
 			modtagBesked();
 
 			produktBatch = modtagBesked();
 			produktBatch = produktBatch.substring(8, produktBatch.length()-1);
 
-			pbNr = Integer.parseInt(produktBatch);
-			
-			
 			try {
+				pbNr = Integer.parseInt(produktBatch);
 
 				receptNr = pbDAO.getProduktBatch(Integer.parseInt(produktBatch)).getRecept_id();
 				String receptNavn = receptDAO.getRecept(receptNr).getReceptNavn();
@@ -96,13 +94,19 @@ public class VsConController implements IVsConController {
 
 				os.writeBytes("P111 \"" + receptNavn + "\"\r\n");
 				modtagBesked();
+
 			}catch (Exception e) {
 				e.printStackTrace();
+				os.writeBytes("RM20 8 \"ID findes ikke\" \"OK\" \"\"\r\n");
+				modtagBesked();
+				modtagBesked();
 			}
 			//			os.close();
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 
 	}
 	@Override
@@ -113,15 +117,13 @@ public class VsConController implements IVsConController {
 
 			//punkt 7
 			os.writeBytes("RM20 8 \"Er vaegten ubelastet\" \"OK\" \"\"\r\n");
-
 			modtagBesked();
 			modtagBesked();
 
 			//punkt 8 vaelgproduktbatch virker måske ikke.
 			try {
-				pbDAO.updateStatus(Integer.parseInt(produktBatch), 1);
+				pbDAO.updateStatus(pbNr, 1);
 			} catch (Exception e) {
-
 				e.printStackTrace();
 			}
 
@@ -134,6 +136,7 @@ public class VsConController implements IVsConController {
 
 	public void afvejBeholder(){
 		try {
+			vaegtkontrol();
 			DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
 
 			//			tarer fra vægt, punkt 9	
@@ -155,62 +158,74 @@ public class VsConController implements IVsConController {
 
 
 			//			punkt 14
-			os.writeBytes("RM20 8 \"Indtast rb nummer\" \"\" \"\"\r\n");
+			os.writeBytes("RM20 8 \"Tast raavarebatch nr\" \"\" \"\"\r\n");
 			modtagBesked();
-			
-			
-			
+
+
+
 			rbID = modtagBesked();
 
 			rbID = rbID.substring(8,rbID.length()-1);
-			
+
 			rbNr = Integer.parseInt(rbID);
-			
+
 			os.writeBytes("P111 \"Tryk [-> for afvej\"\r\n");
 			modtagBesked();
-			
+
 			os.writeBytes("K 3\r\n");
-			
+
 			do {
 				modtagBesked();
 			}while(!modtagBesked().contains("K C 4"));
-			
+
 			os.writeBytes("K 1\r\n");
 			modtagBesked();
-			
+
 			os.writeBytes("S\r\n");
 			vaegt = modtagBesked();
-			
-			
+
+
 			System.out.println("pbNr: " +pbNr + "rbNr: "+ rbNr+ "taraBeholder "+taraBeholder+"oprID: "+ oprID);
-			
+
 			vaegt = vaegt.substring(8, vaegt.length()-2);
 
 			vaegtInt = Double.parseDouble(vaegt);
-			
-				System.out.println("trold "+vaegt+" "+ vaegtInt);
-			
+
+			System.out.println("trold "+vaegt+" "+ vaegtInt);
+
 			try {
-				pbDAO.orpetPBKomp(pbNr,rbNr,taraBeholder,vaegtInt,oprNr);
+				pbDAO.opretPBKomp(pbNr,rbNr,taraBeholder,vaegtInt,oprNr);
 			} catch (DALException e) {
 				e.printStackTrace();
+				os.writeBytes("RM20 8 \"Kunne ikke oprettes\" \"OK\" \"\"\r\n");
+				modtagBesked();
+				modtagBesked();
+				afvejBeholder();
 			}
-			
-			//			os.close();
+
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}	
-	
+
 	@Override
 	public void afslutning(){
 		try {
 			DataOutputStream os = new DataOutputStream(conV.getSocket().getOutputStream());
-			
-			
-			
-			os.writeBytes("P111 \"Afvejning afsluttet\"\r\n");
+
+
+
+			os.writeBytes("RM20 8 \"Afvejning afsluttet\" \"OK\" \"\" \r\n");
 			modtagBesked();
+			modtagBesked();
+			
+			os.writeBytes("P111 \"\" \r\n");
+			modtagBesked();
+			
+			os.writeBytes("T\r\n");
+			modtagBesked();
+			
 			
 			pbDAO.updateStatus(Integer.parseInt(produktBatch), 2);
 		} catch (Exception e) {
@@ -235,5 +250,4 @@ public class VsConController implements IVsConController {
 		return read;
 
 	}
-
 }
