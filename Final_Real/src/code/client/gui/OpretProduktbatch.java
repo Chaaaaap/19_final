@@ -35,6 +35,7 @@ public class OpretProduktbatch extends Composite {
 
 	
 	
+	@SuppressWarnings("deprecation")
 	public OpretProduktbatch() {
 		initWidget(uiBinder.createAndBindUi(this));
 		Final_Real.clearContent();
