@@ -58,7 +58,7 @@
 				<g:MenuItem ui:field="raavarebatchMenu" text="Råvarebatches">
 					<g:MenuBar vertical="true">
 						<g:MenuItem ui:field="opretRaavarebatch" text="Opret råvarebatch" />
-						<g:MenuItem ui:field="redigerRaavarebatch" text="Rediger råvarebatch" />
+	
 						<g:MenuItem ui:field="visRaavarebatches" text="Vis råvarebatches" />
 					</g:MenuBar>
 				</g:MenuItem>

@@ -98,7 +98,7 @@ public class MainMenu extends Composite {
 	
 	@UiField MenuItem raavarebatchMenu;
 	@UiField MenuItem opretRaavarebatch;
-	@UiField MenuItem redigerRaavarebatch;
+//	@UiField MenuItem redigerRaavarebatch;
 	@UiField MenuItem visRaavarebatches;
 	
 	@UiField MenuItem produktbatchMenu;
