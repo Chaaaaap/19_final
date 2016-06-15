@@ -45,9 +45,8 @@ public class OperatoerDAOTest {
 	
 	@Test
 	public void testGetOperatoerList() {
-		OperatoerDAO dao = new OperatoerDAO();
 		try {
-		List<OperatoerDTO> oprList = dao.getOperatoerer();
+		List<OperatoerDTO> oprList = oprDAO.getOperatoerer();
 		assertNotNull("ArrayList was null, check your databse", oprList);
 		} catch(DALException e) {
 			
@@ -57,9 +56,8 @@ public class OperatoerDAOTest {
 	
 	@Test
 	public void testGetOperatoer() {
-		OperatoerDAO dao = new OperatoerDAO();
 		try {
-		OperatoerDTO opr = dao.getOperatoer(1);
+		OperatoerDTO opr = oprDAO.getOperatoer(1);
 		assertNotNull("Operator was null, check your database", opr);
 		} catch(DALException e) {
 			
@@ -69,10 +67,9 @@ public class OperatoerDAOTest {
 	@Test
 	public void testDeactivate() {
 		int x = 99;
-		OperatoerDAO dao = new OperatoerDAO();
 		try {
-			dao.deaktiverBruger(x, 0);
-			Assert.assertEquals(dao.getOperatoer(x).getStatus(), 0);
+			oprDAO.deaktiverBruger(x, 0);
+			Assert.assertEquals(oprDAO.getOperatoer(x).getStatus(), 0);
 		} catch(DALException e) {
 			
 		}
@@ -81,10 +78,9 @@ public class OperatoerDAOTest {
 	@Test
 	public void testActivate() {
 		int x = 99;
-		OperatoerDAO dao = new OperatoerDAO();
 		try {
-			dao.aktiverBruger(x, 1);
-			Assert.assertEquals(dao.getOperatoer(x).getStatus(), 1);
+			oprDAO.aktiverBruger(x, 1);
+			Assert.assertEquals(oprDAO.getOperatoer(x).getStatus(), 1);
 		} catch(DALException e) {
 			
 		}
