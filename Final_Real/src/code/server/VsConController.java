@@ -184,14 +184,8 @@ public class VsConController implements IVsConController {
 			os.writeBytes("S\r\n");
 			vaegt = modtagBesked();
 
-
-			System.out.println("pbNr: " +pbNr + "rbNr: "+ rbNr+ "taraBeholder "+taraBeholder+"oprID: "+ oprID);
-
 			vaegt = vaegt.substring(8, vaegt.length()-2);
-
 			vaegtInt = Double.parseDouble(vaegt);
-
-			System.out.println("trold "+vaegt+" "+ vaegtInt);
 
 			try {
 				pbDAO.opretPBKomp(pbNr,rbNr,taraBeholder,vaegtInt,oprNr);
@@ -217,6 +211,10 @@ public class VsConController implements IVsConController {
 
 
 			os.writeBytes("RM20 8 \"Afvejning afsluttet\" \"OK\" \"\" \r\n");
+			modtagBesked();
+			modtagBesked();
+			
+			os.writeBytes("RM20 8 \"Toem vaegten\" \"OK\" \"\" \r\n");
 			modtagBesked();
 			modtagBesked();
 			
