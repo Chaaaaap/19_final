@@ -88,6 +88,7 @@ public class OpretRaavarebatch extends Composite
 			@Override
 			public void onSuccess(ArrayList<RaavareDTO> result) 
 			{
+				boxRaavareNr.addItem("", "blank");
 				for (RaavareDTO raavareDTO : result) 
 				{
 					boxRaavareNr.addItem(raavareDTO.getRaavare_id()+"","");
