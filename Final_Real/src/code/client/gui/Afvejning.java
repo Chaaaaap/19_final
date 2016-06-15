@@ -59,7 +59,7 @@ public class Afvejning extends Composite {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				Window.alert("Virker ikke");
+				Window.alert(caught.getMessage());
 			}
 
 			@Override

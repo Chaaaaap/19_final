@@ -128,6 +128,7 @@ public class ReceptDAO implements IReceptDAO {
 		int countInt;
 		try {
 			rs = connector.doQuery("Select count(recept_id) from receptkomponent where recept_id ="+recept_id);
+			if(!rs.first()) throw new DALException("Listen er tom");
 			countString = rs.getString("count(recept_id)");
 			countInt = Integer.parseInt(countString);
 
