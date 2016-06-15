@@ -145,7 +145,7 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 		}
 	}
 
-	public void orpetPBKomp(int pb_id, int rb_id, int tara, int netto, int opr_id) throws DALException{
+	public void orpetPBKomp(int pb_id, int rb_id, double tara, double netto, int opr_id) throws DALException{
 		try {
 			connector.doUpdate("INSERT INTO produktbatchkomponent values ("+pb_id+","+rb_id+","+tara+","+netto+","+opr_id+")");
 		} catch (Exception e) {
