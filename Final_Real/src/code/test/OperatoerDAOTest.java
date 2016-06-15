@@ -77,5 +77,17 @@ public class OperatoerDAOTest {
 			
 		}
 	}
+	
+	@Test
+	public void testActivate() {
+		int x = 99;
+		OperatoerDAO dao = new OperatoerDAO();
+		try {
+			dao.aktiverBruger(x, 1);
+			Assert.assertEquals(dao.getOperatoer(x).getStatus(), 1);
+		} catch(DALException e) {
+			
+		}
+	}
 
 }
