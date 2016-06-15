@@ -22,11 +22,14 @@ import code.client.service.IRaavareService;
 import code.client.service.IRaavareServiceAsync;
 import code.shared.RaavareDTO;
 
-public class OpretRaavarebatch extends Composite {
+public class OpretRaavarebatch extends Composite 
+{
 
 	private static OpretRaavarebatchUiBinder uiBinder = GWT.create(OpretRaavarebatchUiBinder.class);
 
-	interface OpretRaavarebatchUiBinder extends UiBinder<Widget, OpretRaavarebatch> {
+	interface OpretRaavarebatchUiBinder extends UiBinder<Widget, OpretRaavarebatch> 
+	{
+		
 	}
 
 	private IRaavareBatchServiceAsync rbService;
@@ -51,7 +54,6 @@ public class OpretRaavarebatch extends Composite {
 	@UiHandler("submit")
 	void opretRaavareBatch(ClickEvent e) 
 	{
-
 		if(boxRaavareBatchID.getText() == "" || boxRaavareNr.getSelectedItemText() == "" || boxMaengde.getText() == "") 
 		{
 			Window.alert("Alle felter skal udfyldes!");
