@@ -134,10 +134,10 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 	}
 
 	@Override
-	public void addProduktBatch(int pb_id, int recept_id, int status, String dato) throws DALException {
+	public void addProduktBatch(int pb_id, int recept_id, String dato) throws DALException {
 //		Date today = new Date();
 //		String dato = DateTimeFormat.getShortDateFormat().format(today);
-		String query = "INSERT INTO produktbatch VALUES("+pb_id+", "+status+", "+recept_id+", '"+dato+"')";
+		String query = "INSERT INTO produktbatch VALUES("+pb_id+", 1, "+recept_id+", '"+dato+"')";
 		try {
 			connector.doUpdate(query);
 		} catch(Exception e) {

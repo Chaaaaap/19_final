@@ -21,8 +21,8 @@ public class ProduktBatchServiceImpl extends RemoteServiceServlet implements IPr
 	}
 	
 	@Override
-	public void addProduktBatch(int pb_id, int recept_id, int  status, String dato) throws DALException {
-			pbDAO.addProduktBatch(pb_id, status, recept_id, dato);
+	public void addProduktBatch(int pb_id, int recept_id, String dato) throws DALException {
+			pbDAO.addProduktBatch(pb_id, recept_id, dato);
 	}
 
 }
