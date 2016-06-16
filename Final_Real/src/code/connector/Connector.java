@@ -10,12 +10,21 @@ import code.shared.OperatoerDTO;
 
 /** @author Ronnie Dalsgaard */
 public class Connector {
+//	private final String HOST     = "localhost";
+//	private final int    PORT     = 3306;
+//	private final String DATABASE = "19_cdiofinal";
+//	private final String USERNAME = "root"; 
+//	private final String PASSWORD = "";
+//	private Connection connection;
+	
 	private final String HOST     = "ec2-52-30-89-247.eu-west-1.compute.amazonaws.com";
 	private final int    PORT     = 3306;
 	private final String DATABASE = "grp19";
 	private final String USERNAME = "grp19"; 
 	private final String PASSWORD = "hS#Vk94G";
 	private Connection connection;
+	
+	
 
 	public Connector() {
 		try {

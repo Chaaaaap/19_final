@@ -57,7 +57,7 @@ public class OperatoerDAO implements IOperatoerDAO {
 		ArrayList<OperatoerDTO> oprList = new ArrayList<OperatoerDTO>();
 		ResultSet rs;
 		try {
-			rs = connector.doQuery("SELECT * FROM grp19.operatoer");
+			rs = connector.doQuery("SELECT * FROM operatoer");
 			if(!rs.next()) throw new DALException("Listen er tom");
 			do {
 				oprList.add(new OperatoerDTO(rs.getInt("opr_id"), rs.getString("opr_navn"),
