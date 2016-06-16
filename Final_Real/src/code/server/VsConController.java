@@ -22,7 +22,7 @@ public class VsConController implements IVsConController {
 	private int rbNr;
 	private String rbID;
 	private int pbNr;
-	private Double vaegtInt;
+	private double vaegtInt;
 	private int receptNr;
 
 	@Override
