@@ -24,7 +24,8 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 			rs = connector.doQuery("SELECT * FROM produktbatch;");
 			if(!rs.first()) throw new DALException("Listen er tom");
 			do {
-				pbList.add(new ProduktBatchDTO(rs.getInt("pb_id"), rs.getInt("status"), rs.getInt("recept_id"), rs.getString("dato")));
+				pbList.add(new ProduktBatchDTO(rs.getInt("pb_id"), rs.getInt("status"), 
+						rs.getInt("recept_id"), rs.getString("dato")));
 			} while(rs.next());
 			return pbList;
 		} catch(SQLException e) {
@@ -56,7 +57,7 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 
 	@Override
 	public void addProduktBatch(int pb_id, int recept_id, String dato) throws DALException {
-		String query = "INSERT INTO produktbatch VALUES("+pb_id+", 1, "+recept_id+", '"+dato+"')";
+		String query = "INSERT INTO produktbatch VALUES("+pb_id+", 0, "+recept_id+", '"+dato+"')";
 		try {
 			connector.doUpdate(query);
 		} catch(SQLException e) {
