@@ -1,0 +1,28 @@
+use 19_CDIOFinal;
+
+INSERT INTO operatoer(opr_id, opr_navn, ini, cpr, password, aktiv, type) VALUES
+(1, 'Sys-Admin', 'SA', '0000000000', 'Test1234', '1', 'administrator'),
+(2, 'Hans Hansen', 'HH', '1234564321', 'Test1234', '1','farmaceut');
+
+INSERT INTO raavare(raavare_id, raavare_navn, leverandoer) VALUES
+(1, 'Vand', 'Vand A/S'),
+(2, 'Salt', 'Salt og Peber A/S'),
+(3, 'Citron', 'Sydens Sol');
+
+INSERT INTO raavarebatch(rb_id, raavare_id, maengde) VALUES
+(1, 1, 1000),
+(2, 2, 750),
+(3, 3, 500);
+
+INSERT INTO recept(recept_id, recept_navn) VALUES
+(1, 'Saltvand med Citron');
+
+INSERT INTO receptkomponent(recept_id, raavare_id, nom_netto, tolerance) VALUES
+(1, 1, 5.500, 0.3),
+(1, 2, 0.330, 2.4),
+(1, 3, 0.100, 1.8);
+
+INSERT INTO produktbatch(pb_id, recept_id, status, dato) VALUES
+(1, 1, 0, '2016-06-17');
+
+
