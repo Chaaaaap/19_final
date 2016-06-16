@@ -14,8 +14,9 @@ public class ReceptServiceImpl extends RemoteServiceServlet implements IReceptSe
 
 	public ReceptServiceImpl() {}
 	ReceptDAO receptDAO = new ReceptDAO();
+	
 	@Override
-	public ArrayList<ReceptDTO> getRecept() throws Exception {
+	public ArrayList<ReceptDTO> getRecept() throws DALException {
 			return receptDAO.getRecepter();
 
 	}

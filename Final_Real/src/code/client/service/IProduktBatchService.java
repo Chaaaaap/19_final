@@ -11,7 +11,7 @@ import code.shared.ProduktBatchDTO;
 @RemoteServiceRelativePath("19_Final_ProduktBatch")
 public interface IProduktBatchService extends RemoteService {
 
-	ArrayList<ProduktBatchDTO> getProduktBatches() throws Exception;
+	ArrayList<ProduktBatchDTO> getProduktBatches() throws DALException;
 	void addProduktBatch(int pb_id, int recept_id, String dato) throws DALException;
 	
 }

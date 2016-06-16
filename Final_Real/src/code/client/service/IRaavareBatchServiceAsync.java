@@ -10,5 +10,5 @@ public interface IRaavareBatchServiceAsync
 {
 	void getRaavareBatch(AsyncCallback<ArrayList<RaavareBatchDTO>> callback);
 	
-	void addRaavareBatch(int raavareBatch_id, int raavare_id, int mængde, AsyncCallback<Void> asyncCallback);
+	void addRaavareBatch(int raavareBatch_id, int raavare_id, double mængde, AsyncCallback<Void> asyncCallback);
 }

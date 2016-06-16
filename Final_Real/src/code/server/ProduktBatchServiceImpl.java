@@ -16,7 +16,7 @@ public class ProduktBatchServiceImpl extends RemoteServiceServlet implements IPr
 	ProduktBatchDAO pbDAO = new ProduktBatchDAO();
 	
 	@Override
-	public ArrayList<ProduktBatchDTO> getProduktBatches() throws Exception {
+	public ArrayList<ProduktBatchDTO> getProduktBatches() throws DALException {
 			return pbDAO.getProduktBatches();
 	}
 	

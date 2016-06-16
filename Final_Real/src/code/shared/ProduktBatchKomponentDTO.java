@@ -7,9 +7,10 @@ public class ProduktBatchKomponentDTO implements Serializable {
 	
 	public ProduktBatchKomponentDTO() {}
 	
-	private int pb_id, rb_id, tara, netto, oprID;
+	private int pb_id, rb_id, oprID;
+	private double tara, netto;
 	
-	public ProduktBatchKomponentDTO(int pb_id, int rb_id, int tara, int netto, int oprID) {
+	public ProduktBatchKomponentDTO(int pb_id, int rb_id, double tara, double netto, int oprID) {
 	this.pb_id = pb_id;
 	this.rb_id = rb_id;
 	this.tara = tara;
@@ -25,11 +26,11 @@ public class ProduktBatchKomponentDTO implements Serializable {
 		return rb_id;
 	}
 
-	public int getTara() {
+	public double getTara() {
 		return tara;
 	}
 
-	public int getNetto() {
+	public double getNetto() {
 		return netto;
 	}
 	

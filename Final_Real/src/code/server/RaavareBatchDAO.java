@@ -13,7 +13,7 @@ public class RaavareBatchDAO implements IRaavareBatchDAO
 	Connector connector = new Connector();
 
 	@Override
-	public void addRaavareBatch(int raavareBatch_id, int raavare_id, int mængde) throws DALException 
+	public void addRaavareBatch(int raavareBatch_id, int raavare_id, double mængde) throws DALException 
 	{
 		try 
 		{
@@ -41,7 +41,7 @@ public class RaavareBatchDAO implements IRaavareBatchDAO
 			if(!rs.first()) throw new DALException("Listen er tom");
 			do 
 			{
-				rbList.add(new RaavareBatchDTO(rs.getInt("rb_id"), rs.getInt("raavare_id"), rs.getInt("maengde")));
+				rbList.add(new RaavareBatchDTO(rs.getInt("rb_id"), rs.getInt("raavare_id"), rs.getDouble("maengde")));
 			} 
 			while(rs.next());
 			return rbList;

@@ -3,6 +3,7 @@ package code.server;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import code.client.service.IServiceVsCon;
+import code.shared.DALException;
 
 @SuppressWarnings("serial")
 public class VsConServiceImpl extends RemoteServiceServlet implements IServiceVsCon{
@@ -11,7 +12,7 @@ public class VsConServiceImpl extends RemoteServiceServlet implements IServiceVs
 	
 	
 	@Override
-	public void ConnectorVaegt() throws Exception {
+	public void ConnectorVaegt() throws DALException {
 		vsCon.aseRun();	
 	}
 

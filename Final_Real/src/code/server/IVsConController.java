@@ -6,7 +6,7 @@ public interface IVsConController {
 	
 	void aseRun() throws NumberFormatException, DALException;
 	String modtagBesked();
-	void login() throws Exception;
+	void login() throws DALException;
 	void vaelgProduktbatch();
 	void vaegtkontrol();
 	void afslutning();
