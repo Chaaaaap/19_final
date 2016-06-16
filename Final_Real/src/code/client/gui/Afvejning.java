@@ -59,7 +59,7 @@ public class Afvejning extends Composite {
 
 			@Override
 			public void onSuccess(Void result) {
-				Window.alert("Virker!!");
+				
 			}
 		});
 }

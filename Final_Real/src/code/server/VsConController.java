@@ -68,7 +68,6 @@ public class VsConController implements IVsConController {
 				login();
 			}
 
-			//			os.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -102,8 +101,6 @@ public class VsConController implements IVsConController {
 				modtagBesked();
 				modtagBesked();
 			}
-			//			os.close();
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -121,7 +118,7 @@ public class VsConController implements IVsConController {
 			modtagBesked();
 			modtagBesked();
 
-			//punkt 8 vaelgproduktbatch virker måske ikke.
+			//punkt 8 
 			try {
 				pbDAO.updateStatus(pbNr, 1);
 			} catch (Exception e) {
