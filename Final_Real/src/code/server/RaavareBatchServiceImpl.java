@@ -29,10 +29,4 @@ public class RaavareBatchServiceImpl extends RemoteServiceServlet implements IRa
 	{
 		raavareBatchDAO.addRaavareBatch( raavareBatch_id, raavare_id, mængde);
 	}
-	
-	@Override
-	public void redigerRaavareBatch(int raavareBatch_id, int raavare_id, int mængde, int glid) throws Exception 
-	{
-		raavareBatchDAO.redigerRaavareBatch(raavareBatch_id, raavare_id, mængde, glid);
-	}
 }

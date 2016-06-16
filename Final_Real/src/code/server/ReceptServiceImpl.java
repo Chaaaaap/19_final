@@ -24,8 +24,4 @@ public class ReceptServiceImpl extends RemoteServiceServlet implements IReceptSe
 	public void addRecept(String receptNavn, int recept_id, ArrayList<ReceptKomponentDTO> komp) throws DALException {
 		receptDAO.addRecept(receptNavn, recept_id, komp);
 	}
-	@Override
-	public void redigerRecept(String receptNavn, int recept_id, ArrayList<ReceptKomponentDTO> komp, int glid) throws Exception {
-		receptDAO.redigerRecept(receptNavn, recept_id, komp, glid);
-	}
 }

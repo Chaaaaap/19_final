@@ -51,18 +51,4 @@ public class RaavareBatchDAO implements IRaavareBatchDAO
 			throw new DALException(e.getMessage());
 		}
 	}
-
-	@Override
-	public void redigerRaavareBatch(int raavareBatch_id, int raavare_id, int mængde, int glid) throws DALException 
-	{
-		try 
-		{
-			connector.doUpdate("UPDATE raavarebatch SET rb_id = "+raavareBatch_id+", raavare_id = "+raavare_id+
-					", maengde = "+mængde+" WHERE raavareBatch_id = "+glid+";");
-		} 
-		catch(SQLException e) 
-		{
-			throw new DALException(e.getMessage());
-		}
-	}
 }

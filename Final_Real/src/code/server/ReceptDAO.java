@@ -79,35 +79,6 @@ public class ReceptDAO implements IReceptDAO {
 	}
 
 	@Override
-	public void redigerRecept(String receptNavn, int recept_id, ArrayList<ReceptKomponentDTO> komp, int glid) 
-			throws DALException {
-		Connection con = connector.getConnection();
-		try {
-			con.setAutoCommit(false);
-			connector.doUpdate("UPDATE recept SET recept_id = "+recept_id+", recept_navn = '"+receptNavn+
-					"' WHERE recept_id = "+glid+";");
-			for (ReceptKomponentDTO rkDTO : komp) {
-				connector.doUpdate("UPDATE receptkomponent SET recept_id = "+recept_id+", raavare_id = "
-			+rkDTO.getRaavare_id()+", nom_netto = "+rkDTO.getMængde()+", tolerance = "+rkDTO.getTolerance()+";");
-			}
-		} catch(SQLException e) {
-			try {
-				con.rollback();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			throw new DALException(e.getMessage());
-		} finally {
-			try {
-				con.commit();
-				con.setAutoCommit(true);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	@Override
 	public ReceptDTO getRecept(int recept_id) throws DALException{
 
 		try {

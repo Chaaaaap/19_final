@@ -14,5 +14,4 @@ public interface IReceptService extends RemoteService {
 
 	ArrayList<ReceptDTO> getRecept() throws Exception;
 	void addRecept(String receptNavn, int recept_id, ArrayList<ReceptKomponentDTO> komp) throws DALException;
-	void redigerRecept(String receptNavn, int recept_id, ArrayList<ReceptKomponentDTO> komp, int glid) throws Exception;
 }
