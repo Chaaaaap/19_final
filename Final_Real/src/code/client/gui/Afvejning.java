@@ -1,7 +1,5 @@
 package code.client.gui;
 
-import org.apache.james.mime4j.message.TextBody;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -12,7 +10,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
 import code.client.service.IServiceVsCon;
@@ -24,8 +21,6 @@ public class Afvejning extends Composite {
 	private OperatoerDTO dto;
 	private static AfvejningUiBinder uiBinder = GWT.create(AfvejningUiBinder.class);
 
-	private String ip;
-	private String command;
 	private IServiceVsConAsync service;
 
 	interface AfvejningUiBinder extends UiBinder<Widget, Afvejning> {
