@@ -9,7 +9,6 @@ import code.shared.DALException;
 import code.shared.ReceptDTO;
 import code.shared.ReceptKomponentDTO;
 
-//TODO Skal laves om
 @SuppressWarnings("serial")
 public class ReceptServiceImpl extends RemoteServiceServlet implements IReceptService {
 

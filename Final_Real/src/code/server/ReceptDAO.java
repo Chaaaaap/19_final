@@ -64,7 +64,6 @@ public class ReceptDAO implements IReceptDAO {
 					komp.add(new ReceptKomponentDTO(resultSet.getInt("recept_id"), resultSet.getInt("raavare_id"),
 							resultSet.getInt("nom_netto"), resultSet.getInt("tolerance")));
 
-					System.out.println("\nx = "+x);
 				} while(resultSet.next() && resultSet.getInt("recept_id") == x);
 				resultSet.previous();
 				rvList.add(new ReceptDTO(resultSet.getString("recept_navn"),resultSet.getInt("recept_id"),komp));
