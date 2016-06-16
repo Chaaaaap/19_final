@@ -66,6 +66,5 @@ public class RaavareDAO implements IRaavareDAO {
 		return navn;
 		
 	}
-
 	
 }

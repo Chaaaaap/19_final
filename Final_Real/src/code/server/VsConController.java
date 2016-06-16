@@ -12,6 +12,7 @@ public class VsConController implements IVsConController {
 	private ConnectorVaegt conV = new ConnectorVaegt();
 	private OperatoerDAO oprDAO = new OperatoerDAO();
 	private ProduktBatchDAO pbDAO = new ProduktBatchDAO();
+	private RaavareBatchDAO rbDAO = new RaavareBatchDAO();
 	private ReceptDAO receptDAO = new ReceptDAO();
 	private double taraBeholder;
 	private String produktBatch;
@@ -127,7 +128,6 @@ public class VsConController implements IVsConController {
 				e.printStackTrace();
 			}
 
-			//			os.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -189,6 +189,8 @@ public class VsConController implements IVsConController {
 
 			try {
 				pbDAO.opretPBKomp(pbNr,rbNr,taraBeholder,vaegtInt,oprNr);
+				rbDAO.redigerMaengde(rbNr, vaegtInt);
+
 			} catch (DALException e) {
 				e.printStackTrace();
 				os.writeBytes("RM20 8 \"Kunne ikke oprettes\" \"OK\" \"\"\r\n");
@@ -213,24 +215,25 @@ public class VsConController implements IVsConController {
 			os.writeBytes("RM20 8 \"Afvejning afsluttet\" \"OK\" \"\" \r\n");
 			modtagBesked();
 			modtagBesked();
-			
+
 			os.writeBytes("RM20 8 \"Toem vaegten\" \"OK\" \"\" \r\n");
 			modtagBesked();
 			modtagBesked();
-			
+
 			os.writeBytes("P111 \"\" \r\n");
 			modtagBesked();
-			
+
 			os.writeBytes("T\r\n");
 			modtagBesked();
-			
-			
+
+
 			pbDAO.updateStatus(Integer.parseInt(produktBatch), 2);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public String modtagBesked(){
 		DataInputStream is;
@@ -241,7 +244,7 @@ public class VsConController implements IVsConController {
 			read = is.readLine();
 
 			System.out.println(read);
-			//			is.close();
+
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
