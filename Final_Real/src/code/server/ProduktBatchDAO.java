@@ -7,17 +7,13 @@ import java.util.ArrayList;
 import code.connector.Connector;
 import code.shared.DALException;
 import code.shared.ProduktBatchDTO;
-import code.shared.ProduktBatchKomponentDTO;
 
 public class ProduktBatchDAO implements IProduktbatchDAO {
 
 	private Connector connector = new Connector();
-	private int x = 0;
-	private int l;
 
 	@Override
 	public ArrayList<ProduktBatchDTO> getProduktBatches() throws DALException {
-		int i = 0;
 		ArrayList<ProduktBatchDTO> pbList = new ArrayList<ProduktBatchDTO>();
 		ResultSet rs;
 		try {
