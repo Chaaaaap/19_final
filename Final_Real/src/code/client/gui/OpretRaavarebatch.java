@@ -132,7 +132,7 @@ public class OpretRaavarebatch extends Composite {
 			
 			@Override
 			public void onKeyUp(KeyUpEvent event) {
-				if(validator.validateInt(boxMaengde.getText())) {
+				if(validator.validateDouble(boxMaengde.getText())) {
 					idErrorLabel.setText("");
 					submit.setEnabled(true);
 				} else {
