@@ -19,32 +19,17 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 	public ArrayList<ProduktBatchDTO> getProduktBatches() throws DALException {
 		int i = 0;
 		ArrayList<ProduktBatchDTO> pbList = new ArrayList<ProduktBatchDTO>();
-		ResultSet resultSet;
+		ResultSet rs;
 		try {
-			ResultSet length = connector.doQuery("SELECT COUNT(pb_id) FROM produktbatch;");
-			if(!length.first()) throw new DALException("Listen er tom");
-			l = length.getInt("COUNT(pb_id)");
-			resultSet = connector.doQuery("SELECT * FROM produktbatch NATURAL JOIN produktbatchkomponent");
-			if(!resultSet.first()) throw new DALException("Listen er tom");
-			while(i < l-1) {
-				ArrayList<ProduktBatchKomponentDTO> komp = new ArrayList<ProduktBatchKomponentDTO>();
-				do {
-					x = resultSet.getInt("pb_id");
-					komp.add(new ProduktBatchKomponentDTO(resultSet.getInt("pb_id"), resultSet.getInt("rb_id"),
-							resultSet.getInt("tara"), resultSet.getInt("netto"), resultSet.getInt("opr_id")));
-
-					System.out.println("\nx = "+x);
-				} while(resultSet.next() && resultSet.getInt("pb_id") == x);
-				resultSet.previous();
-				pbList.add(new ProduktBatchDTO(resultSet.getInt("pb_id"),resultSet.getInt("status"), resultSet.getInt("recept_id"), resultSet.getString("dato")));
-				if(!resultSet.next())
-					return pbList;
-			}
+			rs = connector.doQuery("SELECT * FROM produktbatch;");
+			if(!rs.first()) throw new DALException("Listen er tom");
+			do {
+				pbList.add(new ProduktBatchDTO(rs.getInt("pb_id"), rs.getInt("status"), rs.getInt("recept_id"), rs.getString("dato")));
+			} while(rs.next());
+			return pbList;
 		} catch(SQLException e) {
 			throw new DALException(e.getMessage());
 		} 
-		return pbList;
-
 	}
 
 	@Override
