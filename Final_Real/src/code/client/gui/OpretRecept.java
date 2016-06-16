@@ -133,7 +133,7 @@ public class OpretRecept extends Composite {
 			for (int i = 0; i < length; i++) {
 				if(!type[i].getSelectedValue().equals("blank")) {
 					komp.add(new ReceptKomponentDTO(Integer.parseInt(boxID.getText()), Integer.parseInt(type[i].getSelectedValue()),
-							Integer.parseInt(maengde[i].getText()), Integer.parseInt(tol[i].getText())));
+							Double.parseDouble(maengde[i].getText()), Double.parseDouble(tol[i].getText())));
 
 				}
 			}
@@ -175,7 +175,6 @@ public class OpretRecept extends Composite {
 
 			}
 
-			//TODO alt her skal lige gåes igennem for at se om der bliver brugt de nyskabte arrays.
 			@Override
 			public void onSuccess(ArrayList<RaavareDTO> result) {
 				for (RaavareDTO raavareDTO : result) {

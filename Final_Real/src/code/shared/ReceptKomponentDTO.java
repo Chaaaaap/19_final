@@ -7,9 +7,10 @@ public class ReceptKomponentDTO implements Serializable {
 
 	public ReceptKomponentDTO() {}
 	
-	private int recept_id, raavare_id, mængde, tolerance;
+	private int recept_id, raavare_id;
+	private double mængde, tolerance;
 	
-	public ReceptKomponentDTO(int recept_id, int raavare_id, int mængde, int tolerance) {
+	public ReceptKomponentDTO(int recept_id, int raavare_id, double mængde, double tolerance) {
 		this.tolerance = tolerance;
 		this.mængde = mængde;
 		this.raavare_id = raavare_id;
@@ -24,11 +25,11 @@ public class ReceptKomponentDTO implements Serializable {
 		return raavare_id;
 	}
 
-	public int getMængde() {
+	public double getMængde() {
 		return mængde;
 	}
 
-	public int getTolerance() {
+	public double getTolerance() {
 		return tolerance;
 	}
 	
