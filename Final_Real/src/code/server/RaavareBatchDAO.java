@@ -51,4 +51,14 @@ public class RaavareBatchDAO implements IRaavareBatchDAO
 			throw new DALException(e.getMessage());
 		}
 	}
+	
+	@Override
+	public void redigerMaengde(int rb_id, double vaegt){
+		try 
+		{
+			connector.doUpdate("UPDATE raavarebatch SET maengde = (maengde-"+vaegt+") WHERE rb_id = "+rb_id+";");
+		}catch(SQLException e){
+			
+		}
+	}
 }

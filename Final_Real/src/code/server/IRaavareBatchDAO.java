@@ -8,4 +8,5 @@ public interface IRaavareBatchDAO
 {
 	void addRaavareBatch(int raavareBatch_id, int raavare_id, int mængde) throws Exception;
 	ArrayList<RaavareBatchDTO> getRaavareBatch() throws Exception;
+	void redigerMaengde(int rb_id, double vaegt);
 }
