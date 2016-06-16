@@ -18,7 +18,6 @@ import code.shared.OperatoerDTO;
 
 public class Afvejning extends Composite {
 
-	private OperatoerDTO dto;
 	private static AfvejningUiBinder uiBinder = GWT.create(AfvejningUiBinder.class);
 
 	private IServiceVsConAsync service;
@@ -29,8 +28,6 @@ public class Afvejning extends Composite {
 	public Afvejning(OperatoerDTO oprDTO) {
 		initWidget(uiBinder.createAndBindUi(this));
 		service = GWT.create(IServiceVsCon.class);
-		
-		this.dto = oprDTO;
 	}
 
 	@UiField Label label;
