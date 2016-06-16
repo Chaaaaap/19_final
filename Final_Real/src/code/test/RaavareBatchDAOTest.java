@@ -35,17 +35,4 @@ public class RaavareBatchDAOTest {
 		}
 	}
 	
-	@Test
-	public void testRedigerRaavarebatch() {
-		int nyID = 667;
-		int glID = 666;
-		try {
-			rbDAO.redigerRaavareBatch(nyID, 1, 50, glID);
-			ArrayList<RaavareBatchDTO> rbList = rbDAO.getRaavareBatch();
-			Assert.assertEquals(nyID, rbList.get(rbList.size()-1).getRaavareBatch_id());
-		} catch(DALException e) {
-			
-		}
-	}
-
 }

@@ -1,6 +1,5 @@
 package code.server;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,30 +12,8 @@ import code.shared.ProduktBatchKomponentDTO;
 public class ProduktBatchDAO implements IProduktbatchDAO {
 
 	private Connector connector = new Connector();
-	//	ArrayList<ProduktBatchDTO> produktList;
-	private Connection con;
 	private int x = 0;
 	private int l;
-
-	@Override
-	public void startProduktBatch(int oprID, int pb_id, int rb_id, int tara, int netto, int recept_id) throws SQLException {
-
-		try {
-
-			con = connector.getConnection();
-			con.setAutoCommit(false);
-
-			connector.doUpdate("INSERT INTO produktbatch VALUES("+pb_id+", "+1+", "+recept_id+")");
-			connector.doUpdate("INSERT INTO produktbatchkomponent VALUES("+pb_id+", "+rb_id
-					+", "+tara+", "+netto+", "+oprID+")");
-		} catch(SQLException e) {
-			con.rollback();
-			throw e;
-		} finally {
-			con.commit();
-			con.setAutoCommit(true);
-		}
-	}
 
 	@Override
 	public ArrayList<ProduktBatchDTO> getProduktBatches() throws DALException {
@@ -70,74 +47,34 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 
 	}
 
-//		@Override
-//		public ArrayList<ProduktBatchDTO> getProduktBatches() throws Exception {
-//			ArrayList<ProduktBatchDTO> produktList = new ArrayList<ProduktBatchDTO>();
-//			ResultSet rs;
-//			try {
-//				rs = connector.doQuery("SELECT * FROM produktbatch");
-//				if(!rs.next()) throw new Exception("Listen er tom");
-//				do {
-//					produktList.add(new ProduktBatchDTO(rs.getInt("pb_id"), rs.getInt("status"),
-//							rs.getInt("recept_id"), rs.getString("dato") ));
-//			}while(rs.next());
-//			}
-//				catch(Exception e) {
-//				throw e;
-//			} 
-//			return produktList;
-//			
-//		}
-
 	@Override
-	public void redigerProduktBatch(int oprID, int pb_id, int rb_id, int tara, int netto, int recept_id, int oldPb_id) throws Exception {
-		Connection con = connector.getConnection();
-
-		try {
-			con.setAutoCommit(false);
-			connector.doUpdate("UPDATE produktbatch SET pb_id = "+pb_id+", recept_id ="+recept_id+" WHERE pb_id = "+oldPb_id+";");
-			connector.doUpdate("UPDATE produktbatchkomponent SET pb_id = "+pb_id+", rb_id = "+pb_id+", tara = "+tara+
-					", netto = "+netto+", opr_id = "+oprID+" WHERE pb_id = "+oldPb_id+";");
-
-		} catch(Exception e) {
-			con.rollback();
-			throw e;
-		} finally {
-			con.commit();
-			con.setAutoCommit(true);
-		}
-	}
-
-	@Override
-	public ProduktBatchDTO getProduktBatch(int pbID) throws Exception{
+	public ProduktBatchDTO getProduktBatch(int pbID) throws DALException{
 
 		try {
 			ResultSet rs = connector.doQuery("SELECT * FROM produktbatch WHERE pb_id = '" + pbID+"'");
-			if (!rs.first()) throw new Exception("Operatoeren '" + pbID + "' findes ikke");
+			if (!rs.first()) throw new DALException("Operatoeren '" + pbID + "' findes ikke");
 			return new ProduktBatchDTO(rs.getInt("pb_id"), rs.getInt("status"),
 					rs.getInt("recept_id"), null);	    }
 		catch (SQLException e) {
-			throw e;
+			throw new DALException(e.getMessage());
 		}
 	}
 
 	@Override
-	public void updateStatus(int pb_id, int status) throws Exception{
+	public void updateStatus(int pb_id, int status) throws DALException{
 		try {
 			connector.doUpdate("UPDATE produktbatch SET status="+status+" WHERE pb_id=" +pb_id);
 		} catch (SQLException e) {
-			throw e;
+			throw new DALException(e.getMessage());
 		}
 	}
 
 	@Override
 	public void addProduktBatch(int pb_id, int recept_id, String dato) throws DALException {
-//		Date today = new Date();
-//		String dato = DateTimeFormat.getShortDateFormat().format(today);
 		String query = "INSERT INTO produktbatch VALUES("+pb_id+", 1, "+recept_id+", '"+dato+"')";
 		try {
 			connector.doUpdate(query);
-		} catch(Exception e) {
+		} catch(SQLException e) {
 			throw new DALException(e.getMessage());
 		}
 	}
@@ -145,7 +82,7 @@ public class ProduktBatchDAO implements IProduktbatchDAO {
 	public void opretPBKomp(int pb_id, int rb_id, double tara, double netto, int opr_id) throws DALException{
 		try {
 			connector.doUpdate("INSERT INTO produktbatchkomponent values ("+pb_id+","+rb_id+","+tara+","+netto+","+opr_id+")");
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			throw new DALException(e.getMessage());		}
 	}
 

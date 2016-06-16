@@ -47,18 +47,4 @@ public class ReceptDAOTest {
 		}
 	}
 	
-	@Test
-	public void testRedigerRecept() {
-		int glID = 100;
-		int nyID = 404;
-		ArrayList<ReceptKomponentDTO> list = new ArrayList<ReceptKomponentDTO>();
-		list.add(new ReceptKomponentDTO(nyID, 1, 100, 10));
-		try {
-			rDAO.redigerRecept("smølfineErSød", nyID, list, glID);
-			Assert.assertNotNull(rDAO.getRecept(nyID));
-		} catch(DALException e) {
-			
-		}
-	}
-
 }
