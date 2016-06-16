@@ -18,7 +18,6 @@ public class ReceptDAO implements IReceptDAO {
 
 	@Override
 	public void addRecept(String receptNavn, int recept_id, ArrayList<ReceptKomponentDTO> komp) throws DALException{
-		System.out.println("\n\n\n SUUUUUUP");
 		Connection con = connector.getConnection();
 		try {
 			con.setAutoCommit(false);
@@ -81,7 +80,7 @@ public class ReceptDAO implements IReceptDAO {
 
 	@Override
 	public void redigerRecept(String receptNavn, int recept_id, ArrayList<ReceptKomponentDTO> komp, int glid) 
-			throws Exception {
+			throws DALException {
 		Connection con = connector.getConnection();
 		try {
 			con.setAutoCommit(false);
@@ -91,21 +90,29 @@ public class ReceptDAO implements IReceptDAO {
 				connector.doUpdate("UPDATE receptkomponent SET recept_id = "+recept_id+", raavare_id = "
 			+rkDTO.getRaavare_id()+", nom_netto = "+rkDTO.getMængde()+", tolerance = "+rkDTO.getTolerance()+";");
 			}
-		} catch(Exception e) {
-			con.rollback();
+		} catch(SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			throw new DALException(e.getMessage());
 		} finally {
-			con.commit();
-			con.setAutoCommit(true);
+			try {
+				con.commit();
+				con.setAutoCommit(true);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
 	@Override
-	public ReceptDTO getRecept(int recept_id) throws Exception{
+	public ReceptDTO getRecept(int recept_id) throws DALException{
 
 		try {
 			ResultSet rs = connector.doQuery("SELECT * FROM recept NATURAL JOIN receptkomponent WHERE recept_id = " + recept_id+";");
-			if (!rs.first()) throw new Exception("Recepted " + recept_id + " findes ikke");
+			if (!rs.first()) throw new DALException("Recepted " + recept_id + " findes ikke");
 			ArrayList<ReceptKomponentDTO> komp = new ArrayList<ReceptKomponentDTO>();
 			do {
 				komp.add(new ReceptKomponentDTO(rs.getInt("recept_id"), rs.getInt("raavare_id"),
@@ -117,7 +124,7 @@ public class ReceptDAO implements IReceptDAO {
 				return dto;
 			return null;
 		}catch (SQLException e) {
-			throw e;
+			throw new DALException(e.getMessage());
 		}
 
 	}
@@ -133,7 +140,7 @@ public class ReceptDAO implements IReceptDAO {
 			countInt = Integer.parseInt(countString);
 
 			return countInt;
-		} catch(Exception e) {
+		} catch(SQLException e) {
 			throw new DALException(e.getMessage());
 		}
 
