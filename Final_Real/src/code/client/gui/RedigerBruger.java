@@ -32,10 +32,10 @@ public class RedigerBruger extends Composite {
 
 	interface RedigerBrugerUiBinder extends UiBinder<Widget, RedigerBruger> {
 	}
-	
+
 	private IOperatoerServiceAsync service;
 	private Validator validator = new Validator();
-//	private Label errorLabel = new Label();
+	//	private Label errorLabel = new Label();
 
 	public RedigerBruger() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -43,7 +43,7 @@ public class RedigerBruger extends Composite {
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
 		redigerBruger();
-	
+
 	}
 	@UiField Label oprID;
 	@UiField Label oprNavn;
@@ -52,13 +52,13 @@ public class RedigerBruger extends Composite {
 	@UiField Label password;
 	@UiField Label type;
 	@UiField Label errorLabel;
-	
+
 	private void redigerBruger() {
 		Final_Real.clearContent();
 		Final_Real.attachContent(this);
-		
+
 		service.getOperatoerer(new AsyncCallback<ArrayList<OperatoerDTO>>() {
-			
+
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -74,7 +74,7 @@ public class RedigerBruger extends Composite {
 				cpr.setText("CPR-nummer");
 				password.setText("Password");
 				type.setText("Type");
-				
+
 				if(!result.isEmpty()) {
 					for (OperatoerDTO operatoer : result) {
 						final OperatoerDTO opr = operatoer;
@@ -88,20 +88,22 @@ public class RedigerBruger extends Composite {
 						final Button rediger = new Button("Rediger");
 						final Button gem = new Button("Gem");
 						final Button annuller = new Button("Annuller");
-						
+
 						lbType.setHeight("23px");
-						
+
 						id.setText(operatoer.getOprID()+"");
 						navn.setText(operatoer.getOprNavn());
 						ini.setText(operatoer.getIni()+"");
 						cpr.setText(operatoer.getCPR()+"");
 						passwordBox.setText(operatoer.getPassword()+"");
 						lbType.addItem(operatoer.getType(), "type");
+
 						
-						if(operatoer.getType().equals("administrator")) {
-							lbType.addItem("operatør", "type");
+						if(operatoer.getOprID() == 1) {
+						}else if(operatoer.getType().equals("administrator")) {
 							lbType.addItem("værkfører", "type");
 							lbType.addItem("farmaceut", "type");
+							lbType.addItem("operatør", "type");
 						}else if (operatoer.getType().equals("operatør")) {
 							lbType.addItem("værkfører", "type");
 							lbType.addItem("farmaceut", "type");
@@ -115,52 +117,56 @@ public class RedigerBruger extends Composite {
 							lbType.addItem("farmaceut", "type");
 							lbType.addItem("administrator", "type");
 						}
-		
-						
+
+
 						rediger.setStyleName("style.Rediger");
 						gem.setStyleName("style.Rediger");
 						annuller.setStyleName("style.Rediger");
-						
+
 						gem.setVisible(false);
 						annuller.setVisible(false);
-						
+
+
 						id.setEnabled(false);
 						navn.setEnabled(false);
 						ini.setEnabled(false);
 						cpr.setEnabled(false);
 						passwordBox.setEnabled(false);
 						lbType.setEnabled(false);
-						
+
 						hPanel.add(id);
 						hPanel.add(navn);
 						hPanel.add(ini);
 						hPanel.add(cpr);
 						hPanel.add(passwordBox);
 						hPanel.add(lbType);
-						
+
 						hPanel.add(rediger);
 						hPanel.add(gem);
 						hPanel.add(annuller);
 						vPanel.add(hPanel);
-						
+
 						rediger.addClickHandler(new ClickHandler() {
 
 							@Override
 							public void onClick(ClickEvent event) {
-								id.setEnabled(true);
-								navn.setEnabled(true);
-								ini.setEnabled(true);
-								cpr.setEnabled(true);
-								passwordBox.setEnabled(true);
-								lbType.setEnabled(true);
+
+								 
+									id.setEnabled(true);
+									navn.setEnabled(true);
+									ini.setEnabled(true);
+									cpr.setEnabled(true);
+									passwordBox.setEnabled(true);
+									lbType.setEnabled(true);
+
+									rediger.setVisible(false);
+									gem.setVisible(true);
+									annuller.setVisible(true);	
 								
-								rediger.setVisible(false);
-								gem.setVisible(true);
-								annuller.setVisible(true);								
 							}
-							
+
 						});
-						
+
 						gem.addClickHandler(new ClickHandler() {
 
 							@Override
@@ -185,15 +191,15 @@ public class RedigerBruger extends Composite {
 										gem.setVisible(false);
 										annuller.setVisible(false);
 										rediger.setVisible(true);
-										
-										
+
+
 									}
-									
+
 								});
 							}
-							
+
 						});
-						
+
 						annuller.addClickHandler(new ClickHandler() {
 
 							@Override
@@ -203,23 +209,23 @@ public class RedigerBruger extends Composite {
 								ini.setText(opr.getIni());
 								cpr.setText(opr.getCPR());
 								passwordBox.setText(opr.getPassword());
-								
+
 								id.setEnabled(false);
 								navn.setEnabled(false);
 								ini.setEnabled(false);
 								cpr.setEnabled(false);
 								passwordBox.setEnabled(false);
 								lbType.setEnabled(false);
-								
+
 								gem.setVisible(false);
 								annuller.setVisible(false);
 								rediger.setVisible(true);
 							}
-							
+
 						});
-						
+
 						id.addKeyUpHandler(new KeyUpHandler() {
-							
+
 							@Override
 							public void onKeyUp(KeyUpEvent event) {
 								if(validator.validateInt(id.getText())) {
@@ -232,7 +238,7 @@ public class RedigerBruger extends Composite {
 							}
 						});
 						cpr.addKeyUpHandler(new KeyUpHandler() {
-							
+
 							@Override
 							public void onKeyUp(KeyUpEvent event) {
 								if(validator.validateCPR(cpr.getText())) {
@@ -244,9 +250,9 @@ public class RedigerBruger extends Composite {
 								}
 							}
 						});
-						
+
 						passwordBox.addKeyUpHandler(new KeyUpHandler() {
-							
+
 							@Override
 							public void onKeyUp(KeyUpEvent event) {
 								if(validator.validatePassword(passwordBox.getText())) {
@@ -259,17 +265,17 @@ public class RedigerBruger extends Composite {
 							}
 						});
 					}
-					
-					
+
+
 					vPanel.add(errorLabel);
 				}
 
 				Final_Real.attachContent(vPanel);
-			
+
 			}
 
-			
+
 		});
-		
+
 	}
 }
