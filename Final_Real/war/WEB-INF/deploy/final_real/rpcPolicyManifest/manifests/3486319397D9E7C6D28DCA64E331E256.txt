@@ -1,0 +1,2 @@
+serviceClass: code.client.service.IReceptService
+path: 3DD8104246BCEE028DAC35B471D96ADA.gwt.rpc

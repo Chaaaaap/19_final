@@ -1,0 +1,68 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.ListBox {
+		height:23px;
+		padding-top:3px;
+		}
+
+		.Error {
+			color:RED;
+			size:14px;
+		}
+
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HorizontalPanel height="150px">
+			<g:VerticalPanel>
+				<g:Label text="Indtast recept nr." />
+				<g:TextBox ui:field="boxID" />
+				<g:Label ui:field="idErrorLabel" styleName="{style.Error}" />
+			</g:VerticalPanel>
+
+			<g:VerticalPanel>
+				<g:Label text="Indtast navn på recept" />
+				<g:TextBox ui:field="boxNavn" />
+				<g:Label ui:field="navnErrorLabel" styleName="{style.Error}" />
+			</g:VerticalPanel>
+
+			<g:VerticalPanel ui:field="panelEt">
+				<g:Label text="Vælg råvare" />
+				<g:Label text="Indtast mængde" ui:field="maengde_lbl" />
+				<g:Label text="Indtast tolerance" ui:field="tol_lbl" />
+			</g:VerticalPanel>
+
+			<g:VerticalPanel ui:field="panelTo">
+				<g:Label text="Vælg råvare" />
+				<g:Label text="Indtast mængde" ui:field="maengde_lbl1" />
+				<g:Label text="Indtast tolerance" ui:field="tol_lbl1" />
+			</g:VerticalPanel>
+
+			<g:VerticalPanel ui:field="panelTre">
+				<g:Label text="Vælg råvare" ui:field="raavare_lbl2"/>
+				<g:Label text="Indtast mængde" ui:field="maengde_lbl2" />
+				<g:Label text="Indtast tolerance" ui:field="tol_lbl2" />
+			</g:VerticalPanel>
+
+			<g:VerticalPanel ui:field="panelFire">
+				<g:Label text="Vælg råvare" ui:field="raavare_lbl3"/>
+				<g:Label text="Indtast mængde" ui:field="maengde_lbl3" />
+				<g:Label text="Indtast tolerance" ui:field="tol_lbl3" />
+			</g:VerticalPanel>
+
+			<g:VerticalPanel ui:field="panelFem">
+				<g:Label text="Vælg råvare" ui:field="raavare_lbl4"/>
+				<g:Label text="Indtast mængde" ui:field="maengde_lbl4" />
+				<g:Label text="Indtast tolerance" ui:field="tol_lbl4" />
+			</g:VerticalPanel>
+	
+		</g:HorizontalPanel>
+		<g:HorizontalPanel width="100%">
+			<g:cell horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE">
+				<g:Button ui:field="submit" text="Opret recept" />
+			</g:cell>
+		</g:HorizontalPanel>
+
+	</g:HTMLPanel>
+</ui:UiBinder> 

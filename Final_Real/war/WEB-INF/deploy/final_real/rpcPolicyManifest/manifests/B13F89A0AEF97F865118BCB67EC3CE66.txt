@@ -1,0 +1,2 @@
+serviceClass: code.client.service.IRaavareBatchService
+path: 616DBE13BFAAFD94E4AC211767D9E088.gwt.rpc

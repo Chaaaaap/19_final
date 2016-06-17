@@ -1,0 +1,19 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.Labels {
+			font-size:18px;
+			width:150px;
+			text-align:center;
+		}
+	
+	</ui:style>
+	<g:HTMLPanel>
+	    <g:HorizontalPanel>
+	    	<g:Label ui:field="idLabel" styleName="{style.Labels}" />
+	    	<g:Label ui:field="navnLabel" styleName="{style.Labels}" />
+	   		<g:Label ui:field="levLabel" styleName="{style.Labels}" />
+	    </g:HorizontalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

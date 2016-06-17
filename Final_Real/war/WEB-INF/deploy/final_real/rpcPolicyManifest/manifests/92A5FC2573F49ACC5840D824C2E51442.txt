@@ -1,0 +1,2 @@
+serviceClass: code.client.service.IRaavareService
+path: E20BCD1138A894C53A087EF331783F6F.gwt.rpc

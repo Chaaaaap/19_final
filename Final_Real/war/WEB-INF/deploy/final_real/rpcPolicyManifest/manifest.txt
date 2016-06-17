@@ -1,0 +1,8 @@
+# Module final_real
+# RPC service class, partial path of RPC policy file
+code.client.service.IServiceVsCon, A42DDD03E351500821CBBE8E742CC75C.gwt.rpc
+code.client.service.IOperatoerService, 1C966FB0903B2DAC3EC6B475BDD0B1F8.gwt.rpc
+code.client.service.IReceptService, 3DD8104246BCEE028DAC35B471D96ADA.gwt.rpc
+code.client.service.IRaavareService, E20BCD1138A894C53A087EF331783F6F.gwt.rpc
+code.client.service.IRaavareBatchService, 616DBE13BFAAFD94E4AC211767D9E088.gwt.rpc
+code.client.service.IProduktBatchService, 9EC52D547205A30C5E0291AC0A6A5C31.gwt.rpc

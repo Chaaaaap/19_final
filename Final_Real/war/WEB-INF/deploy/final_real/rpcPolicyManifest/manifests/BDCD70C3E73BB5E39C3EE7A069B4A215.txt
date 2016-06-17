@@ -1,0 +1,2 @@
+serviceClass: code.client.service.IProduktBatchService
+path: 9EC52D547205A30C5E0291AC0A6A5C31.gwt.rpc

@@ -1,0 +1,2 @@
+serviceClass: code.client.service.IOperatoerService
+path: 1C966FB0903B2DAC3EC6B475BDD0B1F8.gwt.rpc

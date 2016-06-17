@@ -1,0 +1,37 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.Error {
+			color:RED;
+			size:14px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+	    <g:VerticalPanel>
+	        <g:Label text="Indtast operatør ID" />
+	        <g:TextBox ui:field="boxID" />
+	        <g:Label ui:field="labelIDError" styleName="{style.Error}" />
+	        <g:Label text="Indtast brugerens navn" />
+	        <g:TextBox ui:field="boxNavn" />
+	        <g:Label text="Indtast brugerens initialer" />
+	        <g:TextBox ui:field="boxIni" />
+	        <g:Label text="Indtast brugerens CPR-nummer" />
+	        <g:TextBox ui:field="boxCPR" />
+	        <g:Label ui:field="labelCPRError" styleName="{style.Error}" />
+	        <g:Label text="Indtast brugerens password" />
+	        <g:PasswordTextBox ui:field="boxPassword" />
+	        <g:Label text="Gentag brugerens password" />
+	        <g:PasswordTextBox ui:field="boxGentag" />
+	        <g:Label ui:field="labelPassError" text="" styleName="{style.Error}" />
+	        <g:Label text="Vælg brugerens rolle" />
+	   		<g:ListBox ui:field="boxType">
+	   		    <g:item value="operatør">operatør</g:item>
+	   		    <g:item value="værkfører">værkfører</g:item>
+	   		    <g:item value="farmaceut">farmaceut</g:item>
+	   		    <g:item value="administrator">administrator</g:item>
+	   		</g:ListBox> 
+	   		<g:Button ui:field="submit" text="Opret bruger" />
+	    </g:VerticalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

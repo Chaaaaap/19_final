@@ -1,0 +1,44 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.ListBox {
+		height:23px;
+		padding-top:3px;
+		}
+		
+		.Error {
+			color:RED;
+			size:14px;
+			width:150px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HorizontalPanel height="80px">
+			<g:VerticalPanel>
+				<g:Label text="Indtast produktbatch ID" />
+				<g:TextBox ui:field="boxID" />
+				<g:Label ui:field="pbErrorLabel" styleName="{style.Error}" />
+			</g:VerticalPanel>
+			
+			<g:VerticalPanel>
+				<g:Label text="Indtast recept ID" />
+				<g:TextBox ui:field="receptBox" />
+				<g:Label ui:field="riErrorLabel" styleName="{style.Error}" />
+			</g:VerticalPanel>	
+			
+			<g:VerticalPanel>
+				<g:Label text="Indtast dato" />
+				<g:TextBox ui:field="datoBox" />
+				<g:Label ui:field="dateErrorLabel" styleName="{style.Error}" />
+			</g:VerticalPanel>	
+			
+		</g:HorizontalPanel>
+		<g:HorizontalPanel width="100%">
+			<g:cell horizontalAlignment="ALIGN_CENTER" verticalAlignment="ALIGN_MIDDLE">
+				<g:Button ui:field="submit" text="Opret recept" />
+			</g:cell>
+		</g:HorizontalPanel>
+
+	</g:HTMLPanel>
+</ui:UiBinder> 

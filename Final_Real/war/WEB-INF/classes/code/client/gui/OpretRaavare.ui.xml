@@ -1,0 +1,22 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.Error {
+			color:RED;
+			size:14px;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+	     <g:VerticalPanel>
+	        <g:Label text="Indtast råvare nr." />
+	        <g:TextBox ui:field="boxID" />
+	        <g:Label ui:field="idErrorLabel" styleName="{style.Error}" />
+	        <g:Label text="Indtast navn på råvare" />
+	        <g:TextBox ui:field="boxNavn" />
+	        <g:Label text="Angiv leverandør" />
+	        <g:TextBox ui:field="boxSupplier" />
+	        <g:Button ui:field="submit" text="Opret råvare" />
+	    </g:VerticalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

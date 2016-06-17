@@ -1,0 +1,2 @@
+serviceClass: code.client.service.IServiceVsCon
+path: A42DDD03E351500821CBBE8E742CC75C.gwt.rpc

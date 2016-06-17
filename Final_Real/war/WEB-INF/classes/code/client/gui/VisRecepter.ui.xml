@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.Labels {
+		font-size:18px;
+		width:150px;
+		text-align:center;
+		}
+
+	</ui:style>
+	<g:HTMLPanel>
+	    <g:VerticalPanel ui:field="vPanel">
+		<g:HorizontalPanel>
+			<g:Label ui:field="receptNavnLabel" styleName="{style.Labels}" text="Recept navn"/>
+			<g:Label ui:field="receptIdLabel" styleName="{style.Labels}" text="Recept ID"/>
+		</g:HorizontalPanel>
+		</g:VerticalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 
