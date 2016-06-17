@@ -98,7 +98,7 @@ public class RedigerBruger extends Composite {
 						passwordBox.setText(operatoer.getPassword()+"");
 						lbType.addItem(operatoer.getType(), "type");
 
-						
+
 						if(operatoer.getOprID() == 1) {
 						}else if(operatoer.getType().equals("administrator")) {
 							lbType.addItem("værkfører", "type");
@@ -141,7 +141,10 @@ public class RedigerBruger extends Composite {
 						hPanel.add(passwordBox);
 						hPanel.add(lbType);
 
-						hPanel.add(rediger);
+						if(operatoer.getOprID() == 1) {
+						}else{
+							hPanel.add(rediger);
+						}
 						hPanel.add(gem);
 						hPanel.add(annuller);
 						vPanel.add(hPanel);
@@ -151,18 +154,18 @@ public class RedigerBruger extends Composite {
 							@Override
 							public void onClick(ClickEvent event) {
 
-								 
-									id.setEnabled(true);
-									navn.setEnabled(true);
-									ini.setEnabled(true);
-									cpr.setEnabled(true);
-									passwordBox.setEnabled(true);
-									lbType.setEnabled(true);
 
-									rediger.setVisible(false);
-									gem.setVisible(true);
-									annuller.setVisible(true);	
-								
+								id.setEnabled(true);
+								navn.setEnabled(true);
+								ini.setEnabled(true);
+								cpr.setEnabled(true);
+								passwordBox.setEnabled(true);
+								lbType.setEnabled(true);
+
+								rediger.setVisible(false);
+								gem.setVisible(true);
+								annuller.setVisible(true);	
+
 							}
 
 						});
