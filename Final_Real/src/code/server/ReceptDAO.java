@@ -57,7 +57,7 @@ public class ReceptDAO implements IReceptDAO {
 			l = length.getInt("COUNT(recept_id)");
 			resultSet = connector.doQuery("SELECT * FROM recept NATURAL JOIN receptkomponent");
 			if(!resultSet.first()) throw new DALException("Listen er tom");
-			while(i < l-1) {
+			while(i < l) {
 				ArrayList<ReceptKomponentDTO> komp = new ArrayList<ReceptKomponentDTO>();
 				do {
 					x = resultSet.getInt("recept_id");
